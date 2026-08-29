@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ko" data-ui="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>사용설명서 · 디자인 시스템 도구</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root,:root[data-ui="light"]{
+  --ui-canvas:#F6F5F2;--ui-panel:#FFFFFF;--ui-panel-2:#F2F0EB;
+  --ui-fg:#17161B;--ui-fg-strong:#2A2830;--ui-fg-lower:#5E5A63;--ui-fg-dim:#A9A6AE;
+  --ui-border:#E7E4DD;--ui-border-low:#F0EDE6;--ui-accent:#A24E38;
+  --ui-sh:0 1px 3px rgba(30,24,50,.06);--ui-sh-md:0 6px 20px rgba(30,24,50,.09);
+}
+:root[data-ui="dark"]{
+  --ui-canvas:#141317;--ui-panel:#1C1B21;--ui-panel-2:#232128;
+  --ui-fg:#F4F3F7;--ui-fg-strong:#FFFFFF;--ui-fg-lower:#A6A3AE;--ui-fg-dim:#6E6B75;
+  --ui-border:#302E38;--ui-border-low:#26242C;--ui-accent:#E0917A;
+  --ui-sh:0 1px 3px rgba(0,0,0,.5);--ui-sh-md:0 6px 20px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--ui-canvas);color:var(--ui-fg);line-height:1.65;-webkit-font-smoothing:antialiased;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;}
+button{font:inherit;}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:13px 24px;
+  background:color-mix(in srgb,var(--ui-canvas) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ui-border);}
+.top .logo{font-family:"Space Grotesk",Pretendard,sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.top .mk{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 140deg,#A24E38,#C98A5B,#3F5E56,#A24E38);}
+.top .sp{flex:1;}
+.appnav{display:flex;gap:4px;background:var(--ui-panel-2);border:1px solid var(--ui-border);border-radius:11px;padding:3px;}
+.appnav a{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--ui-fg-lower);
+  text-decoration:none;padding:6px 12px;border-radius:8px;white-space:nowrap;}
+.appnav a:hover{color:var(--ui-fg-strong);background:var(--ui-panel);}
+.appnav a.on{background:var(--ui-accent);color:#fff;}
+@media(max-width:640px){.appnav a span{display:none;}}
+.tbtn{border:1px solid var(--ui-border);background:var(--ui-panel);color:var(--ui-fg-lower);padding:7px 13px;border-radius:9px;cursor:pointer;font-size:12.5px;}
+
+.wrap{max-width:940px;margin:0 auto;padding:30px 24px 90px;}
+h1{font-family:"Space Grotesk",Pretendard,sans-serif;font-size:clamp(26px,4vw,36px);font-weight:700;letter-spacing:-.02em;margin:0 0 8px;}
+.lead{font-size:15px;color:var(--ui-fg-lower);max-width:66ch;margin:0 0 26px;}
+h2{font-size:20px;font-weight:800;letter-spacing:-.01em;margin:46px 0 6px;padding-bottom:10px;border-bottom:2px solid var(--ui-fg-strong);}
+h3{font-size:15px;font-weight:800;margin:26px 0 8px;color:var(--ui-fg-strong);}
+p{font-size:14.5px;color:var(--ui-fg-lower);margin:8px 0;}
+b{color:var(--ui-fg-strong);}
+code{font-family:"Roboto Mono",monospace;font-size:12.5px;background:var(--ui-panel-2);border:1px solid var(--ui-border);
+  padding:1px 6px;border-radius:5px;color:var(--ui-fg-strong);}
+
+.files{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0;}
+.file{background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:14px;padding:16px;box-shadow:var(--ui-sh);
+  display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;transition:.15s;}
+.file:hover{transform:translateY(-2px);box-shadow:var(--ui-sh-md);border-color:var(--ui-accent);}
+.file .ico{font-size:22px;}
+.file .fn{font-size:14.5px;font-weight:800;color:var(--ui-fg-strong);}
+.file .fd{font-size:12.5px;color:var(--ui-fg-lower);line-height:1.6;}
+.file .fw{font-size:11.5px;color:var(--ui-accent);font-weight:700;margin-top:2px;}
+
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:16px 0;}
+.fstep{flex:1;min-width:180px;background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:13px;padding:14px 15px;}
+.fstep .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--ui-accent);color:#fff;font-size:11px;font-weight:800;margin-bottom:7px;}
+.fstep .t{font-size:13.5px;font-weight:800;color:var(--ui-fg-strong);}
+.fstep .d{font-size:12.5px;color:var(--ui-fg-lower);margin-top:3px;line-height:1.6;}
+.arrow{display:grid;place-items:center;color:var(--ui-fg-dim);font-size:18px;flex:0 0 18px;}
+@media(max-width:700px){.arrow{transform:rotate(90deg);flex-basis:100%;height:18px;}}
+
+.case{background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:15px;padding:18px 20px;margin:14px 0;box-shadow:var(--ui-sh);}
+.case .ct{font-size:15px;font-weight:800;color:var(--ui-fg-strong);}
+.case .cw{font-size:12.5px;color:var(--ui-accent);font-weight:700;margin-bottom:10px;}
+.case ol{margin:0;padding-left:20px;}
+.case li{font-size:13.5px;color:var(--ui-fg-lower);line-height:1.95;}
+.case li b{color:var(--ui-fg-strong);}
+
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:14px 0;background:var(--ui-panel);}
+th,td{border:1px solid var(--ui-border);padding:10px 12px;text-align:left;vertical-align:top;}
+th{background:var(--ui-panel-2);font-weight:800;color:var(--ui-fg-strong);font-size:13px;}
+td{color:var(--ui-fg-lower);}
+td b{color:var(--ui-fg-strong);}
+
+.tip{background:var(--ui-panel-2);border:1px solid var(--ui-border);border-radius:12px;padding:14px 16px;margin:14px 0;font-size:13.5px;color:var(--ui-fg-strong);line-height:1.8;}
+.tip .th{font-weight:800;display:block;margin-bottom:4px;}
+.warn{background:var(--ui-panel);border:1px solid #D9A199;border-radius:12px;padding:14px 16px;margin:14px 0;font-size:13.5px;line-height:1.8;}
+.warn .th{font-weight:800;color:#A24E38;display:block;margin-bottom:4px;}
+.qa{border-top:1px solid var(--ui-border);padding:14px 0;}
+.qa .q{font-size:14px;font-weight:800;color:var(--ui-fg-strong);}
+.qa .a{font-size:13.5px;color:var(--ui-fg-lower);margin-top:5px;}
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);font-size:12px;color:var(--ui-fg-dim);}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="logo"><span class="mk"></span>사용설명서</div>
+  <div class="sp"></div>
+  <nav class="appnav">
+    <a href="library.html">📚<span>모음집</span></a>
+    <a href="builder.html">🎛<span>조립기</span></a>
+    <a href="generator.html">⚡<span>생성기</span></a>
+    <a href="guide.html" class="on">📖<span>설명서</span></a>
+  </nav>
+  <button class="tbtn" id="btnUi">◐</button>
+</div>
+
+<div class="wrap">
+  <h1>어떻게 쓰는가</h1>
+  <p class="lead">파일 3개가 한 세트입니다. 목적에 따라 <b>하나만</b> 쓰면 되고, 이어서 쓰면 색 고르기부터 완성 페이지까지 한 번에 갑니다.</p>
+
+  <div class="files">
+    <a class="file" href="library.html">
+      <span class="ico">📚</span>
+      <span class="fn">모음집</span>
+      <span class="fd">디자인 시스템 16종, 레이아웃 22종, 콘텐츠 구조 9종, 규칙을 보관.<br>맨 위 <b>조립기</b>에서 프롬프트·CLAUDE.md·CSS를 뽑습니다.</span>
+      <span class="fw">→ 대부분은 여기만 써도 됩니다</span>
+    </a>
+    <a class="file" href="builder.html">
+      <span class="ico">🎛</span>
+      <span class="fn">조립기</span>
+      <span class="fd">브랜드 색 하나만 넣으면 50~950 램프가 자동 생성.<br>폰트·모서리·밀도까지 정해 <b>나만의 시스템</b>을 만듭니다.</span>
+      <span class="fw">→ 고객이 브랜드 색을 줬을 때</span>
+    </a>
+    <a class="file" href="generator.html">
+      <span class="ico">⚡</span>
+      <span class="fn">생성기</span>
+      <span class="fd">콘텐츠 + 레이아웃 + 시스템을 골라 <b>실제 동작하는 HTML</b>을 만들고 저장합니다.</span>
+      <span class="fw">→ 결과물 파일이 필요할 때</span>
+    </a>
+  </div>
+
+  <h2>1. 가장 많이 쓰는 3가지 상황</h2>
+
+  <div class="case">
+    <div class="ct">상황 A — AI(클로드 코드)에게 화면을 시킬 때</div>
+    <div class="cw">가장 흔한 경우 · 소요 30초</div>
+    <ol>
+      <li><b>모음집</b>을 엽니다.</li>
+      <li>맨 위 조립기에서 <b>①콘텐츠</b>(예: 뷰티 상세페이지) <b>②레이아웃</b>(모듈러 그리드) <b>③디자인시스템</b>(Toss)을 고릅니다.</li>
+      <li>탭을 <b>AI 프롬프트</b>로 두고 <b>📋 복사</b>.</li>
+      <li>클로드 코드에 붙여넣고 엔터. 끝.</li>
+    </ol>
+    <div class="tip"><span class="th">왜 좋은가</span>
+      섹션 순서(실제 사이트 조사분) + 색·폰트 토큰 + 반응형·이미지·접근성 규칙이 <b>한 덩어리로</b> 들어가서, AI가 임의로 만들지 않습니다.</div>
+  </div>
+
+  <div class="case">
+    <div class="ct">상황 B — 프로젝트에 규칙을 심어둘 때</div>
+    <div class="cw">한 번만 해두면 계속 적용 · 소요 1분</div>
+    <ol>
+      <li>모음집 조립기에서 쓸 <b>디자인 시스템</b>을 고릅니다.</li>
+      <li>탭을 <b>CLAUDE.md</b>로 바꿉니다.</li>
+      <li><b>⬇ 파일로 저장</b> → <code>CLAUDE.md</code> 파일이 받아집니다.</li>
+      <li>그 파일을 <b>프로젝트 폴더 최상단</b>에 넣습니다.</li>
+      <li>이제 그 폴더에서 클로드 코드를 쓰면 <b>매번 복사할 필요 없이</b> 규칙이 자동 적용됩니다.</li>
+    </ol>
+    <div class="tip"><span class="th">같이 저장하면 좋은 것</span>
+      탭을 <b>CSS 토큰</b>으로 바꿔 <code>design-tokens.css</code>도 받아 프로젝트에 넣어두면, 코드에서 <code>var(--bg-primary)</code>로 바로 씁니다.</div>
+  </div>
+
+  <div class="case">
+    <div class="ct">상황 C — 고객이 브랜드 색을 줬을 때</div>
+    <div class="cw">숨고·외주 견적에 특히 유용 · 소요 2분</div>
+    <ol>
+      <li><b>조립기</b>를 엽니다.</li>
+      <li><b>브랜드 색</b>에 고객이 준 HEX를 붙여넣습니다 (예: <code>#2E7D6B</code>). → 램프가 자동 생성됩니다.</li>
+      <li><b>중립색 온도 · 폰트 · 모서리 · 밀도</b>를 취향에 맞게 조절 (오른쪽에서 즉시 확인).</li>
+      <li>상단 <b>⚡ 이 시스템으로 페이지 만들기</b> 클릭.</li>
+      <li>생성기로 넘어가면서 <b>★ 내가 조립한 시스템</b>이 자동 선택됩니다. 콘텐츠·레이아웃만 고르면 페이지 완성.</li>
+      <li><b>⬇ HTML 저장</b>으로 파일을 받아 고객에게 보냅니다.</li>
+    </ol>
+  </div>
+
+  <h2>2. 화면별 사용법</h2>
+
+  <h3>📚 모음집</h3>
+  <table>
+    <tr><th style="width:26%">위치</th><th>하는 일</th></tr>
+    <tr><td><b>맨 위 조립기</b></td><td>콘텐츠·레이아웃·시스템 3개를 고르면 <b>AI 프롬프트 / CLAUDE.md / CSS 토큰 / Tailwind</b> 4가지가 나옵니다. 복사 또는 파일 저장.</td></tr>
+    <tr><td><b>디자인 시스템 카드</b></td><td>16종. 카드를 누르면 상세로 들어가 색 램프·컴포넌트·에셋·차트를 보고, 개별 내보내기도 가능합니다.</td></tr>
+    <tr><td><b>업종별 추천</b></td><td>병원·금융·교육 등 업종을 누르면 어울리는 시스템으로 바로 이동합니다.</td></tr>
+    <tr><td><b>레이아웃 레퍼런스</b></td><td>22종 구조 뼈대. 클릭하면 확대된 와이어프레임과 설명이 나옵니다.</td></tr>
+    <tr><td><b>콘텐츠별 화면 구조</b></td><td>실제 사이트(올리브영·Linear·Apple 등) 조사 기준 섹션 순서. 이미지가 필요한 섹션엔 <b>권장 규격</b>이 함께 표시됩니다.</td></tr>
+    <tr><td><b>제작 규칙</b></td><td>반응형·이미지·접근성·금지사항. <b>내 규칙</b>을 직접 추가하면 프롬프트에 자동 포함됩니다.</td></tr>
+  </table>
+  <div class="tip"><span class="th">화면이 길어 보일 때</span>
+    각 섹션 <b>제목을 클릭</b>하면 접히고 펼쳐집니다. 기본은 접혀 있고, 펼치면 3개만 보인 뒤 <b>전체 보기</b>로 나머지를 엽니다.</div>
+
+  <h3>🎛 조립기</h3>
+  <table>
+    <tr><th style="width:26%">설정</th><th>설명</th></tr>
+    <tr><td><b>브랜드 색</b></td><td>색을 고르면 <b>50~950 11단계</b>가 자동 계산됩니다. 아래 프리셋을 눌러도 됩니다.</td></tr>
+    <tr><td><b>중립색 온도</b></td><td>회색에 도는 기운. <b>웜</b>=종이·따뜻함, <b>쿨</b>=테크·차가움, <b>뉴트럴</b>=중간.</td></tr>
+    <tr><td><b>폰트 / 모서리 / 밀도</b></td><td>밀도는 <b>촘촘</b>=데이터 많은 어드민, <b>여유</b>=랜딩·브랜드에 적합합니다.</td></tr>
+    <tr><td><b>내보내기</b></td><td>CSS 변수 / Tailwind / JSON / AI 프롬프트. AI 프롬프트에는 <b>대비(WCAG) 검사 결과</b>가 자동으로 들어갑니다.</td></tr>
+    <tr><td><b>🎲 무작위</b></td><td>조합이 안 떠오를 때 랜덤으로 만들어 봅니다.</td></tr>
+  </table>
+
+  <h3>⚡ 생성기</h3>
+  <p>왼쪽에서 <b>고르기만</b> 하면 오른쪽이 즉시 갱신됩니다. 따로 생성 버튼을 누를 필요가 없습니다.</p>
+  <table>
+    <tr><th style="width:26%">항목</th><th>설명</th></tr>
+    <tr><td><b>1 콘텐츠 구조</b></td><td>무엇을 만들지 (뷰티 상세 / SaaS 랜딩 / 메뉴판 / 병원 / 포트폴리오 / 앱 소개)</td></tr>
+    <tr><td><b>2 포함할 섹션</b></td><td>필요 없는 섹션은 체크를 풀면 빠집니다.</td></tr>
+    <tr><td><b>3 레이아웃 배치</b></td><td>지그재그 / 단일열 / 가운데정렬 / 반반</td></tr>
+    <tr><td><b>4 디자인 시스템</b></td><td>12종 + 조립기에서 만든 <b>★ 내 시스템</b></td></tr>
+    <tr><td><b>5 규칙</b></td><td>체크한 규칙이 코드와 프롬프트 양쪽에 반영됩니다.</td></tr>
+    <tr><td><b>오른쪽 탭</b></td><td><b>미리보기</b>(데스크톱·태블릿·모바일 확인) / <b>HTML 코드</b> / <b>AI 프롬프트</b></td></tr>
+  </table>
+  <div class="tip"><span class="th">저장 방법</span>
+    상단 <b>⬇ HTML 저장</b>으로 파일을 받거나, <b>↗ 새 탭에서 열기</b>로 실제 크기로 확인합니다.</div>
+
+  <h2>3. 이미지는 어떻게 하나</h2>
+  <p>생성된 페이지의 이미지 자리는 <b>비어 있는 플레이스홀더</b>이고, 그 안에 <b>권장 규격</b>이 적혀 있습니다.</p>
+  <div class="flow">
+    <div class="fstep"><span class="n">1</span><div class="t">규격 확인</div><div class="d">예: 대표 이미지 1920×1080 (16:9)</div></div>
+    <div class="arrow">→</div>
+    <div class="fstep"><span class="n">2</span><div class="t">이미지 준비</div><div class="d">챗지피티 등으로 그 비율에 맞게 생성하거나 촬영본 사용</div></div>
+    <div class="arrow">→</div>
+    <div class="fstep"><span class="n">3</span><div class="t">교체</div><div class="d">플레이스홀더 자리에 <code>&lt;img&gt;</code>로 바꿔 넣기 (WebP·200KB 이하)</div></div>
+  </div>
+
+  <h2>4. 자주 묻는 것</h2>
+  <div class="qa"><div class="q">셋 중 뭘 먼저 열어야 하나요?</div>
+    <div class="a"><b>모음집</b>입니다. 대부분의 경우 여기서 프롬프트만 복사하면 끝납니다. 색을 새로 만들어야 할 때만 조립기, 결과 파일이 필요할 때만 생성기로 갑니다.</div></div>
+  <div class="qa"><div class="q">내가 추가한 규칙은 어디에 저장되나요?</div>
+    <div class="a">브라우저에 저장되어 다음에 열어도 유지됩니다. 다른 PC에서는 보이지 않으니, 중요한 규칙은 <b>CLAUDE.md로 저장</b>해 프로젝트에 넣어두세요.</div></div>
+  <div class="qa"><div class="q">조립기에서 만든 시스템이 생성기에 안 보입니다.</div>
+    <div class="a">조립기에서 <b>저장</b>을 누르거나 <b>⚡ 이 시스템으로 페이지 만들기</b>로 이동해야 반영됩니다. 같은 브라우저에서 열어야 합니다.</div></div>
+  <div class="qa"><div class="q">폰트가 이상하게 보입니다.</div>
+    <div class="a">웹폰트를 인터넷에서 받아오므로 <b>온라인 상태</b>여야 제대로 보입니다. 오프라인이면 시스템 기본 폰트로 대체됩니다.</div></div>
+  <div class="qa"><div class="q">디자인 시스템을 더 추가하고 싶습니다.</div>
+    <div class="a">조립기로 만들어 저장하면 생성기에서 쓸 수 있습니다. 모음집 카드로 영구 등록하려면 파일의 <code>SYSTEMS</code> 배열에 항목을 추가하면 됩니다.</div></div>
+
+  <div class="warn"><span class="th">지키는 원칙</span>
+    보라·바이올렛 강조색, 왼쪽에 굵은 선이 붙은 인용 카드, 이모지 남발 — 생성형 AI 티가 나는 패턴은 규칙에서 <b>금지</b>로 넣어두었습니다. 프롬프트에도 자동 포함됩니다.</div>
+
+  <footer>디자인 시스템 도구 · 로컬 HTML 4개 · 설치 불필요 · 인터넷은 폰트 로딩에만 사용</footer>
+</div>
+
+<script>
+document.getElementById('btnUi').onclick=function(){
+  const r=document.documentElement;
+  r.setAttribute('data-ui', r.getAttribute('data-ui')==='dark'?'light':'dark');
+};
+</script>
+</body>
+</html>

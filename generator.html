@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="ko" data-ui="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>페이지 생성기 · 레퍼런스 + 규칙 + 디자인시스템</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:wght@500;700&family=Poppins:wght@400;500;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root,:root[data-ui="light"]{
+  --ui-canvas:#F6F5F2;--ui-panel:#FFFFFF;--ui-panel-2:#F2F0EB;
+  --ui-fg:#17161B;--ui-fg-strong:#2A2830;--ui-fg-lower:#5E5A63;--ui-fg-dim:#A9A6AE;
+  --ui-border:#E7E4DD;--ui-border-low:#F0EDE6;--ui-accent:#A24E38;
+  --ui-sh:0 1px 3px rgba(30,24,50,.06);--ui-sh-md:0 6px 20px rgba(30,24,50,.09);
+}
+:root[data-ui="dark"]{
+  --ui-canvas:#141317;--ui-panel:#1C1B21;--ui-panel-2:#232128;
+  --ui-fg:#F4F3F7;--ui-fg-strong:#FFFFFF;--ui-fg-lower:#A6A3AE;--ui-fg-dim:#6E6B75;
+  --ui-border:#302E38;--ui-border-low:#26242C;--ui-accent:#E0917A;
+  --ui-sh:0 1px 3px rgba(0,0,0,.5);--ui-sh-md:0 6px 20px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--ui-canvas);color:var(--ui-fg);line-height:1.55;-webkit-font-smoothing:antialiased;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;}
+button{font:inherit;}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:13px 24px;
+  background:color-mix(in srgb,var(--ui-canvas) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ui-border);}
+.top .logo{font-family:"Space Grotesk",Pretendard,sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.top .mk{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 140deg,#A24E38,#C98A5B,#3F5E56,#A24E38);}
+.top .sp{flex:1;}
+.appnav{display:flex;gap:4px;background:var(--ui-panel-2);border:1px solid var(--ui-border);border-radius:11px;padding:3px;}
+.appnav a{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--ui-fg-lower);
+  text-decoration:none;padding:6px 12px;border-radius:8px;white-space:nowrap;}
+.appnav a:hover{color:var(--ui-fg-strong);background:var(--ui-panel);}
+.appnav a.on{background:var(--ui-accent);color:#fff;}
+@media(max-width:640px){.appnav a span{display:none;}}
+
+.tbtn{border:1px solid var(--ui-border);background:var(--ui-panel);color:var(--ui-fg-lower);padding:7px 13px;border-radius:9px;cursor:pointer;font-size:12.5px;}
+.tbtn:hover{color:var(--ui-fg-strong);}
+.tbtn.pri{background:var(--ui-accent);color:#fff;border-color:transparent;font-weight:700;}
+
+.wrap{display:grid;grid-template-columns:360px 1fr;gap:22px;max-width:1500px;margin:0 auto;padding:22px 24px 60px;}
+@media(max-width:980px){.wrap{grid-template-columns:1fr;}}
+.panel{background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:16px;padding:18px;box-shadow:var(--ui-sh);
+  position:sticky;top:70px;max-height:calc(100vh - 92px);overflow-y:auto;}
+@media(max-width:980px){.panel{position:static;max-height:none;}}
+.step{margin-bottom:20px;}
+.step>label{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;color:var(--ui-fg-lower);margin-bottom:8px;}
+.step>label i{width:18px;height:18px;border-radius:6px;background:var(--ui-accent);color:#fff;display:grid;place-items:center;font-size:10px;font-style:normal;font-weight:800;flex:none;}
+select.sel{width:100%;font:inherit;font-size:13px;padding:10px 11px;border:1px solid var(--ui-border);border-radius:10px;background:var(--ui-panel-2);color:var(--ui-fg);cursor:pointer;}
+select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
+.chk{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--ui-fg-strong);padding:5px 0;cursor:pointer;line-height:1.55;}
+.chk input{margin:2px 0 0;accent-color:var(--ui-accent);flex:none;width:15px;height:15px;}
+.chk small{display:block;color:var(--ui-fg-dim);font-size:11px;}
+.brief input,.brief textarea{width:100%;font:inherit;font-size:12.5px;padding:9px 11px;border:1px solid var(--ui-border);
+  border-radius:10px;background:var(--ui-panel-2);color:var(--ui-fg);margin-bottom:7px;font-family:inherit;}
+.brief textarea{min-height:110px;resize:vertical;line-height:1.65;}
+.brief input:focus,.brief textarea:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
+.brief .lbl{font-size:11px;color:var(--ui-fg-dim);margin:-3px 0 4px 2px;}
+.exbtns{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;}
+.exbtns button{border:1px dashed var(--ui-border);background:var(--ui-panel-2);color:var(--ui-fg-lower);
+  font-size:11px;padding:4px 9px;border-radius:999px;cursor:pointer;}
+.exbtns button:hover{border-color:var(--ui-accent);color:var(--ui-accent);}
+.ruleadd{display:flex;gap:6px;margin-top:8px;}
+.ruleadd input{flex:1;min-width:0;font:inherit;font-size:12.5px;padding:8px 10px;border:1px solid var(--ui-border);border-radius:9px;background:var(--ui-panel-2);color:var(--ui-fg);}
+.ruleadd button{border:0;background:var(--ui-accent);color:#fff;font-size:12.5px;font-weight:700;padding:8px 12px;border-radius:9px;cursor:pointer;}
+.mylist{list-style:none;margin:8px 0 0;padding:0;}
+.mylist li{display:flex;gap:6px;font-size:12px;color:var(--ui-fg-strong);padding:4px 0;border-bottom:1px solid var(--ui-border-low);}
+.mylist .x{margin-left:auto;border:0;background:none;color:var(--ui-fg-dim);cursor:pointer;font-size:14px;}
+.infobox{margin-top:9px;background:var(--ui-panel-2);border:1px solid var(--ui-border);border-radius:11px;padding:11px 13px;}
+.infobox .ir{display:flex;gap:8px;font-size:11.5px;line-height:1.7;padding:3px 0;}
+.infobox .ik{flex:none;width:52px;font-weight:800;color:var(--ui-accent);}
+.infobox .iv{color:var(--ui-fg-lower);}
+.infobox .iv b{color:var(--ui-fg-strong);}
+.metarow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+.metarow span{font-size:11px;font-weight:700;background:var(--ui-panel);border:1px solid var(--ui-border);
+  color:var(--ui-fg-lower);padding:3px 9px;border-radius:999px;}
+.layprev{margin-top:9px;background:var(--ui-panel-2);border:1px solid var(--ui-border);border-radius:11px;
+  padding:10px;display:flex;flex-direction:column;gap:6px;height:132px;}
+.layprev .b{background:var(--ui-border);border-radius:4px;}
+.layprev .a{background:color-mix(in srgb,var(--ui-accent) 42%,var(--ui-border));border-radius:4px;}
+.layprev .r{display:flex;gap:6px;flex:1;}
+.laycap{font-size:11px;color:var(--ui-fg-dim);margin-top:6px;line-height:1.6;}
+.laycap b{color:var(--ui-fg-strong);}
+.hint{font-size:11px;color:var(--ui-fg-dim);margin-top:6px;line-height:1.6;}
+.autoinfo{font-size:11.5px;color:var(--ui-fg-dim);text-align:center;padding:10px;background:var(--ui-panel-2);border-radius:10px;}
+.gobtn{width:100%;border:0;background:var(--ui-fg-strong);color:var(--ui-canvas);font-size:14px;font-weight:800;padding:13px;border-radius:11px;cursor:pointer;margin-top:4px;}
+.gobtn:hover{filter:brightness(1.15);}
+
+.stage{display:flex;flex-direction:column;gap:16px;min-width:0;}
+.card{background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:16px;padding:18px;box-shadow:var(--ui-sh);}
+.card h3{margin:0 0 2px;font-size:14px;font-weight:800;}
+.card .csub{font-size:11.5px;color:var(--ui-fg-dim);margin-bottom:12px;}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px;}
+.tabs button{border:1px solid var(--ui-border);background:var(--ui-panel-2);color:var(--ui-fg-lower);font-size:12.5px;padding:7px 13px;border-radius:9px;cursor:pointer;}
+.tabs button.on{background:var(--ui-fg-strong);color:var(--ui-canvas);border-color:transparent;font-weight:700;}
+.frame{width:100%;height:min(78vh,900px);border:1px solid var(--ui-border);border-radius:12px;background:#fff;}
+.dev{display:flex;gap:6px;margin-bottom:10px;}
+.dev button{border:1px solid var(--ui-border);background:var(--ui-panel-2);color:var(--ui-fg-lower);font-size:12px;padding:6px 12px;border-radius:8px;cursor:pointer;}
+.dev button.on{background:var(--ui-accent);color:#fff;border-color:transparent;font-weight:700;}
+.out{position:relative;background:#0d1117;color:#c9d1d9;border-radius:11px;padding:15px;font-family:"Roboto Mono",monospace;
+  font-size:11.5px;line-height:1.65;max-height:520px;overflow:auto;white-space:pre;}
+.out .cp{position:absolute;top:10px;right:10px;background:#238636;color:#fff;border:0;border-radius:7px;font-size:12px;font-weight:700;padding:7px 13px;cursor:pointer;}
+.secpick{max-height:230px;overflow:auto;border:1px solid var(--ui-border);border-radius:10px;padding:8px 10px;background:var(--ui-panel-2);}
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ui-fg-strong);color:var(--ui-canvas);
+  padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:99;}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="logo"><span class="mk"></span>페이지 생성기 <span style="color:var(--ui-fg-dim);font-weight:500">레퍼런스 + 규칙 + 디자인시스템</span></div>
+  <nav class="appnav"><a href="library.html">📚<span>모음집</span></a><a href="builder.html">🎛<span>조립기</span></a><a href="generator.html" class="on">⚡<span>생성기</span></a><a href="guide.html">📖<span>설명서</span></a></nav><div class="sp"></div>
+  <button class="tbtn" id="btnUi">◐</button>
+  <button class="tbtn" id="btnDown">⬇ HTML 저장</button>
+  <button class="tbtn pri" id="btnOpen">↗ 새 탭에서 열기</button>
+</div>
+
+<div class="wrap">
+  <aside class="panel">
+    <div class="step brief">
+      <label><i>0</i>프로젝트 정보 <span style="font-weight:600;color:var(--ui-fg-dim);margin-left:auto">선택</span></label>
+      <input id="bName" placeholder="이름 (예: 루미에르 세라마이드 에센스 / 밝은미소치과)">
+      <input id="bTag" placeholder="한 줄 소개 (예: 무너진 장벽을 4주 만에)">
+      <div class="lbl">참고 자료 — 있는 대로 붙여넣으세요 (성분·가격·진료과목·메뉴 등)</div>
+      <div class="exbtns" id="exBtns">
+        <button data-ex="beauty">뷰티 예시</button>
+        <button data-ex="clinic">병원 예시</button>
+        <button data-ex="menu">메뉴판 예시</button>
+        <button data-ex="clear">비우기</button>
+      </div>
+      <textarea id="bMat" placeholder="예)&#10;· 용량 50ml / 가격 38,000원&#10;· 핵심성분: 세라마이드NP 5%, 판테놀, 마데카소사이드&#10;· 임상: 4주 후 수분 42% 증가 (32명)&#10;· 타깃: 건성·민감성&#10;· 브랜드 톤: 담백하고 임상적"></textarea>
+    </div>
+
+    <div class="step">
+      <label><i>1</i>콘텐츠 구조 (레퍼런스)</label>
+      <select class="sel" id="selPage"></select>
+      <div class="infobox" id="pageInfo"></div>
+    </div>
+
+    <div class="step">
+      <label><i>2</i>포함할 섹션</label>
+      <div class="secpick" id="secPick"></div>
+    </div>
+
+    <div class="step">
+      <label><i>3</i>레이아웃 배치</label>
+      <select class="sel" id="selLayout">
+        <option value="alt">모듈러 그리드 — 좌우 지그재그</option>
+        <option value="stack">단일 열 — 위에서 아래로</option>
+        <option value="center">가운데 정렬 — 좁은 폭</option>
+        <option value="split">Split — 사진 | 글 반반 고정</option>
+      </select>
+      <div class="layprev" id="layPrev"></div>
+      <div class="infobox" id="layInfo"></div>
+    </div>
+
+    <div class="step">
+      <label><i>4</i>디자인 시스템</label>
+      <select class="sel" id="selSys"></select>
+      <div style="margin-top:8px"><label class="chk"><input type="checkbox" id="darkMode"> 다크 모드로 생성</label></div>
+      <div class="hint">원하는 시스템이 없나요? <a href="builder.html" style="color:var(--ui-accent);font-weight:700">조립기에서 색으로 직접 만들기 →</a></div>
+    </div>
+
+    <div class="step">
+      <label><i>5</i>규칙</label>
+      <label class="chk"><input type="checkbox" id="rRes" checked> 반응형 (vw · clamp)<small>768px 미만 1열, min(1200px,92vw)</small></label>
+      <label class="chk"><input type="checkbox" id="rImg" checked> 이미지 규격 표기<small>플레이스홀더에 권장 사이즈 표시</small></label>
+      <label class="chk"><input type="checkbox" id="rA11y" checked> 접근성<small>focus-visible, 대비, aria</small></label>
+      <label class="chk"><input type="checkbox" id="rBan" checked> AI 슬롭 금지<small>보라 강조·좌측보더 인용카드 배제</small></label>
+      <label class="chk"><input type="checkbox" id="rMotion"> 스크롤 등장 애니메이션</label>
+      <div class="ruleadd"><input id="ruleIn" placeholder="내 규칙 추가"><button id="ruleAdd">+</button></div>
+      <ul class="mylist" id="myList"></ul>
+    </div>
+
+    <div class="autoinfo">고르는 즉시 오른쪽에 반영됩니다</div>
+  </aside>
+
+  <main class="stage">
+    <div class="card">
+      <div class="tabs" id="viewTabs">
+        <button data-v="preview" class="on">미리보기</button>
+        <button data-v="code">HTML 코드</button>
+        <button data-v="prompt">AI 프롬프트</button>
+      </div>
+      <div id="paneP">
+        <div class="dev" id="devBar">
+          <button data-w="100%" class="on">데스크톱</button>
+          <button data-w="820px">태블릿</button>
+          <button data-w="390px">모바일</button>
+        </div>
+        <iframe class="frame" id="frame"></iframe>
+      </div>
+      <div id="paneC" style="display:none"><div class="out"><button class="cp" id="cpCode">📋 복사</button><span id="codeBody"></span></div></div>
+      <div id="paneR" style="display:none"><div class="out"><button class="cp" id="cpPrompt">📋 복사</button><span id="promptBody"></span></div></div>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1500);};
+const copy=(t,m)=>navigator.clipboard.writeText(t).then(()=>toast(m||'복사됨'));
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+/* ===== 디자인 시스템 (모음집과 동일 값) ===== */
+const SYS=[
+ {id:'toss',n:'Toss (TDS)',p:'#3182F6',pl:'#E8F3FF',pd:'#1B64DA',g:['#F9FAFB','#F2F4F6','#E5E8EB','#8B95A1','#4E5968','#191F28'],f:'"Pretendard Variable",Pretendard,system-ui,sans-serif',r:10,rc:16},
+ {id:'airbnb',n:'Airbnb',p:'#FF385C',pl:'#FFF0F3',pd:'#BD163A',g:['#F7F7F7','#EBEBEB','#DDDDDD','#767676','#484848','#222222'],f:'"Manrope",Pretendard,system-ui,sans-serif',r:10,rc:16},
+ {id:'carbon',n:'IBM Carbon',p:'#0F62FE',pl:'#EDF5FF',pd:'#002D9C',g:['#F4F4F4','#E0E0E0','#C6C6C6','#6F6F6F','#393939','#161616'],f:'"IBM Plex Sans",system-ui,sans-serif',r:0,rc:0},
+ {id:'m3',n:'Material 3',p:'#6750A4',pl:'#EADDFF',pd:'#4F378B',g:['#F5EFF7','#E6E1E5','#CAC4D0','#79747E','#49454F','#1C1B1F'],f:'"Roboto","Helvetica Neue",Arial,sans-serif',r:999,rc:16},
+ {id:'polaris',n:'Shopify Polaris',p:'#008060',pl:'#E6F4F0',pd:'#005541',g:['#FAFBFB','#F1F2F4','#E3E5E7','#6D7175','#4A4E52','#303030'],f:'"Inter",system-ui,sans-serif',r:8,rc:12},
+ {id:'vercel',n:'Vercel / Geist',p:'#171717',pl:'#F2F2F2',pd:'#000000',g:['#FAFAFA','#F2F2F2','#EBEBEB','#737373','#404040','#171717'],f:'"DM Sans",system-ui,sans-serif',r:6,rc:8},
+ {id:'gitlab',n:'GitLab',p:'#FC6D26',pl:'#FFF3EC',pd:'#B93316',g:['#FBFAFD','#ECECEF','#DCDCDE','#666666','#404040','#1F1E24'],f:'"Sora",system-ui,sans-serif',r:6,rc:8},
+ {id:'slack',n:'Slack',p:'#8A2E95',pl:'#F7EFF8',pd:'#4A154B',g:['#F8F8FA','#F0F0F2','#E2E2E6','#6E6E77','#3F3F44','#1A1A1D'],f:'"Pretendard Variable",Pretendard,system-ui,sans-serif',r:8,rc:12},
+ {id:'editorial',n:'Editorial (세리프)',p:'#B91C1C',pl:'#FBEEEE',pd:'#7E1010',g:['#FAF8F3','#F1EDE4','#E2DBCC','#857A5F','#453F30','#1A1813'],f:'"Playfair Display",Georgia,serif',r:2,rc:4},
+ {id:'mobile',n:'Mobile Kit (민트)',p:'#0FB39B',pl:'#ECFDFA',pd:'#0A7266',g:['#F7F9FA','#EEF1F3','#E0E5E8','#6E7A82','#3B444B','#151A1E'],f:'"Pretendard Variable",Pretendard,system-ui,sans-serif',r:14,rc:20},
+ {id:'neon',n:'Neon (랜딩)',p:'#7C4DFF',pl:'#F3F0FF',pd:'#5A1FD9',g:['#F5F6FA','#E9EBF2','#D2D6E3','#565B75','#2A2D3E','#0F1018'],f:'"Space Grotesk",Pretendard,sans-serif',r:14,rc:20},
+ {id:'playful',n:'Playful (캔디)',p:'#F72AAA','pl':'#FFF0FA',pd:'#B00F72',g:['#FAF8FF','#F1EDFB','#E2DAF3','#7E6BA8','#443A5F','#1A1626'],f:'"Poppins",Pretendard,sans-serif',r:999,rc:22}
+];
+
+/* ===== 콘텐츠 구조 (실제 사이트 레퍼런스 기반) ===== */
+const PAGES=[
+{id:'beauty',n:'뷰티 상세페이지',refs:'올리브영 · Glossier · Rhode',
+ s:[['히어로 / 제품 컷','제품 대표 이미지 + 제품명 + 한 줄 정의 카피'],['구매 박스','가격·용량·옵션, 정기배송, 장바구니 CTA'],['한 줄 정의 + 베네핏 배지','카테고리 정의 + 보습/진정/장벽 배지'],['임상·사용감 수치','4주 후 97% 개선 등 테스트 결과를 큰 숫자로'],['핵심 성분','성분명 + 효능 한 줄 + 원료 이미지'],['사용법 3스텝','아침/저녁 순서를 번호 + 컷으로'],['텍스처 상세컷','제형 클로즈업, 스와치, 전후 컷'],['함께 쓰면 좋은 제품','루틴 순서도와 세트 할인 제안'],['리뷰','별점 요약 + 피부타입 필터 + 포토리뷰'],['전성분 · 배송 · 반품','아코디언 고지 영역']]},
+{id:'saas',n:'SaaS 랜딩페이지',refs:'Linear · Stripe · Vercel · Notion',
+ s:[['히어로','한 문장 포지셔닝 + 보조 설명 + 단일 CTA'],['고객사 로고 바','로고 6~10개 + 수치 한 줄'],['제품 UI 데모','실제 대시보드 스크린샷'],['핵심 가치 3가지','속도/자동화/확장성 3열'],['기능 딥다이브','좌우 교차로 기능 4~6개, 블록마다 UI 캡처'],['연동 / 통합','Slack·GitHub 등 연동 아이콘 그리드'],['고객 인용','실명·직함·회사 로고가 붙은 인용 3개'],['가격 / 요금제','3~4단 플랜 카드, 무료 티어 강조'],['마감 CTA + 푸터','가입 CTA 재노출 + 대형 푸터']]},
+{id:'menu',n:'메뉴판 (레스토랑·카페)',refs:'미쉐린 다이닝 · 블루보틀',
+ s:[['헤더 / 매장명','상호와 한 줄 컨셉'],['시그니처 메뉴','가장 팔고 싶은 3개를 크게 (골든 트라이앵글)'],['카테고리 내비','전채·메인·사이드·디저트·음료'],['메뉴 항목 리스트','이름 → 재료 2~3개 → 가격, 카테고리당 5~7개'],['메뉴 사진','카테고리당 1~2개만'],['세트 · 코스','단품보다 이득으로 보이게 묶음'],['알레르기 · 원산지','법정 고지, 아이콘 또는 각주'],['푸터 / 영업정보','영업시간, 주문 방법, QR, 인스타']]},
+{id:'clinic',n:'병원 / 클리닉',refs:'종합병원 · 피부과 네트워크',
+ s:[['히어로','병원명 + 핵심 진료 메시지 + 예약 버튼'],['퀵 인포 바','진료시간, 대표번호, 위치, 주차'],['진료과목','증상/시술별 카드 6~9개'],['의료진 소개','원장 사진, 전문의 자격, 학회 활동'],['병원 시설','실제 원내 사진 슬라이드'],['장비 · 시스템','보유 장비와 역할, 감염관리'],['환자 후기','후기 발췌 또는 상담 Q&A'],['진료 안내 · 비급여 고지','절차, 준비물, 가격 고지'],['오시는 길 + 예약','지도, 교통/주차, 예약 폼']]},
+{id:'portfolio',n:'포트폴리오 / 에이전시',refs:'Awwwards 수상작',
+ s:[['히어로 스테이트먼트','대형 타이포로 선언 한 문장'],['셀렉티드 워크','대표작 6~9개, 클라이언트명+연도'],['대표 케이스','1~2개를 확장, 과제→접근→결과'],['서비스 / 역량','브랜딩·웹·모션 등 제공 범위'],['어바웃 · 철학','규모, 일하는 방식, 팀 사진'],['클라이언트 로고 · 어워드','협업 브랜드 + 수상 배지'],['프로세스','발견→전략→디자인→개발→런칭'],['컨택 CTA + 푸터','문의 대형 링크, 이메일·SNS']]},
+{id:'app',n:'앱 소개 랜딩',refs:'Toss · Duolingo · Revolut',
+ s:[['히어로 (디바이스 목업)','폰 프레임 안 앱 화면 + 스토어 배지'],['다운로드 · 평점','누적 다운로드, 앱스토어 평점 숫자'],['기능 스토리','폰 목업 안에서 화면 전환하며 기능 3~4개'],['기능 카드 그리드','부가 기능 아이콘+제목 2x3'],['사용 흐름 3스텝','가입→연결→사용'],['보안 · 신뢰','인증 마크, 암호화, 규제 준수'],['사용자 후기','앱스토어 리뷰 카드'],['자주 묻는 질문','요금, 기기 지원, 해지'],['QR + 마감 CTA','PC용 QR + 스토어 배지']]}
+];
+
+/* ===== 이미지 규격 ===== */
+function imgSpec(t){
+  const R=[[/히어로|제품 컷|목업|스테이트먼트/,'대표 이미지','1920×1080 (16:9) · 모바일 1080×1350','16/9'],
+   [/시설|갤러리|공간|워크|케이스|사진/,'갤러리 이미지','1200×900 (4:3) 통일','4/3'],
+   [/성분|아이콘|연동|배지|기능 카드/,'아이콘','SVG 권장 · PNG 96×96 (@2x 192)','1/1'],
+   [/의료진|팀|프로필|셰프/,'인물 사진','800×800 (1:1), 상반신','1/1'],
+   [/메뉴|시그니처|코스/,'메뉴 사진','1200×900 (4:3), 45° 촬영','4/3'],
+   [/텍스처|상세컷|스와치/,'세로 상세컷','가로 860~1000px 고정','3/4'],
+   [/UI 데모|스크린샷|대시보드/,'제품 UI','2560×1440 실제 화면 캡처','16/9'],
+   [/로고/,'로고','SVG 또는 PNG 높이 80px (@2x 160)','3/1'],
+   [/리뷰|후기|포토/,'포토리뷰','600×600 (1:1)','1/1'],
+   [/지도|오시는 길/,'지도','1200×675, 캡처 또는 임베드','16/9']];
+  for(const [rx,label,size,ar] of R) if(rx.test(t)) return {label,size,ar};
+  return null;
+}
+
+/* ===== 상태 ===== */
+const RK='pg_myrules';
+const myRules=()=>{try{return JSON.parse(localStorage.getItem(RK)||'[]');}catch(e){return[];}};
+const saveRules=a=>{try{localStorage.setItem(RK,JSON.stringify(a));}catch(e){}};
+let cur=PAGES[0], picked=new Set(), html='';
+const BK='pg_brief';
+const EX={
+ beauty:{n:'루미에르 세라마이드 에센스',t:'무너진 장벽을 4주 만에',m:'· 용량 50ml / 가격 38,000원\n· 핵심성분: 세라마이드NP 5%, 판테놀 3%, 마데카소사이드\n· 임상: 4주 후 수분 42% 증가, 붉은기 28% 감소 (32명 대상)\n· 타깃: 건성·민감성, 20~30대\n· 사용법: 세안 후 토너 다음, 2~3방울\n· 브랜드 톤: 담백하고 임상적, 과장 금지'},
+ clinic:{n:'밝은미소 치과의원',t:'통증은 줄이고, 결과는 오래가게',m:'· 진료: 임플란트, 교정, 심미보철, 소아치과\n· 원장: 홍길동 / 서울대 치의학 박사, 대한임플란트학회 정회원\n· 장비: 3D CT, 디지털 스캐너, 별도 수술실\n· 진료시간: 평일 10-19시, 토 10-14시, 일요일 휴진\n· 위치: 서울 강남구 테헤란로 000, 지하철 2호선 강남역 3번 출구 도보 5분, 주차 2시간 무료\n· 강조점: 야간진료(수요일 21시까지), 1:1 전담 위생사'},
+ menu:{n:'포르노 나폴리',t:'장작 화덕에서 90초',m:'· 시그니처: 마르게리타 18,000 / 부라타 24,000 / 디아볼라 21,000\n· 파스타: 알리오올리오 15,000 / 라구 19,000\n· 음료: 하우스와인 글라스 9,000 / 탄산수 4,000\n· 런치세트 A 22,000 (피자+샐러드+음료)\n· 알레르기: 밀, 우유, 견과 사용\n· 영업: 11:30-22:00, 브레이크 15:00-17:00, 월요일 휴무'}
+};
+function brief(){ try{ return JSON.parse(localStorage.getItem(BK)||'{}'); }catch(e){ return {}; } }
+function saveBrief(){ try{ localStorage.setItem(BK, JSON.stringify({n:$('#bName').value,t:$('#bTag').value,m:$('#bMat').value})); }catch(e){} }
+
+/* ===== UI 초기화 ===== */
+$('#selPage').innerHTML=PAGES.map((p,i)=>'<option value="'+i+'">'+p.n+'</option>').join('');
+try{ const raw=localStorage.getItem('my_system');
+  if(raw){ const m=JSON.parse(raw); if(m&&m.p) SYS.unshift(m); }
+}catch(e){}
+$('#selSys').innerHTML=SYS.map((s,i)=>'<option value="'+i+'">'+s.n+'</option>').join('');
+if(SYS[0]&&SYS[0].id==='mine'&&/[?&]sys=mine/.test(location.search)) $('#selSys').value='0';
+const PAGEINFO={
+ beauty:{flow:'감성으로 잡고 → 성분·수치로 신뢰 → 루틴 세트로 객단가',
+   key:'임상 수치와 전성분은 <b>있는 자료만</b>. 없는 효능은 절대 쓰지 말 것 (화장품법)',
+   len:'스크롤 길이 길게 (모바일 8~12화면)', who:'구매 직전 비교 중인 방문자'},
+ saas:{flow:'한 문장 포지셔닝 → 실제 UI로 증명 → 로고·인용으로 신뢰 → 요금제',
+   key:'일러스트 대신 <b>실제 제품 화면</b>을 쓸 것. 목업은 신뢰를 떨어뜨림',
+   len:'중간 (모바일 6~9화면)', who:'대안을 찾는 담당자·결정권자'},
+ menu:{flow:'시그니처 먼저 → 카테고리별 리스트 → 세트·고지 → 영업정보',
+   key:'가격은 <b>₩·000 생략</b>(18)이 부담이 적음. 사진은 카테고리당 1~2개만',
+   len:'짧게 (1~2화면 권장)', who:'주문 직전, 30초 안에 고르려는 손님'},
+ clinic:{flow:'내 증상 있나 → 믿을 만한가 → 언제·어떻게 예약하나',
+   key:'의료광고법 준수. 치료 전후 사진은 <b>고지 문구 필수</b>, 비급여 가격 고지 의무',
+   len:'중간 (모바일 6~10화면)', who:'증상 검색 후 병원 비교 중인 환자'},
+ portfolio:{flow:'태도 선언 → 작업물이 곧 내비게이션 → 프로세스 → 문의',
+   key:'작업 수는 <b>적고 강하게</b>. 6~9개가 20개보다 낫습니다',
+   len:'중간 (스크롤 몰입형)', who:'외주 맡길 곳을 찾는 클라이언트'},
+ app:{flow:'폰 목업으로 첫인상 → 기능 스토리 → 신뢰 → 다운로드',
+   key:'다운로드 CTA를 <b>3번 이상</b> 재노출. 하단 고정 바 권장',
+   len:'중간 (모바일 6~9화면)', who:'스토어로 갈지 망설이는 잠재 사용자'}
+};
+function loadPage(i){
+  cur=PAGES[i]; picked=new Set(cur.s.map((_,k)=>k));
+  const pi=PAGEINFO[cur.id]||{};
+  const nImg=cur.s.filter(function(x){return imgSpec(x[0]);}).length;
+  $('#pageInfo').innerHTML='<div style="font-size:12.5px;font-weight:800;color:var(--ui-fg-strong);margin-bottom:5px">'+cur.n+'</div>'
+    + infoRows([['흐름',pi.flow],['핵심',pi.key],['대상',pi.who],['참고',cur.refs]])
+    + '<div class="metarow"><span>섹션 '+cur.s.length+'개</span><span>이미지 '+nImg+'곳</span>'
+    + (pi.len?'<span>'+pi.len+'</span>':'')+'</div>';
+  $('#secPick').innerHTML=cur.s.map((x,k)=>
+    '<label class="chk"><input type="checkbox" data-k="'+k+'" checked> '+(k+1)+'. '+x[0]+'</label>').join('');
+}
+$('#selPage').onchange=e=>{loadPage(+e.target.value);auto();};
+$('#secPick').onchange=e=>{const b=e.target;if(!b.dataset.k)return;
+  const k=+b.dataset.k; b.checked?picked.add(k):picked.delete(k);};
+function renderMy(){
+  const a=myRules();
+  $('#myList').innerHTML=a.map((r,i)=>'<li><span>· '+esc(r)+'</span><button class="x" data-i="'+i+'">×</button></li>').join('');
+}
+$('#ruleAdd').onclick=()=>{const v=$('#ruleIn').value.trim();if(!v)return;const a=myRules();a.push(v);saveRules(a);$('#ruleIn').value='';renderMy();};
+$('#ruleIn').onkeydown=e=>{if(e.key==='Enter')$('#ruleAdd').click();};
+$('#myList').onclick=e=>{const b=e.target.closest('.x');if(!b)return;const a=myRules();a.splice(+b.dataset.i,1);saveRules(a);renderMy();};
+
+/* ===== 규칙 텍스트 ===== */
+function rulesText(){
+  const L=[];
+  if($('#rRes').checked) L.push('- 반응형: vw + clamp() 사용, 컨테이너 min(1200px, 92vw), 768px 미만 모든 다단 1열, 터치 타깃 44px');
+  if($('#rImg').checked) L.push('- 이미지: WebP 200KB 이하, width:100% + aspect-ratio로 비율 고정, object-fit:cover');
+  if($('#rA11y').checked) L.push('- 접근성: focus-visible 2px 링, 본문 대비 4.5:1, 아이콘 버튼 aria-label, prefers-reduced-motion 대응');
+  if($('#rBan').checked) L.push('- 금지: 보라/바이올렛 강조색, border-left 굵은 인용카드, 보라→핑크 그라디언트, 이모지 남발, 토큰 외 임의 색');
+  if($('#rMotion').checked) L.push('- 스크롤 등장 애니메이션(IntersectionObserver, 페이드+8px 상승, 200ms)');
+  myRules().forEach(r=>L.push('- '+r));
+  return L;
+}
+
+/* ===== 페이지 생성 ===== */
+const LAYPREV={
+ alt:{w:'<div class="r"><div class="a" style="width:46%"></div><div class="b" style="flex:1"></div></div>'
+      +'<div class="r"><div class="b" style="flex:1"></div><div class="a" style="width:46%"></div></div>'
+      +'<div class="r"><div class="a" style="width:46%"></div><div class="b" style="flex:1"></div></div>',
+   n:'지그재그 (모듈러 그리드)',
+   c:'행마다 사진과 글이 좌우로 번갈아 놓입니다. 시선이 지그재그로 움직여 스크롤이 지루하지 않습니다.',
+   use:'상세페이지, 기능 소개, 제품 스토리 — <b>이미지가 섹션마다 있을 때</b>',
+   avoid:'이미지가 거의 없을 때. 빈 칸이 생겨 허전해 보입니다',
+   ex:'애플 제품 페이지, 올리브영 상세, Linear 기능 소개',
+   tip:'이미지는 <b>전부 같은 비율</b>로 맞추세요. 비율이 섞이면 지그재그 리듬이 깨집니다',
+   sec:'6~10개 섹션', mob:'모바일에서 이미지→글 순서로 1열'},
+ stack:{w:'<div class="a" style="height:34%"></div><div class="b" style="flex:1"></div><div class="b" style="flex:1"></div>',
+   n:'단일 열 (스택)',
+   c:'폭을 꽉 채운 블록이 위에서 아래로 쌓입니다. 읽는 순서가 하나뿐이라 가장 명확합니다.',
+   use:'모바일 우선 페이지, 공지·안내, 순서가 중요한 콘텐츠',
+   avoid:'정보량이 많을 때. 페이지가 지나치게 길어집니다',
+   ex:'토스 앱 내 안내 화면, 뉴스레터 랜딩',
+   tip:'섹션 배경색을 <b>번갈아</b> 주면 구분이 살아납니다',
+   sec:'4~8개 섹션', mob:'구조 변화 없음 (그대로)'},
+ center:{w:'<div class="r" style="justify-content:center"><div class="a" style="width:58%"></div></div>'
+      +'<div class="r" style="justify-content:center"><div class="b" style="width:72%"></div></div>'
+      +'<div class="r" style="justify-content:center"><div class="b" style="width:64%"></div></div>',
+   n:'가운데 정렬 (내로우)',
+   c:'760px 정도의 좁은 폭으로 중앙에 모읍니다. 한 줄이 짧아 글 읽기가 편합니다.',
+   use:'브랜드 소개, 신청 폼, 블로그 글, 초대장',
+   avoid:'표·대시보드처럼 가로 공간이 필요한 콘텐츠',
+   ex:'Stripe 문서, 노션 공유 페이지, 뉴스레터',
+   tip:'한 줄 <b>45~75자</b>가 가장 읽기 좋습니다. 폭을 더 넓히지 마세요',
+   sec:'3~7개 섹션', mob:'여백만 줄고 구조 동일'},
+ split:{w:'<div class="r"><div class="a" style="flex:1"></div><div class="b" style="flex:1"></div></div>',
+   n:'반반 (스플릿)',
+   c:'화면을 정확히 둘로 나눠 사진과 글이 마주봅니다. 첫인상이 강하고 정돈돼 보입니다.',
+   use:'브랜드 소개 첫 화면, 로그인·회원가입, 채용 공고',
+   avoid:'섹션이 많을 때. 같은 구조가 반복되면 단조로워집니다',
+   ex:'에어비앤비 호스트 소개, 각종 SaaS 로그인 화면',
+   tip:'왼쪽 사진은 <b>인물이나 공간</b>처럼 여백이 있는 컷이 좋습니다',
+   sec:'1~4개 섹션', mob:'세로로 쌓임 (사진 위 / 글 아래)'}
+};
+function infoRows(rows){
+  return rows.filter(function(r){return r[1];}).map(function(r){
+    return '<div class="ir"><span class="ik">'+r[0]+'</span><span class="iv">'+r[1]+'</span></div>';
+  }).join('');
+}
+function renderLayPrev(){
+  const v=$('#selLayout').value, d=LAYPREV[v]||LAYPREV.alt;
+  $('#layPrev').innerHTML=d.w;
+  $('#layInfo').innerHTML='<div style="font-size:12.5px;font-weight:800;color:var(--ui-fg-strong);margin-bottom:5px">'+d.n+'</div>'
+    +'<div style="font-size:11.5px;color:var(--ui-fg-lower);line-height:1.7;margin-bottom:6px">'+d.c+'</div>'
+    +infoRows([['추천',d.use],['주의',d.avoid],['사례',d.ex],['팁',d.tip]])
+    +'<div class="metarow"><span>'+d.sec+'</span><span>'+d.mob+'</span></div>';
+}
+function build(silent){
+  const s=SYS[+$('#selSys').value], lay=$('#selLayout').value, dark=$('#darkMode').checked;
+  const secs=cur.s.map((x,k)=>({t:x[0],d:x[1],k})).filter(x=>picked.has(x.k));
+  const showSpec=$('#rImg').checked, motion=$('#rMotion').checked, a11y=$('#rA11y').checked;
+  const bg = dark? s.g[5] : '#FFFFFF', canvas = dark? '#0E0E11' : s.g[0];
+  const fg = dark? '#FFFFFF' : s.g[5], fgLow = dark? s.g[2] : s.g[3], border = dark? s.g[4] : s.g[2];
+  const prim = dark? s.p : s.p, primLow = dark? s.g[4] : s.pl;
+
+  const bN=$('#bName').value.trim(), bT=$('#bTag').value.trim();
+  let body='';
+  secs.forEach((sec,i)=>{
+    const sp=imgSpec(sec.t);
+    const ph = sp ? '<div class="ph" style="aspect-ratio:'+sp.ar+'">'
+        + (showSpec? '<span class="phl">'+esc(sp.label)+'</span><span class="phs">'+esc(sp.size)+'</span>' : '<span class="phl">이미지</span>')
+        + '</div>' : '';
+    const hTitle = (i===0 && bN) ? bN : sec.t;
+    const hDesc  = (i===0 && bT) ? bT : sec.d;
+    const txt = '<div class="tx"><span class="num">'+(i===0&&bN?esc(sec.t):String(i+1).padStart(2,'0'))+'</span>'
+        + '<h2>'+esc(hTitle)+'</h2><p>'+esc(hDesc)+'</p>'
+        + (i===0? '<div class="cta"><a class="btn" href="#">자세히 보기</a><a class="btn2" href="#">문의하기</a></div>':'')
+        + '</div>';
+    const cls = lay==='alt' ? (i%2? 'sec alt':'sec') : lay==='center'? 'sec narrow' : lay==='split'? 'sec split':'sec stack';
+    body += '\n  <!-- '+(i+1)+'. '+sec.t+' -->\n  <section class="'+cls+'"'+(motion?' data-rv':'')+'>\n    <div class="inner">'
+         + (ph && lay!=='center' ? ph : '') + txt + (ph && lay==='center' ? ph : '') + '</div>\n  </section>';
+  });
+
+  const css = [
+'    :root{',
+'      --primary: '+prim+';  --primary-low: '+primLow+';  --primary-dark: '+s.pd+';',
+'      --bg: '+bg+';  --canvas: '+canvas+';  --fg: '+fg+';  --fg-low: '+fgLow+';  --border: '+border+';',
+'      --r-btn: '+(s.r===999?'999px':s.r+'px')+';  --r-card: '+s.rc+'px;',
+'      --font: '+s.f+';',
+'      --pad: clamp(24px, 5vw, 80px);',
+'      --w: min(1200px, 92vw);',
+'    }',
+'    *{box-sizing:border-box;}',
+'    body{margin:0;background:var(--canvas);color:var(--fg);font-family:var(--font);line-height:1.65;',
+'      -webkit-font-smoothing:antialiased;}',
+'    .sec{padding:var(--pad) 0;}',
+'    .sec:nth-child(even){background:var(--bg);}',
+'    .inner{width:var(--w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);align-items:center;}',
+'    .sec.alt .inner{direction:rtl;} .sec.alt .inner>*{direction:ltr;}',
+'    .sec.stack .inner,.sec.narrow .inner{grid-template-columns:1fr;}',
+'    .sec.narrow .inner{width:min(760px,92vw);text-align:center;}',
+'    .sec.narrow .cta{justify-content:center;}',
+'    .ph{width:100%;background:var(--primary-low);border:1px dashed var(--border);border-radius:var(--r-card);',
+'      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--primary-dark);}',
+'    .phl{font-size:clamp(13px,1.6vw,15px);font-weight:700;}',
+'    .phs{font-size:12px;opacity:.75;font-family:ui-monospace,Menlo,monospace;}',
+'    .num{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--primary);}',
+'    h2{font-size:clamp(20px,3.2vw,38px);line-height:1.25;letter-spacing:-.02em;margin:8px 0 10px;}',
+'    p{font-size:clamp(14px,1.6vw,17px);color:var(--fg-low);margin:0;}',
+'    .cta{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}',
+'    .btn,.btn2{display:inline-block;padding:12px 22px;border-radius:var(--r-btn);font-weight:700;font-size:15px;text-decoration:none;}',
+'    .btn{background:var(--primary);color:#fff;}',
+'    .btn2{background:var(--primary-low);color:var(--primary-dark);}',
+a11y?'    a:focus-visible,button:focus-visible{outline:2px solid var(--primary);outline-offset:2px;}':'',
+'    @media(max-width:768px){ .inner{grid-template-columns:1fr!important;} .sec.alt .inner{direction:ltr;} }',
+motion?'    [data-rv]{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;}\n    [data-rv].in{opacity:1;transform:none;}\n    @media(prefers-reduced-motion:reduce){[data-rv]{opacity:1;transform:none;transition:none;}}':''
+].filter(Boolean).join('\n');
+
+  const js = motion ? '\n<script>\nconst io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.12});\ndocument.querySelectorAll("[data-rv]").forEach(el=>io.observe(el));\n<\/script>' : '';
+
+  html = '<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n'
+    + '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+    + '<title>'+esc(bN || cur.n)+'</title>\n'
+    + '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">\n'
+    + '<style>\n'+css+'\n</style>\n</head>\n<body>'+body+'\n'+js+'\n</body>\n</html>';
+
+  $('#frame').srcdoc=html;
+  $('#codeBody').textContent=html;
+  $('#promptBody').textContent=prompt(s,lay,secs,css);
+  if(!silent) toast('생성 완료 — '+secs.length+'개 섹션');
+}
+function prompt(s,lay,secs,css){
+  const layName={alt:'모듈러 그리드(좌우 지그재그) — 홀수 행은 이미지 왼쪽, 짝수 행은 오른쪽',
+                 stack:'단일 열 — 위에서 아래로 순서대로',
+                 center:'가운데 정렬 — min(760px,92vw) 좁은 폭, 텍스트 중앙',
+                 split:'Split — 이미지 | 텍스트 반반 고정'}[lay];
+  const L=[];
+  const b=brief();
+  L.push('# '+((b.n&&b.n.trim())||cur.n)+' 제작 요청');
+  L.push('');
+  L.push('아래 스펙 그대로 **단일 HTML 파일**을 만들어줘. 값은 임의로 바꾸지 말고 그대로 쓸 것.');
+  L.push('');
+  if((b.n&&b.n.trim())||(b.t&&b.t.trim())||(b.m&&b.m.trim())){
+    L.push('## 0) 실제 프로젝트 정보 (이 내용으로 카피를 써 줘)');
+    if(b.n&&b.n.trim()) L.push('- 이름: '+b.n.trim());
+    if(b.t&&b.t.trim()) L.push('- 한 줄 소개: '+b.t.trim());
+    if(b.m&&b.m.trim()){
+      L.push('- 참고 자료:');
+      L.push('```');
+      L.push(b.m.trim());
+      L.push('```');
+    }
+    L.push('');
+    L.push('**중요**: 아래 섹션 설명은 "무엇을 넣을지"에 대한 안내다. 실제 문구는 위 자료를 근거로 쓰고,');
+    L.push('자료에 없는 수치·효능·인증은 지어내지 말 것. 부족하면 자리표시자로 남기고 무엇이 필요한지 표시할 것.');
+    L.push('');
+  }
+  L.push('## 1) 레이아웃');
+  L.push('- '+layName);
+  L.push('- 참고 사이트: '+cur.refs);
+  L.push('');
+  L.push('## 2) 섹션 (이 순서 그대로, 각 섹션 앞에 주석)');
+  secs.forEach(function(x,i){
+    const sp=imgSpec(x.t);
+    L.push('');
+    L.push((i+1)+'. **'+x.t+'**');
+    L.push('   - 내용: '+x.d);
+    L.push('   - 마크업: <section class="'+(lay==='alt'?(i%2?'sec alt':'sec'):lay==='center'?'sec narrow':lay==='split'?'sec split':'sec stack')+'"> > .inner');
+    if(sp){
+      L.push('   - 이미지 슬롯: '+sp.label+' · 권장 '+sp.size+' · aspect-ratio: '+sp.ar);
+      L.push('     → <div class="ph" style="aspect-ratio:'+sp.ar+'"> 안에 라벨과 규격 텍스트를 표시 (실제 이미지 없이 플레이스홀더)');
+    } else {
+      L.push('   - 이미지 없음 (텍스트 블록만)');
+    }
+    if(i===0) L.push('   - 이 섹션에만 CTA 버튼 2개 (.btn 기본 / .btn2 보조)');
+  });
+  L.push('');
+  L.push('## 3) 디자인 토큰 — '+s.n+' (아래 CSS를 그대로 사용)');
+  L.push('```css');
+  L.push(css);
+  L.push('```');
+  L.push('');
+  L.push('## 4) 규칙');
+  rulesText().forEach(function(r){L.push(r);});
+  L.push('');
+  L.push('## 5) 출력 형식');
+  L.push('- 의존성 없는 단일 HTML 파일 (Pretendard CDN 링크만 허용)');
+  L.push('- 위 CSS를 <style>에 그대로 넣고, 섹션 마크업만 추가');
+  L.push('- 클래스명: .sec / .sec.alt / .sec.narrow / .sec.stack / .inner / .ph / .phl / .phs / .tx / .num / .cta / .btn / .btn2');
+  L.push('- 이미지는 전부 플레이스홀더(.ph)로, 실제 파일 참조 금지');
+  return L.join('\n');
+}
+
+/* ===== 배선 ===== */
+const auto=()=>{try{build(true);}catch(e){}};
+['#selPage','#selLayout','#selSys','#darkMode','#rRes','#rImg','#rA11y','#rBan','#rMotion'].forEach(function(id){
+  const el=$(id); if(el) el.addEventListener('change',auto);
+});
+$('#selLayout').addEventListener('change',renderLayPrev);
+$('#secPick').addEventListener('change',auto);
+['#bName','#bTag','#bMat'].forEach(function(id){
+  const el=$(id); if(el) el.addEventListener('input',function(){ saveBrief(); clearTimeout(el._t); el._t=setTimeout(auto,350); });
+});
+$('#exBtns').onclick=function(e){
+  const b=e.target.closest('[data-ex]'); if(!b) return;
+  const k=b.dataset.ex;
+  if(k==='clear'){ $('#bName').value=''; $('#bTag').value=''; $('#bMat').value=''; }
+  else { const x=EX[k]; $('#bName').value=x.n; $('#bTag').value=x.t; $('#bMat').value=x.m; }
+  saveBrief(); auto();
+};
+$('#myList').addEventListener('click',()=>setTimeout(auto,0));
+$('#ruleAdd').addEventListener('click',()=>setTimeout(auto,0));
+$('#viewTabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+  $('#viewTabs').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  const v=b.dataset.v;
+  $('#paneP').style.display=v==='preview'?'':'none';
+  $('#paneC').style.display=v==='code'?'':'none';
+  $('#paneR').style.display=v==='prompt'?'':'none';};
+$('#devBar').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+  $('#devBar').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  const f=$('#frame'); f.style.width=b.dataset.w; f.style.margin=b.dataset.w==='100%'?'':'0 auto'; f.style.display='block';};
+$('#cpCode').onclick=()=>copy(html,'HTML 복사됨');
+$('#cpPrompt').onclick=()=>copy($('#promptBody').textContent,'프롬프트 복사됨');
+$('#btnDown').onclick=()=>{if(!html){toast('먼저 생성하세요');return;}
+  const b=new Blob([html],{type:'text/html;charset=utf-8'}), a=document.createElement('a');
+  a.href=URL.createObjectURL(b); a.download=cur.n.replace(/[^\w가-힣]/g,'_')+'.html'; a.click(); toast('저장됨');};
+$('#btnOpen').onclick=()=>{if(!html){toast('먼저 생성하세요');return;}
+  const w=window.open(); w.document.write(html); w.document.close();};
+$('#btnUi').onclick=()=>{const r=document.documentElement;r.setAttribute('data-ui',r.getAttribute('data-ui')==='dark'?'light':'dark');};
+
+(function(){ const b=brief();
+  if(b.n) $('#bName').value=b.n; if(b.t) $('#bTag').value=b.t; if(b.m) $('#bMat').value=b.m;
+})();
+loadPage(0); renderMy(); renderLayPrev(); build();
+</script>
+</body>
+</html>

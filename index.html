@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko" data-ui="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Design System Kit — 디자인 시스템 도구</title>
+<meta name="description" content="디자인 시스템 16종, 레이아웃 22종, 콘텐츠 구조 9종을 보관하고 AI 프롬프트·CLAUDE.md·CSS 토큰·실제 페이지까지 만들어내는 로컬 도구.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root,:root[data-ui="light"]{
+  --ui-canvas:#F6F5F2;--ui-panel:#FFFFFF;--ui-panel-2:#F2F0EB;
+  --ui-fg:#17161B;--ui-fg-strong:#2A2830;--ui-fg-lower:#5E5A63;--ui-fg-dim:#A9A6AE;
+  --ui-border:#E7E4DD;--ui-accent:#A24E38;
+  --ui-sh:0 1px 3px rgba(30,24,50,.06);--ui-sh-md:0 8px 26px rgba(30,24,50,.10);
+}
+:root[data-ui="dark"]{
+  --ui-canvas:#141317;--ui-panel:#1C1B21;--ui-panel-2:#232128;
+  --ui-fg:#F4F3F7;--ui-fg-strong:#FFFFFF;--ui-fg-lower:#A6A3AE;--ui-fg-dim:#6E6B75;
+  --ui-border:#302E38;--ui-accent:#E0917A;
+  --ui-sh:0 1px 3px rgba(0,0,0,.5);--ui-sh-md:0 8px 26px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--ui-canvas);color:var(--ui-fg);line-height:1.65;-webkit-font-smoothing:antialiased;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;}
+.top{display:flex;align-items:center;gap:12px;padding:16px clamp(18px,4vw,32px);border-bottom:1px solid var(--ui-border);}
+.logo{font-family:"Space Grotesk",Pretendard,sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.mk{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 140deg,#A24E38,#C98A5B,#3F5E56,#A24E38);}
+.sp{flex:1;}
+.tbtn{border:1px solid var(--ui-border);background:var(--ui-panel);color:var(--ui-fg-lower);padding:7px 13px;
+  border-radius:9px;cursor:pointer;font:inherit;font-size:12.5px;text-decoration:none;}
+.tbtn:hover{color:var(--ui-fg-strong);}
+
+.wrap{max-width:1000px;margin:0 auto;padding:clamp(34px,7vw,70px) clamp(18px,4vw,32px) 80px;}
+h1{font-family:"Space Grotesk",Pretendard,sans-serif;font-size:clamp(30px,6vw,52px);font-weight:700;
+  letter-spacing:-.03em;line-height:1.1;margin:0 0 14px;}
+.lead{font-size:clamp(15px,2vw,17px);color:var(--ui-fg-lower);max-width:60ch;margin:0 0 10px;}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 34px;}
+.stats span{font-size:12px;font-weight:700;background:var(--ui-panel);border:1px solid var(--ui-border);
+  color:var(--ui-fg-lower);padding:6px 12px;border-radius:999px;}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;}
+.c{background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:16px;padding:20px;
+  box-shadow:var(--ui-sh);text-decoration:none;color:inherit;transition:.16s;display:flex;flex-direction:column;gap:7px;}
+.c:hover{transform:translateY(-3px);box-shadow:var(--ui-sh-md);border-color:var(--ui-accent);}
+.c .ic{font-size:24px;}
+.c .n{font-size:16px;font-weight:800;color:var(--ui-fg-strong);}
+.c .d{font-size:13px;color:var(--ui-fg-lower);line-height:1.65;flex:1;}
+.c .go{font-size:12px;font-weight:800;color:var(--ui-accent);}
+.c.main{grid-column:1/-1;background:linear-gradient(135deg,var(--ui-panel),var(--ui-panel-2));}
+
+h2{font-size:19px;font-weight:800;margin:48px 0 8px;padding-bottom:10px;border-bottom:2px solid var(--ui-fg-strong);}
+.steps{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+.st{flex:1;min-width:190px;background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:13px;padding:15px;}
+.st .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--ui-accent);
+  color:#fff;font-size:11px;font-weight:800;margin-bottom:7px;}
+.st .t{font-size:13.5px;font-weight:800;color:var(--ui-fg-strong);}
+.st .d{font-size:12.5px;color:var(--ui-fg-lower);margin-top:3px;line-height:1.6;}
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);font-size:12px;color:var(--ui-fg-dim);}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="logo"><span class="mk"></span>Design System Kit</div>
+  <div class="sp"></div>
+  <a class="tbtn" href="guide.html">📖 사용법</a>
+  <button class="tbtn" id="btnUi">◐</button>
+</div>
+
+<div class="wrap">
+  <h1>디자인은 고르고,<br>코드는 뽑아 쓰는 도구</h1>
+  <p class="lead">검증된 디자인 시스템과 실제 사이트 기준 화면 구조를 모아두고, AI에게 넘길 프롬프트·규칙 파일·CSS 토큰·실제 페이지까지 한자리에서 만들어냅니다. 설치 없이 브라우저만 있으면 됩니다.</p>
+  <div class="stats">
+    <span>디자인 시스템 16종</span><span>레이아웃 22종</span><span>콘텐츠 구조 9종</span>
+    <span>아이콘 48개</span><span>의존성 0</span>
+  </div>
+
+  <div class="cards">
+    <a class="c main" href="library.html">
+      <span class="ic">📚</span>
+      <span class="n">모음집 — 여기서 시작하세요</span>
+      <span class="d">디자인 시스템·레이아웃·콘텐츠 구조·제작 규칙을 보관합니다. 맨 위 조립기에서 <b>AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 CSS · Tailwind</b>를 한 번에 뽑아냅니다.</span>
+      <span class="go">열기 →</span>
+    </a>
+    <a class="c" href="builder.html">
+      <span class="ic">🎛</span>
+      <span class="n">조립기</span>
+      <span class="d">브랜드 색 하나만 넣으면 50~950 램프가 자동 생성. 폰트·모서리·밀도까지 정해 나만의 시스템을 만듭니다.</span>
+      <span class="go">색으로 만들기 →</span>
+    </a>
+    <a class="c" href="generator.html">
+      <span class="ic">⚡</span>
+      <span class="n">생성기</span>
+      <span class="d">제품·병원 정보를 붙여넣고 콘텐츠·레이아웃·시스템을 고르면 실제 동작하는 HTML이 만들어집니다.</span>
+      <span class="go">페이지 만들기 →</span>
+    </a>
+    <a class="c" href="guide.html">
+      <span class="ic">📖</span>
+      <span class="n">사용설명서</span>
+      <span class="d">상황별 사용법과 화면별 버튼 설명, 이미지 처리 방법, 자주 묻는 질문.</span>
+      <span class="go">읽기 →</span>
+    </a>
+  </div>
+
+  <h2>어떻게 쓰나</h2>
+  <div class="steps">
+    <div class="st"><span class="n">1</span><div class="t">고른다</div><div class="d">무엇을 만들지(콘텐츠) · 어떤 구조로(레이아웃) · 어떤 톤으로(디자인 시스템)</div></div>
+    <div class="st"><span class="n">2</span><div class="t">뽑는다</div><div class="d">AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 CSS를 복사하거나 파일로 저장</div></div>
+    <div class="st"><span class="n">3</span><div class="t">만든다</div><div class="d">AI에 붙여넣거나, 생성기로 완성된 HTML을 바로 받는다</div></div>
+  </div>
+
+  <h2>담겨 있는 것</h2>
+  <div class="steps">
+    <div class="st"><div class="t">디자인 시스템 16종</div><div class="d">Toss · Ant Design · Material 3 · IBM Carbon · Apple HIG · Shopify Polaris · Vercel · GitLab · Airbnb · Slack 등. 색뿐 아니라 <b>폰트·모서리·아이콘 굵기</b>까지 시스템마다 다릅니다.</div></div>
+    <div class="st"><div class="t">레이아웃 22종</div><div class="d">Holy Grail · 대시보드 · 지그재그 · 벤토 · 메뉴판 4종 등. 이름 옆에 쉬운 한국어 설명과 와이어프레임.</div></div>
+    <div class="st"><div class="t">콘텐츠 구조 9종</div><div class="d">올리브영·Linear·Apple·Zillow 등 실제 사이트 기준 섹션 순서. 이미지가 필요한 곳엔 <b>권장 규격</b>까지.</div></div>
+    <div class="st"><div class="t">제작 규칙</div><div class="d">반응형(vw·clamp) · 이미지 · 접근성 · 금지 패턴. 직접 규칙을 추가하면 프롬프트에 자동 포함됩니다.</div></div>
+  </div>
+
+  <footer>정적 HTML 5개 · 빌드 없음 · 인터넷은 웹폰트 로딩에만 사용</footer>
+</div>
+<script>
+document.getElementById('btnUi').onclick=function(){
+  var r=document.documentElement;
+  r.setAttribute('data-ui', r.getAttribute('data-ui')==='dark'?'light':'dark');
+};
+</script>
+</body>
+</html>
