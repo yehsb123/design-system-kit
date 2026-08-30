@@ -186,6 +186,18 @@ a{color:inherit;text-decoration:none;}
 .dhead h1{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px;}
 .dhead .sub{color:var(--ui-fg-lower);font-size:14px;max-width:74ch;}
 .dhead .meta{margin-top:12px;display:flex;flex-wrap:wrap;gap:7px;}
+.dtabs{position:sticky;top:57px;z-index:40;display:flex;gap:6px;flex-wrap:wrap;align-items:center;
+  background:color-mix(in srgb,var(--ui-canvas) 92%,transparent);backdrop-filter:blur(8px);
+  padding:12px 0;margin:14px 0 0;border-bottom:1px solid var(--ui-border);}
+.dtabs button{border:1px solid var(--ui-border);background:var(--ui-panel);color:var(--ui-fg-lower);
+  font:inherit;font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:10px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;}
+.dtabs button:hover{border-color:var(--ui-fg-dim);color:var(--ui-fg-strong);}
+.dtabs button.on{background:var(--ui-fg-strong);color:var(--ui-canvas);border-color:transparent;}
+.dtabs button .cnt{font-size:10.5px;opacity:.6;font-weight:700;}
+.dtabs .exp{margin-left:auto;background:var(--ui-accent)!important;color:#fff!important;border-color:transparent!important;}
+.dsec.hide{display:none;}
+.grouphint{font-size:12px;color:var(--ui-fg-dim);margin:16px 0 -8px;}
 .dnav{position:sticky;top:57px;z-index:40;display:flex;flex-wrap:wrap;gap:4px 6px;background:color-mix(in srgb,var(--ui-canvas) 90%,transparent);backdrop-filter:blur(8px);padding:11px 0;margin:14px 0 0;border-bottom:1px solid var(--ui-border);font-size:12.5px;}
 .dnav a{color:var(--ui-fg-lower);padding:5px 9px;border-radius:8px;}
 .dnav a:hover{background:var(--ui-panel-2);color:var(--ui-fg-strong);}
@@ -578,14 +590,8 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
   <div class="detail" id="detail">
     <div class="backbar"><button class="backbtn" onclick="showCatalog()">← 모음집으로</button><span class="pill" id="dCrumb"></span></div>
     <div class="dhead"><h1 id="dTitle"></h1><div class="sub" id="dSub"></div><div class="meta" id="dMeta"></div></div>
-    <div class="dnav">
-      <a href="#s-export" style="background:var(--ui-fg-strong);color:var(--ui-canvas);font-weight:700">↓ 내보내기</a>
-      <a href="#s-sig">시그니처</a>
-      <a href="#s-color">색 램프</a><a href="#s-semantic">시맨틱</a><a href="#s-type">타이포</a><a href="#s-space">간격·반경</a>
-      <a href="#s-comp">기본 컴포넌트</a><a href="#s-select">선택 컨트롤</a><a href="#s-overlay">오버레이</a><a href="#s-nav">내비게이션</a>
-      <a href="#s-feed">피드백</a><a href="#s-more">확장</a><a href="#s-assets">에셋</a><a href="#s-charts">차트</a><a href="#s-formstate">폼상태</a><a href="#s-fx">이펙트</a><a href="#s-build">조립</a><a href="#s-state">상태</a><a href="#s-table">테이블</a><a href="#s-layout">레이아웃</a>
-      <a href="#s-motion">모션</a><a href="#s-a11y">접근성</a><a href="#s-extra">고유</a>
-    </div>
+    <div class="dtabs" id="dTabs"></div>
+    <div class="grouphint" id="dHint"></div>
     <div class="scope" id="scope"></div>
     <footer>디자인 시스템 모음집 · 단일 HTML, 의존성 없음 · 새 시스템 추가 = <code class="mono">SYSTEMS</code> 배열에 객체 하나 push.</footer>
   </div>
@@ -1525,7 +1531,7 @@ function renderRecs(){
 }
 $('#searchInput').oninput=e=>{curQuery=e.target.value;renderCatalog();};
 function showCatalog(){$('#catalog').classList.remove('hidden');$('#detail').classList.remove('active');const sv=$('#sview');if(sv)sv.classList.remove('active');curSys=null;closeAllOverlays();window.scrollTo(0,0);}
-function openSystem(id){curSys=SYSTEMS.find(s=>s.id===id);const sv=$('#sview');if(sv)sv.classList.remove('active');$('#catalog').classList.add('hidden');$('#detail').classList.add('active');renderDetail(curSys);window.scrollTo(0,0);}
+function openSystem(id){dGroup='start';curSys=SYSTEMS.find(s=>s.id===id);const sv=$('#sview');if(sv)sv.classList.remove('active');$('#catalog').classList.add('hidden');$('#detail').classList.add('active');renderDetail(curSys);window.scrollTo(0,0);}
 
 /* ===================== RENDER PIECES ===================== */
 function rampRow(name,arr){return `<div class="ramp"><div class="lbl">${name}</div><div class="strip">${
@@ -1533,6 +1539,54 @@ function rampRow(name,arr){return `<div class="ramp"><div class="lbl">${name}</d
 function swatch(name,val){return `<div class="sw"><div class="chip" style="background:${val};border-bottom:1px solid var(--ui-border-low)"></div><div class="info"><b>${name.replace('--','')}</b><code data-copy="${val}">${(val||'').toUpperCase()}</code></div></div>`;}
 function semGroup(T,keys){return keys.filter(k=>T[k]).map(k=>swatch(k,T[k])).join('');}
 
+const DGROUPS=[
+ {k:'start', n:'\ud83d\udce4 \ub0b4\ubcf4\ub0b4\uae30', ids:['s-export','s-sig'],
+  h:'\ubcf5\uc0ac\ud574\uc11c \ubc14\ub85c \uc4f0\ub294 \uacf3. \uc774 \uc2dc\uc2a4\ud15c\uc758 \uc131\uaca9\uc744 \ubcf4\uc5ec\uc8fc\ub294 \ub300\ud45c UI\ub3c4 \ud568\uaed8 \uc788\uc2b5\ub2c8\ub2e4.'},
+ {k:'color', n:'\ud83c\udfa8 \uc0c9\u00b7\ud0c0\uc774\ud3ec', ids:['s-color','s-semantic','s-type','s-space'],
+  h:'\uc0c9 \ub7a8\ud504(50~950), \uc5ed\ud560\ubcc4 \uc2dc\ub9e8\ud2f1 \ud1a0\ud070, \uae00\uc790 \ud06c\uae30, \uc5ec\ubc31\u00b7\ubaa8\uc11c\ub9ac\u00b7\uadf8\ub9bc\uc790.'},
+ {k:'comp', n:'\ud83e\udde9 \ucef4\ud3ec\ub10c\ud2b8', ids:['s-comp','s-select','s-overlay','s-nav','s-feed','s-more','s-formstate','s-state','s-table'],
+  h:'\ubc84\ud2bc\u00b7\ud3fc\u00b7\ubaa8\ub2ec\u00b7\ud0ed\u00b7\ud45c \ub4f1 \uc2e4\uc81c UI \uc870\uac01\ub4e4. \uc2dc\uc2a4\ud15c\ub9c8\ub2e4 \ubaa8\uc591\uacfc \ud3f0\ud2b8\uac00 \ub2e4\ub985\ub2c8\ub2e4.'},
+ {k:'asset', n:'\ud83d\uddbc \uc5d0\uc14b\u00b7\ucc28\ud2b8', ids:['s-assets','s-charts','s-fx','s-build'],
+  h:'\uc544\uc774\ucf58 48\uac1c(SVG \uc800\uc7a5 \uac00\ub2a5), \uadf8\ub77c\ub514\uc5b8\ud2b8\u00b7\ud328\ud134, \ucc28\ud2b8, \uc774\ud399\ud2b8, \uc870\ub9bd \ube4c\ub354.'},
+ {k:'spec', n:'\ud83d\udcd0 \uaddc\uaca9\u00b7\uc9c0\uce68', ids:['s-layout','s-motion','s-a11y','s-extra'],
+  h:'\ub808\uc774\uc544\uc6c3 \uadf8\ub9ac\ub4dc, \ubaa8\uc158 \uc18d\ub3c4, \uc811\uadfc\uc131 \uac80\uc0ac, \uc774 \uc2dc\uc2a4\ud15c\ub9cc\uc758 \uaddc\uce59.'}
+];
+let dGroup='start';
+function applyGroup(){
+  const g=DGROUPS.find(function(x){return x.k===dGroup;})||DGROUPS[0];
+  document.querySelectorAll('#scope .dsec').forEach(function(sec){
+    sec.classList.toggle('hide', g.ids.indexOf(sec.id)<0);
+  });
+  const hint=document.getElementById('dHint'); if(hint) hint.textContent=g.h;
+  document.querySelectorAll('#dTabs button[data-g]').forEach(function(b){
+    b.classList.toggle('on', b.dataset.g===dGroup);
+  });
+}
+function renderDTabs(){
+  const el=document.getElementById('dTabs'); if(!el) return;
+  el.innerHTML=DGROUPS.map(function(g){
+    var n=g.ids.filter(function(id){return document.getElementById(id);}).length;
+    return '<button data-g="'+g.k+'">'+g.n+'<span class="cnt">'+n+'</span></button>';
+  }).join('')+'<button class="exp" data-g="__all">\uc804\uccb4 \ud55c \ubc88\uc5d0 \ubcf4\uae30</button>';
+  el.onclick=function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    if(b.dataset.g==='__all'){
+      document.querySelectorAll('#scope .dsec').forEach(function(s){s.classList.remove('hide');});
+      el.querySelectorAll('button[data-g]').forEach(function(x){x.classList.remove('on');});
+      var hint=document.getElementById('dHint'); if(hint) hint.textContent='\ubaa8\ub4e0 \uc139\uc158\uc744 \ud3bc\uccd0\ub193\uc558\uc2b5\ub2c8\ub2e4.';
+      b.textContent='\ubb36\uc5b4\uc11c \ubcf4\uae30';
+      b.dataset.g='__group';
+      return;
+    }
+    if(b.dataset.g==='__group'){
+      b.textContent='\uc804\uccb4 \ud55c \ubc88\uc5d0 \ubcf4\uae30'; b.dataset.g='__all';
+      applyGroup(); return;
+    }
+    dGroup=b.dataset.g; applyGroup();
+    window.scrollTo({top:0,behavior:'smooth'});
+  };
+  applyGroup();
+}
 function renderDetail(sys){
   const T=allTokens(sys);
   const scope=$('#scope');
@@ -1861,6 +1915,7 @@ function renderDetail(sys){
 
   // wiring
   wireDetail(sys);
+  renderDTabs();
 }
 
 function renderContrast(T){
