@@ -154,13 +154,13 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
     <div class="grp">
       <label>3. 폰트</label>
       <select class="sel" id="selFont">
-        <option value="pretendard">Pretendard — 한글 기본</option>
-        <option value="inter">Inter — 모던 산세리프</option>
-        <option value="roboto">Roboto — 안드로이드/구글</option>
-        <option value="plex">IBM Plex Sans — 테크니컬</option>
-        <option value="grotesk">Space Grotesk — 개성있는 제목</option>
-        <option value="poppins">Poppins — 둥글고 친근</option>
-        <option value="playfair">Playfair Display — 세리프/매거진</option>
+        <option value="pretendard">Pretendard · 한글 기본</option>
+        <option value="inter">Inter · 모던 산세리프</option>
+        <option value="roboto">Roboto · 안드로이드/구글</option>
+        <option value="plex">IBM Plex Sans · 테크니컬</option>
+        <option value="grotesk">Space Grotesk · 개성있는 제목</option>
+        <option value="poppins">Poppins · 둥글고 친근</option>
+        <option value="playfair">Playfair Display · 세리프/매거진</option>
       </select>
     </div>
 
@@ -412,7 +412,7 @@ function aiOut(){
   +'- gray: '+grayRamp(S.tone).map(([k,v])=>k+'='+v).join(', ')+'\n\n'
   +'## 모양·밀도\n- 버튼 '+R.btn+' / 카드 '+R.card+' / 입력 '+R.input+' / 태그 '+R.tag+'\n'
   +'- 버튼 패딩 '+D.py+'px '+D.px+'px, 요소 간격 '+D.gap+'px\n\n'
-  +'## 접근성 확인\n- 본문/배경 대비 '+c1+':1 '+(c1>=4.5?'(AA 통과)':'(미달 — 색 조정 필요)')+'\n'
+  +'## 접근성 확인\n- 본문/배경 대비 '+c1+':1 '+(c1>=4.5?'(AA 통과)':'(미달 · 색 조정 필요)')+'\n'
   +'- 흰글씨/브랜드색 대비 '+c2+':1 '+(c2>=4.5?'(AA 통과)':'(버튼 글자 어둡게 하거나 브랜드색을 더 어둡게)')+'\n\n'
   +'## 필수 규칙\n'
   +'- 반응형: vw + clamp() 사용, 컨테이너 min(1200px, 92vw), 768px 미만 1열\n'
@@ -466,7 +466,7 @@ function save(){ try{
   localStorage.setItem(KEY,JSON.stringify(S));
   localStorage.setItem('my_system',JSON.stringify(exportSystem()));
 }catch(e){} }
-$('#btnSave').onclick=()=>{ save(); toast('저장됨 — 다음에 열면 그대로 복원됩니다'); };
+$('#btnSave').onclick=()=>{ save(); toast('저장됨 · 다음에 열면 그대로 복원됩니다'); };
 $('#btnToGen').onclick=()=>{ save(); location.href='generator.html?sys=mine'; };
 try{ const raw=localStorage.getItem(KEY); if(raw) Object.assign(S,JSON.parse(raw)); }catch(e){}
 setPrimary(S.primary); syncSegs(); renderAll();

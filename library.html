@@ -6,7 +6,7 @@
 <title>디자인 시스템 모음집 · Design System Library</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:wght@500;700;800&family=Poppins:wght@400;500;600;700&family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Raleway:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:wght@500;700;800&family=Poppins:wght@400;500;600;700&family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 /* ===================== APP SHELL (창고 UI, 안정적 --ui-* 팔레트) ===================== */
@@ -206,6 +206,8 @@ h2.dt2{font-size:19px;font-weight:800;margin:0 0 4px;padding-bottom:9px;border-b
 h2.dt2 .en{font-size:12px;font-weight:500;color:var(--ui-fg-dim);margin-left:8px;}
 h3.dt3{font-size:14px;font-weight:700;margin:22px 0 9px;color:var(--ui-fg-strong);}
 p.dsc{color:var(--ui-fg-lower);font-size:13.5px;margin:8px 0 14px;max-width:80ch;}
+ul.dlist{margin:10px 0 0;padding-left:18px;color:var(--ui-fg-lower);font-size:13.5px;max-width:80ch;}
+ul.dlist li{margin:4px 0;}
 
 /* token preview scope */
 .scope{color:var(--fg);font-family:var(--font-family,inherit);}
@@ -535,7 +537,7 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
     <div class="cards" id="cards"></div>
 
     <div class="sectitle">업종별 추천 템플릿 <span class="en">By Industry</span></div>
-    <p class="secsub">만들려는 서비스에 어울리는 시작점을 제안합니다. 카드를 누르면 추천 베이스 시스템이 열립니다. (제안용 — 필요 시 새 시스템으로 발전시킬 수 있어요)</p>
+    <p class="secsub">만들려는 서비스에 어울리는 시작점을 제안합니다. 카드를 누르면 추천 베이스 시스템이 열립니다. (제안용 · 필요 시 새 시스템으로 발전시킬 수 있어요)</p>
     <div class="recs" id="recs"></div>
 
     <div class="sectitle">레이아웃 레퍼런스 <span class="en">Layout Patterns</span></div>
@@ -603,7 +605,7 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
 
 <script>
 /* ========================================================================
-   SYSTEMS — 램프(테마 공통) + 시맨틱(라이트/다크) 로 분리해 보관
+   SYSTEMS · 램프(테마 공통) + 시맨틱(라이트/다크) 로 분리해 보관
    ======================================================================== */
 const RAMP_BLUE=[["50","#EEF3FF"],["100","#E5EDFF"],["200","#CBD9FF"],["300","#A3BCFF"],["400","#7396FF"],["500","#4178FF"],["600","#2E5FE6"],["700","#244BC0"],["800","#1F3E9C"],["900","#1E387D"],["950","#16244D"]];
 const RAMP_INDIGO=[["50","#EEF0FE"],["100","#E0E3FD"],["200","#C4C9FB"],["300","#A0A7F7"],["400","#7C82F0"],["500","#4F46E5"],["600","#4338CA"],["700","#3730A3"],["800","#312E81"],["900","#2A2765"],["950","#1B1947"]];
@@ -897,6 +899,20 @@ mkSystem({
     error:[["50","#FCE9EF"],["100","#F8C8D8"],["200","#F193AF"],["300","#EA5E86"],["400","#E53A6C"],["500","#E01E5A"],["600","#BC184B"],["700","#92123A"],["800","#680D2A"],["900","#3E0819"],["950","#21040D"]],
     info:[["50","#E8F1F8"],["100","#C6DCED"],["200","#90BADB"],["300","#5A97C8"],["400","#327BB8"],["500","#1264A3"],["600","#0E5185"],["700","#0B3E66"],["800","#082B47"],["900","#041829"],["950","#020C15"]]
   }
+}),
+mkSystem({
+  id:"monopo",name:"monopo saigon",cat:"포트폴리오",font:"Inter (Roobert 대체)",framework:"에이전시 · 사례 갤러리",point:"#6D6D6D",
+  desc:"무채색만 쓰는 에디토리얼 갤러리 시스템. 카드·이미지·입력은 직각 0px으로 두고 버튼·태그만 75px 알약으로 대비를 만듭니다. 그림자 없이 1px 헤어라인만 씁니다.",
+  cover:["#000000","#A0E0AB","#FFAC2E","#A52D25"],hasChart:true,radius:{xs:"0px",sm:"0px",md:"0px",lg:"0px"},
+  extra:{title:"무채색 규칙 · 이리데센트",type:"monopo"},
+  ramps:{
+    primary:[["50","#FAFAFA"],["100","#F0F0F0"],["200","#D8D8D8"],["300","#9A9A9A"],["400","#6D6D6D"],["500","#181818"],["600","#0F0F0F"],["700","#0A0A0A"],["800","#050505"],["900","#000000"],["950","#000000"]],
+    gray:[["50","#FAFAFA"],["100","#F2F2F2"],["200","#E4E4E4"],["300","#CFCFCF"],["400","#9A9A9A"],["500","#808080"],["600","#6D6D6D"],["700","#636363"],["800","#3A3A3A"],["900","#181818"],["950","#000000"]],
+    success:[["50","#F2FBF4"],["100","#DFF4E4"],["200","#C2EACB"],["300","#A0E0AB"],["400","#7BCC8A"],["500","#52B063"],["600","#3B8E4B"],["700","#2C6B39"],["800","#1E4827"],["900","#112B17"],["950","#08160B"]],
+    warning:[["50","#FFF6E8"],["100","#FFE9C9"],["200","#FFD394"],["300","#FFBF61"],["400","#FFAC2E"],["500","#E8900D"],["600","#BD7309"],["700","#925806"],["800","#663D04"],["900","#3D2402"],["950","#1F1201"]],
+    error:[["50","#FBEDEC"],["100","#F6D6D3"],["200","#E9A9A3"],["300","#D67C73"],["400","#C05248"],["500","#A52D25"],["600","#8A241D"],["700","#6C1B16"],["800","#4D1310"],["900","#2E0B09"],["950","#180504"]],
+    info:[["50","#F4F5F6"],["100","#E7E9EA"],["200","#CDD0D2"],["300","#ABAFB2"],["400","#85898C"],["500","#636363"],["600","#4F4F4F"],["700","#3C3C3C"],["800","#2A2A2A"],["900","#1A1A1A"],["950","#0D0D0D"]]
+  }
 })
 ];
 
@@ -926,7 +942,8 @@ const FONT={
   vercel:'"DM Sans",-apple-system,system-ui,sans-serif',
   gitlab:'"Sora",-apple-system,system-ui,sans-serif',
   airbnb:'"Manrope",-apple-system,system-ui,sans-serif',
-  slack:'"Pretendard",-apple-system,system-ui,sans-serif'
+  slack:'"Pretendard",-apple-system,system-ui,sans-serif',
+  monopo:'"Inter","Roobert","Helvetica Neue",Arial,sans-serif'
 };
 const UI={
   toss:    {btnR:"10px",btnW:"600",btnSh:"none",ctlR:"8px",cardR:"16px",padx:"18px",inR:"10px"},
@@ -944,9 +961,10 @@ const UI={
   vercel:  {btnR:"6px", btnW:"500",btnSh:"none",ctlR:"5px",cardR:"8px",padx:"16px",inR:"6px"},
   gitlab:  {btnR:"6px", btnW:"600",btnSh:"none",ctlR:"4px",cardR:"8px",padx:"16px",inR:"6px"},
   airbnb:  {btnR:"10px",btnW:"600",btnSh:"0 2px 8px -2px var(--bg-primary)",ctlR:"8px",cardR:"16px",padx:"20px",inR:"10px"},
-  slack:   {btnR:"8px", btnW:"700",btnSh:"none",ctlR:"6px",cardR:"12px",padx:"18px",inR:"8px"}
+  slack:   {btnR:"8px", btnW:"700",btnSh:"none",ctlR:"6px",cardR:"12px",padx:"18px",inR:"8px"},
+  monopo:  {btnR:"75px",btnW:"400",btnSh:"none",ctlR:"75px",cardR:"0px",padx:"33px",inR:"0px"}
 };
-// 시스템별 아이콘 성격 (굵기·끝처리) — 에셋이 시스템마다 달라 보이게
+// 시스템별 아이콘 성격 (굵기·끝처리) · 에셋이 시스템마다 달라 보이게
 const ICONSTYLE={
   toss:{sw:2,cap:"round",join:"round"}, aurora:{sw:2,cap:"round",join:"round"},
   graphite:{sw:1.75,cap:"round",join:"round"}, antd:{sw:1.6,cap:"round",join:"round"},
@@ -955,10 +973,11 @@ const ICONSTYLE={
   neon:{sw:2.2,cap:"round",join:"round"}, editorial:{sw:1.4,cap:"round",join:"round"},
   playful:{sw:2.6,cap:"round",join:"round"}, mobile:{sw:2,cap:"round",join:"round"},
   vercel:{sw:1.75,cap:"round",join:"round"}, gitlab:{sw:2,cap:"round",join:"round"},
-  airbnb:{sw:2.4,cap:"round",join:"round"}, slack:{sw:2,cap:"round",join:"round"}
+  airbnb:{sw:2.4,cap:"round",join:"round"}, slack:{sw:2,cap:"round",join:"round"},
+  monopo:{sw:1.25,cap:"butt",join:"miter"}
 };
 // 시스템별 뱃지/칩 모서리 (각진 계열 vs 알약)
-const TAGR={carbon:"0px",vercel:"4px",editorial:"2px",gitlab:"4px",antd:"4px",graphite:"6px"};
+const TAGR={carbon:"0px",vercel:"4px",editorial:"2px",gitlab:"4px",antd:"4px",graphite:"6px",monopo:"75px"};
 
 // full flattened tokens for a system+theme (ramps are theme-independent)
 function allTokens(sys){
@@ -1104,12 +1123,12 @@ function wireSvgExport(){
         dl(it[0]+'.svg','<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" '+iconStyleAttrs()+'>'+it[1]+'</svg>','image/svg+xml');
       }, i*120);
     });
-    toast('개별 저장 시작 — 브라우저 다운로드 허용 필요');
+    toast('개별 저장 시작 · 브라우저 다운로드 허용 필요');
   };
   const rc=$('#svgReact'); if(rc) rc.onclick=function(){
     const st=(curSys&&ICONSTYLE[curSys.id])||{sw:2,cap:'round',join:'round'};
     const paths=ICONS.map(function(it){return "  '"+it[0]+"': `"+it[1]+"`";}).join(',\n');
-    const code='// '+sysName+' 아이콘 세트 — <Icon name="home" size={20} />\n'
+    const code='// '+sysName+' 아이콘 세트 · <Icon name="home" size={20} />\n'
       +'const PATHS = {\n'+paths+'\n};\n\n'
       +'export function Icon({ name, size = 24, ...rest }) {\n'
       +'  const d = PATHS[name];\n'
@@ -1129,7 +1148,7 @@ function wireSvgExport(){
       const enc=encodeURIComponent(svg).replace(/'/g,'%27').replace(/"/g,'%22');
       return '.icon-'+it[0]+'{background-image:url("data:image/svg+xml,'+enc+'");}';
     }).join('\n');
-    dl('icons.css','/* '+sysName+' 아이콘 — <i class="icon icon-home"></i> */\n'
+    dl('icons.css','/* '+sysName+' 아이콘 · <i class="icon icon-home"></i> */\n'
       +'.icon{display:inline-block;width:24px;height:24px;background-repeat:no-repeat;background-position:center;background-size:contain;}\n'
       +lines+'\n','text/css');
     toast('icons.css 저장됨');
@@ -1261,7 +1280,7 @@ function claudeMd(sys){
   L.push('');
   L.push('이 문서의 규칙을 모든 UI 작업에 항상 적용한다.');
   L.push('');
-  L.push('## 디자인 시스템 — '+sys.name);
+  L.push('## 디자인 시스템 · '+sys.name);
   L.push('- 폰트: '+sys.font);
   L.push('- 브랜드: '+T['--bg-primary']+' (연한 '+T['--bg-primary-low']+', 글자 '+T['--fg-primary']+')');
   L.push('- 본문 '+T['--fg']+' / 보조 '+T['--fg-lower']+' / 테두리 '+T['--border']);
@@ -1284,19 +1303,19 @@ function buildCombined(){
   out.push('# '+(pg? pg.name : '페이지')+' 제작 요청');
   out.push('');
   if(pg){
-    out.push('## 1) 콘텐츠 구조 — '+pg.name);
+    out.push('## 1) 콘텐츠 구조 · '+pg.name);
     out.push('참고 사이트: '+pg.refs.join(' · '));
     out.push(pg.note);
     out.push('');
     out.push('섹션 순서 (이대로, 각 섹션 앞에 주석):');
     pg.sections.forEach(function(sec,i){
       const sp=imgSpec(sec[0]);
-      out.push((i+1)+'. '+sec[0]+' — '+sec[1]+(sp?'  [이미지: '+sp.label+' '+sp.size+']':''));
+      out.push((i+1)+'. '+sec[0]+' · '+sec[1]+(sp?'  [이미지: '+sp.label+' '+sp.size+']':''));
     });
     out.push('');
-    out.push('## 2) 레이아웃 배치 — '+L[0]);
+    out.push('## 2) 레이아웃 배치 · '+L[0]);
   } else {
-    out.push('## 1) 레이아웃 구조 — '+L[0]);
+    out.push('## 1) 레이아웃 구조 · '+L[0]);
   }
   out.push(L[1]);
   out.push('- 시맨틱 HTML + CSS Grid/Flex');
@@ -1508,7 +1527,7 @@ function wirePeek(){
 function renderComposer(){
   const rc=$('#ruleCopy'); if(rc) rc.onclick=()=>copy(allRules(),'\uaddc\uce59 \ubcf5\uc0ac\ub428');
   const lsel=$('#cLayout'), ssel=$('#cSystem'), psel=$('#cPage'); if(!lsel) return;
-  psel.innerHTML='<option value="">— 콘텐츠 없이 레이아웃만 —</option>'+PAGES.map(function(x,i){return '<option value="'+i+'">'+x.name+'</option>';}).join('');
+  psel.innerHTML='<option value="">콘텐츠 없이 레이아웃만</option>'+PAGES.map(function(x,i){return '<option value="'+i+'">'+x.name+'</option>';}).join('');
   lsel.innerHTML=LAYOUTS.map(function(x,i){return '<option value="'+i+'">'+x[0]+'</option>';}).join('');
   ssel.innerHTML=SYSTEMS.map(function(x){return '<option value="'+x.id+'">'+x.name+' · '+x.cat+'</option>';}).join('');
   const upd=function(){ $('#cOut').textContent=buildOut(); };
@@ -1516,7 +1535,7 @@ function renderComposer(){
   $('#cTabs').onclick=function(e){ const b=e.target.closest('button'); if(!b) return;
     cFmt=b.dataset.f; $('#cTabs').querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);}); upd(); };
   $('#cCopy').onclick=function(){ copy(buildOut(), ({prompt:'프롬프트',claude:'CLAUDE.md',css:'CSS 토큰',comp:'컴포넌트 CSS',tw:'Tailwind',all:'전체'})[cFmt]+' 복사됨'); };
-  $('#cCopyAll').onclick=function(){ copy(buildEverything(),'전체 복사됨 — 프롬프트+규칙+토큰+컴포넌트+Tailwind'); };
+  $('#cCopyAll').onclick=function(){ copy(buildEverything(),'전체 복사됨 · 프롬프트+규칙+토큰+컴포넌트+Tailwind'); };
   $('#cDown').onclick=function(){
     const name=({prompt:'prompt.md',claude:'CLAUDE.md',css:'design-tokens.css',comp:'components.css',tw:'tailwind.config.js',all:'design-system-full.md'})[cFmt]||'export.txt';
     const b=new Blob([buildOut()],{type:'text/plain;charset=utf-8'}), a=document.createElement('a');
@@ -1607,7 +1626,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-sig"><h2 class="dt2">시그니처 미리보기 <span class="en">Signature</span></h2>
-    <p class="dsc">이 시스템의 성격이 가장 잘 드러나는 대표 UI입니다 — 같은 토큰이라도 조합·구조가 시스템마다 다릅니다.</p>
+    <p class="dsc">이 시스템의 성격이 가장 잘 드러나는 대표 UI입니다 · 같은 토큰이라도 조합·구조가 시스템마다 다릅니다.</p>
     ${renderSignature(sys)}
   </section>
 
@@ -1738,7 +1757,7 @@ function renderDetail(sys){
     <table class="dtab"><tr><th>토큰</th><th>값</th><th>용도</th></tr>
       <tr><td><code>--ease-standard</code></td><td>cubic-bezier(.2,0,0,1)</td><td>일반 전환</td></tr>
       <tr><td><code>--ease-emphasized</code></td><td>cubic-bezier(.2,.8,.2,1)</td><td>강조·진입</td></tr>
-      <tr><td><code>--dur-fast / base / slow</code></td><td>150 / 250 / 400ms</td><td>—</td></tr></table>
+      <tr><td><code>--dur-fast / base / slow</code></td><td>150 / 250 / 400ms</td><td>·</td></tr></table>
   </section>
 
   <section class="dsec" id="s-a11y"><h2 class="dt2">접근성 <span class="en">Accessibility</span></h2>
@@ -1782,7 +1801,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-assets"><h2 class="dt2">에셋 <span class="en">Assets</span></h2>
-    <p class="dsc">아이콘·그라디언트·패턴·로고 마크 — 클릭하면 SVG/CSS가 복사됩니다. 전부 시스템 색을 그대로 사용해요.</p>
+    <p class="dsc">아이콘·그라디언트·패턴·로고 마크 · 클릭하면 SVG/CSS가 복사됩니다. 전부 시스템 색을 그대로 사용해요.</p>
     <h3 class="dt3">아이콘 48종 · 클릭하면 SVG 복사</h3>
     <div class="icogrid" id="iconGrid"></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
@@ -1827,7 +1846,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-charts"><h2 class="dt2">차트 <span class="en">Charts</span></h2>
-    <p class="dsc">그래프 색 토큰(graph-chart-1~8)과 브랜드 색으로 구성 — 대시보드에 바로 활용.</p>
+    <p class="dsc">그래프 색 토큰(graph-chart-1~8)과 브랜드 색으로 구성 · 대시보드에 바로 활용.</p>
     <div class="chartrow">
       <div class="chartbox"><div class="ct">막대 · Bar</div>
         <svg class="barsvg" viewBox="0 0 240 100" width="100%" height="120">
@@ -1862,7 +1881,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-formstate"><h2 class="dt2">폼 상태 <span class="en">Form States</span></h2>
-    <p class="dsc">입력 검증 상태 — 기본·포커스·에러·성공·비활성, 헬퍼 텍스트와 필수 표시.</p>
+    <p class="dsc">입력 검증 상태 · 기본·포커스·에러·성공·비활성, 헬퍼 텍스트와 필수 표시.</p>
     <div class="demo">
       <div class="field"><label>이메일<span class="req">*</span></label><input class="input" placeholder="you@example.com"><div class="helper dim">회사 이메일을 입력하세요</div></div>
       <div class="field"><label>포커스</label><input class="input" value="입력 중…" style="outline:2px solid var(--bg-primary);outline-offset:-1px;border-color:var(--bg-primary)"><div class="helper dim">활성 상태</div></div>
@@ -1876,7 +1895,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-fx"><h2 class="dt2">이펙트 · 쇼케이스 <span class="en">Effects</span></h2>
-    <p class="dsc">시스템 색으로 구성한 인터랙션 효과 — 호버·클릭·마우스 이동으로 반응합니다.</p>
+    <p class="dsc">시스템 색으로 구성한 인터랙션 효과 · 호버·클릭·마우스 이동으로 반응합니다.</p>
     <h3 class="dt3">그라디언트 · 샤인 · 리플 · FAB</h3>
     <div class="demo"><button class="fx-grad">Gradient</button><button class="fx-shine">Shine ✨</button><button class="ripplebtn" id="rippleBtn">Ripple</button><button class="fab">+</button></div>
     <h3 class="dt3">그라디언트 텍스트</h3>
@@ -2002,7 +2021,7 @@ function renderBuilder(){
   c+='</Card>';
   $('#bCode').textContent=c;
 }
-const SIG={toss:'fintech',aurora:'list',graphite:'data',antd:'data',m3:'elevated',carbon:'data',apple:'list',polaris:'photo',neon:'hero',editorial:'article',playful:'photo',mobile:'list',vercel:'mono',gitlab:'data',airbnb:'photo',slack:'chat'};
+const SIG={toss:'fintech',aurora:'list',graphite:'data',antd:'data',m3:'elevated',carbon:'data',apple:'list',polaris:'photo',neon:'hero',editorial:'article',playful:'photo',mobile:'list',vercel:'mono',gitlab:'data',airbnb:'photo',slack:'chat',monopo:'gallery'};
 function renderSignature(sys){
   const t=SIG[sys.id]||'list',R='var(--card-radius,12px)';
   if(t==='fintech')return `<div class="demo"><div style="background:var(--bg-primary);color:#fff;border-radius:${R};padding:20px 22px;min-width:300px;box-shadow:var(--shadow-4)"><div style="font-size:13px;opacity:.85">입출금 통장</div><div style="font-size:28px;font-weight:800;letter-spacing:-.02em;margin-top:6px">₩ 2,480,300</div><div style="display:flex;gap:8px;margin-top:18px"><button class="btn" style="background:rgba(255,255,255,.22);color:#fff;flex:1">송금</button><button class="btn" style="background:rgba(255,255,255,.22);color:#fff;flex:1">채우기</button></div></div></div>`;
@@ -2013,10 +2032,14 @@ function renderSignature(sys){
   if(t==='mono')return `<div class="demo"><div style="background:var(--panel);border:1px solid var(--border);border-radius:${R};padding:16px 18px;min-width:320px;font-family:'Roboto Mono',monospace"><div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-strong)"><span style="width:8px;height:8px;border-radius:50%;background:var(--bg-success)"></span>Production · Ready</div><div style="font-size:12px;color:var(--fg-lower);margin-top:10px">▲ deploy · main@a1b2c3d</div><div style="font-size:12px;color:var(--fg-lower)">✓ Build completed in 24s</div><div style="margin-top:12px"><button class="btn btn-primary btn-sm">Visit →</button></div></div></div>`;
   if(t==='hero')return `<div class="demo" style="background:linear-gradient(130deg,var(--bg-primary),var(--fg-point));border:0;border-radius:${R};padding:30px"><div style="color:#fff;max-width:360px"><div style="font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.2">빛나는 제품을<br>더 빠르게 출시하세요</div><div style="font-size:13px;opacity:.9;margin-top:10px">네온 그라디언트와 글로우로 강렬한 첫인상.</div><button class="btn" style="background:#fff;color:var(--bg-primary);margin-top:16px;font-weight:700">시작하기 →</button></div></div>`;
   if(t==='chat')return `<div class="demo col" style="max-width:420px"><div style="display:flex;gap:10px"><div class="avatar" style="width:36px;height:36px">YS</div><div><div style="font-size:13px;font-weight:700;color:var(--fg-strong)">예성빈 <span style="font-weight:400;color:var(--fg-disabled);font-size:11px">오전 9:24</span></div><div style="background:var(--bg-neutral);border-radius:12px;padding:10px 13px;font-size:13.5px;color:var(--fg-strong);margin-top:4px">디자인 시스템 리뷰 오늘 3시에 할까요?</div></div></div><div style="display:flex;gap:10px"><div class="avatar" style="width:36px;height:36px;background:var(--fg-point)">DS</div><div><div style="font-size:13px;font-weight:700;color:var(--fg-strong)">김디에스</div><div style="background:var(--bg-primary);color:#fff;border-radius:12px;padding:10px 13px;font-size:13.5px;margin-top:4px">좋아요 👍</div></div></div></div>`;
+  if(t==='gallery')return `<div class="demo col" style="max-width:520px;gap:14px"><div style="height:8px;background:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37))"></div><div style="display:flex;align-items:flex-end;gap:14px"><div style="font-size:64px;font-weight:300;line-height:.9;letter-spacing:-.04em;color:var(--fg-strong)">01</div><div style="flex:1"><div style="font-size:22px;font-weight:600;letter-spacing:-.02em;color:var(--fg-strong)">Nhà máy · 브랜드 리뉴얼</div><div style="font-size:13px;color:var(--fg-lower);margin-top:4px">Branding · Web · 2026</div></div></div><div style="height:1px;background:var(--border)"></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag" style="border-radius:75px;background:transparent;border:1px solid var(--border);color:var(--fg-lower);font-weight:400">Identity</span><span class="tag" style="border-radius:75px;background:transparent;border:1px solid var(--border);color:var(--fg-lower);font-weight:400">Art Direction</span><span class="tag" style="border-radius:75px;background:transparent;border:1px solid var(--border);color:var(--fg-lower);font-weight:400">Motion</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px"><div style="height:150px;background:var(--bg-neutral);border:1px solid var(--border)"></div><div style="height:150px;background:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37))"></div></div><button class="btn btn-primary" style="align-self:flex-start;border-radius:75px;padding:12px 33px;font-weight:400">View project</button></div>`;
   if(t==='photo')return `<div class="demo"><div style="background:var(--panel);border:1px solid var(--border);border-radius:${R};overflow:hidden;width:260px;box-shadow:var(--shadow-3)"><div style="height:150px;background:linear-gradient(135deg,var(--bg-primary),var(--fg-point))"></div><div style="padding:14px"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:14px;font-weight:700;color:var(--fg-strong)">오션뷰 스테이</div><div style="font-size:13px;color:var(--fg-strong)">★ 4.92</div></div><div style="font-size:12.5px;color:var(--fg-lower);margin-top:2px">제주 · 슈퍼호스트</div><div style="margin-top:8px;font-size:14px;color:var(--fg-strong)"><b>₩182,000</b> <span style="color:var(--fg-lower);font-weight:400">/ 박</span></div></div></div></div>`;
   return '';
 }
 function renderExtra(sys){
+  if(sys.extra.type==='monopo'){
+    return `<h3 class="dt3">이리데센트 그라디언트</h3><p class="dsc">히어로·사례 썸네일·구분선 띄에만 씁니다. 버튼·태그·본문에는 쓰지 않습니다.</p><div style="height:64px;border-radius:0;background:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37))"></div><div class="note" style="margin-top:10px"><code>linear-gradient(90deg, rgb(160,224,171), rgb(255,172,46) 50%, rgb(165,45,37))</code></div><h3 class="dt3">타이포 스케일</h3><table class="dtab"><tr><th>쓰임새</th><th>크기 / 굵기</th><th>자간</th></tr><tr><td>히어로 디스플레이</td><td>clamp(72px, 12vw, 225px) / 300</td><td>-0.04em</td></tr><tr><td>섹션 제목</td><td>clamp(34px, 5vw, 72px) / 400</td><td>-0.03em</td></tr><tr><td>서브·카드 제목</td><td>20~26px / 600</td><td>-0.02em</td></tr><tr><td>본문</td><td>16~18px / 400, 행간 1.6</td><td>0</td></tr><tr><td>캐프션·라벨</td><td>11~13px / 400, 대문자</td><td>0.12em</td></tr><tr><td>제목 강조(Raleway)</td><td>부제목 한 단어에만 400</td><td>0</td></tr></table><h3 class="dt3">공간 규칙</h3><table class="dtab"><tr><th>항목</th><th>값</th></tr><tr><td>기본 단위 / 페이지 폭</td><td>4px / <code>min(1078px, 92vw)</code></td></tr><tr><td>섹션 간격 / 카드 패딩</td><td>46px / 34px</td></tr><tr><td>요소 간격</td><td>14px</td></tr><tr><td>모서리</td><td>버튼·태그 75px / 카드·이미지·입력 0px</td></tr><tr><td>모션</td><td><code>cubic-bezier(0.19, 1, 0.22, 1)</code> 0.8~1.25s</td></tr></table><h3 class="dt3">금지</h3><ul class="dlist"><li>UI 요소에 유채색을 넣지 않습니다. 버튼·링크·태그 모두 무채색입니다.</li><li>그림자를 쓰지 않습니다. 구분은 1px 헤어라인과 여백으로만 합니다.</li><li>카드와 이미지 모서리를 둥글게 만들지 않습니다. 0px을 유지합니다.</li><li>본문 굵기는 400을 넘기지 않습니다. 위계는 크기로 세웁니다.</li></ul>`;
+  }
   if(sys.extra.type==='grid'){
     return `<h3 class="dt3">상태 성분색 (진행 단계)</h3><div class="swatches">${swatch('예정','#F2968F')}${swatch('진행','#7BAAF7')}${swatch('완료','#8FCE96')}${swatch('보류','#A8A9B0')}</div>
     <h3 class="dt3">고밀도 그리드 규칙</h3><table class="dtab">
@@ -2037,7 +2060,7 @@ function renderExtra(sys){
 /* ===================== EXPORT BUILDERS ===================== */
 function aiPrompt(sys){
   const T=allTokens(sys);
-  return `# ${sys.name} — 디자인 시스템 스펙 (AI 코딩용)\n`
+  return `# ${sys.name} · 디자인 시스템 스펙 (AI 코딩용)\n`
       +`아래 토큰만 사용해 UI를 만들어줘. 임의 색/폰트 금지. 라이트/다크 양쪽 지원.\n`
       +`프레임워크: ${sys.framework} · 폰트: ${sys.font}, line-height 150%\n\n`
       +`## 색 램프 (50→950, 테마 공통)\n`
@@ -2079,7 +2102,7 @@ function renderExport(sys){
     body.textContent=JSON.stringify({name:sys.name,theme:theme(),font:sys.font,tokens:T},null,2);
   }else if(exportFmt==='react'){
     body.textContent=
-`// ${sys.name} — 하이브리드 컴포넌트 (Flat + Compound · 공통 primitive)
+`// ${sys.name} · 하이브리드 컴포넌트 (Flat + Compound · 공통 primitive)
 // 토스 TDS 철학: 쉬운 건 Flat, 커스텀은 Compound, 내부는 같은 primitive 한 벌만 관리.
 import React from "react";
 
@@ -2120,7 +2143,7 @@ export function FlatCard({ title, actionLabel, onAction, children }) {
   );
 }
 
-/* Button (Flat) — 시스템 프로파일(모서리·두께) 반영 */
+/* Button (Flat) · 시스템 프로파일(모서리·두께) 반영 */
 export function Button({ variant = "primary", ...p }) {
   const v = {
     primary:   { background:"var(--bg-primary)", color:"#fff" },
@@ -2133,12 +2156,12 @@ export function Button({ variant = "primary", ...p }) {
 }
 
 /* ───────── 사용법 ───────── */
-// ① Flat : 커스텀이 필요 없을 때 — 옵션만 채우면 끝
+// ① Flat : 커스텀이 필요 없을 때 · 옵션만 채우면 끝
 <FlatCard title="월간 리포트" actionLabel="다운로드" onAction={download}>
   이번 달 요약을 확인하세요
 </FlatCard>
 
-// ② Compound : 커스텀이 필요할 때 — 직접 조립
+// ② Compound : 커스텀이 필요할 때 · 직접 조립
 <Card>
   <Card.Header>
     <Card.Title>월간 리포트</Card.Title>
@@ -2189,7 +2212,7 @@ function wireDetail(sys){
     if(b.id==='copyExport'||b.id==='bCopy'||b.id==='toastBtn'||b.id==='ddBtn'||b.id==='rippleBtn') return;
     if(b.hasAttribute('data-open')||b.hasAttribute('data-close')||b.hasAttribute('data-step')) return;
     const t=(b.textContent||'').trim().slice(0,14);
-    if(t) toast(t+' — 데모 버튼입니다');
+    if(t) toast(t+' · 데모 버튼입니다');
   });
   // icons
   renderIcons();
@@ -2198,7 +2221,7 @@ function wireDetail(sys){
   // dropdown
   const dd=$('#ddBtn'),ddm=$('#ddMenu');if(dd)dd.onclick=(e)=>{e.stopPropagation();ddm.classList.toggle('open');};
   document.addEventListener('click',()=>ddm&&ddm.classList.remove('open'),{once:true});
-  // overlays (modal/drawer) — inject once at body
+  // overlays (modal/drawer) · inject once at body
   ensureOverlays();
   scope().querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{const t=b.dataset.open;$('#'+(t==='modal'?'ovModal':'ovDrawer')).classList.add('open');
     if(t==='drawer')$('#ovDrawer').classList.add('open');});
