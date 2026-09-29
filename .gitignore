@@ -1,6 +1,10 @@
 .DS_Store
 Thumbs.db
 _*.py
+_*.js
+_*.html
+_*.json
+_*.md
 chk.js
 aiblock.txt
 tail.txt

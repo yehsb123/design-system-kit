@@ -6,7 +6,7 @@
 <title>사용설명서 · 디자인 시스템 도구</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root,:root[data-ui="light"]{
@@ -86,6 +86,85 @@ td b{color:var(--ui-fg-strong);}
 .qa .q{font-size:14px;font-weight:800;color:var(--ui-fg-strong);}
 .qa .a{font-size:13.5px;color:var(--ui-fg-lower);margin-top:5px;}
 footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);font-size:12px;color:var(--ui-fg-dim);}
+</style>
+</style>
+<!-- monopo skin -->
+<style>
+
+/* ===================== monopo saigon skin =====================
+   무채색 · 알약 75px 대 직각 0px · 그림자 없음 · 헤어라인 1px
+   유채색은 히어로 한 곳에만. 미리보기 영역은 각 시스템 토큰을 그대로 쓴다.
+   ============================================================ */
+:root,:root[data-theme="light"],:root[data-ui="light"]{
+  --ui-canvas:#FFFFFF;--ui-panel:#FFFFFF;--ui-panel-2:#F4F4F4;
+  --ui-fg:#000000;--ui-fg-strong:#000000;--ui-fg-lower:#6D6D6D;--ui-fg-dim:#9A9A9A;
+  --ui-border:#E3E3E3;--ui-border-low:#F0F0F0;--ui-line:#000000;--ui-accent:#000000;
+  --ui-shadow-sm:none;--ui-shadow-md:none;--ui-shadow-lg:none;--ui-sh:none;--ui-sh-md:none;
+  --m-ease:cubic-bezier(.19,1,.22,1);--m-pill:75px;--m-max:1078px;--m-gap:46px;--m-pad:34px;
+}
+:root[data-theme="dark"],:root[data-ui="dark"]{
+  --ui-canvas:#000000;--ui-panel:#000000;--ui-panel-2:#181818;
+  --ui-fg:#FFFFFF;--ui-fg-strong:#FFFFFF;--ui-fg-lower:#9A9A9A;--ui-fg-dim:#6D6D6D;
+  --ui-border:rgba(255,255,255,.22);--ui-border-low:rgba(255,255,255,.12);
+  --ui-line:rgba(255,255,255,.75);--ui-accent:#FFFFFF;
+  --ui-shadow-sm:none;--ui-shadow-md:none;--ui-shadow-lg:none;--ui-sh:none;--ui-sh-md:none;
+}
+body{font-family:"Inter","Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;
+  letter-spacing:-.005em;}
+.mono,.specview,.specta{font-family:"Roboto Mono",ui-monospace,Consolas,monospace;}
+
+/* 로고는 검은 사각형 하나. 그라디언트 마크를 쓰지 않는다. */
+.mk{border-radius:0 !important;background:var(--ui-fg-strong) !important;}
+.logo{font-family:"Inter",Pretendard,sans-serif !important;font-weight:400 !important;
+  letter-spacing:-.02em !important;}
+
+/* 상단 바와 내비. 알약 안에서만 움직인다. */
+.top,.topbar{border-bottom:1px solid var(--ui-border) !important;backdrop-filter:none !important;
+  background:var(--ui-canvas) !important;}
+.appnav{background:transparent !important;border:0 !important;border-radius:0 !important;padding:0 !important;gap:6px !important;}
+.appnav a{border:1px solid transparent !important;border-radius:var(--m-pill) !important;
+  font-weight:400 !important;padding:7px 16px !important;transition:color .4s ease,border-color .4s ease;}
+.appnav a:hover{background:transparent !important;border-color:var(--ui-border) !important;color:var(--ui-fg-strong) !important;}
+.appnav a.on{background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;border-color:transparent !important;}
+
+/* 알약으로 두는 조작부 */
+.tbtn,.filterchip,.iconbtn,.count,.backbtn,.cgo,.gbtn,.gobtn,.pill,.morebtn,.cbtn,.copy,
+.tabs button,.dtabs button,.seg button,.exbtns button,.stats span{
+  border-radius:var(--m-pill) !important;box-shadow:none !important;font-weight:400 !important;}
+.tbtn,.filterchip,.backbtn,.tabs button,.dtabs button,.seg button,.exbtns button{
+  padding:9px 20px !important;transition:color .4s ease,border-color .4s ease,background .4s ease;}
+.filterchip:hover,.tbtn:hover,.backbtn:hover{border-color:var(--ui-line) !important;color:var(--ui-fg-strong) !important;}
+.cgo,.gbtn,.gobtn{background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;
+  border:1px solid var(--ui-fg-strong) !important;padding:11px 33px !important;}
+
+/* 직각으로 두는 면 */
+.card,.panel,.out,.stage,.frame,.search,.searchbar,.composer,.cout,.export,.note,.infobox,
+.dscard,.addcard,.lcard,.rec,.recs>*,.foldbody,.specview,.specta,.rulebox,.myrules,
+.qa,.case,.file,.c,.st,.preview,.gcard,.layprev,.brief,.autoinfo{
+  border-radius:0 !important;box-shadow:none !important;}
+.dscard,.lcard,.rec,.c,.file{transition:border-color .8s var(--m-ease),transform .8s var(--m-ease);}
+.dscard:hover,.lcard:hover,.rec:hover,.c:hover,.file:hover{
+  transform:none !important;border-color:var(--ui-line) !important;}
+.dscard .cover,.dscard .body{border-radius:0 !important;}
+
+/* 제목은 크기로 위계를 세운다. 45px 위로는 굵게 쓰지 않는다. */
+h1,.hero h1,.gtitle{font-family:"Inter",Pretendard,sans-serif !important;font-weight:300 !important;
+  letter-spacing:-.035em !important;line-height:1.06 !important;}
+h2,.sectitle,.dt2{font-weight:400 !important;letter-spacing:-.02em !important;}
+.sectitle,.dt2{font-family:"Inter",Pretendard,sans-serif !important;}
+.en{font-weight:400 !important;color:var(--ui-fg-dim) !important;letter-spacing:.12em !important;
+  text-transform:uppercase !important;font-size:11px !important;}
+
+/* 밑줄 없는 링크. 여백과 색으로만 구분한다. */
+a{text-decoration:none !important;}
+
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;animation-duration:.01ms !important;}}
+
+.wrap{max-width:var(--m-max) !important;}
+h1{font-size:clamp(34px,6vw,78px) !important;}
+.file,.qa,.case{padding:var(--m-pad) !important;border:1px solid var(--ui-border) !important;}
+.ct{font-weight:400 !important;font-size:19px !important;letter-spacing:-.02em !important;}
+.warn,.tip{border-radius:0 !important;}
 </style>
 </head>
 <body>
