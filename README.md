@@ -22,23 +22,23 @@
 
 | | |
 |---|---|
-| **Material 3** · 알약형 버튼, Roboto | **IBM Carbon** · 직각, IBM Plex Sans |
+| **Material 3** 알약형 버튼, Roboto | **IBM Carbon** 직각, IBM Plex Sans |
 | ![Material](docs/screenshots/comp-material.png) | ![Carbon](docs/screenshots/comp-carbon.png) |
-| **Airbnb** · 코랄, 둥근 모서리, Manrope | **Editorial** · 세리프(Playfair), 각진 형태 |
+| **Airbnb** 코랄, 둥근 모서리, Manrope | **Editorial** 세리프(Playfair), 각진 형태 |
 | ![Airbnb](docs/screenshots/comp-airbnb.png) | ![Editorial](docs/screenshots/comp-editorial.png) |
-| **monopo saigon** · 알약 버튼에 직각 카드, Inter | **Toss** · 파랑 프라이머리, Pretendard |
+| **monopo saigon** 알약 버튼에 직각 카드, Inter | **Toss** 파랑 프라이머리, Pretendard |
 | ![monopo](docs/screenshots/comp-monopo.png) | ![Toss](docs/screenshots/comp-toss.png) |
 
 ## 화면 4개
 
 | 파일 | 역할 |
 |---|---|
-| `library.html` | **모음집** · 시스템·레이아웃·구조·규칙을 보관. 맨 위 조립기에서 프롬프트·CLAUDE.md·CSS·컴포넌트를 뽑습니다 |
-| `builder.html` | **조립기** · 브랜드 색 하나로 50~950 램프를 자동 생성해 나만의 시스템을 만듭니다 |
-| `generator.html` | **생성기** · 제품·병원 정보를 넣고 실제 동작하는 HTML 페이지를 만듭니다 |
-| `guide.html` | **사용설명서** · 상황별 사용법과 자주 묻는 질문 |
+| `library.html` | **모음집**. 시스템·레이아웃·구조·규칙을 보관. 맨 위 조립기에서 프롬프트·CLAUDE.md·CSS·컴포넌트를 뽑습니다 |
+| `builder.html` | **조립기**. 브랜드 색 하나로 50~950 램프를 자동 생성해 나만의 시스템을 만듭니다 |
+| `generator.html` | **생성기**. 제품·병원 정보를 넣고 실제 동작하는 HTML 페이지를 만듭니다 |
+| `guide.html` | **사용설명서**. 상황별 사용법과 자주 묻는 질문 |
 
-### 모음집 · 여기서 대부분 끝납니다
+### 모음집에서 대부분 끝납니다
 
 콘텐츠 · 레이아웃 · 디자인 시스템을 고르면 **AI 프롬프트 / CLAUDE.md / CSS 토큰 / 컴포넌트 CSS / Tailwind**가 한자리에서 나옵니다.
 드롭다운 항목에 마우스를 올리면 그 항목의 미리보기가 옆에 뜹니다.
@@ -49,14 +49,14 @@
 
 ![시스템 상세](docs/screenshots/system-detail.png)
 
-### 조립기 · 색 하나로 시스템 만들기
+### 조립기에서 색 하나로 시스템 만들기
 
 브랜드 색을 넣으면 11단계 램프가 자동 계산되고, 폰트·모서리·밀도를 바꾸면 오른쪽 미리보기가 즉시 반영됩니다.
 내보내기에는 **대비(WCAG AA) 검사 결과**가 함께 들어갑니다.
 
 ![조립기](docs/screenshots/builder-clay.png)
 
-### 생성기 · 실제 페이지까지
+### 생성기로 실제 페이지까지
 
 제품명·소개·참고 자료를 붙여넣고 콘텐츠·레이아웃·시스템을 고르면 동작하는 HTML이 만들어집니다.
 데스크톱·태블릿·모바일로 바로 확인하고 파일로 저장할 수 있습니다.
@@ -79,11 +79,11 @@
 
 ## 특징
 
-- **이미지 규격이 화면에 표시됩니다** · 히어로 1920×1080(16:9), 인물 800×800(1:1)처럼 섹션마다 권장 크기가 붙습니다. 이미지는 다른 도구로 만들고 규격만 맞추면 됩니다.
-- **반응형이 기본** · `clamp()`, `min(1200px, 92vw)`, 768px 미만 1열이 생성물과 프롬프트 양쪽에 들어갑니다.
-- **접근성** · 대비(WCAG AA) 자동 계산, `focus-visible` 링, `prefers-reduced-motion` 대응.
-- **프롬프트와 코드가 일치** · 프롬프트에 실제 생성된 CSS가 그대로 포함되어, AI가 같은 결과를 냅니다.
-- **내 규칙 추가** · 직접 넣은 규칙이 모든 출력에 자동 포함되고 브라우저에 저장됩니다.
+- **이미지 규격이 화면에 표시됩니다.** 히어로 1920×1080(16:9), 인물 800×800(1:1)처럼 섹션마다 권장 크기가 붙습니다. 이미지는 다른 도구로 만들고 규격만 맞추면 됩니다.
+- **반응형이 기본입니다.** `clamp()`, `min(1200px, 92vw)`, 768px 미만 1열이 생성물과 프롬프트 양쪽에 들어갑니다.
+- **접근성.** 대비(WCAG AA) 자동 계산, `focus-visible` 링, `prefers-reduced-motion` 대응.
+- **프롬프트와 코드가 일치합니다.** 프롬프트에 실제 생성된 CSS가 그대로 포함되어, AI가 같은 결과를 냅니다.
+- **내 규칙 추가.** 직접 넣은 규칙이 모든 출력에 자동 포함되고 브라우저에 저장됩니다.
 
 ## 실행
 

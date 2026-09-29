@@ -279,7 +279,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
       <label><i>0</i>프로젝트 정보 <span style="font-weight:600;color:var(--ui-fg-dim);margin-left:auto">선택</span></label>
       <input id="bName" placeholder="이름 (예: 루미에르 세라마이드 에센스 / 밝은미소치과)">
       <input id="bTag" placeholder="한 줄 소개 (예: 무너진 장벽을 4주 만에)">
-      <div class="lbl">참고 자료 · 있는 대로 붙여넣으세요 (성분·가격·진료과목·메뉴 등)</div>
+      <div class="lbl">참고 자료. 있는 대로 붙여넣으세요 (성분·가격·진료과목·메뉴 등)</div>
       <div class="exbtns" id="exBtns">
         <button data-ex="beauty">뷰티 예시</button>
         <button data-ex="clinic">병원 예시</button>
@@ -303,10 +303,10 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
     <div class="step">
       <label><i>3</i>레이아웃 배치</label>
       <select class="sel" id="selLayout">
-        <option value="alt">모듈러 그리드 · 좌우 지그재그</option>
-        <option value="stack">단일 열 · 위에서 아래로</option>
-        <option value="center">가운데 정렬 · 좁은 폭</option>
-        <option value="split">Split · 사진 | 글 반반 고정</option>
+        <option value="alt">모듈러 그리드 (좌우 지그재그)</option>
+        <option value="stack">단일 열 (위에서 아래로)</option>
+        <option value="center">가운데 정렬 (좁은 폭)</option>
+        <option value="split">Split (사진과 글 반반 고정)</option>
       </select>
       <div class="layprev" id="layPrev"></div>
       <div class="infobox" id="layInfo"></div>
@@ -491,7 +491,7 @@ const LAYPREV={
       +'<div class="r"><div class="a" style="width:46%"></div><div class="b" style="flex:1"></div></div>',
    n:'지그재그 (모듈러 그리드)',
    c:'행마다 사진과 글이 좌우로 번갈아 놓입니다. 시선이 지그재그로 움직여 스크롤이 지루하지 않습니다.',
-   use:'상세페이지, 기능 소개, 제품 스토리 · <b>이미지가 섹션마다 있을 때</b>',
+   use:'상세페이지, 기능 소개, 제품 스토리. <b>이미지가 섹션마다 있을 때</b>',
    avoid:'이미지가 거의 없을 때. 빈 칸이 생겨 허전해 보입니다',
    ex:'애플 제품 페이지, 올리브영 상세, Linear 기능 소개',
    tip:'이미지는 <b>전부 같은 비율</b>로 맞추세요. 비율이 섞이면 지그재그 리듬이 깨집니다',
@@ -608,13 +608,13 @@ motion?'    [data-rv]{opacity:0;transform:translateY(8px);transition:opacity .5s
   $('#frame').srcdoc=html;
   $('#codeBody').textContent=html;
   $('#promptBody').textContent=prompt(s,lay,secs,css);
-  if(!silent) toast('생성 완료 · '+secs.length+'개 섹션');
+  if(!silent) toast('생성 완료, 섹션 '+secs.length+'개');
 }
 function prompt(s,lay,secs,css){
-  const layName={alt:'모듈러 그리드(좌우 지그재그) · 홀수 행은 이미지 왼쪽, 짝수 행은 오른쪽',
-                 stack:'단일 열 · 위에서 아래로 순서대로',
-                 center:'가운데 정렬 · min(760px,92vw) 좁은 폭, 텍스트 중앙',
-                 split:'Split · 이미지 | 텍스트 반반 고정'}[lay];
+  const layName={alt:'모듈러 그리드(좌우 지그재그). 홀수 행은 이미지 왼쪽, 짝수 행은 오른쪽',
+                 stack:'단일 열. 위에서 아래로 순서대로',
+                 center:'가운데 정렬. min(760px,92vw) 좁은 폭, 텍스트 중앙',
+                 split:'Split. 이미지와 텍스트 반반 고정'}[lay];
   const L=[];
   const b=brief();
   L.push('# '+((b.n&&b.n.trim())||cur.n)+' 제작 요청');
@@ -656,7 +656,7 @@ function prompt(s,lay,secs,css){
     if(i===0) L.push('   - 이 섹션에만 CTA 버튼 2개 (.btn 기본 / .btn2 보조)');
   });
   L.push('');
-  L.push('## 3) 디자인 토큰 · '+s.n+' (아래 CSS를 그대로 사용)');
+  L.push('## 3) 디자인 토큰 '+s.n+' (아래 CSS를 그대로 사용)');
   L.push('```css');
   L.push(css);
   L.push('```');

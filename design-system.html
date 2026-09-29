@@ -20,7 +20,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Design System Kit · 디자인 시스템 도구</title>
+<title>Design System Kit, 디자인 시스템 도구</title>
 <meta name="description" content="디자인 시스템 17종, 레이아웃 22종, 콘텐츠 구조 9종을 보관하고 AI 프롬프트·CLAUDE.md·CSS 토큰·실제 페이지까지 만들어내는 로컬 도구.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -292,7 +292,7 @@ footer{font-size:var(--t-caption) !important;color:var(--ui-fg-dim) !important;}
   <div class="cards">
     <a class="c main" href="library.html">
       <span class="ic">📚</span>
-      <span class="n">모음집 · 여기서 시작하세요</span>
+      <span class="n">모음집에서 시작하세요</span>
       <span class="d">디자인 시스템·레이아웃·콘텐츠 구조·제작 규칙을 보관합니다. 맨 위 조립기에서 <b>AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 CSS · Tailwind</b>를 한 번에 뽑아냅니다.</span>
       <span class="go">열기 →</span>
     </a>
@@ -1081,7 +1081,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
     <div class="cards" id="cards"></div>
 
     <div class="sectitle">업종별 추천 템플릿 <span class="en">By Industry</span></div>
-    <p class="secsub">만들려는 서비스에 어울리는 시작점을 제안합니다. 카드를 누르면 추천 베이스 시스템이 열립니다. (제안용 · 필요 시 새 시스템으로 발전시킬 수 있어요)</p>
+    <p class="secsub">만들려는 서비스에 어울리는 시작점을 제안합니다. 카드를 누르면 추천 베이스 시스템이 열립니다. (제안용입니다. 필요하면 새 시스템으로 발전시킬 수 있습니다)</p>
     <div class="recs" id="recs"></div>
 
     <div class="sectitle">레이아웃 레퍼런스 <span class="en">Layout Patterns</span></div>
@@ -1544,7 +1544,7 @@ Motion is expressive but unhurried — the system treats transitions as slow cam
 >
 <script>
 /* ========================================================================
-   SYSTEMS · 램프(테마 공통) + 시맨틱(라이트/다크) 로 분리해 보관
+   SYSTEMS. 램프(테마 공통) 와 시맨틱(라이트/다크) 을 나눠 보관한다
    ======================================================================== */
 const RAMP_BLUE=[["50","#EEF3FF"],["100","#E5EDFF"],["200","#CBD9FF"],["300","#A3BCFF"],["400","#7396FF"],["500","#4178FF"],["600","#2E5FE6"],["700","#244BC0"],["800","#1F3E9C"],["900","#1E387D"],["950","#16244D"]];
 const RAMP_INDIGO=[["50","#EEF0FE"],["100","#E0E3FD"],["200","#C4C9FB"],["300","#A0A7F7"],["400","#7C82F0"],["500","#4F46E5"],["600","#4338CA"],["700","#3730A3"],["800","#312E81"],["900","#2A2765"],["950","#1B1947"]];
@@ -1876,7 +1876,7 @@ function saveSpec(id,txt){
 }
 function specTitle(id){
   var sys=SYSTEMS.find(function(x){return x.id===id;});
-  return userSpec(id) ? ((sys?sys.name:id)+' — 내 스펙') : (SPECTITLE[id]||((sys?sys.name:id)+' — 원문 스펙'));
+  return userSpec(id) ? ((sys?sys.name:id)+' 내 스펙') : (SPECTITLE[id]||((sys?sys.name:id)+' 원문 스펙'));
 }
 function specBlock(id){
   var t=getSpec(id); if(!t) return '';
@@ -1933,7 +1933,7 @@ const UI={
   slack:   {btnR:"8px", btnW:"700",btnSh:"none",ctlR:"6px",cardR:"12px",padx:"18px",inR:"8px"},
   monopo:  {btnR:"75px",btnW:"400",btnSh:"none",ctlR:"75px",cardR:"0px",padx:"33px",inR:"0px"}
 };
-// 시스템별 아이콘 성격 (굵기·끝처리) · 에셋이 시스템마다 달라 보이게
+// 시스템별 아이콘 성격(굵기와 끝처리). 에셋이 시스템마다 달라 보이게 한다
 const ICONSTYLE={
   toss:{sw:2,cap:"round",join:"round"}, aurora:{sw:2,cap:"round",join:"round"},
   graphite:{sw:1.75,cap:"round",join:"round"}, antd:{sw:1.6,cap:"round",join:"round"},
@@ -2092,12 +2092,12 @@ function wireSvgExport(){
         dl(it[0]+'.svg','<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" '+iconStyleAttrs()+'>'+it[1]+'</svg>','image/svg+xml');
       }, i*120);
     });
-    toast('개별 저장 시작 · 브라우저 다운로드 허용 필요');
+    toast('개별 저장을 시작합니다. 브라우저 다운로드 허용이 필요합니다');
   };
   const rc=$('#svgReact'); if(rc) rc.onclick=function(){
     const st=(curSys&&ICONSTYLE[curSys.id])||{sw:2,cap:'round',join:'round'};
     const paths=ICONS.map(function(it){return "  '"+it[0]+"': `"+it[1]+"`";}).join(',\n');
-    const code='// '+sysName+' 아이콘 세트 · <Icon name="home" size={20} />\n'
+    const code='// '+sysName+' 아이콘 세트. <Icon name="home" size={20} />\n'
       +'const PATHS = {\n'+paths+'\n};\n\n'
       +'export function Icon({ name, size = 24, ...rest }) {\n'
       +'  const d = PATHS[name];\n'
@@ -2117,7 +2117,7 @@ function wireSvgExport(){
       const enc=encodeURIComponent(svg).replace(/'/g,'%27').replace(/"/g,'%22');
       return '.icon-'+it[0]+'{background-image:url("data:image/svg+xml,'+enc+'");}';
     }).join('\n');
-    dl('icons.css','/* '+sysName+' 아이콘 · <i class="icon icon-home"></i> */\n'
+    dl('icons.css','/* '+sysName+' 아이콘. <i class="icon icon-home"></i> */\n'
       +'.icon{display:inline-block;width:24px;height:24px;background-repeat:no-repeat;background-position:center;background-size:contain;}\n'
       +lines+'\n','text/css');
     toast('icons.css 저장됨');
@@ -2249,7 +2249,7 @@ function claudeMd(sys){
   L.push('');
   L.push('이 문서의 규칙을 모든 UI 작업에 항상 적용한다.');
   L.push('');
-  L.push('## 디자인 시스템 · '+sys.name);
+  L.push('## 디자인 시스템 '+sys.name);
   L.push('- 폰트: '+sys.font);
   L.push('- 브랜드: '+T['--bg-primary']+' (연한 '+T['--bg-primary-low']+', 글자 '+T['--fg-primary']+')');
   L.push('- 본문 '+T['--fg']+' / 보조 '+T['--fg-lower']+' / 테두리 '+T['--border']);
@@ -2272,19 +2272,19 @@ function buildCombined(){
   out.push('# '+(pg? pg.name : '페이지')+' 제작 요청');
   out.push('');
   if(pg){
-    out.push('## 1) 콘텐츠 구조 · '+pg.name);
+    out.push('## 1) 콘텐츠 구조 '+pg.name);
     out.push('참고 사이트: '+pg.refs.join(' · '));
     out.push(pg.note);
     out.push('');
     out.push('섹션 순서 (이대로, 각 섹션 앞에 주석):');
     pg.sections.forEach(function(sec,i){
       const sp=imgSpec(sec[0]);
-      out.push((i+1)+'. '+sec[0]+' · '+sec[1]+(sp?'  [이미지: '+sp.label+' '+sp.size+']':''));
+      out.push((i+1)+'. '+sec[0]+'. '+sec[1]+(sp?'  [이미지: '+sp.label+' '+sp.size+']':''));
     });
     out.push('');
-    out.push('## 2) 레이아웃 배치 · '+L[0]);
+    out.push('## 2) 레이아웃 배치 '+L[0]);
   } else {
-    out.push('## 1) 레이아웃 구조 · '+L[0]);
+    out.push('## 1) 레이아웃 구조 '+L[0]);
   }
   out.push(L[1]);
   out.push('- 시맨틱 HTML + CSS Grid/Flex');
@@ -2509,7 +2509,7 @@ function renderComposer(){
   $('#cTabs').onclick=function(e){ const b=e.target.closest('button'); if(!b) return;
     cFmt=b.dataset.f; $('#cTabs').querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);}); upd(); };
   $('#cCopy').onclick=function(){ copy(buildOut(), ({prompt:'프롬프트',claude:'CLAUDE.md',css:'CSS 토큰',comp:'컴포넌트 CSS',tw:'Tailwind',all:'전체'})[cFmt]+' 복사됨'); };
-  $('#cCopyAll').onclick=function(){ copy(buildEverything(),'전체 복사됨 · 프롬프트+규칙+토큰+컴포넌트+Tailwind'); };
+  $('#cCopyAll').onclick=function(){ copy(buildEverything(),'전체 복사됨. 프롬프트, 규칙, 토큰, 컴포넌트, Tailwind'); };
   $('#cDown').onclick=function(){
     const name=({prompt:'prompt.md',claude:'CLAUDE.md',css:'design-tokens.css',comp:'components.css',tw:'tailwind.config.js',all:'design-system-full.md'})[cFmt]||'export.txt';
     const b=new Blob([buildOut()],{type:'text/plain;charset=utf-8'}), a=document.createElement('a');
@@ -2620,7 +2620,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-sig"><h2 class="dt2">시그니처 미리보기 <span class="en">Signature</span></h2>
-    <p class="dsc">이 시스템의 성격이 가장 잘 드러나는 대표 UI입니다 · 같은 토큰이라도 조합·구조가 시스템마다 다릅니다.</p>
+    <p class="dsc">이 시스템의 성격이 가장 잘 드러나는 대표 UI입니다. 같은 토큰이라도 조합과 구조가 시스템마다 다릅니다.</p>
     ${renderSignature(sys)}
   </section>
 
@@ -2795,7 +2795,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-assets"><h2 class="dt2">에셋 <span class="en">Assets</span></h2>
-    <p class="dsc">아이콘·그라디언트·패턴·로고 마크 · 클릭하면 SVG/CSS가 복사됩니다. 전부 시스템 색을 그대로 사용해요.</p>
+    <p class="dsc">아이콘·그라디언트·패턴·로고 마크입니다. 클릭하면 SVG/CSS가 복사됩니다. 전부 시스템 색을 그대로 사용해요.</p>
     <h3 class="dt3">아이콘 48종 · 클릭하면 SVG 복사</h3>
     <div class="icogrid" id="iconGrid"></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
@@ -2840,7 +2840,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-charts"><h2 class="dt2">차트 <span class="en">Charts</span></h2>
-    <p class="dsc">그래프 색 토큰(graph-chart-1~8)과 브랜드 색으로 구성 · 대시보드에 바로 활용.</p>
+    <p class="dsc">그래프 색 토큰(graph-chart-1~8)과 브랜드 색으로 구성합니다. 대시보드에 바로 씁니다.</p>
     <div class="chartrow">
       <div class="chartbox"><div class="ct">막대 · Bar</div>
         <svg class="barsvg" viewBox="0 0 240 100" width="100%" height="120">
@@ -2875,7 +2875,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-formstate"><h2 class="dt2">폼 상태 <span class="en">Form States</span></h2>
-    <p class="dsc">입력 검증 상태 · 기본·포커스·에러·성공·비활성, 헬퍼 텍스트와 필수 표시.</p>
+    <p class="dsc">입력 검증 상태입니다. 기본, 포커스, 에러, 성공, 비활성, 헬퍼 텍스트와 필수 표시.</p>
     <div class="demo">
       <div class="field"><label>이메일<span class="req">*</span></label><input class="input" placeholder="you@example.com"><div class="helper dim">회사 이메일을 입력하세요</div></div>
       <div class="field"><label>포커스</label><input class="input" value="입력 중…" style="outline:2px solid var(--bg-primary);outline-offset:-1px;border-color:var(--bg-primary)"><div class="helper dim">활성 상태</div></div>
@@ -2889,7 +2889,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-fx"><h2 class="dt2">이펙트 · 쇼케이스 <span class="en">Effects</span></h2>
-    <p class="dsc">시스템 색으로 구성한 인터랙션 효과 · 호버·클릭·마우스 이동으로 반응합니다.</p>
+    <p class="dsc">시스템 색으로 구성한 인터랙션 효과입니다. 호버, 클릭, 마우스 이동에 반응합니다.</p>
     <h3 class="dt3">그라디언트 · 샤인 · 리플 · FAB</h3>
     <div class="demo"><button class="fx-grad">Gradient</button><button class="fx-shine">Shine ✨</button><button class="ripplebtn" id="rippleBtn">Ripple</button><button class="fab">+</button></div>
     <h3 class="dt3">그라디언트 텍스트</h3>
@@ -3054,7 +3054,7 @@ function renderExtra(sys){
 /* ===================== EXPORT BUILDERS ===================== */
 function aiPrompt(sys){
   const T=allTokens(sys);
-  return `# ${sys.name} · 디자인 시스템 스펙 (AI 코딩용)\n`
+  return `# ${sys.name} 디자인 시스템 스펙 (AI 코딩용)\n`
       +`아래 토큰만 사용해 UI를 만들어줘. 임의 색/폰트 금지. 라이트/다크 양쪽 지원.\n`
       +`프레임워크: ${sys.framework} · 폰트: ${sys.font}, line-height 150%\n\n`
       +`## 색 램프 (50→950, 테마 공통)\n`
@@ -3098,7 +3098,7 @@ function renderExport(sys){
     body.textContent=JSON.stringify({name:sys.name,theme:theme(),font:sys.font,tokens:T},null,2);
   }else if(exportFmt==='react'){
     body.textContent=
-`// ${sys.name} · 하이브리드 컴포넌트 (Flat + Compound · 공통 primitive)
+`// ${sys.name} 하이브리드 컴포넌트 (Flat + Compound · 공통 primitive)
 // 토스 TDS 철학: 쉬운 건 Flat, 커스텀은 Compound, 내부는 같은 primitive 한 벌만 관리.
 import React from "react";
 
@@ -3139,7 +3139,7 @@ export function FlatCard({ title, actionLabel, onAction, children }) {
   );
 }
 
-/* Button (Flat) · 시스템 프로파일(모서리·두께) 반영 */
+/* Button (Flat). 시스템 프로파일(모서리와 두께) 반영 */
 export function Button({ variant = "primary", ...p }) {
   const v = {
     primary:   { background:"var(--bg-primary)", color:"#fff" },
@@ -3152,12 +3152,12 @@ export function Button({ variant = "primary", ...p }) {
 }
 
 /* ───────── 사용법 ───────── */
-// ① Flat : 커스텀이 필요 없을 때 · 옵션만 채우면 끝
+// ① Flat : 커스텀이 필요 없을 때. 옵션만 채우면 끝
 <FlatCard title="월간 리포트" actionLabel="다운로드" onAction={download}>
   이번 달 요약을 확인하세요
 </FlatCard>
 
-// ② Compound : 커스텀이 필요할 때 · 직접 조립
+// ② Compound : 커스텀이 필요할 때. 직접 조립
 <Card>
   <Card.Header>
     <Card.Title>월간 리포트</Card.Title>
@@ -3237,7 +3237,7 @@ function wireDetail(sys){
     if(b.id==='copyExport'||b.id==='bCopy'||b.id==='toastBtn'||b.id==='ddBtn'||b.id==='rippleBtn') return;
     if(b.hasAttribute('data-open')||b.hasAttribute('data-close')||b.hasAttribute('data-step')) return;
     const t=(b.textContent||'').trim().slice(0,14);
-    if(t) toast(t+' · 데모 버튼입니다');
+    if(t) toast(t+', 데모 버튼입니다');
   });
   // icons
   renderIcons();
@@ -3246,7 +3246,7 @@ function wireDetail(sys){
   // dropdown
   const dd=$('#ddBtn'),ddm=$('#ddMenu');if(dd)dd.onclick=(e)=>{e.stopPropagation();ddm.classList.toggle('open');};
   document.addEventListener('click',()=>ddm&&ddm.classList.remove('open'),{once:true});
-  // overlays (modal/drawer) · inject once at body
+  // overlays (modal/drawer): inject once at body
   ensureOverlays();
   scope().querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{const t=b.dataset.open;$('#'+(t==='modal'?'ovModal':'ovDrawer')).classList.add('open');
     if(t==='drawer')$('#ovDrawer').classList.add('open');});
@@ -3649,13 +3649,13 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
     <div class="grp">
       <label>3. 폰트</label>
       <select class="sel" id="selFont">
-        <option value="pretendard">Pretendard · 한글 기본</option>
-        <option value="inter">Inter · 모던 산세리프</option>
-        <option value="roboto">Roboto · 안드로이드/구글</option>
-        <option value="plex">IBM Plex Sans · 테크니컬</option>
-        <option value="grotesk">Space Grotesk · 개성있는 제목</option>
-        <option value="poppins">Poppins · 둥글고 친근</option>
-        <option value="playfair">Playfair Display · 세리프/매거진</option>
+        <option value="pretendard">Pretendard (한글 기본)</option>
+        <option value="inter">Inter (모던 산세리프)</option>
+        <option value="roboto">Roboto (안드로이드, 구글)</option>
+        <option value="plex">IBM Plex Sans (테크니컬)</option>
+        <option value="grotesk">Space Grotesk (개성있는 제목)</option>
+        <option value="poppins">Poppins (둥글고 친근)</option>
+        <option value="playfair">Playfair Display (세리프, 매거진)</option>
       </select>
     </div>
 
@@ -3907,7 +3907,7 @@ function aiOut(){
   +'- gray: '+grayRamp(S.tone).map(([k,v])=>k+'='+v).join(', ')+'\n\n'
   +'## 모양·밀도\n- 버튼 '+R.btn+' / 카드 '+R.card+' / 입력 '+R.input+' / 태그 '+R.tag+'\n'
   +'- 버튼 패딩 '+D.py+'px '+D.px+'px, 요소 간격 '+D.gap+'px\n\n'
-  +'## 접근성 확인\n- 본문/배경 대비 '+c1+':1 '+(c1>=4.5?'(AA 통과)':'(미달 · 색 조정 필요)')+'\n'
+  +'## 접근성 확인\n- 본문/배경 대비 '+c1+':1 '+(c1>=4.5?'(AA 통과)':'(미달, 색 조정 필요)')+'\n'
   +'- 흰글씨/브랜드색 대비 '+c2+':1 '+(c2>=4.5?'(AA 통과)':'(버튼 글자 어둡게 하거나 브랜드색을 더 어둡게)')+'\n\n'
   +'## 필수 규칙\n'
   +'- 반응형: vw + clamp() 사용, 컨테이너 min(1200px, 92vw), 768px 미만 1열\n'
@@ -3961,7 +3961,7 @@ function save(){ try{
   localStorage.setItem(KEY,JSON.stringify(S));
   localStorage.setItem('my_system',JSON.stringify(exportSystem()));
 }catch(e){} }
-$('#btnSave').onclick=()=>{ save(); toast('저장됨 · 다음에 열면 그대로 복원됩니다'); };
+$('#btnSave').onclick=()=>{ save(); toast('저장되었습니다. 다음에 열면 그대로 복원됩니다'); };
 $('#btnToGen').onclick=()=>{ save(); parent.dsk.go('generator','sys=mine'); };
 try{ const raw=localStorage.getItem(KEY); if(raw) Object.assign(S,JSON.parse(raw)); }catch(e){}
 setPrimary(S.primary); syncSegs(); renderAll();
@@ -4274,7 +4274,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
       <label><i>0</i>프로젝트 정보 <span style="font-weight:600;color:var(--ui-fg-dim);margin-left:auto">선택</span></label>
       <input id="bName" placeholder="이름 (예: 루미에르 세라마이드 에센스 / 밝은미소치과)">
       <input id="bTag" placeholder="한 줄 소개 (예: 무너진 장벽을 4주 만에)">
-      <div class="lbl">참고 자료 · 있는 대로 붙여넣으세요 (성분·가격·진료과목·메뉴 등)</div>
+      <div class="lbl">참고 자료. 있는 대로 붙여넣으세요 (성분·가격·진료과목·메뉴 등)</div>
       <div class="exbtns" id="exBtns">
         <button data-ex="beauty">뷰티 예시</button>
         <button data-ex="clinic">병원 예시</button>
@@ -4298,10 +4298,10 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
     <div class="step">
       <label><i>3</i>레이아웃 배치</label>
       <select class="sel" id="selLayout">
-        <option value="alt">모듈러 그리드 · 좌우 지그재그</option>
-        <option value="stack">단일 열 · 위에서 아래로</option>
-        <option value="center">가운데 정렬 · 좁은 폭</option>
-        <option value="split">Split · 사진 | 글 반반 고정</option>
+        <option value="alt">모듈러 그리드 (좌우 지그재그)</option>
+        <option value="stack">단일 열 (위에서 아래로)</option>
+        <option value="center">가운데 정렬 (좁은 폭)</option>
+        <option value="split">Split (사진과 글 반반 고정)</option>
       </select>
       <div class="layprev" id="layPrev"></div>
       <div class="infobox" id="layInfo"></div>
@@ -4486,7 +4486,7 @@ const LAYPREV={
       +'<div class="r"><div class="a" style="width:46%"></div><div class="b" style="flex:1"></div></div>',
    n:'지그재그 (모듈러 그리드)',
    c:'행마다 사진과 글이 좌우로 번갈아 놓입니다. 시선이 지그재그로 움직여 스크롤이 지루하지 않습니다.',
-   use:'상세페이지, 기능 소개, 제품 스토리 · <b>이미지가 섹션마다 있을 때</b>',
+   use:'상세페이지, 기능 소개, 제품 스토리. <b>이미지가 섹션마다 있을 때</b>',
    avoid:'이미지가 거의 없을 때. 빈 칸이 생겨 허전해 보입니다',
    ex:'애플 제품 페이지, 올리브영 상세, Linear 기능 소개',
    tip:'이미지는 <b>전부 같은 비율</b>로 맞추세요. 비율이 섞이면 지그재그 리듬이 깨집니다',
@@ -4603,13 +4603,13 @@ motion?'    [data-rv]{opacity:0;transform:translateY(8px);transition:opacity .5s
   $('#frame').srcdoc=html;
   $('#codeBody').textContent=html;
   $('#promptBody').textContent=prompt(s,lay,secs,css);
-  if(!silent) toast('생성 완료 · '+secs.length+'개 섹션');
+  if(!silent) toast('생성 완료, 섹션 '+secs.length+'개');
 }
 function prompt(s,lay,secs,css){
-  const layName={alt:'모듈러 그리드(좌우 지그재그) · 홀수 행은 이미지 왼쪽, 짝수 행은 오른쪽',
-                 stack:'단일 열 · 위에서 아래로 순서대로',
-                 center:'가운데 정렬 · min(760px,92vw) 좁은 폭, 텍스트 중앙',
-                 split:'Split · 이미지 | 텍스트 반반 고정'}[lay];
+  const layName={alt:'모듈러 그리드(좌우 지그재그). 홀수 행은 이미지 왼쪽, 짝수 행은 오른쪽',
+                 stack:'단일 열. 위에서 아래로 순서대로',
+                 center:'가운데 정렬. min(760px,92vw) 좁은 폭, 텍스트 중앙',
+                 split:'Split. 이미지와 텍스트 반반 고정'}[lay];
   const L=[];
   const b=brief();
   L.push('# '+((b.n&&b.n.trim())||cur.n)+' 제작 요청');
@@ -4651,7 +4651,7 @@ function prompt(s,lay,secs,css){
     if(i===0) L.push('   - 이 섹션에만 CTA 버튼 2개 (.btn 기본 / .btn2 보조)');
   });
   L.push('');
-  L.push('## 3) 디자인 토큰 · '+s.n+' (아래 CSS를 그대로 사용)');
+  L.push('## 3) 디자인 토큰 '+s.n+' (아래 CSS를 그대로 사용)');
   L.push('```css');
   L.push(css);
   L.push('```');
@@ -5020,7 +5020,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
   <h2>1. 가장 많이 쓰는 3가지 상황</h2>
 
   <div class="case">
-    <div class="ct">상황 A · AI(클로드 코드)에게 화면을 시킬 때</div>
+    <div class="ct">상황 A. AI(클로드 코드)에게 화면을 시킬 때</div>
     <div class="cw">가장 흔한 경우 · 소요 30초</div>
     <ol>
       <li><b>모음집</b>을 엽니다.</li>
@@ -5033,7 +5033,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
   </div>
 
   <div class="case">
-    <div class="ct">상황 B · 프로젝트에 규칙을 심어둘 때</div>
+    <div class="ct">상황 B. 프로젝트에 규칙을 심어둘 때</div>
     <div class="cw">한 번만 해두면 계속 적용 · 소요 1분</div>
     <ol>
       <li>모음집 조립기에서 쓸 <b>디자인 시스템</b>을 고릅니다.</li>
@@ -5047,7 +5047,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
   </div>
 
   <div class="case">
-    <div class="ct">상황 C · 고객이 브랜드 색을 줬을 때</div>
+    <div class="ct">상황 C. 고객이 브랜드 색을 줬을 때</div>
     <div class="cw">숨고·외주 견적에 특히 유용 · 소요 2분</div>
     <ol>
       <li><b>조립기</b>를 엽니다.</li>
@@ -5121,7 +5121,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
     <div class="a">조립기로 만들어 저장하면 생성기에서 쓸 수 있습니다. 모음집 카드로 영구 등록하려면 파일의 <code>SYSTEMS</code> 배열에 항목을 추가하면 됩니다.</div></div>
 
   <div class="warn"><span class="th">지키는 원칙</span>
-    보라·바이올렛 강조색, 왼쪽에 굵은 선이 붙은 인용 카드, 이모지 남발 · 생성형 AI 티가 나는 패턴은 규칙에서 <b>금지</b>로 넣어두었습니다. 프롬프트에도 자동 포함됩니다.</div>
+    보라·바이올렛 강조색, 왼쪽에 굵은 선이 붙은 인용 카드, 이모지 남발은 생성형 AI 티가 나는 패턴입니다. 이런 패턴은 규칙에서 <b>금지</b>로 넣어두었습니다. 프롬프트에도 자동 포함됩니다.</div>
 
   <footer>디자인 시스템 도구 · 로컬 HTML 4개 · 설치 불필요 · 인터넷은 폰트 로딩에만 사용</footer>
 </div>

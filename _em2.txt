@@ -1,0 +1,9 @@
+(x){return x.id===id;});
+  return userSpec(id) ? ((sys?sys.name:id)+' — 내 스펙') : (SPECTITLE[id]||((sys?sys.name:id)+' — 원문 스펙'));
+}
+function 
+
+ ((sys?sys.name:id)+' — 내 스펙') : (SPECTITLE[id]||((sys?sys.name:id)+' — 원문 스펙'));
+}
+function specBlock(id){
+  var t=getSpec(id); if(!t) retur
