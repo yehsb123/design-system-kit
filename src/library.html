@@ -497,180 +497,15 @@ table.dtab code{font-family:"Roboto Mono",monospace;font-size:12px;background:va
 footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);font-size:12px;color:var(--ui-fg-dim);}
 @media(max-width:640px){.wrap{padding:22px 16px 70px;}.topbar{padding:12px 16px;}}
 </style>
-<!-- monopo skin -->
-<style>
-
-/* ================= monopo saigon skin =================
-   토큰 원본: refero 추출본 (monopo.vn)
-   무채색만 · 버튼/태그 75px · 카드/이미지/입력 0px
-   그림자 없음 · 1px 헤어라인 · 45px 위로는 굵게 쓰지 않음
-   유채색은 페이지당 히어로 한 곳에만
-   ====================================================== */
-:root{
-  --obsidian:#000000;--paper:#ffffff;--inkstone:#181818;
-  --felt-gray:#6d6d6d;--slate-pill:#636363;--ash-mist:#9a9a9a;--pewter:#808080;
-  --iridescent:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37));
-
-  --sp-8:8px;--sp-12:12px;--sp-28:28px;--sp-40:40px;--sp-48:48px;
-  --sp-64:64px;--sp-68:68px;--sp-152:152px;
-  --page-max:1078px;--section-gap:46px;--card-pad:34px;--el-gap:14px;
-
-  --r-pill:75px;--r-flat:0px;
-  --ease:cubic-bezier(.19,1,.22,1);
-
-  /* 타이포 스케일. 제목 행간은 스펙 값, 본문은 한글에 맞춰 연다. */
-  --t-eyebrow:11px; --lh-eyebrow:1.36;
-  --t-caption:12px; --lh-caption:1.5;
-  --t-small:14px;   --lh-small:1.6;
-  --t-body:16px;    --lh-body:1.6;
-  --t-lead:18px;    --lh-lead:1.6;
-  --t-card:20px;    --lh-card:1.35;
-  --t-sub:29px;     --lh-sub:1.3;
-  --t-sec:39px;     --lh-sec:1.19;
-  --t-head:78px;    --lh-head:1.1;
-}
-:root,:root[data-theme="light"],:root[data-ui="light"]{
-  --ui-canvas:var(--paper);--ui-panel:var(--paper);--ui-panel-2:#F4F4F4;
-  --ui-fg:var(--obsidian);--ui-fg-strong:var(--obsidian);
-  --ui-fg-lower:var(--felt-gray);--ui-fg-dim:var(--ash-mist);
-  --ui-border:#E3E3E3;--ui-border-low:#F0F0F0;--ui-line:var(--obsidian);--ui-accent:var(--obsidian);
-  --ui-shadow-sm:none;--ui-shadow-md:none;--ui-shadow-lg:none;--ui-sh:none;--ui-sh-md:none;
-}
-:root[data-theme="dark"],:root[data-ui="dark"]{
-  --ui-canvas:var(--obsidian);--ui-panel:var(--obsidian);--ui-panel-2:var(--inkstone);
-  --ui-fg:var(--paper);--ui-fg-strong:var(--paper);
-  --ui-fg-lower:var(--ash-mist);--ui-fg-dim:var(--felt-gray);
-  --ui-border:rgba(255,255,255,.22);--ui-border-low:rgba(255,255,255,.12);
-  --ui-line:rgba(255,255,255,.75);--ui-accent:var(--paper);
-  --ui-shadow-sm:none;--ui-shadow-md:none;--ui-shadow-lg:none;--ui-sh:none;--ui-sh-md:none;
-}
-
-/* ---- 바탕 ---- */
-body{font-family:"Inter","Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif !important;
-  font-size:var(--t-body) !important;line-height:var(--lh-body) !important;
-  letter-spacing:-.005em;word-break:keep-all;}
-.mono,.specview,.specta,code,pre{font-family:"Roboto Mono",ui-monospace,Consolas,monospace !important;}
-a{text-decoration:none !important;}
-
-/* 이모지는 이 시스템에 없는 유채색이다. 회색으로 낮춰 글리프처럼 쓴다. */
-.appnav a,.tbtn,.cgo,.gbtn,.gobtn,.filterchip,.tabs button,.dtabs button,.iconbtn,
-.copy,.ic,.em,.fd,.search,.searchbar,.morebtn,.cbtn,.exbtns button,.file,.st .t{
-  -webkit-font-feature-settings:normal;}
-.appnav a::first-letter,.tbtn::first-letter{}
-.ic,.em,.appnav a,.tbtn,.cgo,.filterchip,.tabs button,.dtabs button,.copy,.search>:first-child,
-.exbtns button,.gbtn,.gobtn,.morebtn{filter:grayscale(1);}
-
-/* ---- 제목 위계 ---- */
-h1,.hero h1{font-weight:300 !important;font-size:clamp(34px,5.4vw,var(--t-head)) !important;
-  line-height:var(--lh-head) !important;letter-spacing:-.035em !important;
-  text-wrap:balance;margin:0 0 var(--sp-28) !important;color:var(--ui-fg-strong) !important;}
-h2,.sectitle,.dt2,.gtitle{font-weight:400 !important;font-size:var(--t-sub) !important;
-  line-height:var(--lh-sub) !important;letter-spacing:-.025em !important;text-wrap:balance;}
-h3,.dt3,.dscard h3,.c .n,.st .t,.ct{font-weight:400 !important;font-size:var(--t-card) !important;
-  line-height:var(--lh-card) !important;letter-spacing:-.02em !important;}
-.lead,.hero p,.csub,.secsub,.dsc{font-size:var(--t-small) !important;line-height:var(--lh-small) !important;
-  color:var(--ui-fg-lower) !important;max-width:74ch !important;}
-.en{font-size:var(--t-eyebrow) !important;line-height:var(--lh-eyebrow) !important;font-weight:400 !important;
-  letter-spacing:.14em !important;text-transform:uppercase !important;color:var(--ui-fg-dim) !important;}
-/* 본문 강조는 굵기 대신 색으로 준다. 이 시스템은 본문 굵기를 400 위로 올리지 않는다. */
-.lead b,.lead strong,.hero p b,.csub b,.secsub b,.dsc b,.dsc strong,.c .d b,.st .d b{
-  font-weight:400 !important;color:var(--ui-fg-strong) !important;}
-/* 45px 위로는 굵게 쓰지 않는다 */
-h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
-
-/* ---- 상단 바 ---- */
-.top,.topbar{border-bottom:1px solid var(--ui-border) !important;background:var(--ui-canvas) !important;
-  backdrop-filter:none !important;padding:var(--sp-12) var(--sp-28) !important;}
-.mk{border-radius:0 !important;background:var(--ui-fg-strong) !important;width:20px !important;height:20px !important;}
-.logo{font-weight:400 !important;font-size:var(--t-body) !important;letter-spacing:-.02em !important;}
-.appnav{background:transparent !important;border:0 !important;border-radius:0 !important;
-  padding:0 !important;gap:var(--sp-8) !important;}
-.appnav a{border:1px solid transparent !important;border-radius:var(--r-pill) !important;
-  font-weight:400 !important;font-size:var(--t-small) !important;padding:7px 16px !important;
-  color:var(--ui-fg-lower) !important;transition:color .4s ease,border-color .4s ease;}
-.appnav a:hover{background:transparent !important;border-color:var(--ui-border) !important;
-  color:var(--ui-fg-strong) !important;}
-.appnav a.on{background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;
-  border-color:transparent !important;}
-
-/* ---- 조작부. 알약은 행동에만 쓴다. ---- */
-.tbtn,.filterchip,.backbtn,.tabs button,.dtabs button,.seg button,.exbtns button,.morebtn,.cbtn{
-  border-radius:var(--r-pill) !important;box-shadow:none !important;
-  font-weight:400 !important;font-size:var(--t-small) !important;padding:9px 20px !important;
-  background:transparent !important;border:1px solid var(--ui-border) !important;
-  color:var(--ui-fg-lower) !important;
-  transition:color .4s ease,border-color .4s ease,background .4s ease;}
-.tbtn:hover,.filterchip:hover,.backbtn:hover,.tabs button:hover,.dtabs button:hover{
-  border-color:var(--ui-line) !important;color:var(--ui-fg-strong) !important;}
-.filterchip.on,.tabs button.on,.dtabs button.on,.seg button.on,.appnav a.on{
-  background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;border-color:transparent !important;}
-.cgo,.gbtn,.gobtn{border-radius:var(--r-pill) !important;box-shadow:none !important;
-  background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;
-  border:1px solid var(--ui-fg-strong) !important;font-weight:400 !important;
-  font-size:var(--t-body) !important;padding:11px 33px !important;}
-.iconbtn{border-radius:var(--r-pill) !important;box-shadow:none !important;
-  width:36px !important;height:36px !important;border:1px solid var(--ui-border) !important;
-  background:transparent !important;}
-/* 어두운 코드 상자 위의 복사 버튼. 유채색을 쓰지 않는다. */
-.copy{border-radius:var(--r-pill) !important;background:var(--paper) !important;color:var(--obsidian) !important;
-  border:1px solid var(--paper) !important;font-weight:400 !important;font-size:var(--t-caption) !important;
-  padding:7px 16px !important;box-shadow:none !important;}
-
-/* ---- 태그는 고스트 알약 ---- */
-.pill,.count,.stats span{border-radius:var(--r-pill) !important;background:transparent !important;
-  border:1px solid var(--ui-border) !important;color:var(--ui-fg-lower) !important;
-  font-weight:400 !important;font-size:var(--t-caption) !important;padding:5px 14px !important;
-  box-shadow:none !important;}
-
-/* ---- 면은 직각, 그림자 없음 ---- */
-.card,.panel,.out,.stage,.frame,.search,.searchbar,.composer,.cout,.export,.note,.infobox,
-.dscard,.addcard,.lcard,.rec,.foldbody,.specview,.specta,.rulebox,.myrules,.qa,.case,.file,
-.c,.st,.preview,.gcard,.layprev,.brief,.autoinfo,.cwrap,.selectbox,.sel,.step,.dsec,.warn,.tip{
-  border-radius:0 !important;box-shadow:none !important;}
-.search,.searchbar,.cwrap,.selectbox,.sel{border:1px solid var(--ui-border) !important;}
-.dscard,.lcard,.rec,.c,.file,.qa,.case{border:1px solid var(--ui-border) !important;
-  transition:border-color .8s var(--ease);}
-.dscard:hover,.lcard:hover,.rec:hover,.c:hover,.file:hover{
-  transform:none !important;border-color:var(--ui-line) !important;}
-.export,.cout{background:var(--obsidian) !important;color:var(--paper) !important;}
-
-/* ---- 간격 ---- */
-.wrap{max-width:var(--page-max) !important;}
-.sectitle{margin-top:var(--section-gap) !important;}
-.cards,.steps,.recs,.lwrap{gap:var(--el-gap) !important;}
-
-@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;animation-duration:.01ms !important;}}
-@media(max-width:768px){
-  :root{--card-pad:20px;--section-gap:32px;}
-  .top,.topbar{padding:10px 16px !important;}
-}
-
-.composer{padding:var(--card-pad) !important;border:1px solid var(--ui-border) !important;}
-.dscard .body{padding:var(--card-pad) !important;}
-.dscard .desc{font-size:var(--t-small) !important;line-height:var(--lh-small) !important;}
-.backbar{border-bottom:1px solid var(--ui-border) !important;}
-/* 구분은 1px 헤어라인만 쓴다. 굵은 줄을 두지 않는다. */
-.dhead,.crumbs,.refbar,.dnav{border-bottom-width:1px !important;border-bottom-color:var(--ui-border) !important;}
-.dscard .cover{border-bottom:1px solid var(--ui-border) !important;}
-.dsec{border-top:1px solid var(--ui-border) !important;padding-top:var(--section-gap) !important;
-  margin-top:var(--section-gap) !important;}
-.dtabs{gap:var(--sp-8) !important;}
-.grouphint{font-size:var(--t-caption) !important;color:var(--ui-fg-lower) !important;}
-.specbar .filterchip{padding:8px 18px !important;}
-.specview{background:var(--ui-panel-2) !important;color:var(--ui-fg-lower) !important;
-  border:1px solid var(--ui-border) !important;font-size:var(--t-caption) !important;}
-/* 미리보기 안쪽은 각 시스템 토큰이 지배한다. 셸 규칙을 물린다. */
-#detail .demo,#detail .demo *,#sview .demo,#sview .demo *{
-  border-radius:revert;filter:none;font-family:revert;font-size:revert;line-height:revert;}
-</style>
+<link rel="stylesheet" href="kit.css">
 </head>
 <body>
 
 <div class="topbar">
   <div class="logo" onclick="showCatalog()"><span class="mk"></span>디자인 시스템 <span class="dim">모음집</span></div>
-  <nav class="appnav"><a href="library.html" class="on">📚<span>모음집</span></a><a href="builder.html">🎛<span>조립기</span></a><a href="generator.html">⚡<span>생성기</span></a><a href="guide.html">📖<span>설명서</span></a></nav><div class="spacer"></div>
+  <nav class="appnav"><a href="library.html" class="on"><span>모음집</span></a><a href="builder.html"><span>조립기</span></a><a href="generator.html"><span>생성기</span></a><a href="guide.html"><span>설명서</span></a></nav><div class="spacer"></div>
   <span class="count" id="count"></span>
-  <button class="iconbtn" id="themeBtn" title="라이트/다크 전환">◐</button>
+  <button class="iconbtn" id="themeBtn" title="라이트와 다크 전환">테마</button>
 </div>
 
 <div class="wrap">
@@ -682,7 +517,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
     </div>
     <div class="composer">
       <h3>프롬프트 조립기</h3>
-      <div class="csub">콘텐츠 + 레이아웃 + 디자인시스템을 고르면 <b>AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 · Tailwind</b>를 한자리에서 뽑습니다. <span style="color:var(--ui-accent);font-weight:700">드롭다운에 마우스를 올리면 미리보기가 뜹니다.</span></div>
+      <div class="csub">콘텐츠 + 레이아웃 + 디자인시스템을 고르면 <b>AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 · Tailwind</b>를 한자리에서 뽑습니다. <span style="color:var(--ui-fg-strong)">드롭다운에 마우스를 올리면 미리보기가 뜹니다.</span></div>
       <div class="crow">
         <div class="cfield"><label>1. 콘텐츠 (무엇을 만드나)</label><div class="cwrap" id="wPage"><select id="cPage"></select></div></div>
         <div class="cfield"><label>2. 레이아웃 (구조)</label><div class="cwrap" id="wLayout"><select id="cLayout"></select></div></div>
@@ -694,20 +529,20 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
         <button data-f="css">CSS 토큰</button>
         <button data-f="comp">컴포넌트 CSS</button>
         <button data-f="tw">Tailwind</button>
-        <button data-f="spec">📄 원문 스펙</button>
-        <button data-f="all">📦 전체</button>
+        <button data-f="spec">원문 스펙</button>
+        <button data-f="all">전체</button>
       </div>
       <div class="cout" id="cOut"></div>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-        <button class="cgo" id="cCopyAll">📦 전체 복사 (프롬프트+규칙+토큰+컴포넌트)</button>
-        <button class="filterchip" id="cCopy">📋 현재 탭만 복사</button>
-        <button class="filterchip" id="cDown">⬇ 파일로 저장</button>
-        <a class="filterchip" href="generator.html" style="text-decoration:none;display:inline-block">⚡ 실제 페이지까지 만들기 →</a>
+        <button class="cgo" id="cCopyAll">전체 복사 (프롬프트+규칙+토큰+컴포넌트)</button>
+        <button class="filterchip" id="cCopy">현재 탭만 복사</button>
+        <button class="filterchip" id="cDown">파일로 저장</button>
+        <a class="filterchip" href="generator.html" style="text-decoration:none;display:inline-block">실제 페이지까지 만들기</a>
       </div>
     </div>
 
     <div class="searchrow">
-      <div class="search">🔍<input id="searchInput" placeholder="시스템 이름·설명 검색"></div>
+      <div class="search"><input id="searchInput" placeholder="시스템 이름·설명 검색"></div>
     </div>
     <div class="searchrow" id="filters" style="margin-top:-8px"></div>
     <div class="cards" id="cards"></div>
@@ -727,46 +562,46 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
     <div class="sectitle">제작 규칙 <span class="en">Rules</span></div>
     <p class="secsub">모든 산출물에 공통으로 적용하는 규칙. <b>조립기 프롬프트에 자동으로 포함</b>되며, 아래 버튼으로 규칙만 따로 복사해 CLAUDE.md 등에 넣을 수도 있어요.</p>
     <div class="rulegrid">
-      <div class="rulebox"><h4>📐 반응형</h4><ul>
+      <div class="rulebox"><h4>반응형</h4><ul>
         <li>여백·타이포는 <b>vw + clamp()</b> 사용</li>
         <li>컨테이너 <b>width: min(1200px, 92vw)</b></li>
         <li>브레이크포인트 1280 / 1024 / 768 / 480</li>
         <li>768 미만에서 모든 다단은 <b>1열로</b></li>
         <li>터치 타겟 최소 44×44px</li></ul></div>
-      <div class="rulebox"><h4>🖼 이미지</h4><ul>
+      <div class="rulebox"><h4>이미지</h4><ul>
         <li><b>WebP</b> 저장, 200KB 이하</li>
         <li><b>width:100% + aspect-ratio</b>로 비율 고정</li>
         <li>같은 줄의 이미지는 비율 통일</li>
         <li>텍스트 얹힐 자리는 비워둘 것</li></ul></div>
-      <div class="rulebox"><h4>♿ 접근성</h4><ul>
+      <div class="rulebox"><h4>접근성</h4><ul>
         <li>focus-visible <b>2px 링</b> 필수</li>
         <li>본문 대비 <b>4.5:1</b> 이상 (AA)</li>
         <li>아이콘 버튼은 <b>aria-label</b></li>
         <li>prefers-reduced-motion 대응</li></ul></div>
-      <div class="rulebox ban"><h4>🚫 금지 (AI 슬롭)</h4><ul>
+      <div class="rulebox ban"><h4>금지 (AI 슬롭)</h4><ul>
         <li><b>보라/바이올럿 강조색</b> 금지</li>
         <li><b>border-left 굵은 인용카드</b> 금지</li>
-        <li>보라→핑크 그라디언트 히어로 금지</li>
+        <li>보라에서 핑크로 가는 그라디언트 히어로 금지</li>
         <li>이모지 남발 콜아웃 금지</li>
         <li>임의 색·폰트 사용 금지 (토큰만)</li></ul></div>
-      <div class="rulebox mine"><h4>✏️ 내 규칙 <span id="myCount" style="font-weight:600;color:var(--ui-fg-dim)"></span></h4>
+      <div class="rulebox mine"><h4>내 규칙 <span id="myCount" style="color:var(--ui-fg-dim)"></span></h4>
         <ul class="myrules" id="myRules"></ul>
         <div class="ruleadd"><input id="ruleInput" placeholder="예: 폰트는 Pretendard만 사용" maxlength="120"><button id="ruleAdd">+ 추가</button></div>
         <div class="rulechips" id="ruleChips"></div>
       </div>
     </div>
-    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"><button class="cgo" id="ruleCopy">📋 규칙만 복사 (CLAUDE.md용)</button><button class="filterchip" id="ruleReset">내 규칙 비우기</button></div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"><button class="cgo" id="ruleCopy">규칙만 복사 (CLAUDE.md용)</button><button class="filterchip" id="ruleReset">내 규칙 비우기</button></div>
   </div>
 
   <div class="sview" id="sview">
-    <div class="backbar"><button class="backbtn" onclick="showCatalog()">← 모음집으로</button><span class="pill" id="svKind"></span></div>
+    <div class="backbar"><button class="backbtn" onclick="showCatalog()">모음집으로</button><span class="pill" id="svKind"></span></div>
     <div class="dhead"><h1 id="svTitle"></h1><div class="sub" id="svNote"></div><div class="refbar" id="svRefs"></div></div>
     <div id="svBody"></div>
   </div>
 
   <!-- DETAIL -->
   <div class="detail" id="detail">
-    <div class="backbar"><button class="backbtn" onclick="showCatalog()">← 모음집으로</button><span class="pill" id="dCrumb"></span></div>
+    <div class="backbar"><button class="backbtn" onclick="showCatalog()">모음집으로</button><span class="pill" id="dCrumb"></span></div>
     <div class="dhead"><h1 id="dTitle"></h1><div class="sub" id="dSub"></div><div class="meta" id="dMeta"></div></div>
     <div class="dtabs" id="dTabs"></div>
     <div class="grouphint" id="dHint"></div>
@@ -1224,7 +1059,7 @@ function graphTokens(theme){const arr=theme==='dark'
   :["#4178FF","#00CCC2","#7BAAF7","#8FCE96","#F2968F","#A78BFA","#FDBA74","#F472B6"];
   const out={};arr.forEach((c,i)=>out[`--graph-chart-${i+1}`]=c);return out;}
 
-// ---- makeSem: 램프(50→950)만 주면 라이트/다크 시맨틱을 자동 생성 ----
+// ---- makeSem: 램프(50-950)만 주면 라이트/다크 시맨틱을 자동 생성 ----
 function makeSem(R){
   const P=Object.fromEntries(R.primary),G=Object.fromEntries(R.gray),S=Object.fromEntries(R.success),W=Object.fromEntries(R.warning),E=Object.fromEntries(R.error),I=Object.fromEntries(R.info);
   const light={
@@ -1369,7 +1204,7 @@ mkSystem({
 }),
 mkSystem({
   id:"neon",name:"Neon",cat:"랜딩",font:"Space Grotesk",framework:"Next.js · Landing",point:"#22D3EE",
-  desc:"다크 우선 네온 랜딩/마케팅 템플릿. 바이올렛→시안 그라디언트와 글로우 이펙트가 핵심.",
+  desc:"다크 우선 네온 랜딩/마케팅 템플릿. 바이올렛에서 시안으로 가는 그라디언트와 글로우 이펙트가 핵심.",
   cover:["#7C4DFF","#22D3EE","#F5155F","#0F1018"],hasChart:true,radius:{xs:"8px",sm:"12px",md:"16px",lg:"22px"},
   ramps:{
     primary:[["50","#F3F0FF"],["100","#E9E3FF"],["200","#D4C6FF"],["300","#B69EFF"],["400","#9A75FF"],["500","#7C4DFF"],["600","#6A2EF5"],["700","#5A1FD9"],["800","#4A1AAF"],["900","#3A1785"],["950","#240E52"]],
@@ -1460,7 +1295,7 @@ mkSystem({
 }),
 mkSystem({
   id:"slack",name:"Slack",cat:"협업",font:"Pretendard",framework:"React · Electron",point:"#36C5F0",
-  desc:"오버진(플럼) 브랜드의 협업 메신저 시스템. 플럼→시안 포인트로 채널·스레드 UI에 적합.",
+  desc:"오버진(플럼) 브랜드의 협업 메신저 시스템. 플럼에서 시안으로 가는 포인트로 채널·스레드 UI에 적합.",
   cover:["#4A154B","#36C5F0","#2BAC76","#1A1A1D"],hasChart:true,radius:{xs:"4px",sm:"8px",md:"10px",lg:"16px"},
   ramps:{
     primary:[["50","#F7EFF8"],["100","#EDD8EF"],["200","#DBB2DF"],["300","#C583CB"],["400","#A94FB2"],["500","#8A2E95"],["600","#6E2277"],["700","#571C5E"],["800","#4A154B"],["900","#33103A"],["950","#1E0A22"]],
@@ -1629,18 +1464,18 @@ function renderCatalog(){
   }).join('')+`<div class="addcard"><div class="plus">+</div><div>새 시스템 추가<br><span style="font-size:11.5px">코드의 <b>SYSTEMS</b> 배열에 객체 하나</span></div></div>`;
 }
 const RECS=[
-  {em:"🏥",t:"병원·헬스케어",d:"신뢰감 있는 블루/민트, 큰 글자와 여백, 예약·문진 폼 중심",b:"mobile"},
-  {em:"🏦",t:"금융·핀테크",d:"명료한 그레이 스케일과 토스 블루, 숫자 가독성 우선",b:"toss"},
-  {em:"🎓",t:"교육·이러닝",d:"밝고 둥근 카드, 진도·뱃지 등 동기부여 요소",b:"playful"},
-  {em:"🛒",t:"이커머스",d:"상품·장바구니·결제 흐름에 최적화된 커머스 시스템",b:"polaris"},
-  {em:"🏛",t:"정부·공공",d:"명확함과 접근성(대비·키보드) 최우선, 절제된 톤",b:"carbon"},
-  {em:"📰",t:"뉴스·미디어",d:"세리프 타이포와 고대비, 읽기 중심 에디토리얼",b:"editorial"},
-  {em:"🍽",t:"레스토랑·카페",d:"따뜻한 톤과 세리프 제목, 메뉴·예약 강조",b:"editorial"},
-  {em:"💪",t:"피트니스·스포츠",d:"에너지틱한 네온 그라디언트와 글로우, 강한 CTA",b:"neon"},
-  {em:"✈️",t:"여행·예약",d:"사진 중심 큰 히어로, 큰 터치 타깃의 모바일 킷",b:"mobile"},
-  {em:"🏢",t:"부동산·중개",d:"신뢰감 있는 뉴트럴과 지도·매물 카드 레이아웃",b:"aurora"},
-  {em:"🚚",t:"물류·관제 대시보드",d:"고밀도 표·필터, 엔터프라이즈 그리드 규칙",b:"antd"},
-  {em:"🎨",t:"포트폴리오·에이전시",d:"개성 있는 타이포와 인터랙션, 랜딩 이펙트",b:"neon"}
+  {em:"",t:"병원·헬스케어",d:"신뢰감 있는 블루/민트, 큰 글자와 여백, 예약·문진 폼 중심",b:"mobile"},
+  {em:"",t:"금융·핀테크",d:"명료한 그레이 스케일과 토스 블루, 숫자 가독성 우선",b:"toss"},
+  {em:"",t:"교육·이러닝",d:"밝고 둥근 카드, 진도·뱃지 등 동기부여 요소",b:"playful"},
+  {em:"",t:"이커머스",d:"상품·장바구니·결제 흐름에 최적화된 커머스 시스템",b:"polaris"},
+  {em:"",t:"정부·공공",d:"명확함과 접근성(대비·키보드) 최우선, 절제된 톤",b:"carbon"},
+  {em:"",t:"뉴스·미디어",d:"세리프 타이포와 고대비, 읽기 중심 에디토리얼",b:"editorial"},
+  {em:"",t:"레스토랑·카페",d:"따뜻한 톤과 세리프 제목, 메뉴·예약 강조",b:"editorial"},
+  {em:"",t:"피트니스·스포츠",d:"에너지틱한 네온 그라디언트와 글로우, 강한 CTA",b:"neon"},
+  {em:"",t:"여행·예약",d:"사진 중심 큰 히어로, 큰 터치 타깃의 모바일 킷",b:"mobile"},
+  {em:"",t:"부동산·중개",d:"신뢰감 있는 뉴트럴과 지도·매물 카드 레이아웃",b:"aurora"},
+  {em:"",t:"물류·관제 대시보드",d:"고밀도 표·필터, 엔터프라이즈 그리드 규칙",b:"antd"},
+  {em:"",t:"포트폴리오·에이전시",d:"개성 있는 타이포와 인터랙션, 랜딩 이펙트",b:"neon"}
 ];
 const LAYOUTS=[
 ["Holy Grail (양쪽 사이드바 3단)","가운데 본문 + 양옆 사이드바. 헤더·푸터까지 갖춘 가장 기본적인 웹사이트 뼈대. 예: 옛 포털, 문서 사이트.",`<div class="wa" style="height:14px"></div><div style="display:flex;gap:5px;flex:1"><div class="wb" style="width:22%"></div><div class="wb" style="flex:1"></div><div class="wb" style="width:18%"></div></div><div class="wb" style="height:10px"></div>`],
@@ -1658,7 +1493,7 @@ const LAYOUTS=[
   ,["Full-bleed Scroll (풀화면 몰입형)","한 화면에 하나씩 꽉 채워 스크롤. 브랜드·포트폴리오 몰입 연출.",`<div class="wa" style="flex:1"></div><div class="wb" style="flex:1"></div>`]
   ,["Card Feed (피드형 · SNS)","같은 카드가 세로로 계속 이어짐. 커뮤니티·SNS·블로그 목록.",`<div class="wb" style="height:26px"></div><div class="wa" style="height:26px"></div><div class="wb" style="height:26px"></div><div class="wb" style="height:20px"></div>`]
   ,["Tabbed (탭 전환형)","탭을 누르면 같은 자리에서 내용만 바뀜. 정보량 많을 때 압축.",`<div style="display:flex;gap:4px;height:11px"><div class="wa" style="flex:1"></div><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div></div><div class="wb" style="flex:1"></div>`]
-  ,["Wizard Steps (단계별 진행)","1→2→3 단계로 나눠 진행. 회원가입·주문·설문에 적합.",`<div style="display:flex;gap:5px;align-items:center;height:12px"><div class="wa" style="width:14px;border-radius:50%"></div><div class="wb" style="flex:1;height:2px"></div><div class="wb" style="width:14px;border-radius:50%"></div><div class="wb" style="flex:1;height:2px"></div><div class="wb" style="width:14px;border-radius:50%"></div></div><div class="wb" style="flex:1"></div><div style="display:flex;gap:5px;height:12px"><div class="wb" style="flex:1"></div><div class="wa" style="flex:1"></div></div>`]
+  ,["Wizard Steps (단계별 진행)","1, 2, 3 단계로 나눠 진행. 회원가입·주문·설문에 적합.",`<div style="display:flex;gap:5px;align-items:center;height:12px"><div class="wa" style="width:14px;border-radius:50%"></div><div class="wb" style="flex:1;height:2px"></div><div class="wb" style="width:14px;border-radius:50%"></div><div class="wb" style="flex:1;height:2px"></div><div class="wb" style="width:14px;border-radius:50%"></div></div><div class="wb" style="flex:1"></div><div style="display:flex;gap:5px;height:12px"><div class="wb" style="flex:1"></div><div class="wa" style="flex:1"></div></div>`]
   ,["Pricing Compare (요금제 비교표)","플랜 3~4개를 나란히 비교. 가운데 추천 플랜을 강조.",`<div style="display:flex;gap:5px;flex:1;align-items:stretch"><div class="wb" style="flex:1"></div><div class="wa" style="flex:1"></div><div class="wb" style="flex:1"></div></div><div class="wb" style="height:14px"></div>`]
   ,["Grid Gallery (균일 격자 갤러리)","같은 크기 사진을 격자로 정렬. 제품·작업물 나열에 깔끔.",`<div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:5px;flex:1"><div class="wb"></div><div class="wa"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wa"></div></div>`]
   ,["Menu 2단 (클래식 다이닝 메뉴판)","가운데 세로선 기준 좌우 2단. 왼쪽 전채·메인, 오른쪽 사이드·음료. 종이 메뉴판의 기본형.",`<div class="wa" style="height:14px;width:52%;margin:0 auto"></div><div style="display:flex;gap:12px;flex:1;position:relative"><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div class="wa" style="height:8px;width:46%"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px"></div><div class="wa" style="height:8px;width:40%;margin-top:5px"></div><div class="wb" style="height:7px"></div></div><div style="width:1px;background:var(--ui-border)"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div class="wa" style="height:8px;width:42%"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px"></div><div class="wa" style="height:8px;width:36%;margin-top:5px"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px"></div></div></div>`]
@@ -1666,7 +1501,7 @@ const LAYOUTS=[
   ,["Menu 사진 그리드 (카페·배달 메뉴)","사진+이름+가격 카드를 격자로. 실물 확인이 중요한 카페·디저트·배달앱 메뉴.",`<div style="display:flex;gap:4px;height:10px"><div class="wa" style="flex:1"></div><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;flex:1">`+[1,2,3,4,5,6].map(function(i){return '<div style="display:flex;flex-direction:column;gap:3px"><div class="'+(i===1?'wa':'wb')+'" style="flex:1"></div><div class="wb" style="height:5px;width:80%"></div><div class="wa" style="height:5px;width:44%"></div></div>';}).join('')+`</div>`]
   ,["Menu 시그니처 강조 (골든 트라이앵글)","가장 팔고 싶은 메뉴를 우상단·중앙에 박스로 크게. 나머지는 리스트로 받쳐줌.",`<div style="display:flex;gap:6px;flex:1"><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div class="wb" style="height:7px;width:60%"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px;width:80%"></div><div class="wb" style="height:7px"></div></div><div style="width:40%;display:flex;flex-direction:column;gap:5px"><div class="wa" style="flex:1;border-radius:6px"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px;width:70%"></div></div></div>`]
 ];
-const PAGES=[{"id": "menu", "name": "메뉴판 (레스토랑·카페)", "cat": "요식", "refs": ["미쉐린 다이닝 메뉴", "스타벅스 보드", "블루보틀", "배달앱 메뉴 UI"], "note": "손님이 30초 안에 고르게 만드는 순서. 시선은 중앙→우상단으로 흐르므로, 팔고 싶은 메뉴를 그 자리에 둔다.", "sections": [["헤더 / 로고·매장명", "상호와 한 줄 컨셉(예: '화덕 나폴리 피자'). 종이면 상단 중앙, 디지털이면 상단 고정."], ["시그니처 / 추천 메뉴", "가장 팔고 싶은 3개를 박스·사진으로 크게. 골든 트라이앵글(중앙·우상단)에 배치."], ["카테고리 내비", "전채·메인·사이드·디저트·음료 순. 디지털은 상단 탭, 종이는 굵은 소제목 + 구분선."], ["메뉴 항목 리스트", "이름 → 짧은 설명(재료 2~3개) → 가격 순. 한 카테고리당 5~7개가 고르기 좋음."], ["가격 표기", "'₩' 기호와 '0' 생략(18 / 18,000)이 심리적 부담을 낮춤. 우측 끝 정렬보다 이름 바로 뒤가 비교를 덜 유발."], ["메뉴 사진", "전 항목에 넣지 말고 카테고리당 1~2개만. 사진 있는 항목의 주문율이 오르되, 많으면 저가 인식."], ["세트 · 코스 구성", "단품보다 세트가 이득으로 보이게 묶음. 코스는 A/B 두 개로 단순화."], ["알레르기 · 원산지 표기", "법정 고지. 아이콘(우유·땅콩·갑각류)이나 각주 번호로 작게."], ["옵션 · 추가 선택", "샷 추가, 사이즈 업, 매운맛 단계. 가격 차이를 +1,000 형태로."], ["푸터 / 영업정보", "영업시간, 주문 방법, QR(디지털 메뉴·리뷰), 인스타 계정."]]},{"id": "beauty-detail", "name": "뷰티 상세페이지", "cat": "커머스", "refs": ["올리브영", "Glossier", "Rhode", "아모레퍼시픽"], "note": "제품 한 컷으로 감성을 잡고, 성분·임상수치·사용법으로 신뢰를 쌓은 뒤 루틴 세트로 객단가를 올리는 흐름.", "sections": [["히어로 / 제품 컷", "제품 대표 이미지 + 제품명 + 한 줄 정의 카피. 여백 크게, 톤온톤 배경."], ["구매 박스", "가격·용량·옵션 선택, 1회 구매 vs 정기배송, 장바구니 CTA. PC는 우측 스티키."], ["한 줄 정의 + 베네핏 배지", "카테고리 정의 한 줄 + 보습/진정/장벽 배지 3~4개."], ["임상·사용감 수치", "'4주 후 97% 윤광 개선' 등 소비자 테스트 결과를 큰 숫자로."], ["핵심 성분 3-4개", "성분명 + 효능 한 줄 + 원료 이미지. 3열 그리드 또는 좌우 교차."], ["사용법 3스텝", "아침/저녁 사용 순서를 번호 + 손동작 컷으로. 사용량 가이드 포함."], ["텍스처 / 발색 상세컷", "제형 클로즈업, 스와치, 모델 착용 전후 컷. 스크롤 몰입 구간."], ["루틴 · 함께 쓰면 좋은 제품", "클렌즈→토너→에센스 순서도와 세트 할인 제안. 크로스셀."], ["리뷰", "별점 요약 + 피부타입 필터 + 포토리뷰. 실사용 후기가 전환 핵심."], ["전성분 · 배송 · 반품", "아코디언으로 접는 고지 영역. 전성분·배송비·교환/환불."]]}, {"id": "saas-landing", "name": "SaaS 랜딩페이지", "cat": "랜딩", "refs": ["Linear", "Stripe", "Vercel", "Notion"], "note": "일러스트 대신 실제 제품 UI를 계속 보여주며 기능을 증명하고, 로고·인용으로 신뢰를 채우는 구조.", "sections": [["히어로", "한 문장 포지셔닝 + 보조 설명 + 단일 주 CTA. 다크 배경·큰 타이포."], ["고객사 로고 바", "히어로 바로 아래 로고 6~10개. 수치 한 줄 곁들임."], ["제품 UI 데모", "실제 대시보드 스크린샷 또는 인터랙티브 데모. 목업 아닌 진짜 화면."], ["핵심 가치 3가지", "3열 pillar. 속도/자동화/확장성 등 짧은 제목 + 두 줄."], ["기능 딥다이브 (교차 반복)", "좌우 교차 또는 벤토로 기능 4~6개. 블록마다 UI 캡처."], ["연동 / 통합", "Slack·GitHub 등 연동 아이콘 그리드. 기존 워크플로 안심 신호."], ["AI · 자동화", "에이전트가 일하는 예시 대화·자동 처리 시나리오."], ["고객 인용", "실명·직함·회사 로고가 붙은 인용 3개. 익명 후기 금지."], ["가격 / 요금제", "3~4단 플랜 카드. 무료 티어 강조, 엔터프라이즈는 문의."], ["마감 CTA + 푸터", "가입 CTA 재노출 + 4~6열 대형 푸터."]]}, {"id": "portfolio", "name": "포트폴리오 / 에이전시", "cat": "포트폴리오", "refs": ["Awwwards 수상작", "Wieden+Kennedy", "Locomotive"], "note": "첫 화면에서 태도를 선언하고, 작업물 자체가 내비게이션이 되는 몰입형 스크롤 구조.", "sections": [["풀블리드 히어로 / 스테이트먼트", "영상·대형 타이포로 선언 한 문장. 로딩 애니메이션과 세트."], ["셀렉티드 워크 그리드", "대표작 6~9개. 호버 시 영상 재생. 클라이언트명+연도+태그."], ["대표 케이스 하이라이트", "1~2개를 풀스크린 확장. 과제→접근→결과 서사."], ["서비스 / 역량", "브랜딩·웹·모션 등 제공 범위. 아이콘보다 텍스트 리스트."], ["어바웃 · 철학", "스튜디오 규모, 일하는 방식, 팀 사진."], ["클라이언트 로고 · 어워드", "협업 브랜드 로고 + 수상 배지."], ["프로세스", "발견→전략→디자인→개발→런칭. 견적 문의 전 신뢰 구간."], ["저널 / 인사이트", "최근 아티클 3개. 살아있는 스튜디오 신호."], ["컨택 CTA + 푸터", "'프로젝트 문의' 대형 링크, 이메일·SNS·현지 시각."]]}, {"id": "ecommerce", "name": "이커머스 상품 상세", "cat": "커머스", "refs": ["Apple", "무신사", "쿠팡"], "note": "상단은 구매 결정(가격·옵션·혜택), 하단은 설득(상세컷·리뷰·Q&A). 앵커 탭으로 긴 페이지를 잡아줌.", "sections": [["갤러리 + 구매 정보", "좌측 이미지 슬라이드, 우측 스티키에 상품명·가격·옵션·구매."], ["혜택 · 할인 배너", "회원가, 쿠폰, 적립, 무이자, 빠른배송 뱃지."], ["앵커 탭 네비게이션", "상세정보/리뷰/Q&A/배송 스티키 탭. 스크롤 연동 활성화."], ["상품 상세 이미지", "브랜드 제작 상세컷. 착용컷·디테일·소재 세로 스크롤."], ["스펙 · 사이즈 표", "실측 사이즈, 소재 혼용률, 세탁법 / 기술 사양."], ["코디 · 함께 구매", "코디 조합, 세트 구성, 액세서리 추가 제안."], ["리뷰", "평점 분포 + 사이즈/색감 만족도 + 포토리뷰 + 키/몸무게 필터."], ["Q&A · 문의", "재입고·배송 문의. 판매자 답변으로 응대 신뢰."], ["배송 / 교환 / 환불 고지", "출고일, 배송비, 반품 조건. 아코디언."], ["추천 상품", "'함께 본 상품' 캐러셀. 이탈 방지."]]}, {"id": "app-landing", "name": "앱 소개 랜딩", "cat": "앱", "refs": ["Toss", "Duolingo", "Revolut"], "note": "폰 목업이 주인공. 스크롤에 따라 앱 화면이 바뀌며 기능을 보여주고 다운로드 CTA를 재노출.", "sections": [["히어로 (디바이스 목업)", "폰 프레임 안 실제 앱 화면 + 한 문장 + 스토어 배지."], ["다운로드 · 평점 소셜프루프", "누적 다운로드, 앱스토어 평점 등 숫자 3~4개."], ["스크롤 연동 기능 스토리", "고정 폰 목업 안에서 화면 전환하며 핵심 기능 3~4개."], ["기능 카드 그리드", "부가 기능을 아이콘+제목+한 줄로 2x3."], ["사용 흐름 3스텝", "가입→연결→사용. 번호+스크린샷으로 진입장벽 낮춤."], ["보안 · 신뢰", "금융/헬스 필수. 인증 마크, 암호화, 규제 준수."], ["사용자 후기", "앱스토어 리뷰 캡처 스타일 카드 캐러셀."], ["자주 묻는 질문", "요금, 기기 지원, 해지 방법 아코디언."], ["QR + 마감 다운로드 CTA", "PC용 QR + 스토어 배지. 하단 고정 바 병행."]]}, {"id": "clinic", "name": "병원 / 클리닉", "cat": "의료", "refs": ["종합병원 공식 사이트", "피부과·치과 네트워크"], "note": "'내 증상을 보나 → 믿을 만한가 → 언제 어떻게 예약하나' 환자 탐색 순서를 그대로 페이지 순서로.", "sections": [["히어로", "병원명 + 핵심 진료 메시지 + 상담/예약 버튼. 첫 화면에 배치."], ["퀵 인포 바", "진료시간, 대표번호, 위치, 주차, 야간/주말 여부 한 줄."], ["진료과목 · 시술 카테고리", "증상/시술별 카드 6~9개. 각각 상세 페이지 연결."], ["의료진 소개", "원장 사진, 전문의 자격, 학회 활동. 신뢰의 핵심."], ["병원 시설 투어", "실제 원내 사진 슬라이드. 대기실·진료실·수술실."], ["치료 전후 / 케이스", "의료광고법 고지와 함께 노출. 과목 따라 생략."], ["장비 · 시스템", "보유 장비와 역할, 감염관리, 1:1 전담 시스템."], ["환자 후기 · 상담 사례", "후기 발췌 또는 상담 Q&A 최신글."], ["진료 안내 · 비급여 고지", "절차, 준비물, 비급여 가격 고지(법정 의무)."], ["오시는 길 + 예약 폼", "지도, 교통/주차, 간단 예약 폼."]]}, {"id": "restaurant", "name": "레스토랑 / 카페", "cat": "요식", "refs": ["미쉐린 등재 다이닝", "스페셜티 카페 브랜드"], "note": "메뉴·예약·주문·위치 네 의도를 첫 화면에서 모두 잡고, 분위기 사진으로 방문 욕구를 만듦.", "sections": [["히어로", "매장 분위기 영상 또는 시그니처 요리 풀스크린 + 예약/주문 CTA."], ["퀵 인포 바", "영업시간, 위치, 전화, 예약을 스티키 헤더에 상시 노출."], ["메뉴 미리보기", "PDF 아닌 웹 페이지형 메뉴. 카테고리별 대표 5~6개 + 가격."], ["시그니처 메뉴 상세", "간판 3개를 큰 사진 + 재료·조리 설명. 계절 메뉴도 여기."], ["공간 갤러리", "홀·바·룸·테라스 사진 그리드. 단체석 유무 전달."], ["브랜드 스토리 · 셰프", "창업 배경, 식재료 철학, 셰프 프로필."], ["리뷰 · 미디어", "네이버/구글 평점, 방송·매거진 로고, 후기 인용."], ["예약 · 주문", "캐치테이블/네이버예약 위젯, 배달앱, 단체 문의 폼."], ["위치 · 영업시간 + 푸터", "지도, 주차, 요일별 시간표, 인스타 피드, 사업자 정보."]]}, {"id": "realestate", "name": "부동산 매물 상세", "cat": "부동산", "refs": ["Zillow", "네이버 부동산", "직방"], "note": "사진과 핵심 3요소(가격·면적·층)를 먼저 보여주고, 표·지도·시세로 검증한 뒤 중개사 연결로 마무리.", "sections": [["사진 갤러리 + 핵심 요약", "사진 슬라이드 + 가격(매매/전세/월세), 전용면적, 층수, 방/욕실."], ["스티키 문의 바", "중개사 전화, 문자/채팅, 방문 예약. 모바일 하단 고정."], ["매물 기본 정보 표", "공급/전용면적, 해당층/총층, 방향, 준공년도, 난방, 주차."], ["관리비 · 입주 조건", "월 관리비 포함 항목, 입주 가능일, 반려동물/전입신고."], ["평면도 · 구조", "타입별 평면도, 3D 투어/파노라마 링크."], ["지도 + 주변 인프라", "지도와 도보 거리 기준 지하철·학교·마트·병원."], ["시세 · 실거래가", "동일 평형 실거래가 추이 그래프, 최근 거래, 평균 대비."], ["단지 · 건물 정보", "세대수, 준공일, 시공사, 용적률/건폐율, 단지 사진."], ["중개사 정보 · 매물 검증", "사무소명, 등록번호, 허위매물 검증 배지·확인 일자."], ["비슷한 매물 추천", "같은 단지·인근 유사 조건 카드 리스트."]]}];
+const PAGES=[{"id": "menu", "name": "메뉴판 (레스토랑·카페)", "cat": "요식", "refs": ["미쉐린 다이닝 메뉴", "스타벅스 보드", "블루보틀", "배달앱 메뉴 UI"], "note": "손님이 30초 안에 고르게 만드는 순서. 시선은 중앙에서 우상단으로 흐르므로, 팔고 싶은 메뉴를 그 자리에 둔다.", "sections": [["헤더 / 로고·매장명", "상호와 한 줄 컨셉(예: '화덕 나폴리 피자'). 종이면 상단 중앙, 디지털이면 상단 고정."], ["시그니처 / 추천 메뉴", "가장 팔고 싶은 3개를 박스·사진으로 크게. 골든 트라이앵글(중앙·우상단)에 배치."], ["카테고리 내비", "전채·메인·사이드·디저트·음료 순. 디지털은 상단 탭, 종이는 굵은 소제목 + 구분선."], ["메뉴 항목 리스트", "이름, 짧은 설명(재료 2~3개), 가격 순. 한 카테고리당 5~7개가 고르기 좋음."], ["가격 표기", "'₩' 기호와 '0' 생략(18 / 18,000)이 심리적 부담을 낮춤. 우측 끝 정렬보다 이름 바로 뒤가 비교를 덜 유발."], ["메뉴 사진", "전 항목에 넣지 말고 카테고리당 1~2개만. 사진 있는 항목의 주문율이 오르되, 많으면 저가 인식."], ["세트 · 코스 구성", "단품보다 세트가 이득으로 보이게 묶음. 코스는 A/B 두 개로 단순화."], ["알레르기 · 원산지 표기", "법정 고지. 아이콘(우유·땅콩·갑각류)이나 각주 번호로 작게."], ["옵션 · 추가 선택", "샷 추가, 사이즈 업, 매운맛 단계. 가격 차이를 +1,000 형태로."], ["푸터 / 영업정보", "영업시간, 주문 방법, QR(디지털 메뉴·리뷰), 인스타 계정."]]},{"id": "beauty-detail", "name": "뷰티 상세페이지", "cat": "커머스", "refs": ["올리브영", "Glossier", "Rhode", "아모레퍼시픽"], "note": "제품 한 컷으로 감성을 잡고, 성분·임상수치·사용법으로 신뢰를 쌓은 뒤 루틴 세트로 객단가를 올리는 흐름.", "sections": [["히어로 / 제품 컷", "제품 대표 이미지 + 제품명 + 한 줄 정의 카피. 여백 크게, 톤온톤 배경."], ["구매 박스", "가격·용량·옵션 선택, 1회 구매 vs 정기배송, 장바구니 CTA. PC는 우측 스티키."], ["한 줄 정의 + 베네핏 배지", "카테고리 정의 한 줄 + 보습/진정/장벽 배지 3~4개."], ["임상·사용감 수치", "'4주 후 97% 윤광 개선' 등 소비자 테스트 결과를 큰 숫자로."], ["핵심 성분 3-4개", "성분명 + 효능 한 줄 + 원료 이미지. 3열 그리드 또는 좌우 교차."], ["사용법 3스텝", "아침/저녁 사용 순서를 번호 + 손동작 컷으로. 사용량 가이드 포함."], ["텍스처 / 발색 상세컷", "제형 클로즈업, 스와치, 모델 착용 전후 컷. 스크롤 몰입 구간."], ["루틴 · 함께 쓰면 좋은 제품", "클렌즈, 토너, 에센스 순서도와 세트 할인 제안. 크로스셀."], ["리뷰", "별점 요약 + 피부타입 필터 + 포토리뷰. 실사용 후기가 전환 핵심."], ["전성분 · 배송 · 반품", "아코디언으로 접는 고지 영역. 전성분·배송비·교환/환불."]]}, {"id": "saas-landing", "name": "SaaS 랜딩페이지", "cat": "랜딩", "refs": ["Linear", "Stripe", "Vercel", "Notion"], "note": "일러스트 대신 실제 제품 UI를 계속 보여주며 기능을 증명하고, 로고·인용으로 신뢰를 채우는 구조.", "sections": [["히어로", "한 문장 포지셔닝 + 보조 설명 + 단일 주 CTA. 다크 배경·큰 타이포."], ["고객사 로고 바", "히어로 바로 아래 로고 6~10개. 수치 한 줄 곁들임."], ["제품 UI 데모", "실제 대시보드 스크린샷 또는 인터랙티브 데모. 목업 아닌 진짜 화면."], ["핵심 가치 3가지", "3열 pillar. 속도/자동화/확장성 등 짧은 제목 + 두 줄."], ["기능 딥다이브 (교차 반복)", "좌우 교차 또는 벤토로 기능 4~6개. 블록마다 UI 캡처."], ["연동 / 통합", "Slack·GitHub 등 연동 아이콘 그리드. 기존 워크플로 안심 신호."], ["AI · 자동화", "에이전트가 일하는 예시 대화·자동 처리 시나리오."], ["고객 인용", "실명·직함·회사 로고가 붙은 인용 3개. 익명 후기 금지."], ["가격 / 요금제", "3~4단 플랜 카드. 무료 티어 강조, 엔터프라이즈는 문의."], ["마감 CTA + 푸터", "가입 CTA 재노출 + 4~6열 대형 푸터."]]}, {"id": "portfolio", "name": "포트폴리오 / 에이전시", "cat": "포트폴리오", "refs": ["Awwwards 수상작", "Wieden+Kennedy", "Locomotive"], "note": "첫 화면에서 태도를 선언하고, 작업물 자체가 내비게이션이 되는 몰입형 스크롤 구조.", "sections": [["풀블리드 히어로 / 스테이트먼트", "영상·대형 타이포로 선언 한 문장. 로딩 애니메이션과 세트."], ["셀렉티드 워크 그리드", "대표작 6~9개. 호버 시 영상 재생. 클라이언트명+연도+태그."], ["대표 케이스 하이라이트", "1~2개를 풀스크린 확장. 과제, 접근, 결과 서사."], ["서비스 / 역량", "브랜딩·웹·모션 등 제공 범위. 아이콘보다 텍스트 리스트."], ["어바웃 · 철학", "스튜디오 규모, 일하는 방식, 팀 사진."], ["클라이언트 로고 · 어워드", "협업 브랜드 로고 + 수상 배지."], ["프로세스", "발견, 전략, 디자인, 개발, 런칭. 견적 문의 전 신뢰 구간."], ["저널 / 인사이트", "최근 아티클 3개. 살아있는 스튜디오 신호."], ["컨택 CTA + 푸터", "'프로젝트 문의' 대형 링크, 이메일·SNS·현지 시각."]]}, {"id": "ecommerce", "name": "이커머스 상품 상세", "cat": "커머스", "refs": ["Apple", "무신사", "쿠팡"], "note": "상단은 구매 결정(가격·옵션·혜택), 하단은 설득(상세컷·리뷰·Q&A). 앵커 탭으로 긴 페이지를 잡아줌.", "sections": [["갤러리 + 구매 정보", "좌측 이미지 슬라이드, 우측 스티키에 상품명·가격·옵션·구매."], ["혜택 · 할인 배너", "회원가, 쿠폰, 적립, 무이자, 빠른배송 뱃지."], ["앵커 탭 네비게이션", "상세정보/리뷰/Q&A/배송 스티키 탭. 스크롤 연동 활성화."], ["상품 상세 이미지", "브랜드 제작 상세컷. 착용컷·디테일·소재 세로 스크롤."], ["스펙 · 사이즈 표", "실측 사이즈, 소재 혼용률, 세탁법 / 기술 사양."], ["코디 · 함께 구매", "코디 조합, 세트 구성, 액세서리 추가 제안."], ["리뷰", "평점 분포 + 사이즈/색감 만족도 + 포토리뷰 + 키/몸무게 필터."], ["Q&A · 문의", "재입고·배송 문의. 판매자 답변으로 응대 신뢰."], ["배송 / 교환 / 환불 고지", "출고일, 배송비, 반품 조건. 아코디언."], ["추천 상품", "'함께 본 상품' 캐러셀. 이탈 방지."]]}, {"id": "app-landing", "name": "앱 소개 랜딩", "cat": "앱", "refs": ["Toss", "Duolingo", "Revolut"], "note": "폰 목업이 주인공. 스크롤에 따라 앱 화면이 바뀌며 기능을 보여주고 다운로드 CTA를 재노출.", "sections": [["히어로 (디바이스 목업)", "폰 프레임 안 실제 앱 화면 + 한 문장 + 스토어 배지."], ["다운로드 · 평점 소셜프루프", "누적 다운로드, 앱스토어 평점 등 숫자 3~4개."], ["스크롤 연동 기능 스토리", "고정 폰 목업 안에서 화면 전환하며 핵심 기능 3~4개."], ["기능 카드 그리드", "부가 기능을 아이콘+제목+한 줄로 2x3."], ["사용 흐름 3스텝", "가입, 연결, 사용. 번호+스크린샷으로 진입장벽 낮춤."], ["보안 · 신뢰", "금융/헬스 필수. 인증 마크, 암호화, 규제 준수."], ["사용자 후기", "앱스토어 리뷰 캡처 스타일 카드 캐러셀."], ["자주 묻는 질문", "요금, 기기 지원, 해지 방법 아코디언."], ["QR + 마감 다운로드 CTA", "PC용 QR + 스토어 배지. 하단 고정 바 병행."]]}, {"id": "clinic", "name": "병원 / 클리닉", "cat": "의료", "refs": ["종합병원 공식 사이트", "피부과·치과 네트워크"], "note": "'내 증상을 보나, 믿을 만한가, 언제 어떻게 예약하나' 환자 탐색 순서를 그대로 페이지 순서로.", "sections": [["히어로", "병원명 + 핵심 진료 메시지 + 상담/예약 버튼. 첫 화면에 배치."], ["퀵 인포 바", "진료시간, 대표번호, 위치, 주차, 야간/주말 여부 한 줄."], ["진료과목 · 시술 카테고리", "증상/시술별 카드 6~9개. 각각 상세 페이지 연결."], ["의료진 소개", "원장 사진, 전문의 자격, 학회 활동. 신뢰의 핵심."], ["병원 시설 투어", "실제 원내 사진 슬라이드. 대기실·진료실·수술실."], ["치료 전후 / 케이스", "의료광고법 고지와 함께 노출. 과목 따라 생략."], ["장비 · 시스템", "보유 장비와 역할, 감염관리, 1:1 전담 시스템."], ["환자 후기 · 상담 사례", "후기 발췌 또는 상담 Q&A 최신글."], ["진료 안내 · 비급여 고지", "절차, 준비물, 비급여 가격 고지(법정 의무)."], ["오시는 길 + 예약 폼", "지도, 교통/주차, 간단 예약 폼."]]}, {"id": "restaurant", "name": "레스토랑 / 카페", "cat": "요식", "refs": ["미쉐린 등재 다이닝", "스페셜티 카페 브랜드"], "note": "메뉴·예약·주문·위치 네 의도를 첫 화면에서 모두 잡고, 분위기 사진으로 방문 욕구를 만듦.", "sections": [["히어로", "매장 분위기 영상 또는 시그니처 요리 풀스크린 + 예약/주문 CTA."], ["퀵 인포 바", "영업시간, 위치, 전화, 예약을 스티키 헤더에 상시 노출."], ["메뉴 미리보기", "PDF 아닌 웹 페이지형 메뉴. 카테고리별 대표 5~6개 + 가격."], ["시그니처 메뉴 상세", "간판 3개를 큰 사진 + 재료·조리 설명. 계절 메뉴도 여기."], ["공간 갤러리", "홀·바·룸·테라스 사진 그리드. 단체석 유무 전달."], ["브랜드 스토리 · 셰프", "창업 배경, 식재료 철학, 셰프 프로필."], ["리뷰 · 미디어", "네이버/구글 평점, 방송·매거진 로고, 후기 인용."], ["예약 · 주문", "캐치테이블/네이버예약 위젯, 배달앱, 단체 문의 폼."], ["위치 · 영업시간 + 푸터", "지도, 주차, 요일별 시간표, 인스타 피드, 사업자 정보."]]}, {"id": "realestate", "name": "부동산 매물 상세", "cat": "부동산", "refs": ["Zillow", "네이버 부동산", "직방"], "note": "사진과 핵심 3요소(가격·면적·층)를 먼저 보여주고, 표·지도·시세로 검증한 뒤 중개사 연결로 마무리.", "sections": [["사진 갤러리 + 핵심 요약", "사진 슬라이드 + 가격(매매/전세/월세), 전용면적, 층수, 방/욕실."], ["스티키 문의 바", "중개사 전화, 문자/채팅, 방문 예약. 모바일 하단 고정."], ["매물 기본 정보 표", "공급/전용면적, 해당층/총층, 방향, 준공년도, 난방, 주차."], ["관리비 · 입주 조건", "월 관리비 포함 항목, 입주 가능일, 반려동물/전입신고."], ["평면도 · 구조", "타입별 평면도, 3D 투어/파노라마 링크."], ["지도 + 주변 인프라", "지도와 도보 거리 기준 지하철·학교·마트·병원."], ["시세 · 실거래가", "동일 평형 실거래가 추이 그래프, 최근 거래, 평균 대비."], ["단지 · 건물 정보", "세대수, 준공일, 시공사, 용적률/건폐율, 단지 사진."], ["중개사 정보 · 매물 검증", "사무소명, 등록번호, 허위매물 검증 배지·확인 일자."], ["비슷한 매물 추천", "같은 단지·인근 유사 조건 카드 리스트."]]}];
 function cliPrompt(name,desc){
   const sys=SYSTEMS.find(x=>x.id==='toss');
   return `[레이아웃] ${name}
@@ -1677,7 +1512,7 @@ ${desc}
 - 색·폰트는 아래 디자인시스템 토큰만 사용 (임의 색 금지)
 - 섹션마다 주석으로 이름 표기
 
-[디자인시스템] 모음집에서 원하는 시스템 카드 → 내보내기 → "AI 프롬프트" 복사해서 이 아래에 붙여넣기
+[디자인시스템] 모음집에서 원하는 시스템 카드, 내보내기, "AI 프롬프트" 복사해서 이 아래에 붙여넣기
 (예: ${sys?sys.name:'Toss'} / Airbnb / Carbon …)`;
 }
 function imgSpec(t){
@@ -1792,7 +1627,7 @@ function renderPages(){
 }
 function renderLayouts(){
   const el=$('#layouts');if(!el)return;
-  el.innerHTML=LAYOUTS.map(([n,d,w],i)=>`<div class="lcard" data-li="${i}" style="cursor:pointer"><div class="wire">${w}</div><div class="ln">${n}</div><div class="ld">${d}</div><div class="lcli">📋 CLI 프롬프트 복사</div></div>`).join('');
+  el.innerHTML=LAYOUTS.map(([n,d,w],i)=>`<div class="lcard" data-li="${i}" style="cursor:pointer"><div class="wire">${w}</div><div class="ln">${n}</div><div class="ld">${d}</div><div class="lcli">CLI 프롬프트 복사</div></div>`).join('');
   el.onclick=e=>{const c=e.target.closest('.lcard');if(!c)return;renderStructure('layout',+c.dataset.li);};
 }
 const RULES = [
@@ -1819,7 +1654,7 @@ const RULES = [
 '### 금지 (중요)',
 '- 보라/바이올럿 계열을 강조색으로 쓰지 말 것',
 '- border-left 굵은 선이 붙은 인용/콜아웃 카드 금지',
-'- 보라→핑크 그라디언트 히어로 금지',
+'- 보라에서 핑크로 가는 그라디언트 히어로 금지',
 '- 이모지 남발 금지',
 '- 토큰에 없는 임의 색·폰트 사용 금지'
 ].join('\n');
@@ -2152,7 +1987,7 @@ function renderComposer(){
 }
 function renderRecs(){
   $('#recs').innerHTML=RECS.map(r=>{const sys=SYSTEMS.find(s=>s.id===r.b);const nm=sys?sys.name:r.b;
-    return `<div class="rec" onclick="openSystem('${r.b}')"><div class="em">${r.em}</div><div><div class="rt">${r.t}</div><div class="rd">${r.d}</div><div class="rb">추천 베이스 · ${nm} →</div></div></div>`;}).join('');
+    return `<div class="rec" onclick="openSystem('${r.b}')"><div class="em">${r.em}</div><div><div class="rt">${r.t}</div><div class="rd">${r.d}</div><div class="rb">추천 베이스 · ${nm}</div></div></div>`;}).join('');
 }
 $('#searchInput').oninput=e=>{curQuery=e.target.value;renderCatalog();};
 function showCatalog(){$('#catalog').classList.remove('hidden');$('#detail').classList.remove('active');const sv=$('#sview');if(sv)sv.classList.remove('active');curSys=null;closeAllOverlays();window.scrollTo(0,0);}
@@ -2225,21 +2060,21 @@ function renderDetail(sys){
   <section class="dsec" id="s-export"><h2 class="dt2">내보내기 <span class="en">Export</span></h2>
     <p class="dsc"><b>버튼 하나(복사)로 선택한 탭 전체가 복사</b>됩니다. 현재 테마(${theme()}) 값이 반영됩니다. 탭을 바꿔 원하는 형식을 고르세요.</p>
     <div class="tabs" id="exportTabs">
-      ${hasSpec(sys.id)?`<button data-fmt="spec">📄 원문 스펙</button>`:``}
+      ${hasSpec(sys.id)?`<button data-fmt="spec">원문 스펙</button>`:``}
       <button data-fmt="css" class="on">CSS 변수 (전체)</button><button data-fmt="tw">Tailwind</button>
       <button data-fmt="json">JSON 토큰</button><button data-fmt="react">React 컴포넌트</button><button data-fmt="ai">AI 프롬프트</button>
     </div>
-    <div class="export"><button class="copy" id="copyExport">📋 전체 복사</button><span id="exportBody"></span></div>
+    <div class="export"><button class="copy" id="copyExport">전체 복사</button><span id="exportBody"></span></div>
   </section>
 
   <section class="dsec" id="s-spec"><h2 class="dt2">원문 스펙 <span class="en">Source Spec</span></h2>
-    <p class="dsc">붙여넣은 스펙을 그대로 보관하고 그대로 내보냅니다. 토큰으로 재해석한 값과 따로 남아 있어, 원본 표현이 줄어들지 않습니다. 저장하면 이 브라우저에 남고, 위 내보내기의 <b>📄 원문 스펙</b> 탭과 조립기의 <b>📦 전체</b>에 들어갑니다.</p>
+    <p class="dsc">붙여넣은 스펙을 그대로 보관하고 그대로 내보냅니다. 토큰으로 재해석한 값과 따로 남아 있어, 원본 표현이 줄어들지 않습니다. 저장하면 이 브라우저에 남고, 위 내보내기의 <b>원문 스펙</b> 탭과 조립기의 <b>전체</b>에 들어갑니다.</p>
     <div class="specbar">
       <span class="specstate" id="specState"></span>
-      <button class="filterchip" id="specCopy">📋 복사</button>
-      <button class="filterchip" id="specDown">⬇ .md 로 저장</button>
-      <button class="filterchip" id="specEdit">✎ 내 스펙 붙여넣기</button>
-      <button class="filterchip" id="specReset" style="display:none">↺ 원문으로 되돌리기</button>
+      <button class="filterchip" id="specCopy">복사</button>
+      <button class="filterchip" id="specDown">.md 로 저장</button>
+      <button class="filterchip" id="specEdit">내 스펙 붙여넣기</button>
+      <button class="filterchip" id="specReset" style="display:none">원문으로 되돌리기</button>
     </div>
     <div id="specEditor" style="display:none">
       <textarea id="specText" class="specta" placeholder="여기에 스펙을 통째로 붙여넣으세요. 마크다운·CSS·일반 글 무엇이든 그대로 보관됩니다."></textarea>
@@ -2256,13 +2091,13 @@ function renderDetail(sys){
     ${renderSignature(sys)}
   </section>
 
-  <section class="dsec" id="s-color"><h2 class="dt2">색 램프 <span class="en">Color Scales · 50→950</span></h2>
+  <section class="dsec" id="s-color"><h2 class="dt2">색 램프 <span class="en">Color Scales · 50-950</span></h2>
     <p class="dsc">모든 색은 11단계 톤 램프로 정의됩니다(테마 공통 원시값). 단계를 클릭하면 복사됩니다.</p>
     ${rampRow('Primary',R.primary)}${rampRow('Gray',R.gray)}${rampRow('Success',R.success)}${rampRow('Warning',R.warning)}${rampRow('Error',R.error)}${rampRow('Info',R.info)}
   </section>
 
   <section class="dsec" id="s-semantic"><h2 class="dt2">시맨틱 토큰 <span class="en">Semantic Tokens</span></h2>
-    <p class="dsc">램프를 역할에 매핑한 값. 라이트/다크에서 서로 다르게 바뀝니다(상단 ◐로 전환).</p>
+    <p class="dsc">램프를 역할에 매핑한 값. 라이트/다크에서 서로 다르게 바뀝니다(상단 테마 버튼으로 전환).</p>
     <h3 class="dt3">Brand</h3><div class="swatches">${semGroup(T,['--bg-primary','--bg-primary-low','--fg-primary','--fg-point'])}</div>
     <h3 class="dt3">Background</h3><div class="swatches">${semGroup(T,['--bg','--bg-neutral','--bg-neutral-low','--bg-neutral-lower','--bg-inset-neutral','--bg-disabled'])}</div>
     <h3 class="dt3">Foreground</h3><div class="swatches">${semGroup(T,['--fg','--fg-strong','--fg-lower','--fg-disabled'])}</div>
@@ -2341,7 +2176,7 @@ function renderDetail(sys){
     <h3 class="dt3">스켈레톤 로딩</h3>
     <div class="demo col" style="max-width:420px"><div class="skel" style="height:14px;width:60%"></div><div class="skel" style="height:14px;width:90%"></div><div class="skel" style="height:14px;width:75%"></div></div>
     <h3 class="dt3">빈 상태</h3>
-    <div class="demo"><div class="empty"><div class="ic">📭</div><div class="t">데이터가 없습니다</div><div>조건을 바꾸거나 새 항목을 추가하세요.</div><div style="margin-top:12px"><button class="btn btn-primary btn-sm">새로 추가</button></div></div></div>
+    <div class="demo"><div class="empty"><div class="ic"></div><div class="t">데이터가 없습니다</div><div>조건을 바꾸거나 새 항목을 추가하세요.</div><div style="margin-top:12px"><button class="btn btn-primary btn-sm">새로 추가</button></div></div></div>
   </section>
 
   <section class="dsec" id="s-state"><h2 class="dt2">상태 <span class="en">Interaction States</span></h2>
@@ -2357,7 +2192,7 @@ function renderDetail(sys){
   </section>
 
   <section class="dsec" id="s-table"><h2 class="dt2">테이블 <span class="en">Tables</span></h2>
-    <p class="dsc">헤더 → 상세 → 소계 → 합계의 계층색을 지킵니다.</p>
+    <p class="dsc">헤더, 상세, 소계, 합계의 계층색을 지킵니다.</p>
     <table class="hgrid"><tr class="head"><th>구분</th><th>세부</th><th>담당</th><th style="text-align:right">수량</th></tr>
       <tr class="sub"><td>A그룹 소계</td><td></td><td></td><td style="text-align:right">1,828</td></tr>
       <tr><td>A그룹</td><td>항목 1</td><td>담당(2)</td><td style="text-align:right">700</td></tr>
@@ -2406,7 +2241,7 @@ function renderDetail(sys){
     <h3 class="dt3">원형 프로그레스 · 평점</h3>
     <div class="demo"><div class="ring" style="--v:66"><span>66%</span></div><div class="ring" style="--v:34"><span>34%</span></div><div class="stars">★★★★<span class="off">★</span></div></div>
     <h3 class="dt3">검색바</h3>
-    <div class="demo"><div class="searchbar">🔍<input placeholder="검색어를 입력하세요"></div></div>
+    <div class="demo"><div class="searchbar"><input placeholder="검색어를 입력하세요"></div></div>
     <h3 class="dt3">배너</h3>
     <div class="demo col"><div class="banner banner-info"><div class="bi">i</div><div><div class="bt">업데이트 안내</div><div class="bd">새로운 기능이 추가되었습니다.</div></div></div>
       <div class="banner banner-success"><div class="bi">✓</div><div><div class="bt">완료</div><div class="bd">모든 항목이 저장되었습니다.</div></div></div>
@@ -2431,10 +2266,10 @@ function renderDetail(sys){
     <h3 class="dt3">아이콘 48종 · 클릭하면 SVG 복사</h3>
     <div class="icogrid" id="iconGrid"></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-      <button class="filterchip" id="svgSprite">⬇ icons.svg (스프라이트 1개)</button>
-      <button class="filterchip" id="svgEach">⬇ 개별 SVG 48개 저장</button>
-      <button class="filterchip" id="svgReact">⬇ Icon.jsx (React 컴포넌트)</button>
-      <button class="filterchip" id="svgCss">⬇ icons.css (배경 이미지용)</button>
+      <button class="filterchip" id="svgSprite">icons.svg (스프라이트 1개)</button>
+      <button class="filterchip" id="svgEach">개별 SVG 48개 저장</button>
+      <button class="filterchip" id="svgReact">Icon.jsx (React 컴포넌트)</button>
+      <button class="filterchip" id="svgCss">icons.css (배경 이미지용)</button>
     </div>
     <div class="dsc" style="margin-top:8px">스프라이트는 <code class="inl">&lt;svg&gt;&lt;use href="icons.svg#home"/&gt;&lt;/svg&gt;</code> 로 사용합니다. 개별 저장은 브라우저가 여러 파일 다운로드를 허용해야 합니다.</div>
     <h3 class="dt3">그라디언트 프리셋 · 클릭 복사</h3>
@@ -2523,7 +2358,7 @@ function renderDetail(sys){
   <section class="dsec" id="s-fx"><h2 class="dt2">이펙트 · 쇼케이스 <span class="en">Effects</span></h2>
     <p class="dsc">시스템 색으로 구성한 인터랙션 효과입니다. 호버, 클릭, 마우스 이동에 반응합니다.</p>
     <h3 class="dt3">그라디언트 · 샤인 · 리플 · FAB</h3>
-    <div class="demo"><button class="fx-grad">Gradient</button><button class="fx-shine">Shine ✨</button><button class="ripplebtn" id="rippleBtn">Ripple</button><button class="fab">+</button></div>
+    <div class="demo"><button class="fx-grad">Gradient</button><button class="fx-shine">Shine</button><button class="ripplebtn" id="rippleBtn">Ripple</button><button class="fab">+</button></div>
     <h3 class="dt3">그라디언트 텍스트</h3>
     <div class="demo"><div class="gradtext">Design System</div></div>
     <h3 class="dt3">글래스모피즘</h3>
@@ -2551,7 +2386,7 @@ function renderDetail(sys){
       </div>
       <div>
         <div class="buildprev" id="bPrev"></div>
-        <div class="export" style="max-height:240px;margin-top:12px"><button class="copy" id="bCopy">📋 복사</button><span id="bCode"></span></div>
+        <div class="export" style="max-height:240px;margin-top:12px"><button class="copy" id="bCopy">복사</button><span id="bCode"></span></div>
       </div>
     </div>
   </section>
@@ -2655,9 +2490,9 @@ function renderSignature(sys){
   if(t==='data')return `<div class="demo"><table class="hgrid" style="min-width:360px"><tr class="head"><th>이름</th><th>상태</th><th style="text-align:right">수량</th></tr><tr><td>항목 A</td><td><span class="tag" style="background:var(--tag-bg-success);color:var(--tag-fg-success)">완료</span></td><td style="text-align:right">1,204</td></tr><tr><td>항목 B</td><td><span class="tag" style="background:var(--tag-bg-warning);color:var(--tag-fg-warning)">대기</span></td><td style="text-align:right">318</td></tr><tr><td>항목 C</td><td><span class="tag" style="background:var(--tag-bg-info);color:var(--tag-fg-info)">진행</span></td><td style="text-align:right">742</td></tr></table></div>`;
   if(t==='elevated')return `<div class="demo on-canvas" style="position:relative"><div style="background:var(--panel);border-radius:${R};box-shadow:var(--shadow-5);padding:18px;min-width:280px"><div style="font-size:15px;font-weight:700;color:var(--fg-strong)">오늘의 요약</div><div style="font-size:13px;color:var(--fg-lower);margin-top:6px">엘리베이션과 톤 서피스로 깊이를 표현합니다.</div><div style="margin-top:14px"><button class="btn btn-primary">자세히</button></div></div><button class="fab" style="position:absolute;right:26px;bottom:26px">+</button></div>`;
   if(t==='article')return `<div class="demo"><div style="max-width:480px"><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-primary);font-weight:700">CULTURE</div><h2 style="font-family:inherit;font-size:28px;font-weight:800;line-height:1.25;margin:8px 0;color:var(--fg-strong)">읽기 좋은 화면을 위한 타이포그래피</h2><div style="font-size:12.5px;color:var(--fg-lower)">에디토리얼 · 2026.01.08</div><p style="font-size:15px;line-height:1.75;color:var(--fg-lower);margin-top:12px">세리프와 높은 대비, 넉넉한 여백으로 긴 글의 몰입을 돕습니다. 이미지 없이 타이포만으로 위계를 세웁니다.</p></div></div>`;
-  if(t==='mono')return `<div class="demo"><div style="background:var(--panel);border:1px solid var(--border);border-radius:${R};padding:16px 18px;min-width:320px;font-family:'Roboto Mono',monospace"><div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-strong)"><span style="width:8px;height:8px;border-radius:50%;background:var(--bg-success)"></span>Production · Ready</div><div style="font-size:12px;color:var(--fg-lower);margin-top:10px">▲ deploy · main@a1b2c3d</div><div style="font-size:12px;color:var(--fg-lower)">✓ Build completed in 24s</div><div style="margin-top:12px"><button class="btn btn-primary btn-sm">Visit →</button></div></div></div>`;
-  if(t==='hero')return `<div class="demo" style="background:linear-gradient(130deg,var(--bg-primary),var(--fg-point));border:0;border-radius:${R};padding:30px"><div style="color:#fff;max-width:360px"><div style="font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.2">빛나는 제품을<br>더 빠르게 출시하세요</div><div style="font-size:13px;opacity:.9;margin-top:10px">네온 그라디언트와 글로우로 강렬한 첫인상.</div><button class="btn" style="background:#fff;color:var(--bg-primary);margin-top:16px;font-weight:700">시작하기 →</button></div></div>`;
-  if(t==='chat')return `<div class="demo col" style="max-width:420px"><div style="display:flex;gap:10px"><div class="avatar" style="width:36px;height:36px">YS</div><div><div style="font-size:13px;font-weight:700;color:var(--fg-strong)">예성빈 <span style="font-weight:400;color:var(--fg-disabled);font-size:11px">오전 9:24</span></div><div style="background:var(--bg-neutral);border-radius:12px;padding:10px 13px;font-size:13.5px;color:var(--fg-strong);margin-top:4px">디자인 시스템 리뷰 오늘 3시에 할까요?</div></div></div><div style="display:flex;gap:10px"><div class="avatar" style="width:36px;height:36px;background:var(--fg-point)">DS</div><div><div style="font-size:13px;font-weight:700;color:var(--fg-strong)">김디에스</div><div style="background:var(--bg-primary);color:#fff;border-radius:12px;padding:10px 13px;font-size:13.5px;margin-top:4px">좋아요 👍</div></div></div></div>`;
+  if(t==='mono')return `<div class="demo"><div style="background:var(--panel);border:1px solid var(--border);border-radius:${R};padding:16px 18px;min-width:320px;font-family:'Roboto Mono',monospace"><div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-strong)"><span style="width:8px;height:8px;border-radius:50%;background:var(--bg-success)"></span>Production · Ready</div><div style="font-size:12px;color:var(--fg-lower);margin-top:10px">▲ deploy · main@a1b2c3d</div><div style="font-size:12px;color:var(--fg-lower)">✓ Build completed in 24s</div><div style="margin-top:12px"><button class="btn btn-primary btn-sm">Visit</button></div></div></div>`;
+  if(t==='hero')return `<div class="demo" style="background:linear-gradient(130deg,var(--bg-primary),var(--fg-point));border:0;border-radius:${R};padding:30px"><div style="color:#fff;max-width:360px"><div style="font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.2">빛나는 제품을<br>더 빠르게 출시하세요</div><div style="font-size:13px;opacity:.9;margin-top:10px">네온 그라디언트와 글로우로 강렬한 첫인상.</div><button class="btn" style="background:#fff;color:var(--bg-primary);margin-top:16px;font-weight:700">시작하기</button></div></div>`;
+  if(t==='chat')return `<div class="demo col" style="max-width:420px"><div style="display:flex;gap:10px"><div class="avatar" style="width:36px;height:36px">YS</div><div><div style="font-size:13px;font-weight:700;color:var(--fg-strong)">예성빈 <span style="font-weight:400;color:var(--fg-disabled);font-size:11px">오전 9:24</span></div><div style="background:var(--bg-neutral);border-radius:12px;padding:10px 13px;font-size:13.5px;color:var(--fg-strong);margin-top:4px">디자인 시스템 리뷰 오늘 3시에 할까요?</div></div></div><div style="display:flex;gap:10px"><div class="avatar" style="width:36px;height:36px;background:var(--fg-point)">DS</div><div><div style="font-size:13px;font-weight:700;color:var(--fg-strong)">김디에스</div><div style="background:var(--bg-primary);color:#fff;border-radius:12px;padding:10px 13px;font-size:13.5px;margin-top:4px">좋아요</div></div></div></div>`;
   if(t==='gallery')return `<div class="demo col" style="max-width:520px;gap:14px"><div style="height:8px;background:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37))"></div><div style="display:flex;align-items:flex-end;gap:14px"><div style="font-size:64px;font-weight:300;line-height:.9;letter-spacing:-.04em;color:var(--fg-strong)">01</div><div style="flex:1"><div style="font-size:22px;font-weight:600;letter-spacing:-.02em;color:var(--fg-strong)">Nhà máy · 브랜드 리뉴얼</div><div style="font-size:13px;color:var(--fg-lower);margin-top:4px">Branding · Web · 2026</div></div></div><div style="height:1px;background:var(--border)"></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag" style="border-radius:75px;background:transparent;border:1px solid var(--border);color:var(--fg-lower);font-weight:400">Identity</span><span class="tag" style="border-radius:75px;background:transparent;border:1px solid var(--border);color:var(--fg-lower);font-weight:400">Art Direction</span><span class="tag" style="border-radius:75px;background:transparent;border:1px solid var(--border);color:var(--fg-lower);font-weight:400">Motion</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px"><div style="height:150px;background:var(--bg-neutral);border:1px solid var(--border)"></div><div style="height:150px;background:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37))"></div></div><button class="btn btn-primary" style="align-self:flex-start;border-radius:75px;padding:12px 33px;font-weight:400">View project</button></div>`;
   if(t==='photo')return `<div class="demo"><div style="background:var(--panel);border:1px solid var(--border);border-radius:${R};overflow:hidden;width:260px;box-shadow:var(--shadow-3)"><div style="height:150px;background:linear-gradient(135deg,var(--bg-primary),var(--fg-point))"></div><div style="padding:14px"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:14px;font-weight:700;color:var(--fg-strong)">오션뷰 스테이</div><div style="font-size:13px;color:var(--fg-strong)">★ 4.92</div></div><div style="font-size:12.5px;color:var(--fg-lower);margin-top:2px">제주 · 슈퍼호스트</div><div style="margin-top:8px;font-size:14px;color:var(--fg-strong)"><b>₩182,000</b> <span style="color:var(--fg-lower);font-weight:400">/ 박</span></div></div></div></div>`;
   return '';
@@ -2689,7 +2524,7 @@ function aiPrompt(sys){
   return `# ${sys.name} 디자인 시스템 스펙 (AI 코딩용)\n`
       +`아래 토큰만 사용해 UI를 만들어줘. 임의 색/폰트 금지. 라이트/다크 양쪽 지원.\n`
       +`프레임워크: ${sys.framework} · 폰트: ${sys.font}, line-height 150%\n\n`
-      +`## 색 램프 (50→950, 테마 공통)\n`
+      +`## 색 램프 (50-950, 테마 공통)\n`
       +['primary','gray','success','warning','error','info'].map(n=>`- ${n}: `+sys.ramps[n].map(([s,h])=>`${s}=${h}`).join(', ')).join('\n')
       +`\n\n## 시맨틱 (현재 ${theme()} 테마)\n`
       +['--bg-primary','--bg-primary-low','--fg','--fg-lower','--border','--bg-success','--bg-warning','--bg-critical','--bg-info'].map(k=>`- ${k}: ${T[k]}`).join('\n')
@@ -2699,7 +2534,7 @@ function aiPrompt(sys){
       +`- 오버레이: 모달(role=dialog,aria-modal,Esc닫기)·드로어·토스트(aria-live)·툴팁·드롭다운\n`
       +`- 내비: 탭(role=tablist)·스텝·페이지네이션·브레드크럼\n`
       +`- 피드백: progress·spinner·skeleton·empty-state\n`
-      +`- 표: 헤더(#F6F7FA/#586A85)→상세→소계(primary-low)→합계(#26374D 흰글씨)\n`
+      +`- 표: 헤더(#F6F7FA/#586A85), 상세, 소계(primary-low), 합계(#26374D 흰글씨)\n`
       +`\n## 태그 색 (배경/글자 짝)\n`
       +['success','warning','error','info','neutral'].map(k=>`- ${k}: ${T['--tag-bg-'+k]} / ${T['--tag-fg-'+k]}`).join('\n')
       +(sys.hasTags?`\n- 카테고리 12색: `+TAG12.map(k=>`${k}(${T['--tag-bg-'+k]}/${T['--tag-fg-'+k]})`).join(', '):'')
@@ -2784,12 +2619,12 @@ export function Button({ variant = "primary", ...p }) {
 }
 
 /* ───────── 사용법 ───────── */
-// ① Flat : 커스텀이 필요 없을 때. 옵션만 채우면 끝
+// 1 Flat : 커스텀이 필요 없을 때. 옵션만 채우면 끝
 <FlatCard title="월간 리포트" actionLabel="다운로드" onAction={download}>
   이번 달 요약을 확인하세요
 </FlatCard>
 
-// ② Compound : 커스텀이 필요할 때. 직접 조립
+// 2 Compound : 커스텀이 필요할 때. 직접 조립
 <Card>
   <Card.Header>
     <Card.Title>월간 리포트</Card.Title>
@@ -2813,7 +2648,7 @@ function wireSpec(sys){
   const ed=$('#specEditor'), ta=$('#specText'), st=$('#specState'), rs=$('#specReset');
   function paint(){
     const t=getSpec(sys.id), mine=!!userSpec(sys.id);
-    view.textContent=t||'아직 스펙이 없습니다. “✎ 내 스펙 붙여넣기”를 누르고 통째로 붙여넣으세요.';
+    view.textContent=t||'아직 스펙이 없습니다. “내 스펙 붙여넣기”를 누르고 통째로 붙여넣으세요.';
     view.style.opacity=t?'1':'.6';
     const ln=t?t.split('\n').length:0;
     st.textContent=t ? (mine?'내가 넣은 스펙':'원문 스펙')+' · '+ln.toLocaleString()+'줄 · '+t.length.toLocaleString()+'자'
@@ -2847,7 +2682,7 @@ function wireDetail(sys){
   // pager
   const pg=$('.pager');if(pg)pg.onclick=e=>{const b=e.target.closest('button');if(!b||b.disabled||b.textContent.length>1)return;pg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');};
   // toast
-  const tb=$('#toastBtn');if(tb)tb.onclick=()=>toast('저장되었습니다 ✓');
+  const tb=$('#toastBtn');if(tb)tb.onclick=()=>toast('저장되었습니다');
   // filter chips (single select)
   const cs=$('#chipset');if(cs)cs.onclick=e=>{const b=e.target.closest('.fchip');if(!b)return;cs.querySelectorAll('.fchip').forEach(x=>x.classList.toggle('on',x===b));};
   // stepper

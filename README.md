@@ -98,14 +98,21 @@ cd design-system-kit
 ## 구조
 
 ```
-index.html        시작 화면
-library.html      모음집
-builder.html      조립기
-generator.html    생성기
-guide.html        사용설명서
-pages.json        콘텐츠 구조 원본 데이터
-docs/screenshots  README용 이미지
+design-system.html   화면 다섯 개를 담은 한 파일. 이것만 열면 됩니다
+build.py             src 를 design-system.html 로 묶습니다
+restyle.py           화면마다 kit.css 를 연결합니다
+src/kit.css          화면이 함께 쓰는 셸 스타일시트
+src/index.html       시작 화면
+src/library.html     모음집
+src/builder.html     조립기
+src/generator.html   생성기
+src/guide.html       사용설명서
+pages.json           콘텐츠 구조 원본 데이터
+docs/screenshots     README용 이미지
 ```
+
+셸 스타일은 `src/kit.css` 한 곳에만 있습니다. 화면마다 따로 정의하지 않습니다.
+각 화면의 `<style>` 뒤에 실려서 같은 선택자면 kit.css 가 적용됩니다.
 
 새 디자인 시스템을 추가하려면 `library.html`의 `SYSTEMS` 배열에 항목을 하나 추가하면 됩니다. 색 램프(50~950)와 이름·분류만 있으면 카드·상세·내보내기가 자동으로 생성됩니다.
 

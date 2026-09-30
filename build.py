@@ -68,12 +68,21 @@ def embed(html):
     return html.replace('</script', MARK)
 
 
+KIT_LINK = u'<link rel="stylesheet" href="kit.css">'
+
+
 def main():
     blocks = []
     done = set()
+    # srcdoc 안에서는 상대 경로가 풀리지 않는다. 셸 스타일시트를 통째로 심는다.
+    kit = io.open(os.path.join(SRC, 'kit.css'), encoding='utf-8').read()
+    kit_tag = u'<style>\n/* src/kit.css */\n' + kit + u'</style>'
+
     for name, fn in TOOLS:
         p = os.path.join(SRC, fn)
         s = io.open(p, encoding='utf-8').read()
+        assert s.count(KIT_LINK) == 1, fn + ': kit.css 연결을 찾지 못했습니다'
+        s = s.replace(KIT_LINK, kit_tag)
         for a, b in REWRITE:
             if a in s:
                 s = s.replace(a, b)

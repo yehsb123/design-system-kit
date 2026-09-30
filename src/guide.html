@@ -88,157 +88,7 @@ td b{color:var(--ui-fg-strong);}
 footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);font-size:12px;color:var(--ui-fg-dim);}
 </style>
 </style>
-<!-- monopo skin -->
-<style>
-
-/* ================= monopo saigon skin =================
-   토큰 원본: refero 추출본 (monopo.vn)
-   무채색만 · 버튼/태그 75px · 카드/이미지/입력 0px
-   그림자 없음 · 1px 헤어라인 · 45px 위로는 굵게 쓰지 않음
-   유채색은 페이지당 히어로 한 곳에만
-   ====================================================== */
-:root{
-  --obsidian:#000000;--paper:#ffffff;--inkstone:#181818;
-  --felt-gray:#6d6d6d;--slate-pill:#636363;--ash-mist:#9a9a9a;--pewter:#808080;
-  --iridescent:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37));
-
-  --sp-8:8px;--sp-12:12px;--sp-28:28px;--sp-40:40px;--sp-48:48px;
-  --sp-64:64px;--sp-68:68px;--sp-152:152px;
-  --page-max:1078px;--section-gap:46px;--card-pad:34px;--el-gap:14px;
-
-  --r-pill:75px;--r-flat:0px;
-  --ease:cubic-bezier(.19,1,.22,1);
-
-  /* 타이포 스케일. 제목 행간은 스펙 값, 본문은 한글에 맞춰 연다. */
-  --t-eyebrow:11px; --lh-eyebrow:1.36;
-  --t-caption:12px; --lh-caption:1.5;
-  --t-small:14px;   --lh-small:1.6;
-  --t-body:16px;    --lh-body:1.6;
-  --t-lead:18px;    --lh-lead:1.6;
-  --t-card:20px;    --lh-card:1.35;
-  --t-sub:29px;     --lh-sub:1.3;
-  --t-sec:39px;     --lh-sec:1.19;
-  --t-head:78px;    --lh-head:1.1;
-}
-:root,:root[data-theme="light"],:root[data-ui="light"]{
-  --ui-canvas:var(--paper);--ui-panel:var(--paper);--ui-panel-2:#F4F4F4;
-  --ui-fg:var(--obsidian);--ui-fg-strong:var(--obsidian);
-  --ui-fg-lower:var(--felt-gray);--ui-fg-dim:var(--ash-mist);
-  --ui-border:#E3E3E3;--ui-border-low:#F0F0F0;--ui-line:var(--obsidian);--ui-accent:var(--obsidian);
-  --ui-shadow-sm:none;--ui-shadow-md:none;--ui-shadow-lg:none;--ui-sh:none;--ui-sh-md:none;
-}
-:root[data-theme="dark"],:root[data-ui="dark"]{
-  --ui-canvas:var(--obsidian);--ui-panel:var(--obsidian);--ui-panel-2:var(--inkstone);
-  --ui-fg:var(--paper);--ui-fg-strong:var(--paper);
-  --ui-fg-lower:var(--ash-mist);--ui-fg-dim:var(--felt-gray);
-  --ui-border:rgba(255,255,255,.22);--ui-border-low:rgba(255,255,255,.12);
-  --ui-line:rgba(255,255,255,.75);--ui-accent:var(--paper);
-  --ui-shadow-sm:none;--ui-shadow-md:none;--ui-shadow-lg:none;--ui-sh:none;--ui-sh-md:none;
-}
-
-/* ---- 바탕 ---- */
-body{font-family:"Inter","Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif !important;
-  font-size:var(--t-body) !important;line-height:var(--lh-body) !important;
-  letter-spacing:-.005em;word-break:keep-all;}
-.mono,.specview,.specta,code,pre{font-family:"Roboto Mono",ui-monospace,Consolas,monospace !important;}
-a{text-decoration:none !important;}
-
-/* 이모지는 이 시스템에 없는 유채색이다. 회색으로 낮춰 글리프처럼 쓴다. */
-.appnav a,.tbtn,.cgo,.gbtn,.gobtn,.filterchip,.tabs button,.dtabs button,.iconbtn,
-.copy,.ic,.em,.fd,.search,.searchbar,.morebtn,.cbtn,.exbtns button,.file,.st .t{
-  -webkit-font-feature-settings:normal;}
-.appnav a::first-letter,.tbtn::first-letter{}
-.ic,.em,.appnav a,.tbtn,.cgo,.filterchip,.tabs button,.dtabs button,.copy,.search>:first-child,
-.exbtns button,.gbtn,.gobtn,.morebtn{filter:grayscale(1);}
-
-/* ---- 제목 위계 ---- */
-h1,.hero h1{font-weight:300 !important;font-size:clamp(34px,5.4vw,var(--t-head)) !important;
-  line-height:var(--lh-head) !important;letter-spacing:-.035em !important;
-  text-wrap:balance;margin:0 0 var(--sp-28) !important;color:var(--ui-fg-strong) !important;}
-h2,.sectitle,.dt2,.gtitle{font-weight:400 !important;font-size:var(--t-sub) !important;
-  line-height:var(--lh-sub) !important;letter-spacing:-.025em !important;text-wrap:balance;}
-h3,.dt3,.dscard h3,.c .n,.st .t,.ct{font-weight:400 !important;font-size:var(--t-card) !important;
-  line-height:var(--lh-card) !important;letter-spacing:-.02em !important;}
-.lead,.hero p,.csub,.secsub,.dsc{font-size:var(--t-small) !important;line-height:var(--lh-small) !important;
-  color:var(--ui-fg-lower) !important;max-width:74ch !important;}
-.en{font-size:var(--t-eyebrow) !important;line-height:var(--lh-eyebrow) !important;font-weight:400 !important;
-  letter-spacing:.14em !important;text-transform:uppercase !important;color:var(--ui-fg-dim) !important;}
-/* 본문 강조는 굵기 대신 색으로 준다. 이 시스템은 본문 굵기를 400 위로 올리지 않는다. */
-.lead b,.lead strong,.hero p b,.csub b,.secsub b,.dsc b,.dsc strong,.c .d b,.st .d b{
-  font-weight:400 !important;color:var(--ui-fg-strong) !important;}
-/* 45px 위로는 굵게 쓰지 않는다 */
-h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
-
-/* ---- 상단 바 ---- */
-.top,.topbar{border-bottom:1px solid var(--ui-border) !important;background:var(--ui-canvas) !important;
-  backdrop-filter:none !important;padding:var(--sp-12) var(--sp-28) !important;}
-.mk{border-radius:0 !important;background:var(--ui-fg-strong) !important;width:20px !important;height:20px !important;}
-.logo{font-weight:400 !important;font-size:var(--t-body) !important;letter-spacing:-.02em !important;}
-.appnav{background:transparent !important;border:0 !important;border-radius:0 !important;
-  padding:0 !important;gap:var(--sp-8) !important;}
-.appnav a{border:1px solid transparent !important;border-radius:var(--r-pill) !important;
-  font-weight:400 !important;font-size:var(--t-small) !important;padding:7px 16px !important;
-  color:var(--ui-fg-lower) !important;transition:color .4s ease,border-color .4s ease;}
-.appnav a:hover{background:transparent !important;border-color:var(--ui-border) !important;
-  color:var(--ui-fg-strong) !important;}
-.appnav a.on{background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;
-  border-color:transparent !important;}
-
-/* ---- 조작부. 알약은 행동에만 쓴다. ---- */
-.tbtn,.filterchip,.backbtn,.tabs button,.dtabs button,.seg button,.exbtns button,.morebtn,.cbtn{
-  border-radius:var(--r-pill) !important;box-shadow:none !important;
-  font-weight:400 !important;font-size:var(--t-small) !important;padding:9px 20px !important;
-  background:transparent !important;border:1px solid var(--ui-border) !important;
-  color:var(--ui-fg-lower) !important;
-  transition:color .4s ease,border-color .4s ease,background .4s ease;}
-.tbtn:hover,.filterchip:hover,.backbtn:hover,.tabs button:hover,.dtabs button:hover{
-  border-color:var(--ui-line) !important;color:var(--ui-fg-strong) !important;}
-.filterchip.on,.tabs button.on,.dtabs button.on,.seg button.on,.appnav a.on{
-  background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;border-color:transparent !important;}
-.cgo,.gbtn,.gobtn{border-radius:var(--r-pill) !important;box-shadow:none !important;
-  background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;
-  border:1px solid var(--ui-fg-strong) !important;font-weight:400 !important;
-  font-size:var(--t-body) !important;padding:11px 33px !important;}
-.iconbtn{border-radius:var(--r-pill) !important;box-shadow:none !important;
-  width:36px !important;height:36px !important;border:1px solid var(--ui-border) !important;
-  background:transparent !important;}
-/* 어두운 코드 상자 위의 복사 버튼. 유채색을 쓰지 않는다. */
-.copy{border-radius:var(--r-pill) !important;background:var(--paper) !important;color:var(--obsidian) !important;
-  border:1px solid var(--paper) !important;font-weight:400 !important;font-size:var(--t-caption) !important;
-  padding:7px 16px !important;box-shadow:none !important;}
-
-/* ---- 태그는 고스트 알약 ---- */
-.pill,.count,.stats span{border-radius:var(--r-pill) !important;background:transparent !important;
-  border:1px solid var(--ui-border) !important;color:var(--ui-fg-lower) !important;
-  font-weight:400 !important;font-size:var(--t-caption) !important;padding:5px 14px !important;
-  box-shadow:none !important;}
-
-/* ---- 면은 직각, 그림자 없음 ---- */
-.card,.panel,.out,.stage,.frame,.search,.searchbar,.composer,.cout,.export,.note,.infobox,
-.dscard,.addcard,.lcard,.rec,.foldbody,.specview,.specta,.rulebox,.myrules,.qa,.case,.file,
-.c,.st,.preview,.gcard,.layprev,.brief,.autoinfo,.cwrap,.selectbox,.sel,.step,.dsec,.warn,.tip{
-  border-radius:0 !important;box-shadow:none !important;}
-.search,.searchbar,.cwrap,.selectbox,.sel{border:1px solid var(--ui-border) !important;}
-.dscard,.lcard,.rec,.c,.file,.qa,.case{border:1px solid var(--ui-border) !important;
-  transition:border-color .8s var(--ease);}
-.dscard:hover,.lcard:hover,.rec:hover,.c:hover,.file:hover{
-  transform:none !important;border-color:var(--ui-line) !important;}
-.export,.cout{background:var(--obsidian) !important;color:var(--paper) !important;}
-
-/* ---- 간격 ---- */
-.wrap{max-width:var(--page-max) !important;}
-.sectitle{margin-top:var(--section-gap) !important;}
-.cards,.steps,.recs,.lwrap{gap:var(--el-gap) !important;}
-
-@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;animation-duration:.01ms !important;}}
-@media(max-width:768px){
-  :root{--card-pad:20px;--section-gap:32px;}
-  .top,.topbar{padding:10px 16px !important;}
-}
-
-.file,.qa,.case{padding:var(--card-pad) !important;}
-.fd,.d,.q,.a{font-size:var(--t-small) !important;line-height:var(--lh-small) !important;}
-</style>
+<link rel="stylesheet" href="kit.css">
 </head>
 <body>
 
@@ -246,12 +96,12 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
   <div class="logo"><span class="mk"></span>사용설명서</div>
   <div class="sp"></div>
   <nav class="appnav">
-    <a href="library.html">📚<span>모음집</span></a>
-    <a href="builder.html">🎛<span>조립기</span></a>
-    <a href="generator.html">⚡<span>생성기</span></a>
-    <a href="guide.html" class="on">📖<span>설명서</span></a>
+    <a href="library.html"><span>모음집</span></a>
+    <a href="builder.html"><span>조립기</span></a>
+    <a href="generator.html"><span>생성기</span></a>
+    <a href="guide.html" class="on"><span>설명서</span></a>
   </nav>
-  <button class="tbtn" id="btnUi">◐</button>
+  <button class="tbtn" id="btnUi">테마</button>
 </div>
 
 <div class="wrap">
@@ -260,22 +110,22 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
 
   <div class="files">
     <a class="file" href="library.html">
-      <span class="ico">📚</span>
+      <span class="ico"></span>
       <span class="fn">모음집</span>
       <span class="fd">디자인 시스템 17종, 레이아웃 22종, 콘텐츠 구조 9종, 규칙을 보관.<br>맨 위 <b>조립기</b>에서 프롬프트·CLAUDE.md·CSS를 뽑습니다.</span>
-      <span class="fw">→ 대부분은 여기만 써도 됩니다</span>
+      <span class="fw">대부분은 여기만 써도 됩니다</span>
     </a>
     <a class="file" href="builder.html">
-      <span class="ico">🎛</span>
+      <span class="ico"></span>
       <span class="fn">조립기</span>
       <span class="fd">브랜드 색 하나만 넣으면 50~950 램프가 자동 생성.<br>폰트·모서리·밀도까지 정해 <b>나만의 시스템</b>을 만듭니다.</span>
-      <span class="fw">→ 고객이 브랜드 색을 줬을 때</span>
+      <span class="fw">고객이 브랜드 색을 줬을 때</span>
     </a>
     <a class="file" href="generator.html">
-      <span class="ico">⚡</span>
+      <span class="ico"></span>
       <span class="fn">생성기</span>
       <span class="fd">콘텐츠 + 레이아웃 + 시스템을 골라 <b>실제 동작하는 HTML</b>을 만들고 저장합니다.</span>
-      <span class="fw">→ 결과물 파일이 필요할 때</span>
+      <span class="fw">결과물 파일이 필요할 때</span>
     </a>
   </div>
 
@@ -286,8 +136,8 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
     <div class="cw">가장 흔한 경우 · 소요 30초</div>
     <ol>
       <li><b>모음집</b>을 엽니다.</li>
-      <li>맨 위 조립기에서 <b>①콘텐츠</b>(예: 뷰티 상세페이지) <b>②레이아웃</b>(모듈러 그리드) <b>③디자인시스템</b>(Toss)을 고릅니다.</li>
-      <li>탭을 <b>AI 프롬프트</b>로 두고 <b>📋 복사</b>.</li>
+      <li>맨 위 조립기에서 <b>1콘텐츠</b>(예: 뷰티 상세페이지) <b>2레이아웃</b>(모듈러 그리드) <b>3디자인시스템</b>(Toss)을 고릅니다.</li>
+      <li>탭을 <b>AI 프롬프트</b>로 두고 <b>복사</b>.</li>
       <li>클로드 코드에 붙여넣고 엔터. 끝.</li>
     </ol>
     <div class="tip"><span class="th">왜 좋은가</span>
@@ -300,7 +150,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
     <ol>
       <li>모음집 조립기에서 쓸 <b>디자인 시스템</b>을 고릅니다.</li>
       <li>탭을 <b>CLAUDE.md</b>로 바꿉니다.</li>
-      <li><b>⬇ 파일로 저장</b> → <code>CLAUDE.md</code> 파일이 받아집니다.</li>
+      <li><b>파일로 저장</b>, <code>CLAUDE.md</code> 파일이 받아집니다.</li>
       <li>그 파일을 <b>프로젝트 폴더 최상단</b>에 넣습니다.</li>
       <li>이제 그 폴더에서 클로드 코드를 쓰면 <b>매번 복사할 필요 없이</b> 규칙이 자동 적용됩니다.</li>
     </ol>
@@ -313,17 +163,17 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
     <div class="cw">숨고·외주 견적에 특히 유용 · 소요 2분</div>
     <ol>
       <li><b>조립기</b>를 엽니다.</li>
-      <li><b>브랜드 색</b>에 고객이 준 HEX를 붙여넣습니다 (예: <code>#2E7D6B</code>). → 램프가 자동 생성됩니다.</li>
+      <li><b>브랜드 색</b>에 고객이 준 HEX를 붙여넣습니다 (예: <code>#2E7D6B</code>)., 램프가 자동 생성됩니다.</li>
       <li><b>중립색 온도 · 폰트 · 모서리 · 밀도</b>를 취향에 맞게 조절 (오른쪽에서 즉시 확인).</li>
-      <li>상단 <b>⚡ 이 시스템으로 페이지 만들기</b> 클릭.</li>
-      <li>생성기로 넘어가면서 <b>★ 내가 조립한 시스템</b>이 자동 선택됩니다. 콘텐츠·레이아웃만 고르면 페이지 완성.</li>
-      <li><b>⬇ HTML 저장</b>으로 파일을 받아 고객에게 보냅니다.</li>
+      <li>상단 <b>이 시스템으로 페이지 만들기</b> 클릭.</li>
+      <li>생성기로 넘어가면서 <b>내가 조립한 시스템</b>이 자동 선택됩니다. 콘텐츠·레이아웃만 고르면 페이지 완성.</li>
+      <li><b>HTML 저장</b>으로 파일을 받아 고객에게 보냅니다.</li>
     </ol>
   </div>
 
   <h2>2. 화면별 사용법</h2>
 
-  <h3>📚 모음집</h3>
+  <h3>모음집</h3>
   <table>
     <tr><th style="width:26%">위치</th><th>하는 일</th></tr>
     <tr><td><b>맨 위 조립기</b></td><td>콘텐츠·레이아웃·시스템 3개를 고르면 <b>AI 프롬프트 / CLAUDE.md / CSS 토큰 / Tailwind</b> 4가지가 나옵니다. 복사 또는 파일 저장.</td></tr>
@@ -336,37 +186,37 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
   <div class="tip"><span class="th">화면이 길어 보일 때</span>
     각 섹션 <b>제목을 클릭</b>하면 접히고 펼쳐집니다. 기본은 접혀 있고, 펼치면 3개만 보인 뒤 <b>전체 보기</b>로 나머지를 엽니다.</div>
 
-  <h3>🎛 조립기</h3>
+  <h3>조립기</h3>
   <table>
     <tr><th style="width:26%">설정</th><th>설명</th></tr>
     <tr><td><b>브랜드 색</b></td><td>색을 고르면 <b>50~950 11단계</b>가 자동 계산됩니다. 아래 프리셋을 눌러도 됩니다.</td></tr>
     <tr><td><b>중립색 온도</b></td><td>회색에 도는 기운. <b>웜</b>=종이·따뜻함, <b>쿨</b>=테크·차가움, <b>뉴트럴</b>=중간.</td></tr>
     <tr><td><b>폰트 / 모서리 / 밀도</b></td><td>밀도는 <b>촘촘</b>=데이터 많은 어드민, <b>여유</b>=랜딩·브랜드에 적합합니다.</td></tr>
     <tr><td><b>내보내기</b></td><td>CSS 변수 / Tailwind / JSON / AI 프롬프트. AI 프롬프트에는 <b>대비(WCAG) 검사 결과</b>가 자동으로 들어갑니다.</td></tr>
-    <tr><td><b>🎲 무작위</b></td><td>조합이 안 떠오를 때 랜덤으로 만들어 봅니다.</td></tr>
+    <tr><td><b>무작위</b></td><td>조합이 안 떠오를 때 랜덤으로 만들어 봅니다.</td></tr>
   </table>
 
-  <h3>⚡ 생성기</h3>
+  <h3>생성기</h3>
   <p>왼쪽에서 <b>고르기만</b> 하면 오른쪽이 즉시 갱신됩니다. 따로 생성 버튼을 누를 필요가 없습니다.</p>
   <table>
     <tr><th style="width:26%">항목</th><th>설명</th></tr>
     <tr><td><b>1 콘텐츠 구조</b></td><td>무엇을 만들지 (뷰티 상세 / SaaS 랜딩 / 메뉴판 / 병원 / 포트폴리오 / 앱 소개)</td></tr>
     <tr><td><b>2 포함할 섹션</b></td><td>필요 없는 섹션은 체크를 풀면 빠집니다.</td></tr>
     <tr><td><b>3 레이아웃 배치</b></td><td>지그재그 / 단일열 / 가운데정렬 / 반반</td></tr>
-    <tr><td><b>4 디자인 시스템</b></td><td>12종 + 조립기에서 만든 <b>★ 내 시스템</b></td></tr>
+    <tr><td><b>4 디자인 시스템</b></td><td>12종 + 조립기에서 만든 <b>내 시스템</b></td></tr>
     <tr><td><b>5 규칙</b></td><td>체크한 규칙이 코드와 프롬프트 양쪽에 반영됩니다.</td></tr>
     <tr><td><b>오른쪽 탭</b></td><td><b>미리보기</b>(데스크톱·태블릿·모바일 확인) / <b>HTML 코드</b> / <b>AI 프롬프트</b></td></tr>
   </table>
   <div class="tip"><span class="th">저장 방법</span>
-    상단 <b>⬇ HTML 저장</b>으로 파일을 받거나, <b>↗ 새 탭에서 열기</b>로 실제 크기로 확인합니다.</div>
+    상단 <b>HTML 저장</b>으로 파일을 받거나, <b>새 탭에서 열기</b>로 실제 크기로 확인합니다.</div>
 
   <h2>3. 이미지는 어떻게 하나</h2>
   <p>생성된 페이지의 이미지 자리는 <b>비어 있는 플레이스홀더</b>이고, 그 안에 <b>권장 규격</b>이 적혀 있습니다.</p>
   <div class="flow">
     <div class="fstep"><span class="n">1</span><div class="t">규격 확인</div><div class="d">예: 대표 이미지 1920×1080 (16:9)</div></div>
-    <div class="arrow">→</div>
+    <div class="arrow">다음</div>
     <div class="fstep"><span class="n">2</span><div class="t">이미지 준비</div><div class="d">챗지피티 등으로 그 비율에 맞게 생성하거나 촬영본 사용</div></div>
-    <div class="arrow">→</div>
+    <div class="arrow">다음</div>
     <div class="fstep"><span class="n">3</span><div class="t">교체</div><div class="d">플레이스홀더 자리에 <code>&lt;img&gt;</code>로 바꿔 넣기 (WebP·200KB 이하)</div></div>
   </div>
 
@@ -376,7 +226,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
   <div class="qa"><div class="q">내가 추가한 규칙은 어디에 저장되나요?</div>
     <div class="a">브라우저에 저장되어 다음에 열어도 유지됩니다. 다른 PC에서는 보이지 않으니, 중요한 규칙은 <b>CLAUDE.md로 저장</b>해 프로젝트에 넣어두세요.</div></div>
   <div class="qa"><div class="q">조립기에서 만든 시스템이 생성기에 안 보입니다.</div>
-    <div class="a">조립기에서 <b>저장</b>을 누르거나 <b>⚡ 이 시스템으로 페이지 만들기</b>로 이동해야 반영됩니다. 같은 브라우저에서 열어야 합니다.</div></div>
+    <div class="a">조립기에서 <b>저장</b>을 누르거나 <b>이 시스템으로 페이지 만들기</b>로 이동해야 반영됩니다. 같은 브라우저에서 열어야 합니다.</div></div>
   <div class="qa"><div class="q">폰트가 이상하게 보입니다.</div>
     <div class="a">웹폰트를 인터넷에서 받아오므로 <b>온라인 상태</b>여야 제대로 보입니다. 오프라인이면 시스템 기본 폰트로 대체됩니다.</div></div>
   <div class="qa"><div class="q">디자인 시스템을 더 추가하고 싶습니다.</div>

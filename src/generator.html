@@ -109,174 +109,22 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
 </style>
 </style>
-<!-- monopo skin -->
-<style>
-
-/* ================= monopo saigon skin =================
-   토큰 원본: refero 추출본 (monopo.vn)
-   무채색만 · 버튼/태그 75px · 카드/이미지/입력 0px
-   그림자 없음 · 1px 헤어라인 · 45px 위로는 굵게 쓰지 않음
-   유채색은 페이지당 히어로 한 곳에만
-   ====================================================== */
-:root{
-  --obsidian:#000000;--paper:#ffffff;--inkstone:#181818;
-  --felt-gray:#6d6d6d;--slate-pill:#636363;--ash-mist:#9a9a9a;--pewter:#808080;
-  --iridescent:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37));
-
-  --sp-8:8px;--sp-12:12px;--sp-28:28px;--sp-40:40px;--sp-48:48px;
-  --sp-64:64px;--sp-68:68px;--sp-152:152px;
-  --page-max:1078px;--section-gap:46px;--card-pad:34px;--el-gap:14px;
-
-  --r-pill:75px;--r-flat:0px;
-  --ease:cubic-bezier(.19,1,.22,1);
-
-  /* 타이포 스케일. 제목 행간은 스펙 값, 본문은 한글에 맞춰 연다. */
-  --t-eyebrow:11px; --lh-eyebrow:1.36;
-  --t-caption:12px; --lh-caption:1.5;
-  --t-small:14px;   --lh-small:1.6;
-  --t-body:16px;    --lh-body:1.6;
-  --t-lead:18px;    --lh-lead:1.6;
-  --t-card:20px;    --lh-card:1.35;
-  --t-sub:29px;     --lh-sub:1.3;
-  --t-sec:39px;     --lh-sec:1.19;
-  --t-head:78px;    --lh-head:1.1;
-}
-:root,:root[data-theme="light"],:root[data-ui="light"]{
-  --ui-canvas:var(--paper);--ui-panel:var(--paper);--ui-panel-2:#F4F4F4;
-  --ui-fg:var(--obsidian);--ui-fg-strong:var(--obsidian);
-  --ui-fg-lower:var(--felt-gray);--ui-fg-dim:var(--ash-mist);
-  --ui-border:#E3E3E3;--ui-border-low:#F0F0F0;--ui-line:var(--obsidian);--ui-accent:var(--obsidian);
-  --ui-shadow-sm:none;--ui-shadow-md:none;--ui-shadow-lg:none;--ui-sh:none;--ui-sh-md:none;
-}
-:root[data-theme="dark"],:root[data-ui="dark"]{
-  --ui-canvas:var(--obsidian);--ui-panel:var(--obsidian);--ui-panel-2:var(--inkstone);
-  --ui-fg:var(--paper);--ui-fg-strong:var(--paper);
-  --ui-fg-lower:var(--ash-mist);--ui-fg-dim:var(--felt-gray);
-  --ui-border:rgba(255,255,255,.22);--ui-border-low:rgba(255,255,255,.12);
-  --ui-line:rgba(255,255,255,.75);--ui-accent:var(--paper);
-  --ui-shadow-sm:none;--ui-shadow-md:none;--ui-shadow-lg:none;--ui-sh:none;--ui-sh-md:none;
-}
-
-/* ---- 바탕 ---- */
-body{font-family:"Inter","Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif !important;
-  font-size:var(--t-body) !important;line-height:var(--lh-body) !important;
-  letter-spacing:-.005em;word-break:keep-all;}
-.mono,.specview,.specta,code,pre{font-family:"Roboto Mono",ui-monospace,Consolas,monospace !important;}
-a{text-decoration:none !important;}
-
-/* 이모지는 이 시스템에 없는 유채색이다. 회색으로 낮춰 글리프처럼 쓴다. */
-.appnav a,.tbtn,.cgo,.gbtn,.gobtn,.filterchip,.tabs button,.dtabs button,.iconbtn,
-.copy,.ic,.em,.fd,.search,.searchbar,.morebtn,.cbtn,.exbtns button,.file,.st .t{
-  -webkit-font-feature-settings:normal;}
-.appnav a::first-letter,.tbtn::first-letter{}
-.ic,.em,.appnav a,.tbtn,.cgo,.filterchip,.tabs button,.dtabs button,.copy,.search>:first-child,
-.exbtns button,.gbtn,.gobtn,.morebtn{filter:grayscale(1);}
-
-/* ---- 제목 위계 ---- */
-h1,.hero h1{font-weight:300 !important;font-size:clamp(34px,5.4vw,var(--t-head)) !important;
-  line-height:var(--lh-head) !important;letter-spacing:-.035em !important;
-  text-wrap:balance;margin:0 0 var(--sp-28) !important;color:var(--ui-fg-strong) !important;}
-h2,.sectitle,.dt2,.gtitle{font-weight:400 !important;font-size:var(--t-sub) !important;
-  line-height:var(--lh-sub) !important;letter-spacing:-.025em !important;text-wrap:balance;}
-h3,.dt3,.dscard h3,.c .n,.st .t,.ct{font-weight:400 !important;font-size:var(--t-card) !important;
-  line-height:var(--lh-card) !important;letter-spacing:-.02em !important;}
-.lead,.hero p,.csub,.secsub,.dsc{font-size:var(--t-small) !important;line-height:var(--lh-small) !important;
-  color:var(--ui-fg-lower) !important;max-width:74ch !important;}
-.en{font-size:var(--t-eyebrow) !important;line-height:var(--lh-eyebrow) !important;font-weight:400 !important;
-  letter-spacing:.14em !important;text-transform:uppercase !important;color:var(--ui-fg-dim) !important;}
-/* 본문 강조는 굵기 대신 색으로 준다. 이 시스템은 본문 굵기를 400 위로 올리지 않는다. */
-.lead b,.lead strong,.hero p b,.csub b,.secsub b,.dsc b,.dsc strong,.c .d b,.st .d b{
-  font-weight:400 !important;color:var(--ui-fg-strong) !important;}
-/* 45px 위로는 굵게 쓰지 않는다 */
-h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
-
-/* ---- 상단 바 ---- */
-.top,.topbar{border-bottom:1px solid var(--ui-border) !important;background:var(--ui-canvas) !important;
-  backdrop-filter:none !important;padding:var(--sp-12) var(--sp-28) !important;}
-.mk{border-radius:0 !important;background:var(--ui-fg-strong) !important;width:20px !important;height:20px !important;}
-.logo{font-weight:400 !important;font-size:var(--t-body) !important;letter-spacing:-.02em !important;}
-.appnav{background:transparent !important;border:0 !important;border-radius:0 !important;
-  padding:0 !important;gap:var(--sp-8) !important;}
-.appnav a{border:1px solid transparent !important;border-radius:var(--r-pill) !important;
-  font-weight:400 !important;font-size:var(--t-small) !important;padding:7px 16px !important;
-  color:var(--ui-fg-lower) !important;transition:color .4s ease,border-color .4s ease;}
-.appnav a:hover{background:transparent !important;border-color:var(--ui-border) !important;
-  color:var(--ui-fg-strong) !important;}
-.appnav a.on{background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;
-  border-color:transparent !important;}
-
-/* ---- 조작부. 알약은 행동에만 쓴다. ---- */
-.tbtn,.filterchip,.backbtn,.tabs button,.dtabs button,.seg button,.exbtns button,.morebtn,.cbtn{
-  border-radius:var(--r-pill) !important;box-shadow:none !important;
-  font-weight:400 !important;font-size:var(--t-small) !important;padding:9px 20px !important;
-  background:transparent !important;border:1px solid var(--ui-border) !important;
-  color:var(--ui-fg-lower) !important;
-  transition:color .4s ease,border-color .4s ease,background .4s ease;}
-.tbtn:hover,.filterchip:hover,.backbtn:hover,.tabs button:hover,.dtabs button:hover{
-  border-color:var(--ui-line) !important;color:var(--ui-fg-strong) !important;}
-.filterchip.on,.tabs button.on,.dtabs button.on,.seg button.on,.appnav a.on{
-  background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;border-color:transparent !important;}
-.cgo,.gbtn,.gobtn{border-radius:var(--r-pill) !important;box-shadow:none !important;
-  background:var(--ui-fg-strong) !important;color:var(--ui-canvas) !important;
-  border:1px solid var(--ui-fg-strong) !important;font-weight:400 !important;
-  font-size:var(--t-body) !important;padding:11px 33px !important;}
-.iconbtn{border-radius:var(--r-pill) !important;box-shadow:none !important;
-  width:36px !important;height:36px !important;border:1px solid var(--ui-border) !important;
-  background:transparent !important;}
-/* 어두운 코드 상자 위의 복사 버튼. 유채색을 쓰지 않는다. */
-.copy{border-radius:var(--r-pill) !important;background:var(--paper) !important;color:var(--obsidian) !important;
-  border:1px solid var(--paper) !important;font-weight:400 !important;font-size:var(--t-caption) !important;
-  padding:7px 16px !important;box-shadow:none !important;}
-
-/* ---- 태그는 고스트 알약 ---- */
-.pill,.count,.stats span{border-radius:var(--r-pill) !important;background:transparent !important;
-  border:1px solid var(--ui-border) !important;color:var(--ui-fg-lower) !important;
-  font-weight:400 !important;font-size:var(--t-caption) !important;padding:5px 14px !important;
-  box-shadow:none !important;}
-
-/* ---- 면은 직각, 그림자 없음 ---- */
-.card,.panel,.out,.stage,.frame,.search,.searchbar,.composer,.cout,.export,.note,.infobox,
-.dscard,.addcard,.lcard,.rec,.foldbody,.specview,.specta,.rulebox,.myrules,.qa,.case,.file,
-.c,.st,.preview,.gcard,.layprev,.brief,.autoinfo,.cwrap,.selectbox,.sel,.step,.dsec,.warn,.tip{
-  border-radius:0 !important;box-shadow:none !important;}
-.search,.searchbar,.cwrap,.selectbox,.sel{border:1px solid var(--ui-border) !important;}
-.dscard,.lcard,.rec,.c,.file,.qa,.case{border:1px solid var(--ui-border) !important;
-  transition:border-color .8s var(--ease);}
-.dscard:hover,.lcard:hover,.rec:hover,.c:hover,.file:hover{
-  transform:none !important;border-color:var(--ui-line) !important;}
-.export,.cout{background:var(--obsidian) !important;color:var(--paper) !important;}
-
-/* ---- 간격 ---- */
-.wrap{max-width:var(--page-max) !important;}
-.sectitle{margin-top:var(--section-gap) !important;}
-.cards,.steps,.recs,.lwrap{gap:var(--el-gap) !important;}
-
-@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;animation-duration:.01ms !important;}}
-@media(max-width:768px){
-  :root{--card-pad:20px;--section-gap:32px;}
-  .top,.topbar{padding:10px 16px !important;}
-}
-
-.panel,.stage,.frame,.out,.step,.layprev,.infobox,.autoinfo{border-radius:0 !important;}
-.lbl{font-size:var(--t-caption) !important;color:var(--ui-fg-lower) !important;
-  letter-spacing:.06em !important;text-transform:uppercase !important;}
-.hint{font-size:var(--t-caption) !important;}
-</style>
+<link rel="stylesheet" href="kit.css">
 </head>
 <body>
 
 <div class="top">
   <div class="logo"><span class="mk"></span>페이지 생성기 <span style="color:var(--ui-fg-dim);font-weight:500">레퍼런스 + 규칙 + 디자인시스템</span></div>
-  <nav class="appnav"><a href="library.html">📚<span>모음집</span></a><a href="builder.html">🎛<span>조립기</span></a><a href="generator.html" class="on">⚡<span>생성기</span></a><a href="guide.html">📖<span>설명서</span></a></nav><div class="sp"></div>
-  <button class="tbtn" id="btnUi">◐</button>
-  <button class="tbtn" id="btnDown">⬇ HTML 저장</button>
-  <button class="tbtn pri" id="btnOpen">↗ 새 탭에서 열기</button>
+  <nav class="appnav"><a href="library.html"><span>모음집</span></a><a href="builder.html"><span>조립기</span></a><a href="generator.html" class="on"><span>생성기</span></a><a href="guide.html"><span>설명서</span></a></nav><div class="sp"></div>
+  <button class="tbtn" id="btnUi">테마</button>
+  <button class="tbtn" id="btnDown">HTML 저장</button>
+  <button class="tbtn pri" id="btnOpen">새 탭에서 열기</button>
 </div>
 
 <div class="wrap">
   <aside class="panel">
     <div class="step brief">
-      <label><i>0</i>프로젝트 정보 <span style="font-weight:600;color:var(--ui-fg-dim);margin-left:auto">선택</span></label>
+      <label><i>0</i>프로젝트 정보 <span style="color:var(--ui-fg-dim);margin-left:auto">선택</span></label>
       <input id="bName" placeholder="이름 (예: 루미에르 세라마이드 에센스 / 밝은미소치과)">
       <input id="bTag" placeholder="한 줄 소개 (예: 무너진 장벽을 4주 만에)">
       <div class="lbl">참고 자료. 있는 대로 붙여넣으세요 (성분·가격·진료과목·메뉴 등)</div>
@@ -316,7 +164,7 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
       <label><i>4</i>디자인 시스템</label>
       <select class="sel" id="selSys"></select>
       <div style="margin-top:8px"><label class="chk"><input type="checkbox" id="darkMode"> 다크 모드로 생성</label></div>
-      <div class="hint">원하는 시스템이 없나요? <a href="builder.html" style="color:var(--ui-accent);font-weight:700">조립기에서 색으로 직접 만들기 →</a></div>
+      <div class="hint">원하는 시스템이 없나요? <a href="builder.html" style="color:var(--ui-fg-strong)">조립기에서 색으로 직접 만들기</a></div>
     </div>
 
     <div class="step">
@@ -348,8 +196,8 @@ h1 b,h1 strong,h2 b,h2 strong{font-weight:400 !important;}
         </div>
         <iframe class="frame" id="frame"></iframe>
       </div>
-      <div id="paneC" style="display:none"><div class="out"><button class="cp" id="cpCode">📋 복사</button><span id="codeBody"></span></div></div>
-      <div id="paneR" style="display:none"><div class="out"><button class="cp" id="cpPrompt">📋 복사</button><span id="promptBody"></span></div></div>
+      <div id="paneC" style="display:none"><div class="out"><button class="cp" id="cpCode">복사</button><span id="codeBody"></span></div></div>
+      <div id="paneR" style="display:none"><div class="out"><button class="cp" id="cpPrompt">복사</button><span id="promptBody"></span></div></div>
     </div>
   </main>
 </div>
@@ -384,13 +232,13 @@ const PAGES=[
 {id:'saas',n:'SaaS 랜딩페이지',refs:'Linear · Stripe · Vercel · Notion',
  s:[['히어로','한 문장 포지셔닝 + 보조 설명 + 단일 CTA'],['고객사 로고 바','로고 6~10개 + 수치 한 줄'],['제품 UI 데모','실제 대시보드 스크린샷'],['핵심 가치 3가지','속도/자동화/확장성 3열'],['기능 딥다이브','좌우 교차로 기능 4~6개, 블록마다 UI 캡처'],['연동 / 통합','Slack·GitHub 등 연동 아이콘 그리드'],['고객 인용','실명·직함·회사 로고가 붙은 인용 3개'],['가격 / 요금제','3~4단 플랜 카드, 무료 티어 강조'],['마감 CTA + 푸터','가입 CTA 재노출 + 대형 푸터']]},
 {id:'menu',n:'메뉴판 (레스토랑·카페)',refs:'미쉐린 다이닝 · 블루보틀',
- s:[['헤더 / 매장명','상호와 한 줄 컨셉'],['시그니처 메뉴','가장 팔고 싶은 3개를 크게 (골든 트라이앵글)'],['카테고리 내비','전채·메인·사이드·디저트·음료'],['메뉴 항목 리스트','이름 → 재료 2~3개 → 가격, 카테고리당 5~7개'],['메뉴 사진','카테고리당 1~2개만'],['세트 · 코스','단품보다 이득으로 보이게 묶음'],['알레르기 · 원산지','법정 고지, 아이콘 또는 각주'],['푸터 / 영업정보','영업시간, 주문 방법, QR, 인스타']]},
+ s:[['헤더 / 매장명','상호와 한 줄 컨셉'],['시그니처 메뉴','가장 팔고 싶은 3개를 크게 (골든 트라이앵글)'],['카테고리 내비','전채·메인·사이드·디저트·음료'],['메뉴 항목 리스트','이름, 재료 2~3개, 가격, 카테고리당 5~7개'],['메뉴 사진','카테고리당 1~2개만'],['세트 · 코스','단품보다 이득으로 보이게 묶음'],['알레르기 · 원산지','법정 고지, 아이콘 또는 각주'],['푸터 / 영업정보','영업시간, 주문 방법, QR, 인스타']]},
 {id:'clinic',n:'병원 / 클리닉',refs:'종합병원 · 피부과 네트워크',
  s:[['히어로','병원명 + 핵심 진료 메시지 + 예약 버튼'],['퀵 인포 바','진료시간, 대표번호, 위치, 주차'],['진료과목','증상/시술별 카드 6~9개'],['의료진 소개','원장 사진, 전문의 자격, 학회 활동'],['병원 시설','실제 원내 사진 슬라이드'],['장비 · 시스템','보유 장비와 역할, 감염관리'],['환자 후기','후기 발췌 또는 상담 Q&A'],['진료 안내 · 비급여 고지','절차, 준비물, 가격 고지'],['오시는 길 + 예약','지도, 교통/주차, 예약 폼']]},
 {id:'portfolio',n:'포트폴리오 / 에이전시',refs:'Awwwards 수상작',
- s:[['히어로 스테이트먼트','대형 타이포로 선언 한 문장'],['셀렉티드 워크','대표작 6~9개, 클라이언트명+연도'],['대표 케이스','1~2개를 확장, 과제→접근→결과'],['서비스 / 역량','브랜딩·웹·모션 등 제공 범위'],['어바웃 · 철학','규모, 일하는 방식, 팀 사진'],['클라이언트 로고 · 어워드','협업 브랜드 + 수상 배지'],['프로세스','발견→전략→디자인→개발→런칭'],['컨택 CTA + 푸터','문의 대형 링크, 이메일·SNS']]},
+ s:[['히어로 스테이트먼트','대형 타이포로 선언 한 문장'],['셀렉티드 워크','대표작 6~9개, 클라이언트명+연도'],['대표 케이스','1~2개를 확장, 과제, 접근, 결과'],['서비스 / 역량','브랜딩·웹·모션 등 제공 범위'],['어바웃 · 철학','규모, 일하는 방식, 팀 사진'],['클라이언트 로고 · 어워드','협업 브랜드 + 수상 배지'],['프로세스','발견, 전략, 디자인, 개발, 런칭'],['컨택 CTA + 푸터','문의 대형 링크, 이메일·SNS']]},
 {id:'app',n:'앱 소개 랜딩',refs:'Toss · Duolingo · Revolut',
- s:[['히어로 (디바이스 목업)','폰 프레임 안 앱 화면 + 스토어 배지'],['다운로드 · 평점','누적 다운로드, 앱스토어 평점 숫자'],['기능 스토리','폰 목업 안에서 화면 전환하며 기능 3~4개'],['기능 카드 그리드','부가 기능 아이콘+제목 2x3'],['사용 흐름 3스텝','가입→연결→사용'],['보안 · 신뢰','인증 마크, 암호화, 규제 준수'],['사용자 후기','앱스토어 리뷰 카드'],['자주 묻는 질문','요금, 기기 지원, 해지'],['QR + 마감 CTA','PC용 QR + 스토어 배지']]}
+ s:[['히어로 (디바이스 목업)','폰 프레임 안 앱 화면 + 스토어 배지'],['다운로드 · 평점','누적 다운로드, 앱스토어 평점 숫자'],['기능 스토리','폰 목업 안에서 화면 전환하며 기능 3~4개'],['기능 카드 그리드','부가 기능 아이콘+제목 2x3'],['사용 흐름 3스텝','가입, 연결, 사용'],['보안 · 신뢰','인증 마크, 암호화, 규제 준수'],['사용자 후기','앱스토어 리뷰 카드'],['자주 묻는 질문','요금, 기기 지원, 해지'],['QR + 마감 CTA','PC용 QR + 스토어 배지']]}
 ];
 
 /* ===== 이미지 규격 ===== */
@@ -431,22 +279,22 @@ try{ const raw=localStorage.getItem('my_system');
 $('#selSys').innerHTML=SYS.map((s,i)=>'<option value="'+i+'">'+s.n+'</option>').join('');
 if(SYS[0]&&SYS[0].id==='mine'&&/[?&]sys=mine/.test(location.search)) $('#selSys').value='0';
 const PAGEINFO={
- beauty:{flow:'감성으로 잡고 → 성분·수치로 신뢰 → 루틴 세트로 객단가',
+ beauty:{flow:'감성으로 잡고, 성분·수치로 신뢰, 루틴 세트로 객단가',
    key:'임상 수치와 전성분은 <b>있는 자료만</b>. 없는 효능은 절대 쓰지 말 것 (화장품법)',
    len:'스크롤 길이 길게 (모바일 8~12화면)', who:'구매 직전 비교 중인 방문자'},
- saas:{flow:'한 문장 포지셔닝 → 실제 UI로 증명 → 로고·인용으로 신뢰 → 요금제',
+ saas:{flow:'한 문장 포지셔닝, 실제 UI로 증명, 로고·인용으로 신뢰, 요금제',
    key:'일러스트 대신 <b>실제 제품 화면</b>을 쓸 것. 목업은 신뢰를 떨어뜨림',
    len:'중간 (모바일 6~9화면)', who:'대안을 찾는 담당자·결정권자'},
- menu:{flow:'시그니처 먼저 → 카테고리별 리스트 → 세트·고지 → 영업정보',
+ menu:{flow:'시그니처 먼저, 카테고리별 리스트, 세트·고지, 영업정보',
    key:'가격은 <b>₩·000 생략</b>(18)이 부담이 적음. 사진은 카테고리당 1~2개만',
    len:'짧게 (1~2화면 권장)', who:'주문 직전, 30초 안에 고르려는 손님'},
- clinic:{flow:'내 증상 있나 → 믿을 만한가 → 언제·어떻게 예약하나',
+ clinic:{flow:'내 증상 있나, 믿을 만한가, 언제·어떻게 예약하나',
    key:'의료광고법 준수. 치료 전후 사진은 <b>고지 문구 필수</b>, 비급여 가격 고지 의무',
    len:'중간 (모바일 6~10화면)', who:'증상 검색 후 병원 비교 중인 환자'},
- portfolio:{flow:'태도 선언 → 작업물이 곧 내비게이션 → 프로세스 → 문의',
+ portfolio:{flow:'태도 선언, 작업물이 곧 내비게이션, 프로세스, 문의',
    key:'작업 수는 <b>적고 강하게</b>. 6~9개가 20개보다 낫습니다',
    len:'중간 (스크롤 몰입형)', who:'외주 맡길 곳을 찾는 클라이언트'},
- app:{flow:'폰 목업으로 첫인상 → 기능 스토리 → 신뢰 → 다운로드',
+ app:{flow:'폰 목업으로 첫인상, 기능 스토리, 신뢰, 다운로드',
    key:'다운로드 CTA를 <b>3번 이상</b> 재노출. 하단 고정 바 권장',
    len:'중간 (모바일 6~9화면)', who:'스토어로 갈지 망설이는 잠재 사용자'}
 };
@@ -454,7 +302,7 @@ function loadPage(i){
   cur=PAGES[i]; picked=new Set(cur.s.map((_,k)=>k));
   const pi=PAGEINFO[cur.id]||{};
   const nImg=cur.s.filter(function(x){return imgSpec(x[0]);}).length;
-  $('#pageInfo').innerHTML='<div style="font-size:12.5px;font-weight:800;color:var(--ui-fg-strong);margin-bottom:5px">'+cur.n+'</div>'
+  $('#pageInfo').innerHTML='<div style="font-size:14px;color:var(--ui-fg-strong);margin-bottom:5px">'+cur.n+'</div>'
     + infoRows([['흐름',pi.flow],['핵심',pi.key],['대상',pi.who],['참고',cur.refs]])
     + '<div class="metarow"><span>섹션 '+cur.s.length+'개</span><span>이미지 '+nImg+'곳</span>'
     + (pi.len?'<span>'+pi.len+'</span>':'')+'</div>';
@@ -478,7 +326,7 @@ function rulesText(){
   if($('#rRes').checked) L.push('- 반응형: vw + clamp() 사용, 컨테이너 min(1200px, 92vw), 768px 미만 모든 다단 1열, 터치 타깃 44px');
   if($('#rImg').checked) L.push('- 이미지: WebP 200KB 이하, width:100% + aspect-ratio로 비율 고정, object-fit:cover');
   if($('#rA11y').checked) L.push('- 접근성: focus-visible 2px 링, 본문 대비 4.5:1, 아이콘 버튼 aria-label, prefers-reduced-motion 대응');
-  if($('#rBan').checked) L.push('- 금지: 보라/바이올렛 강조색, border-left 굵은 인용카드, 보라→핑크 그라디언트, 이모지 남발, 토큰 외 임의 색');
+  if($('#rBan').checked) L.push('- 금지: 보라/바이올렛 강조색, border-left 굵은 인용카드, 보라에서 핑크로 가는 그라디언트, 이모지 남발, 토큰 외 임의 색');
   if($('#rMotion').checked) L.push('- 스크롤 등장 애니메이션(IntersectionObserver, 페이드+8px 상승, 200ms)');
   myRules().forEach(r=>L.push('- '+r));
   return L;
@@ -495,7 +343,7 @@ const LAYPREV={
    avoid:'이미지가 거의 없을 때. 빈 칸이 생겨 허전해 보입니다',
    ex:'애플 제품 페이지, 올리브영 상세, Linear 기능 소개',
    tip:'이미지는 <b>전부 같은 비율</b>로 맞추세요. 비율이 섞이면 지그재그 리듬이 깨집니다',
-   sec:'6~10개 섹션', mob:'모바일에서 이미지→글 순서로 1열'},
+   sec:'6~10개 섹션', mob:'모바일에서 이미지, 글 순서로 1열'},
  stack:{w:'<div class="a" style="height:34%"></div><div class="b" style="flex:1"></div><div class="b" style="flex:1"></div>',
    n:'단일 열 (스택)',
    c:'폭을 꽉 채운 블록이 위에서 아래로 쌓입니다. 읽는 순서가 하나뿐이라 가장 명확합니다.',
@@ -531,7 +379,7 @@ function infoRows(rows){
 function renderLayPrev(){
   const v=$('#selLayout').value, d=LAYPREV[v]||LAYPREV.alt;
   $('#layPrev').innerHTML=d.w;
-  $('#layInfo').innerHTML='<div style="font-size:12.5px;font-weight:800;color:var(--ui-fg-strong);margin-bottom:5px">'+d.n+'</div>'
+  $('#layInfo').innerHTML='<div style="font-size:14px;color:var(--ui-fg-strong);margin-bottom:5px">'+d.n+'</div>'
     +'<div style="font-size:11.5px;color:var(--ui-fg-lower);line-height:1.7;margin-bottom:6px">'+d.c+'</div>'
     +infoRows([['추천',d.use],['주의',d.avoid],['사례',d.ex],['팁',d.tip]])
     +'<div class="metarow"><span>'+d.sec+'</span><span>'+d.mob+'</span></div>';
@@ -649,7 +497,7 @@ function prompt(s,lay,secs,css){
     L.push('   - 마크업: <section class="'+(lay==='alt'?(i%2?'sec alt':'sec'):lay==='center'?'sec narrow':lay==='split'?'sec split':'sec stack')+'"> > .inner');
     if(sp){
       L.push('   - 이미지 슬롯: '+sp.label+' · 권장 '+sp.size+' · aspect-ratio: '+sp.ar);
-      L.push('     → <div class="ph" style="aspect-ratio:'+sp.ar+'"> 안에 라벨과 규격 텍스트를 표시 (실제 이미지 없이 플레이스홀더)');
+      L.push(', <div class="ph" style="aspect-ratio:'+sp.ar+'"> 안에 라벨과 규격 텍스트를 표시 (실제 이미지 없이 플레이스홀더)');
     } else {
       L.push('   - 이미지 없음 (텍스트 블록만)');
     }
