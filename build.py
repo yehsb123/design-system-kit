@@ -33,11 +33,14 @@ SHIM = u"""<script>
 (function(){
   var r=document.documentElement;
   window.dskQuery=function(){ try{ return '?'+parent.dsk.q(); }catch(e){ return ''; } };
-  try{ var t=localStorage.getItem('dsk_ui'); if(t) r.setAttribute('data-ui',t); }catch(e){}
+  // 모음집은 data-theme 으로, 나머지 화면은 data-ui 로 테마를 잡는다.
+  // 화면마다 이름이 달라 그대로 두면 모음집만 따로 논다. 쓰는 이름에 맞춰 옮긴다.
+  var ATTR = r.hasAttribute('data-theme') ? 'data-theme' : 'data-ui';
+  try{ var t=localStorage.getItem('dsk_ui'); if(t) r.setAttribute(ATTR,t); }catch(e){}
   try{
     new MutationObserver(function(){
-      try{ localStorage.setItem('dsk_ui', r.getAttribute('data-ui')||'light'); }catch(e){}
-    }).observe(r,{attributes:true,attributeFilter:['data-ui']});
+      try{ localStorage.setItem('dsk_ui', r.getAttribute(ATTR)||'light'); }catch(e){}
+    }).observe(r,{attributes:true,attributeFilter:['data-ui','data-theme']});
   }catch(e){}
   var MAP={'index.html':'index','library.html':'library','builder.html':'builder',
            'generator.html':'generator','guide.html':'guide'};
@@ -148,13 +151,23 @@ __BLOCKS__
                    +(name==='index'?'':' · Design System Kit');
   }
 
+  var skipNext=false;
+
   window.dsk={
     go:function(name,q){ show(name,q,true); },
     q:function(){ return curQ; },
-    current:function(){ return cur; }
+    current:function(){ return cur; },
+    // 화면 안에서 보던 자리가 바뀌었을 때 주소만 갱신한다.
+    // 화면을 다시 싣지 않아 스크롤과 입력이 남는다.
+    setQuery:function(q){
+      curQ=q||'';
+      var h='#'+cur+(curQ?'?'+curQ:'');
+      if(location.hash!==h){ skipNext=true; location.hash=h; }
+    }
   };
 
   window.addEventListener('hashchange',function(){
+    if(skipNext){ skipNext=false; return; }
     var p=parseHash();
     if(p[0]!==cur||p[1]!==curQ) show(p[0],p[1],false);
   });

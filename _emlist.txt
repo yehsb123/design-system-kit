@@ -1,67 +1,0 @@
-index.html	 initial-scale=1" />\n<title>Design System Kit — 디자인 시스템 도구</title>\n<meta name="description" c
-index.html	class="ic">📚</span>\n      <span class="n">모음집 — 여기서 시작하세요</span>\n      <span class="d">디자인 시스
-library.html	리는 시작점을 제안합니다. 카드를 누르면 추천 베이스 시스템이 열립니다. (제안용 — 필요 시 새 시스템으로 발전시킬 수 있어요)</p>\n    <div class=
-library.html	=================================\n   SYSTEMS — 램프(테마 공통) + 시맨틱(라이트/다크) 로 분리해 보관\n   ========
-library.html	18px",inR:"8px"}\n};\n// 시스템별 아이콘 성격 (굵기·끝처리) — 에셋이 시스템마다 달라 보이게\nconst ICONSTYLE={\n  toss:{
-library.html	     }, i*120);\n    });\n    toast('개별 저장 시작 — 브라우저 다운로드 허용 필요');\n  };\n  const rc=$('#svgR
-library.html	,\n');\n    const code='// '+sysName+' 아이콘 세트 — <Icon name="home" size={20} />\n'\n      +'co
-library.html	\n');\n    dl('icons.css','/* '+sysName+' 아이콘 — <i class="icon icon-home"></i> */\n'\n      +
-library.html	적용한다.');\n  L.push('');\n  L.push('## 디자인 시스템 — '+sys.name);\n  L.push('- 폰트: '+sys.font);\n 
-library.html	h('');\n  if(pg){\n    out.push('## 1) 콘텐츠 구조 — '+pg.name);\n    out.push('참고 사이트: '+pg.refs.
-library.html	(sec[0]);\n      out.push((i+1)+'. '+sec[0]+' — '+sec[1]+(sp?'  [이미지: '+sp.label+' '+sp.size+
-library.html	   out.push('');\n    out.push('## 2) 레이아웃 배치 — '+L[0]);\n  } else {\n    out.push('## 1) 레이아
-library.html	0]);\n  } else {\n    out.push('## 1) 레이아웃 구조 — '+L[0]);\n  }\n  out.push(L[1]);\n  out.push(
-library.html	ck=function(){ copy(buildEverything(),'전체 복사됨 — 프롬프트+규칙+토큰+컴포넌트+Tailwind'); };\n  $('#cDown')
-library.html	 <p class="dsc">이 시스템의 성격이 가장 잘 드러나는 대표 UI입니다 — 같은 토큰이라도 조합·구조가 시스템마다 다릅니다.</p>\n    ${render
-library.html	></h2>\n    <p class="dsc">아이콘·그라디언트·패턴·로고 마크 — 클릭하면 SVG/CSS가 복사됩니다. 전부 시스템 색을 그대로 사용해요.</p>
-library.html	s="dsc">그래프 색 토큰(graph-chart-1~8)과 브랜드 색으로 구성 — 대시보드에 바로 활용.</p>\n    <div class="chartrow">
-library.html	ates</span></h2>\n    <p class="dsc">입력 검증 상태 — 기본·포커스·에러·성공·비활성, 헬퍼 텍스트와 필수 표시.</p>\n    <di
-library.html	</h2>\n    <p class="dsc">시스템 색으로 구성한 인터랙션 효과 — 호버·클릭·마우스 이동으로 반응합니다.</p>\n    <h3 class="dt3
-library.html	st T=allTokens(sys);\n  return `# ${sys.name} — 디자인 시스템 스펙 (AI 코딩용)\n`\n      +`아래 토큰만 사용해 UI
-library.html	ct'){\n    body.textContent=\n`// ${sys.name} — 하이브리드 컴포넌트 (Flat + Compound · 공통 primitive)\n
-library.html	\n    </CardRoot>\n  );\n}\n\n/* Button (Flat) — 시스템 프로파일(모서리·두께) 반영 */\nexport function Butto
-library.html	── 사용법 ───────── */\n// ① Flat : 커스텀이 필요 없을 때 — 옵션만 채우면 끝\n<FlatCard title="월간 리포트" actionLab
-library.html	세요\n</FlatCard>\n\n// ② Compound : 커스텀이 필요할 때 — 직접 조립\n<Card>\n  <Card.Header>\n    <Card.Tit
-library.html	|'').trim().slice(0,14);\n    if(t) toast(t+' — 데모 버튼입니다');\n  });\n  // icons\n  renderIcons
-library.html	),{once:true});\n  // overlays (modal/drawer) — inject once at body\n  ensureOverlays();\n  s
-builder.html	        <option value="pretendard">Pretendard — 한글 기본</option>\n        <option value="inter"
-builder.html	/option>\n        <option value="inter">Inter — 모던 산세리프</option>\n        <option value="robo
-builder.html	ption>\n        <option value="roboto">Roboto — 안드로이드/구글</option>\n        <option value="ple
-builder.html	>\n        <option value="plex">IBM Plex Sans — 테크니컬</option>\n        <option value="grotesk
-builder.html	        <option value="grotesk">Space Grotesk — 개성있는 제목</option>\n        <option value="popp
-builder.html	ion>\n        <option value="poppins">Poppins — 둥글고 친근</option>\n        <option value="playf
-builder.html	    <option value="playfair">Playfair Display — 세리프/매거진</option>\n      </select>\n    </div>
-builder.html	- 본문/배경 대비 '+c1+':1 '+(c1>=4.5?'(AA 통과)':'(미달 — 색 조정 필요)')+'\n'\n  +'- 흰글씨/브랜드색 대비 '+c2+':1 '
-builder.html	('#btnSave').onclick=()=>{ save(); toast('저장됨 — 다음에 열면 그대로 복원됩니다'); };\n$('#btnToGen').onclic
-generator.html	너진 장벽을 4주 만에)">\n      <div class="lbl">참고 자료 — 있는 대로 붙여넣으세요 (성분·가격·진료과목·메뉴 등)</div>\n      <
-generator.html	Layout">\n        <option value="alt">모듈러 그리드 — 좌우 지그재그</option>\n        <option value="stac
-generator.html	</option>\n        <option value="stack">단일 열 — 위에서 아래로</option>\n        <option value="cent
-generator.html	ption>\n        <option value="center">가운데 정렬 — 좁은 폭</option>\n        <option value="split">
-generator.html	/option>\n        <option value="split">Split — 사진 | 글 반반 고정</option>\n      </select>\n     
-generator.html	롤이 지루하지 않습니다.',\n   use:'상세페이지, 기능 소개, 제품 스토리 — <b>이미지가 섹션마다 있을 때</b>',\n   avoid:'이미지가 거의 없을
-generator.html	(s,lay,secs,css);\n  if(!silent) toast('생성 완료 — '+secs.length+'개 섹션');\n}\nfunction prompt(s,
-generator.html	css){\n  const layName={alt:'모듈러 그리드(좌우 지그재그) — 홀수 행은 이미지 왼쪽, 짝수 행은 오른쪽',\n                 s
-generator.html	왼쪽, 짝수 행은 오른쪽',\n                 stack:'단일 열 — 위에서 아래로 순서대로',\n                 center:'가운데 
-generator.html	서 아래로 순서대로',\n                 center:'가운데 정렬 — min(760px,92vw) 좁은 폭, 텍스트 중앙',\n             
-generator.html	좁은 폭, 텍스트 중앙',\n                 split:'Split — 이미지 | 텍스트 반반 고정'}[lay];\n  const L=[];\n  con
-generator.html	\n  });\n  L.push('');\n  L.push('## 3) 디자인 토큰 — '+s.n+' (아래 CSS를 그대로 사용)');\n  L.push('```css
-guide.html	 <div class="case">\n    <div class="ct">상황 A — AI(클로드 코드)에게 화면을 시킬 때</div>\n    <div class="
-guide.html	 <div class="case">\n    <div class="ct">상황 B — 프로젝트에 규칙을 심어둘 때</div>\n    <div class="cw">한 
-guide.html	 <div class="case">\n    <div class="ct">상황 C — 고객이 브랜드 색을 줬을 때</div>\n    <div class="cw">숨고
-guide.html	\n    보라·바이올렛 강조색, 왼쪽에 굵은 선이 붙은 인용 카드, 이모지 남발 — 생성형 AI 티가 나는 패턴은 규칙에서 <b>금지</b>로 넣어두었습니다. 프롬프
-README.md	이 실제로 다릅니다.\n\n| | |\n|---|---|\n| **Material 3** — 알약형 버튼, Roboto | **IBM Carbon** — 직각, IBM Ple
-README.md	aterial 3** — 알약형 버튼, Roboto | **IBM Carbon** — 직각, IBM Plex Sans |\n| ![Material](docs/screen
-README.md	s/screenshots/comp-carbon.png) |\n| **Airbnb** — 코랄, 둥근 모서리, Manrope | **Editorial** — 세리프(Pla
-README.md	irbnb** — 코랄, 둥근 모서리, Manrope | **Editorial** — 세리프(Playfair), 각진 형태 |\n| ![Airbnb](docs/scree
-README.md	일 | 역할 |\n|---|---|\n| `library.html` | **모음집** — 시스템·레이아웃·구조·규칙을 보관. 맨 위 조립기에서 프롬프트·CLAUDE.md·
-README.md	d·CSS·컴포넌트를 뽑습니다 |\n| `builder.html` | **조립기** — 브랜드 색 하나로 50~950 램프를 자동 생성해 나만의 시스템을 만듭니다 |\n|
-README.md	 나만의 시스템을 만듭니다 |\n| `generator.html` | **생성기** — 제품·병원 정보를 넣고 실제 동작하는 HTML 페이지를 만듭니다 |\n| `guid
-README.md	는 HTML 페이지를 만듭니다 |\n| `guide.html` | **사용설명서** — 상황별 사용법과 자주 묻는 질문 |\n\n### 모음집 — 여기서 대부분 끝납니다\n\n
-README.md	l` | **사용설명서** — 상황별 사용법과 자주 묻는 질문 |\n\n### 모음집 — 여기서 대부분 끝납니다\n\n콘텐츠 · 레이아웃 · 디자인 시스템을 고르면 **AI 
-README.md	(docs/screenshots/system-detail.png)\n\n### 조립기 — 색 하나로 시스템 만들기\n\n브랜드 색을 넣으면 11단계 램프가 자동 계산되고, 폰
-README.md	](docs/screenshots/builder-clay.png)\n\n### 생성기 — 실제 페이지까지\n\n제품명·소개·참고 자료를 붙여넣고 콘텐츠·레이아웃·시스템을 고르
-README.md	 콘텐츠만 고르면 완성.\n\n## 특징\n\n- **이미지 규격이 화면에 표시됩니다** — 히어로 1920×1080(16:9), 인물 800×800(1:1)처럼 섹션마다 권
-README.md	다. 이미지는 다른 도구로 만들고 규격만 맞추면 됩니다.\n- **반응형이 기본** — `clamp()`, `min(1200px, 92vw)`, 768px 미만 1열이 
-README.md	, 768px 미만 1열이 생성물과 프롬프트 양쪽에 들어갑니다.\n- **접근성** — 대비(WCAG AA) 자동 계산, `focus-visible` 링, `prefer
-README.md	refers-reduced-motion` 대응.\n- **프롬프트와 코드가 일치** — 프롬프트에 실제 생성된 CSS가 그대로 포함되어, AI가 같은 결과를 냅니다.\n-
-README.md	 CSS가 그대로 포함되어, AI가 같은 결과를 냅니다.\n- **내 규칙 추가** — 직접 넣은 규칙이 모든 출력에 자동 포함되고 브라우저에 저장됩니다.\n\n## 실행\n

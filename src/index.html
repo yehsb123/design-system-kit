@@ -16,48 +16,30 @@
   --ui-border:#E7E4DD;--ui-accent:#A24E38;
   --ui-sh:0 1px 3px rgba(30,24,50,.06);--ui-sh-md:0 8px 26px rgba(30,24,50,.10);
 }
-:root[data-ui="dark"]{
-  --ui-canvas:#141317;--ui-panel:#1C1B21;--ui-panel-2:#232128;
-  --ui-fg:#F4F3F7;--ui-fg-strong:#FFFFFF;--ui-fg-lower:#A6A3AE;--ui-fg-dim:#6E6B75;
-  --ui-border:#302E38;--ui-accent:#E0917A;
-  --ui-sh:0 1px 3px rgba(0,0,0,.5);--ui-sh-md:0 8px 26px rgba(0,0,0,.5);
-}
 *{box-sizing:border-box;}
-body{margin:0;background:var(--ui-canvas);color:var(--ui-fg);line-height:1.65;-webkit-font-smoothing:antialiased;
-  font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;}
-.top{display:flex;align-items:center;gap:12px;padding:16px clamp(18px,4vw,32px);border-bottom:1px solid var(--ui-border);}
+body{margin:0;-webkit-font-smoothing:antialiased;}
+.top{display:flex;align-items:center;gap:12px;}
 .logo{font-family:"Space Grotesk",Pretendard,sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;}
 .mk{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 140deg,#A24E38,#C98A5B,#3F5E56,#A24E38);}
 .sp{flex:1;}
-.tbtn{border:1px solid var(--ui-border);background:var(--ui-panel);color:var(--ui-fg-lower);padding:7px 13px;
-  border-radius:9px;cursor:pointer;font:inherit;font-size:12.5px;text-decoration:none;}
-.tbtn:hover{color:var(--ui-fg-strong);}
-
-.wrap{max-width:1000px;margin:0 auto;padding:clamp(34px,7vw,70px) clamp(18px,4vw,32px) 80px;}
-h1{font-family:"Space Grotesk",Pretendard,sans-serif;font-size:clamp(30px,6vw,52px);font-weight:700;
-  letter-spacing:-.03em;line-height:1.1;margin:0 0 14px;}
-.lead{font-size:clamp(15px,2vw,17px);color:var(--ui-fg-lower);max-width:60ch;margin:0 0 10px;}
+.tbtn{cursor:pointer;font:inherit;text-decoration:none;}
+.wrap{margin:0 auto;padding:clamp(34px,7vw,70px) clamp(18px,4vw,32px) 80px;}
+.lead{margin:0 0 10px;}
 .stats{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 34px;}
-.stats span{font-size:12px;font-weight:700;background:var(--ui-panel);border:1px solid var(--ui-border);
-  color:var(--ui-fg-lower);padding:6px 12px;border-radius:999px;}
-
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;}
-.c{background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:16px;padding:20px;
-  box-shadow:var(--ui-sh);text-decoration:none;color:inherit;transition:.16s;display:flex;flex-direction:column;gap:7px;}
-.c:hover{transform:translateY(-3px);box-shadow:var(--ui-sh-md);border-color:var(--ui-accent);}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+.c{background:var(--ui-panel);text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:7px;}
+.c:hover{box-shadow:var(--ui-sh-md);}
 .c .ic{font-size:24px;}
-.c .n{font-size:16px;font-weight:800;color:var(--ui-fg-strong);}
-.c .d{font-size:13px;color:var(--ui-fg-lower);line-height:1.65;flex:1;}
-.c .go{font-size:12px;font-weight:800;color:var(--ui-accent);}
-.c.main{grid-column:1/-1;background:linear-gradient(135deg,var(--ui-panel),var(--ui-panel-2));}
+.c .n{color:var(--ui-fg-strong);}
+.c .d{color:var(--ui-fg-lower);flex:1;}
+.c.main{grid-column:1/-1;}
 
-h2{font-size:19px;font-weight:800;margin:48px 0 8px;padding-bottom:10px;border-bottom:2px solid var(--ui-fg-strong);}
-.steps{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
-.st{flex:1;min-width:190px;background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:13px;padding:15px;}
-.st .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--ui-accent);
-  color:#fff;font-size:11px;font-weight:800;margin-bottom:7px;}
-.st .t{font-size:13.5px;font-weight:800;color:var(--ui-fg-strong);}
-.st .d{font-size:12.5px;color:var(--ui-fg-lower);margin-top:3px;line-height:1.6;}
+h2{margin:48px 0 8px;padding-bottom:10px;border-bottom:2px solid var(--ui-fg-strong);}
+.steps{display:flex;flex-wrap:wrap;margin-top:16px;}
+.st{flex:1;min-width:190px;background:var(--ui-panel);}
+.st .n{display:inline-grid;place-items:center;width:22px;height:22px;font-size:11px;font-weight:800;margin-bottom:7px;}
+.st .t{color:var(--ui-fg-strong);}
+.st .d{color:var(--ui-fg-lower);margin-top:3px;}
 footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);font-size:12px;color:var(--ui-fg-dim);}
 </style>
 </style>
