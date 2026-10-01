@@ -5,7 +5,7 @@
 샌드박스 없는 iframe 에 srcdoc 으로 띄운다. 문서가 따로 서니 :root 변수도, 전역 변수도,
 id 도 섞이지 않는다. 대신 화면 사이 이동과 테마는 shim 이 부모를 거쳐 이어준다.
 """
-import io, os, re
+import io, os, re, json
 
 D = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(D, 'src')
@@ -73,6 +73,49 @@ def embed(html):
 
 KIT_LINK = u'<link rel="stylesheet" href="kit.css">'
 
+def _grab(s, name):
+    """const NAME=[ ... ] 블록의 본문을 통째로 가져온다."""
+    i = s.index('const %s=[' % name)
+    j = i + len('const %s=' % name)
+    depth, k = 0, j
+    while k < len(s):
+        if s[k] == '[':
+            depth += 1
+        elif s[k] == ']':
+            depth -= 1
+            if depth == 0:
+                return s[j:k + 1]
+        k += 1
+    raise AssertionError(name)
+
+
+def showcase():
+    """시작 화면이 쓸 재료를 모음집에서 꺼낸다.
+
+    데이터는 library.html 한 곳에만 둔다. 두 곳에 적으면 한쪽이 낡는다.
+    """
+    lib = io.open(os.path.join(SRC, 'library.html'), encoding='utf-8').read()
+    rows, seen = [], set()
+    for m in re.finditer(r'id:"([a-z0-9]+)",name:"([^"]+)",cat:"([^"]+)"', lib):
+        sid = m.group(1)
+        if sid in seen:
+            continue
+        seg = lib[m.end():m.end() + 900]
+        cv = re.search(r'cover:\[([^\]]+)\]', seg)
+        if not cv:
+            continue
+        seen.add(sid)
+        rows.append({'id': sid, 'n': m.group(2), 'c': m.group(3),
+                     'cv': re.findall(r'"(#[0-9A-Fa-f]{6})"', cv.group(1))})
+    assert len(rows) >= 17, '시스템을 다 못 찾았습니다: %d' % len(rows)
+    return ('<script>\nwindow.SHOWCASE={sys:'
+            + json.dumps(rows, ensure_ascii=False)
+            + ',lay:' + _grab(lib, 'LAYOUTS')
+            + ',ico:' + _grab(lib, 'ICONS')
+            + '};\n</' + 'script>')
+
+
+
 
 def main():
     blocks = []
@@ -81,9 +124,13 @@ def main():
     kit = io.open(os.path.join(SRC, 'kit.css'), encoding='utf-8').read()
     kit_tag = u'<style>\n/* src/kit.css */\n' + kit + u'</style>'
 
+    show = showcase()
+
     for name, fn in TOOLS:
         p = os.path.join(SRC, fn)
         s = io.open(p, encoding='utf-8').read()
+        if '<!-- SHOWCASE_DATA -->' in s:
+            s = s.replace('<!-- SHOWCASE_DATA -->', show, 1)
         assert s.count(KIT_LINK) == 1, fn + ': kit.css 연결을 찾지 못했습니다'
         s = s.replace(KIT_LINK, kit_tag)
         for a, b in REWRITE:

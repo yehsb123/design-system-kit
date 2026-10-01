@@ -28,50 +28,111 @@
   Licensed under the GNU Affero General Public License v3.0.
   See LICENSE for the full text.
 -->
-
 <html lang="ko" data-ui="light">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Design System Kit, 디자인 시스템 도구</title>
-<meta name="description" content="디자인 시스템 17종, 레이아웃 22종, 콘텐츠 구조 9종을 보관하고 AI 프롬프트·CLAUDE.md·CSS 토큰·실제 페이지까지 만들어내는 로컬 도구.">
+<meta name="description" content="디자인 시스템 17종, 레이아웃 22종, 콘텐츠 구조 9종을 보관하고 AI 프롬프트, CLAUDE.md, CSS 토큰, 실제 페이지까지 만들어내는 한 파일짜리 도구.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-:root,:root[data-ui="light"]{
-  --ui-canvas:#F6F5F2;--ui-panel:#FFFFFF;--ui-panel-2:#F2F0EB;
-  --ui-fg:#17161B;--ui-fg-strong:#2A2830;--ui-fg-lower:#5E5A63;--ui-fg-dim:#A9A6AE;
-  --ui-border:#E7E4DD;--ui-accent:#A24E38;
-  --ui-sh:0 1px 3px rgba(30,24,50,.06);--ui-sh-md:0 8px 26px rgba(30,24,50,.10);
-}
+/* 시작 화면에만 쓰는 배치. 색과 글자 단위는 kit.css 가 정한다. */
 *{box-sizing:border-box;}
 body{margin:0;-webkit-font-smoothing:antialiased;}
-.top{display:flex;align-items:center;gap:12px;}
-.logo{font-family:"Space Grotesk",Pretendard,sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;}
-.mk{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 140deg,#A24E38,#C98A5B,#3F5E56,#A24E38);}
-.sp{flex:1;}
-.tbtn{cursor:pointer;font:inherit;text-decoration:none;}
-.wrap{margin:0 auto;padding:clamp(34px,7vw,70px) clamp(18px,4vw,32px) 80px;}
-.lead{margin:0 0 10px;}
-.stats{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 34px;}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
-.c{background:var(--ui-panel);text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:7px;}
-.c:hover{box-shadow:var(--ui-sh-md);}
-.c .ic{font-size:24px;}
-.c .n{color:var(--ui-fg-strong);}
-.c .d{color:var(--ui-fg-lower);flex:1;}
-.c.main{grid-column:1/-1;}
+a{color:inherit;}
 
-h2{margin:48px 0 8px;padding-bottom:10px;border-bottom:2px solid var(--ui-fg-strong);}
-.steps{display:flex;flex-wrap:wrap;margin-top:16px;}
-.st{flex:1;min-width:190px;background:var(--ui-panel);}
-.st .n{display:inline-grid;place-items:center;width:22px;height:22px;font-size:11px;font-weight:800;margin-bottom:7px;}
-.st .t{color:var(--ui-fg-strong);}
-.st .d{color:var(--ui-fg-lower);margin-top:3px;}
-footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);font-size:12px;color:var(--ui-fg-dim);}
-</style>
+.top{display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;}
+.top .sp{flex:1;}
+.logo{display:flex;align-items:center;gap:8px;cursor:default;}
+
+.wrap{margin:0 auto;padding:0 clamp(16px,4vw,32px) var(--sp-152);}
+
+/* ---- 히어로. 이 화면의 유일한 유채색 ---- */
+/* 그라디언트를 살리되 글자가 앉는 면은 확실히 눌러 둔다.
+   색이 밝은 구간에서 흰 글씨가 묻히면 안 된다. */
+.hero{position:relative;margin:0 0 var(--section-gap);padding:var(--sp-152) clamp(16px,4vw,32px) var(--sp-64);
+  background:linear-gradient(180deg,rgba(0,0,0,.52),rgba(0,0,0,.86)),var(--iridescent);}
+.hero .in{max-width:var(--page-max);margin:0 auto;}
+.hero .in h1{color:#fff;margin:0 0 var(--sp-28);max-width:16ch;}
+.hero .in p{color:rgba(255,255,255,.94);font-size:var(--t-lead);line-height:var(--lh-lead);
+  max-width:62ch;margin:0 0 var(--sp-28);}
+.hero .go{display:inline-flex;gap:var(--sp-8);flex-wrap:wrap;}
+.hero .go a{border-radius:var(--r-pill);padding:11px 33px;font-size:var(--t-body);text-decoration:none;}
+.hero .go .p{background:#fff;color:#000;}
+.hero .go .s{border:1px solid rgba(255,255,255,.5);color:#fff;}
+.counts{display:flex;gap:var(--sp-28);flex-wrap:wrap;margin:var(--sp-40) 0 0;}
+.counts div{color:#fff;}
+.counts b{display:block;font-size:clamp(24px,3.4vw,38px);font-weight:300;letter-spacing:-.03em;line-height:1;}
+.counts span{font-size:var(--t-caption);color:rgba(255,255,255,.75);}
+
+/* ---- 공통 섹션 ---- */
+section{max-width:var(--page-max);margin:0 auto var(--section-gap);}
+.head{display:flex;align-items:baseline;gap:var(--el-gap);flex-wrap:wrap;
+  padding-bottom:var(--sp-12);border-bottom:1px solid var(--ui-line);margin-bottom:var(--sp-28);}
+.head h2{margin:0;}
+.head .more{margin-left:auto;font-size:var(--t-caption);color:var(--ui-fg-lower);text-decoration:none;}
+.head .more:hover{color:var(--ui-fg-strong);}
+.sub{font-size:var(--t-small);line-height:var(--lh-small);color:var(--ui-fg-lower);margin:0 0 var(--sp-28);max-width:74ch;}
+
+/* ---- 시스템 띠 ---- */
+.sysgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:var(--el-gap);}
+.syscard{border:1px solid var(--ui-border);text-decoration:none;display:block;
+  transition:border-color .8s var(--ease);}
+.syscard:hover,.syscard:focus-visible{border-color:var(--ui-line);}
+.syscard .strip{display:flex;height:64px;}
+.syscard .strip i{flex:1;}
+.syscard .meta{padding:12px 14px;}
+.syscard .nm{font-size:var(--t-small);color:var(--ui-fg-strong);}
+.syscard .ct{font-size:var(--t-eyebrow);color:var(--ui-fg-dim);letter-spacing:.1em;text-transform:uppercase;margin-top:3px;}
+
+/* ---- 레이아웃 와이어프레임 ---- */
+.laygrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:var(--el-gap);}
+.laycard{border:1px solid var(--ui-border);text-decoration:none;display:block;
+  transition:border-color .8s var(--ease);}
+.laycard:hover,.laycard:focus-visible{border-color:var(--ui-line);}
+.laycard .wire{background:var(--ui-panel-2);height:128px;padding:10px;display:flex;
+  flex-direction:column;gap:5px;border-bottom:1px solid var(--ui-border);}
+.laycard .wa{background:var(--ui-fg-dim);border-radius:2px;}
+.laycard .wb{background:var(--ui-border);border-radius:2px;}
+.laycard .nm{padding:12px 14px;font-size:var(--t-caption);color:var(--ui-fg-lower);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/* ---- 아이콘 ---- */
+/* 칸이 남을 때 바탕이 드러나지 않게 칸마다 테두리를 준다 */
+.icorow{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:var(--sp-8);}
+.icorow i{border:1px solid var(--ui-border);display:grid;place-items:center;aspect-ratio:1;
+  color:var(--ui-fg-lower);transition:color .4s ease,border-color .4s ease;}
+.icorow i:hover{color:var(--ui-fg-strong);border-color:var(--ui-line);}
+.icorow svg{width:20px;height:20px;}
+
+/* ---- 단계 ---- */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--el-gap);}
+.step{border:1px solid var(--ui-border);padding:var(--card-pad);}
+.step .n{font-size:clamp(34px,4vw,54px);font-weight:300;line-height:1;letter-spacing:-.04em;
+  color:var(--ui-fg-dim);display:block;margin-bottom:var(--sp-12);}
+.step .t{font-size:var(--t-caption);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ui-fg-strong);margin-bottom:var(--sp-8);}
+.step .d{font-size:var(--t-small);line-height:var(--lh-small);color:var(--ui-fg-lower);}
+
+/* ---- 화면 네 개 ---- */
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--el-gap);}
+.tool{border:1px solid var(--ui-border);padding:var(--card-pad);text-decoration:none;display:flex;
+  flex-direction:column;gap:var(--sp-8);transition:border-color .8s var(--ease);}
+.tool:hover,.tool:focus-visible{border-color:var(--ui-line);}
+.tool .nm{font-size:var(--t-card);color:var(--ui-fg-strong);letter-spacing:-.02em;}
+.tool .d{font-size:var(--t-small);line-height:var(--lh-small);color:var(--ui-fg-lower);flex:1;}
+.tool .go{font-size:var(--t-caption);color:var(--ui-fg-lower);}
+
+footer{max-width:var(--page-max);margin:0 auto;padding-top:var(--sp-28);
+  border-top:1px solid var(--ui-border);font-size:var(--t-caption);color:var(--ui-fg-dim);}
+
+@media(max-width:768px){
+  .hero{padding-top:var(--sp-68);}
+  .counts{gap:var(--sp-28);}
+}
 </style>
 <style>
 /* src/kit.css */
@@ -630,63 +691,187 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   <button class="tbtn" id="btnUi">테마</button>
 </div>
 
+<div class="hero">
+  <div class="in">
+    <h1>디자인은 고르고, 코드는 뽑아 쓰는 도구</h1>
+    <p>검증된 디자인 시스템과 실제 사이트 기준 화면 구조를 모아 두고, AI에게 넘길 프롬프트와 규칙 파일과 CSS 토큰과 실제 페이지까지 한자리에서 만들어냅니다.</p>
+    <div class="go">
+      <a class="p" href="library.html">모음집 열기</a>
+      <a class="s" href="guide.html">사용법 보기</a>
+    </div>
+    <div class="counts">
+      <div><b>17</b><span>디자인 시스템</span></div>
+      <div><b>22</b><span>레이아웃</span></div>
+      <div><b>9</b><span>콘텐츠 구조</span></div>
+      <div><b>48</b><span>아이콘</span></div>
+      <div><b>0</b><span>의존성</span></div>
+    </div>
+  </div>
+</div>
+
 <div class="wrap">
-  <h1>디자인은 고르고,<br>코드는 뽑아 쓰는 도구</h1>
-  <p class="lead">검증된 디자인 시스템과 실제 사이트 기준 화면 구조를 모아두고, AI에게 넘길 프롬프트·규칙 파일·CSS 토큰·실제 페이지까지 한자리에서 만들어냅니다. 설치 없이 브라우저만 있으면 됩니다.</p>
-  <div class="stats">
-    <span>디자인 시스템 17종</span><span>레이아웃 22종</span><span>콘텐츠 구조 9종</span>
-    <span>아이콘 48개</span><span>의존성 0</span>
-  </div>
 
-  <div class="cards">
-    <a class="c main" href="library.html">
-      <span class="ic"></span>
-      <span class="n">모음집에서 시작하세요</span>
-      <span class="d">디자인 시스템, 레이아웃, 콘텐츠 구조, 제작 규칙을 보관합니다. 맨 위 조립기에서 <b>AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 CSS · Tailwind</b>를 한 번에 뽑아냅니다.</span>
-      <span class="go">열기</span>
-    </a>
-    <a class="c" href="builder.html">
-      <span class="ic"></span>
-      <span class="n">조립기</span>
-      <span class="d">브랜드 색 하나만 넣으면 50~950 램프가 자동으로 생깁니다. 폰트와 모서리와 밀도까지 정해 나만의 시스템을 만듭니다.</span>
-      <span class="go">색으로 만들기</span>
-    </a>
-    <a class="c" href="generator.html">
-      <span class="ic"></span>
-      <span class="n">생성기</span>
-      <span class="d">제품이나 병원 정보를 붙여넣고 콘텐츠와 레이아웃과 시스템을 고르면 실제 동작하는 HTML이 나옵니다.</span>
-      <span class="go">페이지 만들기</span>
-    </a>
-    <a class="c" href="guide.html">
-      <span class="ic"></span>
-      <span class="n">사용설명서</span>
-      <span class="d">상황별 사용법과 화면별 버튼 설명, 이미지 처리 방법, 자주 묻는 질문.</span>
-      <span class="go">읽기</span>
-    </a>
-  </div>
+  <section>
+    <div class="head"><h2>디자인 시스템</h2><a class="more" href="library.html">모음집에서 전체 보기</a></div>
+    <p class="sub">색만 바뀌는 것이 아닙니다. 시스템마다 폰트, 모서리, 그림자, 아이콘 굵기, 컴포넌트 모양이 실제로 다릅니다. 카드를 누르면 그 시스템의 상세로 들어갑니다.</p>
+    <div class="sysgrid" id="sysGrid"></div>
+  </section>
 
-  <h2>쓰는 순서</h2>
-  <div class="steps">
-    <div class="st"><span class="n">1</span><div class="t">고르기</div><div class="d">무엇을 만들지(콘텐츠), 어떤 구조로(레이아웃), 어떤 톤으로(디자인 시스템)</div></div>
-    <div class="st"><span class="n">2</span><div class="t">뽑기</div><div class="d">AI 프롬프트, CLAUDE.md, CSS 토큰, 컴포넌트 CSS를 복사하거나 파일로 저장</div></div>
-    <div class="st"><span class="n">3</span><div class="t">만들기</div><div class="d">AI에 붙여넣거나 생성기에서 완성된 HTML 받기</div></div>
-  </div>
+  <section>
+    <div class="head"><h2>레이아웃</h2><a class="more" href="library.html">구조 전체 보기</a></div>
+    <p class="sub">화면 뼈대 22종을 와이어프레임으로 보관합니다. 이름 옆에 쉬운 한국어 설명이 붙습니다.</p>
+    <div class="laygrid" id="layGrid"></div>
+  </section>
 
-  <h2>담겨 있는 구성</h2>
-  <div class="steps">
-    <div class="st"><div class="t">디자인 시스템 17종</div><div class="d">Toss, Ant Design, Material 3, IBM Carbon, Apple HIG, Shopify Polaris, Vercel, GitLab, Airbnb, Slack, monopo saigon 등. 색뿐 아니라 <b>폰트와 모서리와 아이콘 굵기</b>까지 시스템마다 다릅니다.</div></div>
-    <div class="st"><div class="t">레이아웃 22종</div><div class="d">Holy Grail, 대시보드, 지그재그, 벤토, 메뉴판 4종 등. 이름 옆에 쉬운 한국어 설명과 와이어프레임을 둡니다.</div></div>
-    <div class="st"><div class="t">콘텐츠 구조 9종</div><div class="d">올리브영, Linear, Apple, Zillow 등 실제 사이트 기준 섹션 순서입니다. 이미지가 필요한 곳에는 <b>권장 규격</b>이 붙습니다.</div></div>
-    <div class="st"><div class="t">제작 규칙</div><div class="d">반응형(vw, clamp), 이미지, 접근성, 금지 패턴. 직접 규칙을 추가하면 프롬프트에 자동으로 들어갑니다.</div></div>
-  </div>
+  <section>
+    <div class="head"><h2>아이콘</h2><a class="more" href="library.html">에셋 전체 보기</a></div>
+    <p class="sub">48개를 SVG 스프라이트, 개별 파일, React 컴포넌트, CSS로 내보냅니다. 선 굵기와 끝처리는 고른 시스템을 따릅니다.</p>
+    <div class="icorow" id="icoRow"></div>
+  </section>
+
+  <section>
+    <div class="head"><h2>쓰는 순서</h2></div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><div class="t">CHOOSE</div><div class="d">무엇을 만들지(콘텐츠), 어떤 구조로(레이아웃), 어떤 톤으로(디자인 시스템)를 고릅니다.</div></div>
+      <div class="step"><span class="n">02</span><div class="t">EXPORT</div><div class="d">AI 프롬프트, CLAUDE.md, CSS 토큰, 컴포넌트 CSS를 복사하거나 파일로 저장합니다.</div></div>
+      <div class="step"><span class="n">03</span><div class="t">BUILD</div><div class="d">AI에 붙여넣거나 생성기에서 완성된 HTML을 받습니다.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><h2>화면 네 개</h2></div>
+    <div class="tools">
+      <a class="tool" href="library.html">
+        <span class="nm">모음집</span>
+        <span class="d">디자인 시스템, 레이아웃, 콘텐츠 구조, 제작 규칙을 보관합니다. 맨 위 조립기에서 프롬프트와 토큰을 한 번에 뽑습니다.</span>
+        <span class="go">열기</span>
+      </a>
+      <a class="tool" href="builder.html">
+        <span class="nm">조립기</span>
+        <span class="d">브랜드 색 하나만 넣으면 50~950 램프가 자동으로 생깁니다. 폰트와 모서리와 밀도까지 정해 나만의 시스템을 만듭니다.</span>
+        <span class="go">색으로 만들기</span>
+      </a>
+      <a class="tool" href="generator.html">
+        <span class="nm">생성기</span>
+        <span class="d">제품이나 병원 정보를 붙여넣고 콘텐츠와 레이아웃과 시스템을 고르면 실제 동작하는 HTML이 나옵니다.</span>
+        <span class="go">페이지 만들기</span>
+      </a>
+      <a class="tool" href="guide.html">
+        <span class="nm">사용설명서</span>
+        <span class="d">상황별 사용법과 화면별 버튼 설명, 이미지 처리 방법, 자주 묻는 질문.</span>
+        <span class="go">읽기</span>
+      </a>
+    </div>
+  </section>
 
   <footer>한 파일, 빌드 없음, 인터넷은 웹폰트 로딩에만 씁니다</footer>
 </div>
+
+<script>
+window.SHOWCASE={sys:[{"id": "toss", "n": "Toss (TDS)", "c": "앱", "cv": ["#3182F6", "#03B26C", "#F04452", "#191F28"]}, {"id": "aurora", "n": "Aurora", "c": "SaaS", "cv": ["#4178FF", "#00CCC2", "#A78BFA", "#F472B6"]}, {"id": "graphite", "n": "Graphite", "c": "엔터프라이즈", "cv": ["#4F46E5", "#64748B", "#0D9488", "#0F172A"]}, {"id": "antd", "n": "Ant Design", "c": "엔터프라이즈", "cv": ["#1677FF", "#52C41A", "#FAAD14", "#FF4D4F"]}, {"id": "m3", "n": "Material 3", "c": "앱", "cv": ["#6750A4", "#4CAF50", "#FF9800", "#B3261E"]}, {"id": "carbon", "n": "IBM Carbon", "c": "엔터프라이즈", "cv": ["#0F62FE", "#24A148", "#F1C21B", "#DA1E28"]}, {"id": "apple", "n": "Apple HIG", "c": "앱", "cv": ["#007AFF", "#34C759", "#FF9500", "#FF3B30"]}, {"id": "polaris", "n": "Shopify Polaris", "c": "커머스", "cv": ["#008060", "#303030", "#F1A417", "#D72C0D"]}, {"id": "neon", "n": "Neon", "c": "랜딩", "cv": ["#7C4DFF", "#22D3EE", "#F5155F", "#0F1018"]}, {"id": "editorial", "n": "Editorial", "c": "에디토리얼", "cv": ["#B91C1C", "#1A1813", "#B7791F", "#FAF8F3"]}, {"id": "playful", "n": "Playful", "c": "랜딩", "cv": ["#F72AAA", "#8B5CF6", "#17C964", "#FF4FC0"]}, {"id": "mobile", "n": "Mobile Kit", "c": "모바일", "cv": ["#0FB39B", "#2E90FA", "#FFB020", "#151A1E"]}, {"id": "vercel", "n": "Vercel / Geist", "c": "랜딩", "cv": ["#000000", "#0070F3", "#0CB85F", "#EAEAEA"]}, {"id": "gitlab", "n": "GitLab (Pajamas)", "c": "데브옵스", "cv": ["#FC6D26", "#E24329", "#1F75CB", "#171321"]}, {"id": "airbnb", "n": "Airbnb", "c": "여행", "cv": ["#FF385C", "#E61E76", "#008A05", "#222222"]}, {"id": "slack", "n": "Slack", "c": "협업", "cv": ["#4A154B", "#36C5F0", "#2BAC76", "#1A1A1D"]}, {"id": "monopo", "n": "monopo saigon", "c": "포트폴리오", "cv": ["#000000", "#A0E0AB", "#FFAC2E", "#A52D25"]}],lay:[
+["Holy Grail (양쪽 사이드바 3단)","가운데 본문 + 양옆 사이드바. 헤더·푸터까지 갖춘 가장 기본적인 웹사이트 뼈대. 예: 옛 포털, 문서 사이트.",`<div class="wa" style="height:14px"></div><div style="display:flex;gap:5px;flex:1"><div class="wb" style="width:22%"></div><div class="wb" style="flex:1"></div><div class="wb" style="width:18%"></div></div><div class="wb" style="height:10px"></div>`],
+["Dashboard (관리자 화면)","왼쪽 메뉴 + 위쪽 바 + 지표 카드들. 어드민·통계 화면의 표준. 예: 노션, 어드민 툴.",`<div style="display:flex;gap:5px;flex:1"><div class="wb" style="width:20%"></div><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div class="wa" style="height:13px"></div><div style="flex:1;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:5px"><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div></div></div></div>`],
+["Landing Hero (첫 화면 크게)","맨 위에 큰 한 방(대표 이미지+문구), 아래 특징 3개, 마지막에 신청 버튼. 홍보용 한 페이지.",`<div class="wa" style="height:38px"></div><div style="display:flex;gap:5px;flex:1"><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div></div><div class="wa" style="height:12px;width:44%;margin:0 auto"></div>`],
+["Split (화면 반반)","왼쪽 사진 / 오른쪽 글처럼 화면을 정확히 반으로 나눔. 로그인·회원가입·브랜드 소개에 자주.",`<div style="display:flex;gap:6px;flex:1"><div class="wa" style="flex:1"></div><div class="wb" style="flex:1"></div></div>`],
+["Modular Grid (지그재그 좌우교차)","1행은 사진왼쪽·글오른쪽, 2행은 반대로 번갈아 배치. 스크롤이 지루하지 않음. 상세페이지 단골.",`<div style="display:flex;gap:5px;flex:1"><div class="wa" style="width:46%"></div><div class="wb" style="flex:1"></div></div><div style="display:flex;gap:5px;flex:1"><div class="wb" style="flex:1"></div><div class="wa" style="width:46%"></div></div>`],
+["Bento (도시락 칸 나누기)","도시락처럼 크고 작은 네모 칸을 조합. 기능 여러 개를 한눈에. 예: 애플 제품 소개.",`<div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:5px;flex:1"><div class="wa" style="grid-row:span 2"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wa"></div></div>`],
+["List–Detail (목록 + 내용 · 메일함형)","왼쪽에 목록, 오른쪽에 클릭한 내용. 메일함·메신저·설정 화면 구조.",`<div style="display:flex;gap:5px;flex:1"><div style="width:34%;display:flex;flex-direction:column;gap:4px"><div class="wb" style="height:12px"></div><div class="wa" style="height:12px"></div><div class="wb" style="height:12px"></div><div class="wb" style="height:12px"></div></div><div class="wb" style="flex:1"></div></div>`],
+["Magazine (잡지형)","큰 대표 기사 하나 + 작은 기사 여러 개. 뉴스·매거진 첫 화면.",`<div style="display:flex;gap:5px;flex:1"><div class="wa" style="flex:2"></div><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div></div></div><div style="display:flex;gap:5px;height:22px"><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div></div>`],
+["Centered (가운데 한 줄)","좁은 폭으로 가운데 정렬. 읽기 편함. 블로그 글·신청 폼·문서에 적합.",`<div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center"><div class="wa" style="height:14px;width:60%"></div><div class="wb" style="height:40px;width:72%"></div><div class="wb" style="height:10px;width:52%"></div></div>`],
+["Masonry (벽돌 쌓기 · 갤러리)","높이가 제각각인 사진을 벽돌처럼 빈틈없이 쌓음. 갤러리·핀터레스트 스타일.",`<div style="display:flex;gap:5px;flex:1;align-items:flex-start"><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div class="wb" style="height:44px"></div><div class="wb" style="height:26px"></div></div><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div class="wb" style="height:26px"></div><div class="wb" style="height:46px"></div></div><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div class="wb" style="height:36px"></div><div class="wb" style="height:30px"></div></div></div>`]
+  ,["Sticky Sidebar (한쪽 고정 · 구매박스형)","스크롤해도 한쪽(보통 우측 구매정보)이 따라옴. 상품 상세·문서 목차에 필수.",`<div style="display:flex;gap:5px;flex:1"><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div></div><div class="wa" style="width:32%"></div></div>`]
+  ,["Anchor Long Page (앵커 탭 롱페이지)","위에 탭이 붙어있고 누르면 해당 위치로 점프. 아주 긴 상세페이지 정리용.",`<div class="wa" style="height:12px"></div><div style="display:flex;gap:4px;height:9px"><div class="wb" style="flex:1"></div><div class="wa" style="flex:1"></div><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div></div><div class="wb" style="flex:1"></div><div class="wb" style="height:20px"></div>`]
+  ,["Full-bleed Scroll (풀화면 몰입형)","한 화면에 하나씩 꽉 채워 스크롤. 브랜드·포트폴리오 몰입 연출.",`<div class="wa" style="flex:1"></div><div class="wb" style="flex:1"></div>`]
+  ,["Card Feed (피드형 · SNS)","같은 카드가 세로로 계속 이어짐. 커뮤니티·SNS·블로그 목록.",`<div class="wb" style="height:26px"></div><div class="wa" style="height:26px"></div><div class="wb" style="height:26px"></div><div class="wb" style="height:20px"></div>`]
+  ,["Tabbed (탭 전환형)","탭을 누르면 같은 자리에서 내용만 바뀜. 정보량 많을 때 압축.",`<div style="display:flex;gap:4px;height:11px"><div class="wa" style="flex:1"></div><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div></div><div class="wb" style="flex:1"></div>`]
+  ,["Wizard Steps (단계별 진행)","1, 2, 3 단계로 나눠 진행. 회원가입·주문·설문에 적합.",`<div style="display:flex;gap:5px;align-items:center;height:12px"><div class="wa" style="width:14px;border-radius:50%"></div><div class="wb" style="flex:1;height:2px"></div><div class="wb" style="width:14px;border-radius:50%"></div><div class="wb" style="flex:1;height:2px"></div><div class="wb" style="width:14px;border-radius:50%"></div></div><div class="wb" style="flex:1"></div><div style="display:flex;gap:5px;height:12px"><div class="wb" style="flex:1"></div><div class="wa" style="flex:1"></div></div>`]
+  ,["Pricing Compare (요금제 비교표)","플랜 3~4개를 나란히 비교. 가운데 추천 플랜을 강조.",`<div style="display:flex;gap:5px;flex:1;align-items:stretch"><div class="wb" style="flex:1"></div><div class="wa" style="flex:1"></div><div class="wb" style="flex:1"></div></div><div class="wb" style="height:14px"></div>`]
+  ,["Grid Gallery (균일 격자 갤러리)","같은 크기 사진을 격자로 정렬. 제품·작업물 나열에 깔끔.",`<div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:5px;flex:1"><div class="wb"></div><div class="wa"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wa"></div></div>`]
+  ,["Menu 2단 (클래식 다이닝 메뉴판)","가운데 세로선 기준 좌우 2단. 왼쪽 전채·메인, 오른쪽 사이드·음료. 종이 메뉴판의 기본형.",`<div class="wa" style="height:14px;width:52%;margin:0 auto"></div><div style="display:flex;gap:12px;flex:1;position:relative"><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div class="wa" style="height:8px;width:46%"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px"></div><div class="wa" style="height:8px;width:40%;margin-top:5px"></div><div class="wb" style="height:7px"></div></div><div style="width:1px;background:var(--ui-border)"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div class="wa" style="height:8px;width:42%"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px"></div><div class="wa" style="height:8px;width:36%;margin-top:5px"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px"></div></div></div>`]
+  ,["Menu 점선 리더 (가격 우측 정렬형)","메뉴명 ---- 가격 형태로 점선이 이어짐. 항목이 많고 사진이 없는 메뉴판에 적합.",`<div class="wa" style="height:11px;width:40%"></div>`+[1,2,3,4,5].map(function(){return '<div style="display:flex;align-items:center;gap:6px;height:10px"><div class="wb" style="width:34%;height:7px"></div><div style="flex:1;border-bottom:1px dotted var(--ui-border)"></div><div class="wa" style="width:13%;height:7px"></div></div>';}).join('')+`<div class="wa" style="height:9px;width:32%;margin-top:4px"></div><div style="display:flex;align-items:center;gap:6px;height:10px"><div class="wb" style="width:30%;height:7px"></div><div style="flex:1;border-bottom:1px dotted var(--ui-border)"></div><div class="wa" style="width:13%;height:7px"></div></div>`]
+  ,["Menu 사진 그리드 (카페·배달 메뉴)","사진+이름+가격 카드를 격자로. 실물 확인이 중요한 카페·디저트·배달앱 메뉴.",`<div style="display:flex;gap:4px;height:10px"><div class="wa" style="flex:1"></div><div class="wb" style="flex:1"></div><div class="wb" style="flex:1"></div></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;flex:1">`+[1,2,3,4,5,6].map(function(i){return '<div style="display:flex;flex-direction:column;gap:3px"><div class="'+(i===1?'wa':'wb')+'" style="flex:1"></div><div class="wb" style="height:5px;width:80%"></div><div class="wa" style="height:5px;width:44%"></div></div>';}).join('')+`</div>`]
+  ,["Menu 시그니처 강조 (골든 트라이앵글)","가장 팔고 싶은 메뉴를 우상단·중앙에 박스로 크게. 나머지는 리스트로 받쳐줌.",`<div style="display:flex;gap:6px;flex:1"><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div class="wb" style="height:7px;width:60%"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px;width:80%"></div><div class="wb" style="height:7px"></div></div><div style="width:40%;display:flex;flex-direction:column;gap:5px"><div class="wa" style="flex:1;border-radius:6px"></div><div class="wb" style="height:7px"></div><div class="wb" style="height:7px;width:70%"></div></div></div>`]
+],ico:[
+["home","<path d='M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z'/>"],
+["search","<circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.5' y2='16.5'/>"],
+["user","<circle cx='12' cy='8' r='4'/><path d='M4 21c0-4 4-6 8-6s8 2 8 6'/>"],
+["users","<circle cx='9' cy='8' r='3.5'/><path d='M2 21c0-3.5 3.5-5 7-5s7 1.5 7 5'/><path d='M16 5a3.5 3.5 0 0 1 0 7M22 21c0-3-2-4.5-4.5-5'/>"],
+["settings","<circle cx='12' cy='12' r='3'/><path d='M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1'/>"],
+["bell","<path d='M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6'/><path d='M10 20a2 2 0 0 0 4 0'/>"],
+["heart","<path d='M12 20s-7-4.5-9.5-9A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 9.5 5c-2.5 4.5-9.5 9-9.5 9z'/>"],
+["star","<path d='M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8L6.6 19.6l1-6L3.3 9.4l6-.9z'/>"],
+["check","<path d='M4 12.5l5 5L20 6.5'/>"],
+["close","<line x1='5' y1='5' x2='19' y2='19'/><line x1='19' y1='5' x2='5' y2='19'/>"],
+["plus","<line x1='12' y1='5' x2='12' y2='19'/><line x1='5' y1='12' x2='19' y2='12'/>"],
+["minus","<line x1='5' y1='12' x2='19' y2='12'/>"],
+["trash","<path d='M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13'/>"],
+["edit","<path d='M4 20h4L20 8l-4-4L4 16z'/>"],
+["download","<path d='M12 3v12M7 11l5 5 5-5M4 21h16'/>"],
+["upload","<path d='M12 21V9M7 13l5-5 5 5M4 3h16'/>"],
+["calendar","<rect x='3' y='5' width='18' height='16' rx='2'/><line x1='3' y1='9' x2='21' y2='9'/><line x1='8' y1='3' x2='8' y2='6'/><line x1='16' y1='3' x2='16' y2='6'/>"],
+["clock","<circle cx='12' cy='12' r='9'/><path d='M12 7v5l3 3'/>"],
+["mail","<rect x='3' y='5' width='18' height='14' rx='2'/><path d='M3 7l9 6 9-6'/>"],
+["lock","<rect x='5' y='11' width='14' height='10' rx='2'/><path d='M8 11V8a4 4 0 0 1 8 0v3'/>"],
+["chevron","<path d='M9 5l7 7-7 7'/>"],
+["chevron-down","<path d='M5 9l7 7 7-7'/>"],
+["arrow-right","<line x1='4' y1='12' x2='20' y2='12'/><path d='M14 6l6 6-6 6'/>"],
+["arrow-left","<line x1='20' y1='12' x2='4' y2='12'/><path d='M10 6l-6 6 6 6'/>"],
+["filter","<path d='M3 5h18l-7 8v6l-4-2v-4z'/>"],
+["menu","<line x1='4' y1='7' x2='20' y2='7'/><line x1='4' y1='12' x2='20' y2='12'/><line x1='4' y1='17' x2='20' y2='17'/>"],
+["more-v","<circle cx='12' cy='5' r='1.2'/><circle cx='12' cy='12' r='1.2'/><circle cx='12' cy='19' r='1.2'/>"],
+["more-h","<circle cx='5' cy='12' r='1.2'/><circle cx='12' cy='12' r='1.2'/><circle cx='19' cy='12' r='1.2'/>"],
+["external","<path d='M14 4h6v6M20 4l-8 8M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6'/>"],
+["eye","<path d='M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z'/><circle cx='12' cy='12' r='3'/>"],
+["share","<circle cx='6' cy='12' r='2.5'/><circle cx='18' cy='6' r='2.5'/><circle cx='18' cy='18' r='2.5'/><path d='M8.2 11l7.6-4M8.2 13l7.6 4'/>"],
+["bookmark","<path d='M6 3h12v18l-6-4-6 4z'/>"],
+["tag","<path d='M3 12l9-9h7v7l-9 9z'/><circle cx='15.5' cy='8.5' r='1.2'/>"],
+["folder","<path d='M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/>"],
+["file","<path d='M6 3h8l4 4v14H6z'/><path d='M14 3v4h4'/>"],
+["image","<rect x='3' y='4' width='18' height='16' rx='2'/><circle cx='9' cy='10' r='2'/><path d='M4 18l5-4 4 3 3-2 4 3'/>"],
+["camera","<rect x='3' y='7' width='18' height='13' rx='2'/><path d='M8 7l2-3h4l2 3'/><circle cx='12' cy='13' r='3.5'/>"],
+["pin","<path d='M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z'/><circle cx='12' cy='10' r='2.5'/>"],
+["card","<rect x='3' y='6' width='18' height='12' rx='2'/><line x1='3' y1='10' x2='21' y2='10'/>"],
+["cart","<circle cx='9' cy='20' r='1.5'/><circle cx='18' cy='20' r='1.5'/><path d='M3 4h2l2.5 12h11l2-8H6'/>"],
+["check-circle","<circle cx='12' cy='12' r='9'/><path d='M8 12l3 3 5-6'/>"],
+["alert","<circle cx='12' cy='12' r='9'/><line x1='12' y1='8' x2='12' y2='13'/><circle cx='12' cy='16.5' r='.6'/>"],
+["info","<circle cx='12' cy='12' r='9'/><line x1='12' y1='11' x2='12' y2='16'/><circle cx='12' cy='7.5' r='.6'/>"],
+["refresh","<path d='M20 11a8 8 0 1 0-1 6'/><path d='M21 4v5h-5'/>"],
+["grid","<rect x='4' y='4' width='7' height='7' rx='1'/><rect x='13' y='4' width='7' height='7' rx='1'/><rect x='4' y='13' width='7' height='7' rx='1'/><rect x='13' y='13' width='7' height='7' rx='1'/>"],
+["sun","<circle cx='12' cy='12' r='4'/><path d='M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19'/>"],
+["moon","<path d='M20 14a8 8 0 1 1-10-10 6 6 0 0 0 10 10z'/>"],
+["send","<path d='M4 11l16-7-7 16-2-6z'/>"]
+]};
+>
 <script>
 document.getElementById('btnUi').onclick=function(){
   var r=document.documentElement;
   r.setAttribute('data-ui', r.getAttribute('data-ui')==='dark'?'light':'dark');
 };
+
+/* 모음집이 들고 있는 재료를 그대로 보여 준다. 데이터는 묶을 때 심는다. */
+(function(){
+  var S=window.SHOWCASE;
+  if(!S) return;
+
+  var sg=document.getElementById('sysGrid');
+  if(sg && S.sys) sg.innerHTML=S.sys.map(function(x){
+    return '<a class="syscard" href="library.html?sys='+x.id+'" aria-label="'+x.n+' 시스템 열기">'
+      +'<div class="strip">'+x.cv.map(function(c){return '<i style="background:'+c+'"></i>';}).join('')+'</div>'
+      +'<div class="meta"><div class="nm">'+x.n+'</div><div class="ct">'+x.c+'</div></div></a>';
+  }).join('');
+
+  var lg=document.getElementById('layGrid');
+  if(lg && S.lay) lg.innerHTML=S.lay.slice(0,8).map(function(x,i){
+    return '<a class="laycard" href="library.html?lay='+i+'" aria-label="'+x[0]+' 구조 보기">'
+      +'<div class="wire">'+x[2]+'</div><div class="nm">'+x[0]+'</div></a>';
+  }).join('');
+
+  var ir=document.getElementById('icoRow');
+  if(ir && S.ico) ir.innerHTML=S.ico.slice(0,24).map(function(x){
+    return '<i title="'+x[0]+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+      +'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+x[1]+'</svg></i>';
+  }).join('');
+})();
 >
 </body>
 </html>
