@@ -6205,6 +6205,17 @@ function parseMat(raw){
 function slot(label){ return '<span class="fill">'+esc(label)+'</span>'; }
 function val(v,label){ return v ? esc(v) : slot(label); }
 
+/* 페이지 종류마다 주인공을 부르는 이름과 행동 문구가 다르다 */
+const NOUN={
+  beauty:{name:'제품명', cta:'구매하기', cta2:'자세히 보기'},
+  saas:{name:'제품명', cta:'무료로 시작', cta2:'데모 보기'},
+  menu:{name:'매장명', cta:'주문하기', cta2:'오시는 길'},
+  clinic:{name:'병원명', cta:'예약하기', cta2:'진료 안내'},
+  portfolio:{name:'스튜디오명', cta:'문의하기', cta2:'작업 보기'},
+  app:{name:'앱 이름', cta:'App Store', cta2:'Google Play'}
+};
+function noun(c,k){ return (NOUN[c.page]||NOUN.beauty)[k]; }
+
 /* ===== 섹션 부품 =====
    섹션마다 실제 구조를 만든다. 이름을 제목으로 찍지 않는다. */
 const COMP={
@@ -6214,11 +6225,11 @@ hero:function(c){
     + ph(c,'16/9','hero')
     + '<div class="htx">'
     + (c.sec.t?'<div class="eyebrow">'+esc(c.sec.t)+'</div>':'')
-    + '<h1>'+val(c.brand,'제품명')+'</h1>'
-    + '<p class="lead">'+val(c.tag,'한 줄 정의 카피')+'</p>'
-    + (c.m.target?'<p class="meta">'+esc(c.m.target)+'을 위한 제품</p>':'')
-    + '<div class="cta"><a class="btn" href="#buy">구매하기</a>'
-    + '<a class="btn2" href="#detail">자세히 보기</a></div>'
+    + '<h1>'+val(c.brand,noun(c,'name'))+'</h1>'
+    + '<p class="lead">'+val(c.tag,'한 줄 소개')+'</p>'
+    + (c.m.target?'<p class="meta">'+esc(c.m.target)+' 대상</p>':'')
+    + '<div class="cta"><a class="btn" href="#buy">'+esc(noun(c,'cta'))+'</a>'
+    + '<a class="btn2" href="#detail">'+esc(noun(c,'cta2'))+'</a></div>'
     + '</div></div>';
 },
 
@@ -6229,7 +6240,7 @@ statement:function(c){
 
 pricebox:function(c){
   return '<div class="buybox" id="buy">'
-    + '<div class="bb-l"><div class="bb-name">'+val(c.brand,'제품명')+'</div>'
+    + '<div class="bb-l"><div class="bb-name">'+val(c.brand,noun(c,'name'))+'</div>'
     + '<div class="bb-opt"><span class="chip on">'+val(c.m.volume,'용량')+'</span>'
     + '<span class="chip">두 번째 옵션</span></div>'
     + '<label class="bb-sub"><input type="checkbox"> 정기배송으로 받기</label></div>'
@@ -6247,7 +6258,7 @@ badges:function(c){
 
 stats:function(c){
   const s=c.m.stats.length?c.m.stats.slice(0,4):[['','수치 1'],['','수치 2'],['','수치 3']];
-  return '<div class="mid"><h2>자료로 확인된 수치</h2>'
+  return '<div class="mid"><h2>'+esc(c.sec.t)+'</h2>'
     + '<p class="note">없는 효능과 수치는 적지 않습니다.</p>'
     + '<div class="stats">'+s.map(function(x){
         return '<div class="stat"><div class="sv">'+(x[0]?esc(x[0]):slot('수치'))+'</div>'
@@ -6256,7 +6267,7 @@ stats:function(c){
 
 ingredients:function(c){
   const g=c.m.ingredients.length?c.m.ingredients:['성분 1','성분 2','성분 3'];
-  return '<div class="mid"><h2>핵심 성분</h2><div class="cards">'
+  return '<div class="mid"><h2>'+esc(c.sec.t)+'</h2><div class="cards">'
     + g.slice(0,6).map(function(x){
         return '<div class="card">'+ph(c,'1/1','icon',true)
              + '<div class="cn">'+esc(x)+'</div>'
@@ -6266,7 +6277,7 @@ ingredients:function(c){
 
 steps:function(c){
   const st=['첫 번째 단계','두 번째 단계','세 번째 단계'];
-  return '<div class="mid"><h2>사용법</h2><ol class="steps">'
+  return '<div class="mid"><h2>'+esc(c.sec.t)+'</h2><ol class="steps">'
     + st.map(function(x,i){ return '<li><span class="sn">'+(i+1)+'</span>'
         + '<div><div class="cn">'+esc(x)+'</div><div class="cd">'+slot('할 일 한 줄')+'</div></div></li>'; }).join('')
     + '</ol></div>';
@@ -6278,15 +6289,15 @@ shot:function(c){
 },
 
 set:function(c){
-  return '<div class="mid"><h2>함께 쓰면 좋은 제품</h2><div class="cards">'
+  return '<div class="mid"><h2>'+esc(c.sec.t)+'</h2><div class="cards">'
     + [1,2,3].map(function(i){ return '<div class="card">'+ph(c,'1/1','item',true)
-        + '<div class="cn">'+slot('제품명')+'</div>'
+        + '<div class="cn">'+slot(noun(c,'name'))+'</div>'
         + '<div class="cd">'+slot('가격')+'</div></div>'; }).join('')
     + '</div></div>';
 },
 
 reviews:function(c){
-  return '<div class="mid"><h2>리뷰</h2>'
+  return '<div class="mid"><h2>'+esc(c.sec.t)+'</h2>'
     + '<div class="rtop"><div class="rscore">'+slot('평점')+'</div>'
     + '<div class="rcnt">'+slot('리뷰 수')+'</div></div>'
     + '<div class="cards">'+[1,2,3].map(function(){ return '<div class="card q">'
@@ -6296,8 +6307,11 @@ reviews:function(c){
 },
 
 accordion:function(c){
-  const items=['전성분','배송 안내','교환과 반품'];
-  return '<div class="mid"><h2>고지 사항</h2><div class="acc">'
+  // 섹션 설명에 적힌 항목을 쓴다. 없으면 섹션 이름 하나만 둔다.
+  const items=(c.sec.d||'').split(/[,·]/).map(function(x){return x.trim();})
+    .filter(function(x){return x && x.length<=14;}).slice(0,4);
+  if(!items.length) items.push(c.sec.t);
+  return '<div class="mid"><h2>'+esc(c.sec.t)+'</h2><div class="acc">'
     + items.map(function(x,i){ return '<details'+(i===0?' open':'')+'><summary>'+esc(x)+'</summary>'
         + '<div class="ad">'+slot(x+' 내용')+'</div></details>'; }).join('')
     + '</div></div>';
@@ -6329,14 +6343,14 @@ features:function(c){
 },
 
 quotes:function(c){
-  return '<div class="mid"><h2>고객 목소리</h2><div class="cards">'
+  return '<div class="mid"><h2>'+esc(c.sec.t)+'</h2><div class="cards">'
     + [1,2,3].map(function(){ return '<div class="card q"><div class="cd">'+slot('인용문')+'</div>'
         + '<div class="cn sm">'+slot('이름, 직함, 회사')+'</div></div>'; }).join('')
     + '</div></div>';
 },
 
 pricing:function(c){
-  return '<div class="mid"><h2>요금제</h2><div class="cards">'
+  return '<div class="mid"><h2>'+esc(c.sec.t)+'</h2><div class="cards">'
     + ['무료','기본','기업'].map(function(x,i){
         return '<div class="card plan'+(i===1?' on':'')+'"><div class="cn">'+esc(x)+'</div>'
              + '<div class="bb-price">'+slot('가격')+'</div>'
@@ -6367,7 +6381,7 @@ menulist:function(c){
 },
 
 signature:function(c){
-  return '<div class="mid"><h2>시그니처</h2><div class="cards">'
+  return '<div class="mid"><h2>'+esc(c.sec.t)+'</h2><div class="cards">'
     + [1,2,3].map(function(){ return '<div class="card">'+ph(c,'4/3','dish',true)
         + '<div class="cn">'+slot('메뉴 이름')+'</div>'
         + '<div class="cd">'+slot('재료 두세 개')+'</div>'
@@ -6406,7 +6420,7 @@ contact:function(c){
   return '<div class="feat">'+ph(c,'4/3','map')
     + '<div class="tx"><h2>오시는 길</h2>'
     + '<p>'+slot('주소')+'</p><p>'+slot('교통과 주차')+'</p>'
-    + '<div class="cta"><a class="btn" href="#">예약하기</a></div></div></div>';
+    + '<div class="cta"><a class="btn" href="#">'+esc(noun(c,'cta'))+'</a></div></div></div>';
 },
 
 work:function(c){
@@ -6617,7 +6631,7 @@ function build(silent){
   const mat=parseMat($('#bMat').value);
   let body='';
   secs.forEach((sec,i)=>{
-    const ctx={sec:sec, i:i, brand:bN, tag:bT, m:mat, lay:lay, showSpec:showSpec};
+    const ctx={sec:sec, i:i, brand:bN, tag:bT, m:mat, lay:lay, showSpec:showSpec, page:cur.id};
     const comp=COMP[sec.kind]||COMP.block;
     const cls = lay==='alt' ? (i%2? 'sec alt':'sec') : lay==='center'? 'sec narrow'
               : lay==='split'? 'sec split':'sec stack';
