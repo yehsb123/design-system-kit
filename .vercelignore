@@ -1,0 +1,5 @@
+src/
+docs/
+*.py
+pages.json
+블로그_*.md
