@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""src/ 의 화면 5개를 design-system.html 한 파일로 합친다.
+"""src/ 의 화면 5개를 index.html 한 파일로 합친다.
 
 각 화면은 자기 CSS 와 스크립트를 그대로 들고 있다. 합치면서 이름이 부딪히지 않도록
 샌드박스 없는 iframe 에 srcdoc 으로 띄운다. 문서가 따로 서니 :root 변수도, 전역 변수도,
@@ -9,7 +9,7 @@ import io, os, re
 
 D = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(D, 'src')
-OUT = os.path.join(D, 'design-system.html')
+OUT = os.path.join(D, 'index.html')
 
 TOOLS = [
     ('index',     'index.html'),

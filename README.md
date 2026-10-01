@@ -30,7 +30,7 @@
 
 ## 화면 다섯 개, 파일 하나
 
-`design-system.html` 하나에 화면 다섯 개가 들어 있습니다. 상단 내비로 오갑니다.
+`index.html` 하나에 화면 다섯 개가 들어 있습니다. 상단 내비로 오갑니다.
 
 | 화면 | 역할 |
 |---|---|
@@ -121,7 +121,7 @@
 ```bash
 git clone https://github.com/yehsb123/design-system-kit.git
 cd design-system-kit
-# design-system.html 을 브라우저로 열기
+# index.html 을 브라우저로 열기
 ```
 
 로컬 파일을 그대로 열어도 되고, 정적 호스팅에 올려도 됩니다. 인터넷은 웹폰트(Inter, Pretendard) 로딩에만 씁니다.
@@ -129,13 +129,13 @@ cd design-system-kit
 ## 구조
 
 ```
-design-system.html   화면 다섯 개를 담은 한 파일. 이것만 열면 됩니다
-build.py             src 를 design-system.html 로 묶습니다
+index.html           화면 다섯 개를 담은 한 파일. 이것만 열면 됩니다
+build.py             src 를 index.html 로 묶습니다
 restyle.py           화면마다 kit.css 를 연결합니다
 shots.py             README 에 쓰는 그림을 다시 찍습니다
 dedupe_css.py        화면 CSS 에서 kit.css 와 겹치는 선언을 지웁니다
 src/kit.css          화면이 함께 쓰는 셸 스타일시트
-src/index.html       시작 화면
+src/index.html       시작 화면 (묶이기 전 원본)
 src/library.html     모음집
 src/builder.html     조립기
 src/generator.html   생성기
@@ -161,7 +161,7 @@ python test_flow.py   # 쓰는 순서대로
 python test_a11y.py   # 다크 모드, 390px, 키보드, 대비
 ```
 
-세 벌 모두 `design-system.html` 을 헤드리스 크롬으로 열어 돌립니다. 고치고 나면 `python build.py` 로 다시 묶은 뒤 검사합니다.
+세 벌 모두 `index.html` 을 헤드리스 크롬으로 열어 돌립니다. 고치고 나면 `python build.py` 로 다시 묶은 뒤 검사합니다.
 
 `test_ui.py` 는 조작부를 눌러 화면 변화, 알림, 복사, 저장, 테마 중 무엇이라도 일어나는지 봅니다.
 `test_a11y.py` 는 다섯 화면을 라이트와 다크로 각각 열어 모든 글자의 대비를 재고, 390px 에서 가로로 넘치는 요소를 찾고, 키보드로 시스템을 여는지 봅니다.

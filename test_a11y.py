@@ -8,7 +8,7 @@ import os, json, io
 from playwright.sync_api import sync_playwright
 
 D = os.path.dirname(os.path.abspath(__file__))
-URL = 'file:///' + os.path.join(D, 'design-system.html').replace('\\', '/')
+URL = 'file:///' + os.path.join(D, 'index.html').replace('\\', '/')
 DOC = "document.getElementById('stage').contentDocument"
 SCREENS = ['index', 'library', 'builder', 'generator', 'guide']
 
