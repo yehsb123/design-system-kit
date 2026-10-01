@@ -125,7 +125,9 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
   --ui-fg:var(--obsidian);
   --ui-fg-strong:var(--obsidian);
   --ui-fg-lower:var(--felt-gray);
-  --ui-fg-dim:var(--ash-mist);
+  /* Ash Mist 와 Pewter 는 스펙에서 테두리와 비활성 면에 쓰라고 한 값이다.
+     흰 바탕에서 2.81 대 1 이라 글자에 쓰면 읽히지 않는다. 글자에는 4.5 를 넘는 값을 쓴다. */
+  --ui-fg-dim:#767676;
   --ui-border:#E3E3E3;
   --ui-border-low:#F0F0F0;
   --ui-line:var(--obsidian);
@@ -142,7 +144,8 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
   --ui-fg:var(--paper);
   --ui-fg-strong:var(--paper);
   --ui-fg-lower:var(--ash-mist);
-  --ui-fg-dim:var(--felt-gray);
+  /* 검정 바탕에서 Felt Gray 는 4.06 대 1 이라 기준에 못 미친다 */
+  --ui-fg-dim:#8a8a8a;
   --ui-border:rgba(255,255,255,.22);
   --ui-border-low:rgba(255,255,255,.12);
   --ui-line:rgba(255,255,255,.75);
@@ -498,6 +501,82 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-fg-lower);
 }
 .noresult .filterchip{ margin-top:var(--el-gap); }
+
+/* ---- 키보드로 닿는 자리를 보이게 ----
+   킷이 접근성을 가르치면서 정작 자기 화면에는 초점 표시가 없었다.
+   카드는 button 이 아니라 div 라 role 과 tabindex 로 닿게 해 뒀다. */
+:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:2px;
+}
+.dscard[role="button"],.lcard[role="button"],.rec[role="button"],.logo[role="button"]{
+  cursor:pointer;
+}
+.dscard:focus-visible,.lcard:focus-visible,.rec:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:-2px;
+  border-color:var(--ui-line);
+}
+/* 마우스로 누를 때는 테두리를 그리지 않는다 */
+.dscard:focus:not(:focus-visible),.lcard:focus:not(:focus-visible),
+.rec:focus:not(:focus-visible),.logo:focus:not(:focus-visible){ outline:none; }
+
+/* 터치로 누르는 자리는 44px 이상 */
+@media(pointer:coarse){
+  .tbtn,.filterchip,.backbtn,.tabs button,.dtabs button,.appnav a,.iconbtn,.seg button{
+    min-height:44px;
+  }
+}
+
+/* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
+   화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
+.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border-color:transparent;
+  font-weight:400;
+}
+.tbtn.pri{ border-radius:var(--r-pill); }
+
+/* ---- 좁은 화면에서 상단 바가 가로로 넘치지 않게 ---- */
+@media(max-width:768px){
+  .top,.topbar{ flex-wrap:wrap; row-gap:8px; }
+  .appnav{ order:10; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .appnav::-webkit-scrollbar{ height:0; }
+  .top .sp,.topbar .spacer{ flex:1 1 auto; }
+}
+
+/* ---- 대비를 보장하는 자리 ---- */
+
+/* 카드 표지의 글꼴 미리보기는 시스템 색 띠 위에 올라간다.
+   띠 색이 밝으면 흰 글씨가 묻히므로 아래쪽에 어두운 막을 깐다. */
+.dscard .cover::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(0,0,0,.66));
+  pointer-events:none;
+}
+.dscard .cover .fontpreview{
+  position:relative;
+  z-index:1;
+  color:#fff;
+  font-weight:400;
+  text-shadow:none;
+}
+
+/* 흐린 글자가 회색 면 위에 앉으면 4.5 를 못 넘는다. 한 단 진하게 쓴다. */
+.autoinfo,.hint,.psub,.grouphint,.note,.foldbody .hint{ color:var(--ui-fg-lower); }
+
+/* 규칙 추가 버튼과 주의 상자 제목 */
+.ruleadd button{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border:var(--hair) solid var(--ui-fg-strong);
+  border-radius:var(--r-pill);
+  font-weight:400;
+}
+.warn .th,.tip .th{ color:var(--ui-fg-strong); font-weight:400; }
 </style>
 </head>
 <body>
@@ -1122,7 +1201,9 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
   --ui-fg:var(--obsidian);
   --ui-fg-strong:var(--obsidian);
   --ui-fg-lower:var(--felt-gray);
-  --ui-fg-dim:var(--ash-mist);
+  /* Ash Mist 와 Pewter 는 스펙에서 테두리와 비활성 면에 쓰라고 한 값이다.
+     흰 바탕에서 2.81 대 1 이라 글자에 쓰면 읽히지 않는다. 글자에는 4.5 를 넘는 값을 쓴다. */
+  --ui-fg-dim:#767676;
   --ui-border:#E3E3E3;
   --ui-border-low:#F0F0F0;
   --ui-line:var(--obsidian);
@@ -1139,7 +1220,8 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
   --ui-fg:var(--paper);
   --ui-fg-strong:var(--paper);
   --ui-fg-lower:var(--ash-mist);
-  --ui-fg-dim:var(--felt-gray);
+  /* 검정 바탕에서 Felt Gray 는 4.06 대 1 이라 기준에 못 미친다 */
+  --ui-fg-dim:#8a8a8a;
   --ui-border:rgba(255,255,255,.22);
   --ui-border-low:rgba(255,255,255,.12);
   --ui-line:rgba(255,255,255,.75);
@@ -1495,6 +1577,82 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-fg-lower);
 }
 .noresult .filterchip{ margin-top:var(--el-gap); }
+
+/* ---- 키보드로 닿는 자리를 보이게 ----
+   킷이 접근성을 가르치면서 정작 자기 화면에는 초점 표시가 없었다.
+   카드는 button 이 아니라 div 라 role 과 tabindex 로 닿게 해 뒀다. */
+:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:2px;
+}
+.dscard[role="button"],.lcard[role="button"],.rec[role="button"],.logo[role="button"]{
+  cursor:pointer;
+}
+.dscard:focus-visible,.lcard:focus-visible,.rec:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:-2px;
+  border-color:var(--ui-line);
+}
+/* 마우스로 누를 때는 테두리를 그리지 않는다 */
+.dscard:focus:not(:focus-visible),.lcard:focus:not(:focus-visible),
+.rec:focus:not(:focus-visible),.logo:focus:not(:focus-visible){ outline:none; }
+
+/* 터치로 누르는 자리는 44px 이상 */
+@media(pointer:coarse){
+  .tbtn,.filterchip,.backbtn,.tabs button,.dtabs button,.appnav a,.iconbtn,.seg button{
+    min-height:44px;
+  }
+}
+
+/* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
+   화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
+.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border-color:transparent;
+  font-weight:400;
+}
+.tbtn.pri{ border-radius:var(--r-pill); }
+
+/* ---- 좁은 화면에서 상단 바가 가로로 넘치지 않게 ---- */
+@media(max-width:768px){
+  .top,.topbar{ flex-wrap:wrap; row-gap:8px; }
+  .appnav{ order:10; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .appnav::-webkit-scrollbar{ height:0; }
+  .top .sp,.topbar .spacer{ flex:1 1 auto; }
+}
+
+/* ---- 대비를 보장하는 자리 ---- */
+
+/* 카드 표지의 글꼴 미리보기는 시스템 색 띠 위에 올라간다.
+   띠 색이 밝으면 흰 글씨가 묻히므로 아래쪽에 어두운 막을 깐다. */
+.dscard .cover::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(0,0,0,.66));
+  pointer-events:none;
+}
+.dscard .cover .fontpreview{
+  position:relative;
+  z-index:1;
+  color:#fff;
+  font-weight:400;
+  text-shadow:none;
+}
+
+/* 흐린 글자가 회색 면 위에 앉으면 4.5 를 못 넘는다. 한 단 진하게 쓴다. */
+.autoinfo,.hint,.psub,.grouphint,.note,.foldbody .hint{ color:var(--ui-fg-lower); }
+
+/* 규칙 추가 버튼과 주의 상자 제목 */
+.ruleadd button{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border:var(--hair) solid var(--ui-fg-strong);
+  border-radius:var(--r-pill);
+  font-weight:400;
+}
+.warn .th,.tip .th{ color:var(--ui-fg-strong); font-weight:400; }
 </style>
 </head>
 <body>
@@ -1527,7 +1685,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 >
 
 <div class="topbar">
-  <div class="logo" onclick="showCatalog()"><span class="mk"></span>디자인 시스템 <span class="dim">모음집</span></div>
+  <div class="logo" role="button" tabindex="0" aria-label="모음집 목록으로" onclick="showCatalog()"><span class="mk"></span>디자인 시스템 <span class="dim">모음집</span></div>
   <nav class="appnav"><a href="library.html" class="on"><span>모음집</span></a><a href="builder.html"><span>조립기</span></a><a href="generator.html"><span>생성기</span></a><a href="guide.html"><span>설명서</span></a></nav><div class="spacer"></div>
   <span class="count" id="count"></span>
   <button class="iconbtn" id="themeBtn" title="라이트와 다크 전환">테마</button>
@@ -2514,8 +2672,8 @@ function renderCatalog(){
   $('#count').textContent=`${SYSTEMS.length}개 시스템 · ${new Set(SYSTEMS.map(s=>s.cat)).size}개 분류`;
   $('#cards').innerHTML=list.map(s=>{
     const strip=s.cover.map(c=>`<i style="background:${c}"></i>`).join('');
-    const pills=[`<span class="pill" style="background:var(--ui-accent);color:#fff;border-color:transparent">${s.cat}</span>`,`<span class="pill">${s.font.split(/[·,]/)[0].replace(/"/g,'').trim()}</span>`,s.dark?`<span class="pill">Light+Dark</span>`:``,s.hasChart?`<span class="pill">차트</span>`:``].join('');
-    return `<div class="dscard" onclick="openSystem('${s.id}')"><div class="cover"><div class="strip">${strip}</div><div class="fontpreview" style="font-family:${(FONT[s.id]||'inherit').replace(/"/g,"'")}">Ag 가</div></div>
+    const pills=[`<span class="pill" style="background:var(--ui-fg-strong);color:var(--ui-canvas);border-color:transparent">${s.cat}</span>`,`<span class="pill">${s.font.split(/[·,]/)[0].replace(/"/g,'').trim()}</span>`,s.dark?`<span class="pill">Light+Dark</span>`:``,s.hasChart?`<span class="pill">차트</span>`:``].join('');
+    return `<div class="dscard" role="button" tabindex="0" aria-label="${s.name} 디자인 시스템 열기" onclick="openSystem('${s.id}')"><div class="cover"><div class="strip">${strip}</div><div class="fontpreview" style="font-family:${(FONT[s.id]||'inherit').replace(/"/g,"'")}">Ag 가</div></div>
       <div class="body"><h3>${s.name}</h3><div class="desc">${s.desc}</div>
       <div class="swrow">${s.cover.map(c=>`<i style="background:${c}"></i>`).join('')}</div><div class="meta">${pills}</div></div></div>`;
   }).join('')+`<div class="addcard"><div class="plus">+</div><div>새 시스템 추가<br><span style="font-size:11.5px">코드의 <b>SYSTEMS</b> 배열에 객체 하나</span></div></div>`;
@@ -2603,6 +2761,7 @@ function iconStyleAttrs(){
 function wireSvgExport(){
   const sysName=(curSys&&curSys.id)||'system';
   const sp=$('#svgSprite'); if(sp) sp.onclick=function(){
+    sayNext('icons.svg 한 개로 저장했습니다. HTML 에 심고 <use href="#icon-home"> 처럼 불러 씁니다.');
     const body=ICONS.map(function(it){
       return '  <symbol id="'+it[0]+'" viewBox="0 0 24 24" '+iconStyleAttrs()+'>'+it[1]+'</symbol>';
     }).join('\n');
@@ -2610,6 +2769,7 @@ function wireSvgExport(){
     toast('icons.svg 저장됨 (48개 심볼)');
   };
   const ea=$('#svgEach'); if(ea) ea.onclick=function(){
+    sayNext('개별 SVG 로 저장합니다. 브라우저가 다운로드를 여러 번 물으면 허용하세요.');
     if(!confirm('아이콘 48개를 개별 .svg 파일로 저장합니다. 계속할까요?')) return;
     ICONS.forEach(function(it,i){
       setTimeout(function(){
@@ -2619,6 +2779,7 @@ function wireSvgExport(){
     toast('개별 저장을 시작합니다. 브라우저 다운로드 허용이 필요합니다');
   };
   const rc=$('#svgReact'); if(rc) rc.onclick=function(){
+    sayNext('Icon.jsx 로 저장했습니다. <Icon name="home" size={20} /> 처럼 씁니다.');
     const st=(curSys&&ICONSTYLE[curSys.id])||{sw:2,cap:'round',join:'round'};
     const paths=ICONS.map(function(it){return "  '"+it[0]+"': `"+it[1]+"`";}).join(',\n');
     const code='// '+sysName+' 아이콘 세트. <Icon name="home" size={20} />\n'
@@ -2635,6 +2796,7 @@ function wireSvgExport(){
     toast('Icon.jsx 저장됨');
   };
   const cs=$('#svgCss'); if(cs) cs.onclick=function(){
+    sayNext('icons.css 로 저장했습니다. <i class="icon icon-home"></i> 처럼 씁니다.');
     const at=iconStyleAttrs().replace(/currentColor/,'%23000');
     const lines=ICONS.map(function(it){
       const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" '+at+'>'+it[1]+'</svg>';
@@ -2648,6 +2810,7 @@ function wireSvgExport(){
   };
 }
 function renderStructure(kind,idx){
+  markPlace((kind==='layout'?'lay=':'page=')+idx);
   const isP = kind==='page';
   const d = isP ? PAGES[idx] : null;
   const L = !isP ? LAYOUTS[idx] : null;
@@ -2678,13 +2841,13 @@ function renderPages(){
   const el=$('#pages'); if(!el) return;
   el.innerHTML=PAGES.map(function(x,i){
     const wire=x.sections.slice(0,5).map(function(_,j){return '<div class="'+(j===0?'wa':'wb')+'" style="height:'+(j===0?28:14)+'px"></div>';}).join('');
-    return '<div class="lcard" data-pi="'+i+'" style="cursor:pointer"><div class="wire">'+wire+'</div><div class="ln">'+x.name+'</div><div class="ld">'+x.note+'</div><div class="lcli">\ud83d\udcc4 \ud654\uba74 \uad6c\uc870 \uc790\uc138\ud788 \ubcf4\uae30 \u2192</div></div>';
+    return '<div class="lcard" role="button" tabindex="0" data-pi="'+i+'" aria-label="'+x.name+' 화면 구조 보기" style="cursor:pointer"><div class="wire">'+wire+'</div><div class="ln">'+x.name+'</div><div class="ld">'+x.note+'</div><div class="lcli">\ud654\uba74 \uad6c\uc870 \uc790\uc138\ud788 \ubcf4\uae30</div></div>';
   }).join('');
   el.onclick=function(e){const c=e.target.closest('.lcard'); if(c) renderStructure('page',+c.dataset.pi);};
 }
 function renderLayouts(){
   const el=$('#layouts');if(!el)return;
-  el.innerHTML=LAYOUTS.map(([n,d,w],i)=>`<div class="lcard" data-li="${i}" style="cursor:pointer"><div class="wire">${w}</div><div class="ln">${n}</div><div class="ld">${d}</div><div class="lcli">CLI 프롬프트 복사</div></div>`).join('');
+  el.innerHTML=LAYOUTS.map(([n,d,w],i)=>`<div class="lcard" role="button" tabindex="0" data-li="${i}" aria-label="${n} 레이아웃 구조 보기" style="cursor:pointer"><div class="wire">${w}</div><div class="ln">${n}</div><div class="ld">${d}</div><div class="lcli">CLI 프롬프트 복사</div></div>`).join('');
   el.onclick=e=>{const c=e.target.closest('.lcard');if(!c)return;renderStructure('layout',+c.dataset.li);};
 }
 const RULES = [
@@ -3023,7 +3186,14 @@ function wirePeek(){
   window.addEventListener('scroll',peekHide,{passive:true});
 }
 function renderComposer(){
-  const rc=$('#ruleCopy'); if(rc) rc.onclick=()=>copy(allRules(),'\uaddc\uce59 \ubcf5\uc0ac\ub428');
+  const rc=$('#ruleCopy'); if(rc) rc.onclick=()=>{
+    const t=allRules();
+    copy(t,'규칙 복사됨');
+    const el=document.getElementById('cNext');
+    if(el){ el.hidden=false;
+      el.textContent='제작 규칙 '+t.length.toLocaleString()+'자를 복사했습니다. '
+        +'CLAUDE.md 에 붙여 넣으면 그 폴더의 작업에 자동으로 적용됩니다.'; }
+  };
   const lsel=$('#cLayout'), ssel=$('#cSystem'), psel=$('#cPage'); if(!lsel) return;
   psel.innerHTML='<option value="">콘텐츠 없이 레이아웃만</option>'+PAGES.map(function(x,i){return '<option value="'+i+'">'+x.name+'</option>';}).join('');
   lsel.innerHTML=LAYOUTS.map(function(x,i){return '<option value="'+i+'">'+x[0]+'</option>';}).join('');
@@ -3072,7 +3242,7 @@ function renderComposer(){
 }
 function renderRecs(){
   $('#recs').innerHTML=RECS.map(r=>{const sys=SYSTEMS.find(s=>s.id===r.b);const nm=sys?sys.name:r.b;
-    return `<div class="rec" onclick="openSystem('${r.b}')"><div class="em">${r.em}</div><div><div class="rt">${r.t}</div><div class="rd">${r.d}</div><div class="rb">추천 베이스 · ${nm}</div></div></div>`;}).join('');
+    return `<div class="rec" role="button" tabindex="0" aria-label="${r.t} 추천 시스템 ${nm} 열기" onclick="openSystem('${r.b}')"><div class="em">${r.em}</div><div><div class="rt">${r.t}</div><div class="rd">${r.d}</div><div class="rb">추천 베이스 · ${nm}</div></div></div>`;}).join('');
 }
 $('#searchInput').oninput=e=>{curQuery=e.target.value;renderCatalog();};
 function resetFind(){ curQuery=''; curFilter='all'; const si=$('#searchInput'); if(si) si.value='';
@@ -3155,6 +3325,7 @@ function renderDetail(sys){
       <button data-fmt="json">JSON 토큰</button><button data-fmt="react">React 컴포넌트</button><button data-fmt="ai">AI 프롬프트</button>
     </div>
     <div class="export"><button class="copy" id="copyExport">전체 복사</button><span id="exportBody"></span></div>
+    <div class="cnext" id="dNext" hidden></div>
   </section>
 
   <section class="dsec" id="s-spec"><h2 class="dt2">원문 스펙 <span class="en">Source Spec</span></h2>
@@ -3733,6 +3904,19 @@ export function Button({ variant = "primary", ...p }) {
 function closeAllOverlays(){document.querySelectorAll('.overlay,.drawer,.menu').forEach(x=>x.classList.remove('open'));}
 
 /* ---- 원문 스펙 섹션 ---- */
+// 복사하거나 저장한 뒤 무엇을 하면 되는지 남긴다.
+// 알림은 곧 사라져서, 붙여넣다 막히면 다시 볼 곳이 필요하다.
+function sayNext(msg){
+  const el=document.getElementById('dNext');
+  if(!el) return;
+  el.hidden=false;
+  el.textContent=msg;
+}
+function copyNext(text, what, how){
+  copy(text, what+' \ubcf5\uc0ac\ub428');
+  sayNext(what+' '+text.length.toLocaleString()+'\uc790\ub97c \ubcf5\uc0ac\ud588\uc2b5\ub2c8\ub2e4. '+how);
+}
+
 function wireSpec(sys){
   const view=$('#specView'); if(!view) return;
   const ed=$('#specEditor'), ta=$('#specText'), st=$('#specState'), rs=$('#specReset');
@@ -3746,9 +3930,14 @@ function wireSpec(sys){
     rs.style.display=(mine&&builtinSpec(sys.id))?'':'none';
   }
   paint();
-  $('#specCopy').onclick=()=>{const t=getSpec(sys.id); t?copy(t,'원문 스펙 그대로 복사됨'):toast('저장된 스펙이 없습니다');};
+  $('#specCopy').onclick=()=>{const t=getSpec(sys.id);
+    if(!t){ toast('저장된 스펙이 없습니다'); return; }
+    copyNext(t,'원문 스펙',
+      '한 글자도 고치지 않은 원본입니다. 프롬프트 앞에 붙여 근거로 쓰세요.');};
   $('#specDown').onclick=()=>{const t=getSpec(sys.id); if(!t){toast('저장된 스펙이 없습니다');return;}
-    dl(sys.id+'-spec.md', t, 'text/markdown'); toast(sys.id+'-spec.md 저장');};
+    dl(sys.id+'-spec.md', t, 'text/markdown');
+    sayNext(sys.id+'-spec.md 로 저장했습니다. '
+      +'프로젝트 docs 폴더에 두고 CLAUDE.md 에서 가리키면 됩니다.');};
   $('#specEdit').onclick=()=>{ta.value=getSpec(sys.id); ed.style.display=''; ta.focus();};
   $('#specCancel').onclick=()=>{ed.style.display='none';};
   $('#specSave').onclick=()=>{
@@ -3762,7 +3951,17 @@ function wireSpec(sys){
 function wireDetail(sys){
   // export
   $('#exportTabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;exportFmt=b.dataset.fmt;document.querySelectorAll('#exportTabs button').forEach(x=>x.classList.toggle('on',x===b));renderExport(sys);};
-  $('#copyExport').onclick=()=>copy($('#exportBody').textContent,'전체 복사됨');
+  $('#copyExport').onclick=()=>{
+    const HOW={css:'design-tokens.css 로 저장하고 HTML 에서 불러오세요.',
+      tw:'tailwind.config.js 에 덮어쓰면 됩니다.',
+      json:'디자인 토큰 도구나 스크립트의 입력으로 씁니다.',
+      react:'컴포넌트 파일로 저장해 바로 불러 씁니다.',
+      ai:'클로드 코드나 채팅창에 붙여넣고 엔터를 누르면 됩니다.',
+      spec:'스펙 원문입니다. 프롬프트 앞에 붙여 근거로 쓰세요.'};
+    const NM={css:'CSS 변수',tw:'Tailwind',json:'JSON 토큰',
+      react:'React 컴포넌트',ai:'AI 프롬프트',spec:'원문 스펙'};
+    copyNext($('#exportBody').textContent, NM[exportFmt]||'내보내기', HOW[exportFmt]||'');
+  };
   renderExport(sys);
   wireSpec(sys);
   // tabs
@@ -3874,8 +4073,21 @@ renderFilters();renderCatalog();renderRecs();renderLayouts();renderPages();rende
   var q='';
   try{ q=(typeof dskQuery==='function'?dskQuery():location.search)||''; }catch(e){}
   var m=q.match(/[?&]sys=([A-Za-z0-9_-]+)/);
-  if(m && SYSTEMS.some(function(x){return x.id===m[1];})) openSystem(m[1]);
+  if(m && SYSTEMS.some(function(x){return x.id===m[1];})){ openSystem(m[1]); return; }
+  m=q.match(/[?&]lay=(\d+)/);
+  if(m && LAYOUTS[+m[1]]){ renderStructure('layout',+m[1]); return; }
+  m=q.match(/[?&]page=(\d+)/);
+  if(m && PAGES[+m[1]]){ renderStructure('page',+m[1]); return; }
 })();
+
+// 카드는 button 이 아니라 div 다. 키보드로도 열리게 한다.
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Enter' && e.key!==' ') return;
+  const t=e.target;
+  if(!t || !t.matches || !t.matches('[role="button"]')) return;
+  e.preventDefault();
+  t.click();
+});
 
 // Esc 로 목록에 돌아온다
 document.addEventListener('keydown',function(e){
@@ -4053,7 +4265,9 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
   --ui-fg:var(--obsidian);
   --ui-fg-strong:var(--obsidian);
   --ui-fg-lower:var(--felt-gray);
-  --ui-fg-dim:var(--ash-mist);
+  /* Ash Mist 와 Pewter 는 스펙에서 테두리와 비활성 면에 쓰라고 한 값이다.
+     흰 바탕에서 2.81 대 1 이라 글자에 쓰면 읽히지 않는다. 글자에는 4.5 를 넘는 값을 쓴다. */
+  --ui-fg-dim:#767676;
   --ui-border:#E3E3E3;
   --ui-border-low:#F0F0F0;
   --ui-line:var(--obsidian);
@@ -4070,7 +4284,8 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
   --ui-fg:var(--paper);
   --ui-fg-strong:var(--paper);
   --ui-fg-lower:var(--ash-mist);
-  --ui-fg-dim:var(--felt-gray);
+  /* 검정 바탕에서 Felt Gray 는 4.06 대 1 이라 기준에 못 미친다 */
+  --ui-fg-dim:#8a8a8a;
   --ui-border:rgba(255,255,255,.22);
   --ui-border-low:rgba(255,255,255,.12);
   --ui-line:rgba(255,255,255,.75);
@@ -4426,6 +4641,82 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-fg-lower);
 }
 .noresult .filterchip{ margin-top:var(--el-gap); }
+
+/* ---- 키보드로 닿는 자리를 보이게 ----
+   킷이 접근성을 가르치면서 정작 자기 화면에는 초점 표시가 없었다.
+   카드는 button 이 아니라 div 라 role 과 tabindex 로 닿게 해 뒀다. */
+:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:2px;
+}
+.dscard[role="button"],.lcard[role="button"],.rec[role="button"],.logo[role="button"]{
+  cursor:pointer;
+}
+.dscard:focus-visible,.lcard:focus-visible,.rec:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:-2px;
+  border-color:var(--ui-line);
+}
+/* 마우스로 누를 때는 테두리를 그리지 않는다 */
+.dscard:focus:not(:focus-visible),.lcard:focus:not(:focus-visible),
+.rec:focus:not(:focus-visible),.logo:focus:not(:focus-visible){ outline:none; }
+
+/* 터치로 누르는 자리는 44px 이상 */
+@media(pointer:coarse){
+  .tbtn,.filterchip,.backbtn,.tabs button,.dtabs button,.appnav a,.iconbtn,.seg button{
+    min-height:44px;
+  }
+}
+
+/* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
+   화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
+.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border-color:transparent;
+  font-weight:400;
+}
+.tbtn.pri{ border-radius:var(--r-pill); }
+
+/* ---- 좁은 화면에서 상단 바가 가로로 넘치지 않게 ---- */
+@media(max-width:768px){
+  .top,.topbar{ flex-wrap:wrap; row-gap:8px; }
+  .appnav{ order:10; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .appnav::-webkit-scrollbar{ height:0; }
+  .top .sp,.topbar .spacer{ flex:1 1 auto; }
+}
+
+/* ---- 대비를 보장하는 자리 ---- */
+
+/* 카드 표지의 글꼴 미리보기는 시스템 색 띠 위에 올라간다.
+   띠 색이 밝으면 흰 글씨가 묻히므로 아래쪽에 어두운 막을 깐다. */
+.dscard .cover::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(0,0,0,.66));
+  pointer-events:none;
+}
+.dscard .cover .fontpreview{
+  position:relative;
+  z-index:1;
+  color:#fff;
+  font-weight:400;
+  text-shadow:none;
+}
+
+/* 흐린 글자가 회색 면 위에 앉으면 4.5 를 못 넘는다. 한 단 진하게 쓴다. */
+.autoinfo,.hint,.psub,.grouphint,.note,.foldbody .hint{ color:var(--ui-fg-lower); }
+
+/* 규칙 추가 버튼과 주의 상자 제목 */
+.ruleadd button{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border:var(--hair) solid var(--ui-fg-strong);
+  border-radius:var(--r-pill);
+  font-weight:400;
+}
+.warn .th,.tip .th{ color:var(--ui-fg-strong); font-weight:400; }
 </style>
 </head>
 <body>
@@ -4995,7 +5286,9 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
   --ui-fg:var(--obsidian);
   --ui-fg-strong:var(--obsidian);
   --ui-fg-lower:var(--felt-gray);
-  --ui-fg-dim:var(--ash-mist);
+  /* Ash Mist 와 Pewter 는 스펙에서 테두리와 비활성 면에 쓰라고 한 값이다.
+     흰 바탕에서 2.81 대 1 이라 글자에 쓰면 읽히지 않는다. 글자에는 4.5 를 넘는 값을 쓴다. */
+  --ui-fg-dim:#767676;
   --ui-border:#E3E3E3;
   --ui-border-low:#F0F0F0;
   --ui-line:var(--obsidian);
@@ -5012,7 +5305,8 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
   --ui-fg:var(--paper);
   --ui-fg-strong:var(--paper);
   --ui-fg-lower:var(--ash-mist);
-  --ui-fg-dim:var(--felt-gray);
+  /* 검정 바탕에서 Felt Gray 는 4.06 대 1 이라 기준에 못 미친다 */
+  --ui-fg-dim:#8a8a8a;
   --ui-border:rgba(255,255,255,.22);
   --ui-border-low:rgba(255,255,255,.12);
   --ui-line:rgba(255,255,255,.75);
@@ -5368,6 +5662,82 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-fg-lower);
 }
 .noresult .filterchip{ margin-top:var(--el-gap); }
+
+/* ---- 키보드로 닿는 자리를 보이게 ----
+   킷이 접근성을 가르치면서 정작 자기 화면에는 초점 표시가 없었다.
+   카드는 button 이 아니라 div 라 role 과 tabindex 로 닿게 해 뒀다. */
+:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:2px;
+}
+.dscard[role="button"],.lcard[role="button"],.rec[role="button"],.logo[role="button"]{
+  cursor:pointer;
+}
+.dscard:focus-visible,.lcard:focus-visible,.rec:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:-2px;
+  border-color:var(--ui-line);
+}
+/* 마우스로 누를 때는 테두리를 그리지 않는다 */
+.dscard:focus:not(:focus-visible),.lcard:focus:not(:focus-visible),
+.rec:focus:not(:focus-visible),.logo:focus:not(:focus-visible){ outline:none; }
+
+/* 터치로 누르는 자리는 44px 이상 */
+@media(pointer:coarse){
+  .tbtn,.filterchip,.backbtn,.tabs button,.dtabs button,.appnav a,.iconbtn,.seg button{
+    min-height:44px;
+  }
+}
+
+/* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
+   화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
+.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border-color:transparent;
+  font-weight:400;
+}
+.tbtn.pri{ border-radius:var(--r-pill); }
+
+/* ---- 좁은 화면에서 상단 바가 가로로 넘치지 않게 ---- */
+@media(max-width:768px){
+  .top,.topbar{ flex-wrap:wrap; row-gap:8px; }
+  .appnav{ order:10; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .appnav::-webkit-scrollbar{ height:0; }
+  .top .sp,.topbar .spacer{ flex:1 1 auto; }
+}
+
+/* ---- 대비를 보장하는 자리 ---- */
+
+/* 카드 표지의 글꼴 미리보기는 시스템 색 띠 위에 올라간다.
+   띠 색이 밝으면 흰 글씨가 묻히므로 아래쪽에 어두운 막을 깐다. */
+.dscard .cover::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(0,0,0,.66));
+  pointer-events:none;
+}
+.dscard .cover .fontpreview{
+  position:relative;
+  z-index:1;
+  color:#fff;
+  font-weight:400;
+  text-shadow:none;
+}
+
+/* 흐린 글자가 회색 면 위에 앉으면 4.5 를 못 넘는다. 한 단 진하게 쓴다. */
+.autoinfo,.hint,.psub,.grouphint,.note,.foldbody .hint{ color:var(--ui-fg-lower); }
+
+/* 규칙 추가 버튼과 주의 상자 제목 */
+.ruleadd button{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border:var(--hair) solid var(--ui-fg-strong);
+  border-radius:var(--r-pill);
+  font-weight:400;
+}
+.warn .th,.tip .th{ color:var(--ui-fg-strong); font-weight:400; }
 </style>
 </head>
 <body>
@@ -5460,7 +5830,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
       <label class="chk"><input type="checkbox" id="rA11y" checked> 접근성<small>focus-visible, 대비, aria</small></label>
       <label class="chk"><input type="checkbox" id="rBan" checked> AI 슬롭 금지<small>보라 강조·좌측보더 인용카드 배제</small></label>
       <label class="chk"><input type="checkbox" id="rMotion"> 스크롤 등장 애니메이션</label>
-      <div class="ruleadd"><input id="ruleIn" placeholder="내 규칙 추가"><button id="ruleAdd">+</button></div>
+      <div class="ruleadd"><input id="ruleIn" placeholder="내 규칙 추가"><button id="ruleAdd" aria-label="내 규칙 추가">+</button></div>
       <ul class="mylist" id="myList"></ul>
     </div>
 
@@ -5955,7 +6325,7 @@ td b{color:var(--ui-fg-strong);}
 .tip{background:var(--ui-panel-2);border:1px solid var(--ui-border);padding:14px 16px;margin:14px 0;font-size:13.5px;color:var(--ui-fg-strong);line-height:1.8;}
 .tip .th{font-weight:800;display:block;margin-bottom:4px;}
 .warn{background:var(--ui-panel);border:1px solid #D9A199;padding:14px 16px;margin:14px 0;font-size:13.5px;line-height:1.8;}
-.warn .th{font-weight:800;color:#A24E38;display:block;margin-bottom:4px;}
+.warn .th{display:block;margin-bottom:4px;}
 .qa{border-top:1px solid var(--ui-border);}
 .qa .q{font-size:14px;font-weight:800;color:var(--ui-fg-strong);}
 .qa .a{font-size:13.5px;color:var(--ui-fg-lower);margin-top:5px;}
@@ -6027,7 +6397,9 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
   --ui-fg:var(--obsidian);
   --ui-fg-strong:var(--obsidian);
   --ui-fg-lower:var(--felt-gray);
-  --ui-fg-dim:var(--ash-mist);
+  /* Ash Mist 와 Pewter 는 스펙에서 테두리와 비활성 면에 쓰라고 한 값이다.
+     흰 바탕에서 2.81 대 1 이라 글자에 쓰면 읽히지 않는다. 글자에는 4.5 를 넘는 값을 쓴다. */
+  --ui-fg-dim:#767676;
   --ui-border:#E3E3E3;
   --ui-border-low:#F0F0F0;
   --ui-line:var(--obsidian);
@@ -6044,7 +6416,8 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
   --ui-fg:var(--paper);
   --ui-fg-strong:var(--paper);
   --ui-fg-lower:var(--ash-mist);
-  --ui-fg-dim:var(--felt-gray);
+  /* 검정 바탕에서 Felt Gray 는 4.06 대 1 이라 기준에 못 미친다 */
+  --ui-fg-dim:#8a8a8a;
   --ui-border:rgba(255,255,255,.22);
   --ui-border-low:rgba(255,255,255,.12);
   --ui-line:rgba(255,255,255,.75);
@@ -6400,6 +6773,82 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-fg-lower);
 }
 .noresult .filterchip{ margin-top:var(--el-gap); }
+
+/* ---- 키보드로 닿는 자리를 보이게 ----
+   킷이 접근성을 가르치면서 정작 자기 화면에는 초점 표시가 없었다.
+   카드는 button 이 아니라 div 라 role 과 tabindex 로 닿게 해 뒀다. */
+:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:2px;
+}
+.dscard[role="button"],.lcard[role="button"],.rec[role="button"],.logo[role="button"]{
+  cursor:pointer;
+}
+.dscard:focus-visible,.lcard:focus-visible,.rec:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:-2px;
+  border-color:var(--ui-line);
+}
+/* 마우스로 누를 때는 테두리를 그리지 않는다 */
+.dscard:focus:not(:focus-visible),.lcard:focus:not(:focus-visible),
+.rec:focus:not(:focus-visible),.logo:focus:not(:focus-visible){ outline:none; }
+
+/* 터치로 누르는 자리는 44px 이상 */
+@media(pointer:coarse){
+  .tbtn,.filterchip,.backbtn,.tabs button,.dtabs button,.appnav a,.iconbtn,.seg button{
+    min-height:44px;
+  }
+}
+
+/* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
+   화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
+.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border-color:transparent;
+  font-weight:400;
+}
+.tbtn.pri{ border-radius:var(--r-pill); }
+
+/* ---- 좁은 화면에서 상단 바가 가로로 넘치지 않게 ---- */
+@media(max-width:768px){
+  .top,.topbar{ flex-wrap:wrap; row-gap:8px; }
+  .appnav{ order:10; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .appnav::-webkit-scrollbar{ height:0; }
+  .top .sp,.topbar .spacer{ flex:1 1 auto; }
+}
+
+/* ---- 대비를 보장하는 자리 ---- */
+
+/* 카드 표지의 글꼴 미리보기는 시스템 색 띠 위에 올라간다.
+   띠 색이 밝으면 흰 글씨가 묻히므로 아래쪽에 어두운 막을 깐다. */
+.dscard .cover::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(0,0,0,.66));
+  pointer-events:none;
+}
+.dscard .cover .fontpreview{
+  position:relative;
+  z-index:1;
+  color:#fff;
+  font-weight:400;
+  text-shadow:none;
+}
+
+/* 흐린 글자가 회색 면 위에 앉으면 4.5 를 못 넘는다. 한 단 진하게 쓴다. */
+.autoinfo,.hint,.psub,.grouphint,.note,.foldbody .hint{ color:var(--ui-fg-lower); }
+
+/* 규칙 추가 버튼과 주의 상자 제목 */
+.ruleadd button{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border:var(--hair) solid var(--ui-fg-strong);
+  border-radius:var(--r-pill);
+  font-weight:400;
+}
+.warn .th,.tip .th{ color:var(--ui-fg-strong); font-weight:400; }
 </style>
 </head>
 <body>

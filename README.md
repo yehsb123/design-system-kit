@@ -81,7 +81,9 @@
 
 - **이미지 규격이 화면에 표시됩니다.** 히어로 1920×1080(16:9), 인물 800×800(1:1)처럼 섹션마다 권장 크기가 붙습니다. 이미지는 다른 도구로 만들고 규격만 맞추면 됩니다.
 - **반응형이 기본입니다.** `clamp()`, `min(1200px, 92vw)`, 768px 미만 1열이 생성물과 프롬프트 양쪽에 들어갑니다.
-- **접근성.** 대비(WCAG AA) 자동 계산, `focus-visible` 링, `prefers-reduced-motion` 대응.
+- **접근성.** 대비(WCAG AA) 자동 계산, `focus-visible` 링, `prefers-reduced-motion` 대응. 카드는 탭으로 닿고 Enter 로 열립니다.
+- **주소가 자리를 기억합니다.** 시스템을 열면 `#library?sys=monopo` 처럼 주소가 바뀝니다. 뒤로가기와 Esc 로 목록에 돌아오고, 주소를 보내면 상대도 같은 화면을 봅니다.
+- **복사한 다음 할 일을 남깁니다.** 알림은 곧 사라지므로, 복사한 글자 수와 어디에 붙여넣으면 되는지를 버튼 아래에 적어 둡니다.
 - **프롬프트와 코드가 일치합니다.** 프롬프트에 실제 생성된 CSS가 그대로 포함되어, AI가 같은 결과를 냅니다.
 - **내 규칙 추가.** 직접 넣은 규칙이 모든 출력에 자동 포함되고 브라우저에 저장됩니다.
 
@@ -109,7 +111,21 @@ src/generator.html   생성기
 src/guide.html       사용설명서
 pages.json           콘텐츠 구조 원본 데이터
 docs/screenshots     README용 이미지
+dedupe_css.py        화면 CSS 에서 kit.css 와 겹치는 선언을 지웁니다
+test_ui.py           조작부를 하나씩 눌러 반응을 봅니다
+test_flow.py         쓰는 순서대로 밟습니다
+test_a11y.py         다크 모드, 모바일 폭, 키보드, 대비를 봅니다
 ```
+
+## 검사
+
+```bash
+python test_ui.py     # 조작부 하나씩
+python test_flow.py   # 쓰는 순서대로
+python test_a11y.py   # 다크 모드, 390px, 키보드, 대비
+```
+
+세 벌 모두 `design-system.html` 을 헤드리스 크롬으로 열어 돌립니다. 고치고 나면 `python build.py` 로 다시 묶은 뒤 검사합니다.
 
 셸 스타일은 `src/kit.css` 한 곳에만 있습니다. 화면마다 따로 정의하지 않습니다.
 각 화면의 `<style>` 뒤에 실려서 같은 선택자면 kit.css 가 적용됩니다.
