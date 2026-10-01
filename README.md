@@ -135,4 +135,8 @@ python test_a11y.py   # 다크 모드, 390px, 키보드, 대비
 
 ## 라이선스
 
-MIT
+GNU Affero General Public License v3.0 (AGPL-3.0)
+
+Copyright (C) 2026 yehsb123
+
+가져다 쓰고 고치는 것은 자유입니다. 다만 고친 것을 배포하거나 서버에 올려 서비스로 제공하면, 그 소스도 같은 라이선스로 공개해야 합니다. 전문은 [LICENSE](LICENSE) 에 있습니다.

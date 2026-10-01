@@ -103,6 +103,12 @@ def main():
 
 
 SHELL = u"""<!doctype html>
+<!--
+  Design System Kit
+  Copyright (C) 2026 yehsb123
+  Licensed under the GNU Affero General Public License v3.0.
+  See LICENSE for the full text.
+-->
 <html lang="ko" data-ui="light">
 <head>
 <meta charset="utf-8" />
