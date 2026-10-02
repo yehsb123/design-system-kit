@@ -7,7 +7,7 @@
 
 ![시작 화면](docs/screenshots/index.png)
 
-시작 화면이 킷의 재료를 그대로 보여 줍니다. 시스템 18종의 색 띠, 레이아웃 와이어프레임, 아이콘을 누르면 그 항목으로 바로 들어갑니다.
+시작 화면이 킷의 재료를 그대로 보여 줍니다. 시스템 19종의 색 띠, 레이아웃 와이어프레임, 아이콘을 누르면 그 항목으로 바로 들어갑니다.
 데이터는 모음집 한 곳에만 두고, 묶을 때 꺼내 심습니다.
 
 ![시작 화면의 재료](docs/screenshots/index-material.png)
@@ -16,7 +16,7 @@
 
 | | 수량 | 내용 |
 |---|---|---|
-| 디자인 시스템 | 18종 | Toss, Ant Design, Material 3, IBM Carbon, Apple HIG, Shopify Polaris, Vercel, GitLab, Airbnb, Slack, monopo saigon, Bevel 등 |
+| 디자인 시스템 | 19종 | Toss, Ant Design, Material 3, IBM Carbon, Apple HIG, Shopify Polaris, Vercel, GitLab, Airbnb, Slack, monopo saigon, Bevel, Wise 등 |
 | 레이아웃 패턴 | 22종 | Holy Grail, 대시보드, 지그재그, 벤토, 메뉴판 4종 등 |
 | 콘텐츠 구조 | 9종 | 뷰티 상세, SaaS 랜딩, 메뉴판, 병원, 포트폴리오, 앱 소개 등 |
 | 아이콘 | 48개 | SVG 스프라이트, 개별 파일, React 컴포넌트, CSS로 내보내기 |
@@ -32,8 +32,8 @@
 | ![monopo](docs/screenshots/comp-monopo.png) | ![Carbon](docs/screenshots/comp-carbon.png) |
 | **Airbnb** 코랄, 큰 라운드, 사진 카드 | **Material 3** 알약 버튼, Roboto, 엘리베이션 |
 | ![Airbnb](docs/screenshots/comp-airbnb.png) | ![Material 3](docs/screenshots/comp-m3.png) |
-| **Bevel** 구름빛 카드, 하늘 그라디언트, 128px 알약 | |
-| ![Bevel](docs/screenshots/comp-bevel.png) | |
+| **Bevel** 구름빛 카드, 하늘 그라디언트, 128px 알약 | **Wise** 숲색과 라임, 구역 교차, 평평한 면 |
+| ![Bevel](docs/screenshots/comp-bevel.png) | ![Wise](docs/screenshots/comp-wise.png) |
 
 ## 화면 다섯 개, 파일 하나
 
@@ -61,7 +61,7 @@
 
 ### 시스템마다 스펙 문서가 있습니다
 
-18종 모두 스펙 문서를 가집니다. 색 램프 66단계, 역할별 색의 라이트와 다크, 폰트 스택, 모서리와 굵기와 그림자, 아이콘 선 굵기, 컴포넌트 규칙, 대비 계산, 지킬 규칙과 금지 사항, CSS 변수와 Tailwind 설정이 들어갑니다.
+19종 모두 스펙 문서를 가집니다. 색 램프 66단계, 역할별 색의 라이트와 다크, 폰트 스택, 모서리와 굵기와 그림자, 아이콘 선 굵기, 컴포넌트 규칙, 대비 계산, 지킬 규칙과 금지 사항, CSS 변수와 Tailwind 설정이 들어갑니다.
 
 출처를 구분해 적습니다. 실제 사이트를 재서 뽑은 추출본인지, 킷이 들고 있는 토큰으로 만든 문서인지, 직접 붙여넣은 스펙인지 화면에서 바로 보입니다. 재지 않은 값은 적지 않습니다.
 
