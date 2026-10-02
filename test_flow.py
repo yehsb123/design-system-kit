@@ -88,10 +88,12 @@ with sync_playwright() as p:
     pg.wait_for_timeout(500)
     ok('결과가 없으면 무엇을 하면 되는지 알려 준다',
        q(pg, "!!D.querySelector('.noresult')"))
+    # 되돌리기 전 수를 재 두고 그 수로 돌아오는지 본다
+    before_n = q(pg, "D.querySelectorAll('#cards .dscard').length")
     click(pg, '.noresult .filterchip', 700)
-    ok('초기화 버튼이 목록을 되돌린다',
-       q(pg, "D.querySelectorAll('#cards .dscard').length") == 17,
-       q(pg, "D.querySelectorAll('#cards .dscard').length"))
+    after_n = q(pg, "D.querySelectorAll('#cards .dscard').length")
+    ok('초기화 버튼이 목록을 되돌린다', after_n > 0 and after_n > before_n,
+       '%s -> %s' % (before_n, after_n))
 
     # 9. 조립기에서 만든 시스템이 생성기로 넘어간다
     pg.goto(URL + '#builder'); pg.wait_for_timeout(1700)

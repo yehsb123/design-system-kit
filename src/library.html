@@ -13,7 +13,7 @@
 <title>디자인 시스템 모음집 · Design System Library</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Raleway:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:wght@500;700;800&family=Poppins:wght@400;500;600;700&family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Raleway:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:wght@500;700;800&family=Poppins:wght@400;500;600;700&family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 /* ===================== APP SHELL (창고 UI, 안정적 --ui-* 팔레트) ===================== */
@@ -576,7 +576,7 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
     <div class="dtabs" id="dTabs"></div>
     <div class="grouphint" id="dHint"></div>
     <div class="scope" id="scope"></div>
-    <footer>디자인 시스템 모음집 · 단일 HTML, 의존성 없음 · 새 시스템 추가 = <code class="mono">SYSTEMS</code> 배열에 객체 하나 push.</footer>
+    <footer>디자인 시스템 모음집입니다. 단일 HTML, 의존성 없음. 새 시스템은 <code class="mono">SYSTEMS</code> 배열에 객체 하나 push.</footer>
   </div>
 </div>
 
@@ -1289,6 +1289,21 @@ mkSystem({
     error:[["50","#FBEDEC"],["100","#F6D6D3"],["200","#E9A9A3"],["300","#D67C73"],["400","#C05248"],["500","#A52D25"],["600","#8A241D"],["700","#6C1B16"],["800","#4D1310"],["900","#2E0B09"],["950","#180504"]],
     info:[["50","#F4F5F6"],["100","#E7E9EA"],["200","#CDD0D2"],["300","#ABAFB2"],["400","#85898C"],["500","#636363"],["600","#4F4F4F"],["700","#3C3C3C"],["800","#2A2A2A"],["900","#1A1A1A"],["950","#0D0D0D"]]
   }
+}),
+mkSystem({
+  id:"bevel",name:"Bevel",cat:"헬스케어",font:"Plus Jakarta Sans",framework:"React · 웹앱",point:"#FFAB94",
+  desc:"부드러운 구름빛 카드와 하늘 그라디언트를 쓰는 헬스케어 시스템. 버튼은 128px 완전 알약, 카드는 28px 큰 라운드로 둥글게 통일합니다.",
+  cover:["#415EEE","#EBF0F8","#31CE01","#222326"],hasChart:true,
+  radius:{xs:"12px",sm:"16px",md:"24px",lg:"32px"},
+  extra:{title:"구름 카드 · 하늘 그라디언트",type:"bevel"},
+  ramps:{
+    primary:[["50","#EEF1FE"],["100","#DCE2FD"],["200","#BCC6FB"],["300","#93A4F6"],["400","#6B82F2"],["500","#415EEE"],["600","#2E48D4"],["700","#2439A8"],["800","#1B2B7E"],["900","#141F5B"],["950","#0A1033"]],
+    gray:[["50","#F7F9FC"],["100","#EBF0F8"],["200","#DDE3EC"],["300","#C3CAD5"],["400","#9BA2AD"],["500","#747679"],["600","#5A5C60"],["700","#45474B"],["800","#2F3135"],["900","#222326"],["950","#1F2025"]],
+    success:[["50","#EFFCE9"],["100","#D7F7C9"],["200","#AEEF95"],["300","#7FE35A"],["400","#55D927"],["500","#31CE01"],["600","#27A601"],["700","#1E7F01"],["800","#155A01"],["900","#0D3800"],["950","#061C00"]],
+    warning:[["50","#FFF9E0"],["100","#FFF1B8"],["200","#FFE680"],["300","#FFDA47"],["400","#FFD11F"],["500","#FFCA00"],["600","#D4A700"],["700","#A68200"],["800","#785E00"],["900","#4A3A00"],["950","#261E00"]],
+    error:[["50","#FFF1ED"],["100","#FFE1D8"],["200","#FFC6B5"],["300","#FFAB94"],["400","#FF8B6B"],["500","#F2674A"],["600","#D14E33"],["700","#A53B26"],["800","#78291A"],["900","#4A1810"],["950","#260B07"]],
+    info:[["50","#EFF6FF"],["100","#D2E5FF"],["200","#AFD0FF"],["300","#83B4FD"],["400","#5A98F8"],["500","#2F80ED"],["600","#2366C4"],["700","#1A4E97"],["800","#13376B"],["900","#0C2140"],["950","#061121"]]
+  }
 })
 ];
 
@@ -1386,7 +1401,8 @@ const FONT={
   gitlab:'"Sora",-apple-system,system-ui,sans-serif',
   airbnb:'"Manrope",-apple-system,system-ui,sans-serif',
   slack:'"Pretendard",-apple-system,system-ui,sans-serif',
-  monopo:'"Inter","Roobert","Helvetica Neue",Arial,sans-serif'
+  monopo:'"Inter","Roobert","Helvetica Neue",Arial,sans-serif',
+  bevel:'"Plus Jakarta Sans","Pretendard",-apple-system,system-ui,sans-serif'
 };
 const UI={
   toss:    {btnR:"10px",btnW:"600",btnSh:"none",ctlR:"8px",cardR:"16px",padx:"18px",inR:"10px"},
@@ -1405,7 +1421,8 @@ const UI={
   gitlab:  {btnR:"6px", btnW:"600",btnSh:"none",ctlR:"4px",cardR:"8px",padx:"16px",inR:"6px"},
   airbnb:  {btnR:"10px",btnW:"600",btnSh:"0 2px 8px -2px var(--bg-primary)",ctlR:"8px",cardR:"16px",padx:"20px",inR:"10px"},
   slack:   {btnR:"8px", btnW:"700",btnSh:"none",ctlR:"6px",cardR:"12px",padx:"18px",inR:"8px"},
-  monopo:  {btnR:"75px",btnW:"400",btnSh:"none",ctlR:"75px",cardR:"0px",padx:"33px",inR:"0px"}
+  monopo:  {btnR:"75px",btnW:"400",btnSh:"none",ctlR:"75px",cardR:"0px",padx:"33px",inR:"0px"},
+  bevel:   {btnR:"128px",btnW:"600",btnSh:"none",ctlR:"14px",cardR:"28px",padx:"28px",inR:"16px"}
 };
 // 시스템별 아이콘 성격(굵기와 끝처리). 에셋이 시스템마다 달라 보이게 한다
 const ICONSTYLE={
@@ -1417,7 +1434,8 @@ const ICONSTYLE={
   playful:{sw:2.6,cap:"round",join:"round"}, mobile:{sw:2,cap:"round",join:"round"},
   vercel:{sw:1.75,cap:"round",join:"round"}, gitlab:{sw:2,cap:"round",join:"round"},
   airbnb:{sw:2.4,cap:"round",join:"round"}, slack:{sw:2,cap:"round",join:"round"},
-  monopo:{sw:1.25,cap:"butt",join:"miter"}
+  monopo:{sw:1.25,cap:"butt",join:"miter"},
+  bevel:{sw:1.8,cap:"round",join:"round"}
 };
 // 시스템별 뱃지/칩 모서리 (각진 계열 vs 알약)
 const TAGR={carbon:"0px",vercel:"4px",editorial:"2px",gitlab:"4px",antd:"4px",graphite:"6px",monopo:"75px"};
@@ -2543,7 +2561,7 @@ function renderBuilder(){
   c+='</Card>';
   $('#bCode').textContent=c;
 }
-const SIG={toss:'fintech',aurora:'list',graphite:'data',antd:'data',m3:'elevated',carbon:'data',apple:'list',polaris:'photo',neon:'hero',editorial:'article',playful:'photo',mobile:'list',vercel:'mono',gitlab:'data',airbnb:'photo',slack:'chat',monopo:'gallery'};
+const SIG={toss:'fintech',aurora:'list',graphite:'data',antd:'data',m3:'elevated',carbon:'data',apple:'list',polaris:'photo',neon:'hero',editorial:'article',playful:'photo',mobile:'list',vercel:'mono',gitlab:'data',airbnb:'photo',slack:'chat',monopo:'gallery',bevel:'health'};
 function renderSignature(sys){
   const t=SIG[sys.id]||'list',R='var(--card-radius,12px)';
   if(t==='fintech')return `<div class="demo"><div style="background:var(--bg-primary);color:#fff;border-radius:${R};padding:20px 22px;min-width:300px;box-shadow:var(--shadow-4)"><div style="font-size:13px;opacity:.85">입출금 통장</div><div style="font-size:28px;font-weight:800;letter-spacing:-.02em;margin-top:6px">₩ 2,480,300</div><div style="display:flex;gap:8px;margin-top:18px"><button class="btn" style="background:rgba(255,255,255,.22);color:#fff;flex:1">송금</button><button class="btn" style="background:rgba(255,255,255,.22);color:#fff;flex:1">채우기</button></div></div></div>`;
@@ -2554,11 +2572,15 @@ function renderSignature(sys){
   if(t==='mono')return `<div class="demo"><div style="background:var(--panel);border:1px solid var(--border);border-radius:${R};padding:16px 18px;min-width:320px;font-family:'Roboto Mono',monospace"><div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-strong)"><span style="width:8px;height:8px;border-radius:50%;background:var(--bg-success)"></span>Production · Ready</div><div style="font-size:12px;color:var(--fg-lower);margin-top:10px">▲ deploy · main@a1b2c3d</div><div style="font-size:12px;color:var(--fg-lower)">✓ Build completed in 24s</div><div style="margin-top:12px"><button class="btn btn-primary btn-sm">Visit</button></div></div></div>`;
   if(t==='hero')return `<div class="demo" style="background:linear-gradient(130deg,var(--bg-primary),var(--fg-point));border:0;border-radius:${R};padding:30px"><div style="color:#fff;max-width:360px"><div style="font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.2">빛나는 제품을<br>더 빠르게 출시하세요</div><div style="font-size:13px;opacity:.9;margin-top:10px">네온 그라디언트와 글로우로 강렬한 첫인상.</div><button class="btn" style="background:#fff;color:var(--bg-primary);margin-top:16px;font-weight:700">시작하기</button></div></div>`;
   if(t==='chat')return `<div class="demo col" style="max-width:420px"><div style="display:flex;gap:10px"><div class="avatar" style="width:36px;height:36px">YS</div><div><div style="font-size:13px;font-weight:700;color:var(--fg-strong)">예성빈 <span style="font-weight:400;color:var(--fg-disabled);font-size:11px">오전 9:24</span></div><div style="background:var(--bg-neutral);border-radius:12px;padding:10px 13px;font-size:13.5px;color:var(--fg-strong);margin-top:4px">디자인 시스템 리뷰 오늘 3시에 할까요?</div></div></div><div style="display:flex;gap:10px"><div class="avatar" style="width:36px;height:36px;background:var(--fg-point)">DS</div><div><div style="font-size:13px;font-weight:700;color:var(--fg-strong)">김디에스</div><div style="background:var(--bg-primary);color:#fff;border-radius:12px;padding:10px 13px;font-size:13.5px;margin-top:4px">좋아요</div></div></div></div>`;
+  if(t==='health')return `<div class="demo col" style="max-width:460px;gap:16px"><div style="background:linear-gradient(160deg,#D2E5FF,#FFF9EE);border-radius:${R};padding:26px 24px"><div style="font-size:12px;color:var(--fg-lower)">이번 주 회복도</div><div style="font-size:44px;font-weight:600;letter-spacing:-.03em;line-height:1.1;color:var(--fg-strong);margin-top:6px">82<span style="font-size:18px;font-weight:500">점</span></div><div style="height:6px;border-radius:999px;background:rgba(34,35,38,.12);margin-top:16px"><div style="width:82%;height:100%;border-radius:999px;background:var(--bg-primary)"></div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div style="background:var(--bg-neutral);border-radius:${R};padding:18px"><div style="font-size:12px;color:var(--fg-lower)">수면</div><div style="font-size:22px;font-weight:600;color:var(--fg-strong);margin-top:4px">7h 12m</div></div><div style="background:var(--bg-neutral);border-radius:${R};padding:18px"><div style="font-size:12px;color:var(--fg-lower)">걸음 수</div><div style="font-size:22px;font-weight:600;color:var(--fg-strong);margin-top:4px">9,480</div></div></div><button class="btn btn-primary" style="align-self:flex-start;border-radius:128px;padding:13px 28px;font-weight:600">주간 리포트 보기</button></div>`;
   if(t==='gallery')return `<div class="demo col" style="max-width:520px;gap:14px"><div style="height:8px;background:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37))"></div><div style="display:flex;align-items:flex-end;gap:14px"><div style="font-size:64px;font-weight:300;line-height:.9;letter-spacing:-.04em;color:var(--fg-strong)">01</div><div style="flex:1"><div style="font-size:22px;font-weight:600;letter-spacing:-.02em;color:var(--fg-strong)">Nhà máy · 브랜드 리뉴얼</div><div style="font-size:13px;color:var(--fg-lower);margin-top:4px">Branding · Web · 2026</div></div></div><div style="height:1px;background:var(--border)"></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag" style="border-radius:75px;background:transparent;border:1px solid var(--border);color:var(--fg-lower);font-weight:400">Identity</span><span class="tag" style="border-radius:75px;background:transparent;border:1px solid var(--border);color:var(--fg-lower);font-weight:400">Art Direction</span><span class="tag" style="border-radius:75px;background:transparent;border:1px solid var(--border);color:var(--fg-lower);font-weight:400">Motion</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px"><div style="height:150px;background:var(--bg-neutral);border:1px solid var(--border)"></div><div style="height:150px;background:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37))"></div></div><button class="btn btn-primary" style="align-self:flex-start;border-radius:75px;padding:12px 33px;font-weight:400">View project</button></div>`;
   if(t==='photo')return `<div class="demo"><div style="background:var(--panel);border:1px solid var(--border);border-radius:${R};overflow:hidden;width:260px;box-shadow:var(--shadow-3)"><div style="height:150px;background:linear-gradient(135deg,var(--bg-primary),var(--fg-point))"></div><div style="padding:14px"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:14px;font-weight:700;color:var(--fg-strong)">오션뷰 스테이</div><div style="font-size:13px;color:var(--fg-strong)">★ 4.92</div></div><div style="font-size:12.5px;color:var(--fg-lower);margin-top:2px">제주 · 슈퍼호스트</div><div style="margin-top:8px;font-size:14px;color:var(--fg-strong)"><b>₩182,000</b> <span style="color:var(--fg-lower);font-weight:400">/ 박</span></div></div></div></div>`;
   return '';
 }
 function renderExtra(sys){
+  if(sys.extra.type==='bevel'){
+    return `<h3 class="dt3">하늘 그라디언트</h3><p class="dsc">히어로와 요약 카드 바탕에만 씁니다. 버튼과 글자에는 쓰지 않습니다.</p><div style="height:72px;border-radius:28px;background:linear-gradient(160deg,#D2E5FF,#FFF9EE)"></div><div class="note" style="margin-top:10px"><code>linear-gradient(160deg, #D2E5FF, #FFF9EE)</code></div><h3 class="dt3">모서리</h3><table class="dtab"><tr><th>요소</th><th>값</th></tr><tr><td>버튼</td><td>128px 완전 알약</td></tr><tr><td>카드</td><td>24~32px</td></tr><tr><td>입력</td><td>16px</td></tr><tr><td>작은 조작부</td><td>14px</td></tr></table><h3 class="dt3">보라를 바꾸었습니다</h3><p class="dsc">원본 추출본에는 #B9A6FF 가 있었습니다. 킷에서 보라를 강조색으로 쓰지 않기로 해 하늘색으로 바꿨 썼습니다.</p><h3 class="dt3">지킬 규칙</h3><ul class="dlist"><li>제목은 굵기 600, 자간 -0.03em 을 씁니다.</li><li>섹션 사이는 80px 를 기준으로 딁니다.</li><li>면은 구름빛 카드(#EBF0F8)로 구분하고 그림자는 엉게 씁니다.</li><li>모서리를 한 화면 안에서 섮지 않습니다.</li></ul>`;
+  }
   if(sys.extra.type==='monopo'){
     return `<h3 class="dt3">이리데센트 그라디언트</h3><p class="dsc">히어로·사례 썸네일·구분선 띄에만 씁니다. 버튼·태그·본문에는 쓰지 않습니다.</p><div style="height:64px;border-radius:0;background:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37))"></div><div class="note" style="margin-top:10px"><code>linear-gradient(90deg, rgb(160,224,171), rgb(255,172,46) 50%, rgb(165,45,37))</code></div><h3 class="dt3">타이포 스케일</h3><table class="dtab"><tr><th>쓰임새</th><th>크기 / 굵기</th><th>자간</th></tr><tr><td>히어로 디스플레이</td><td>clamp(72px, 12vw, 225px) / 300</td><td>-0.04em</td></tr><tr><td>섹션 제목</td><td>clamp(34px, 5vw, 72px) / 400</td><td>-0.03em</td></tr><tr><td>서브·카드 제목</td><td>20~26px / 600</td><td>-0.02em</td></tr><tr><td>본문</td><td>16~18px / 400, 행간 1.6</td><td>0</td></tr><tr><td>캐프션·라벨</td><td>11~13px / 400, 대문자</td><td>0.12em</td></tr><tr><td>제목 강조(Raleway)</td><td>부제목 한 단어에만 400</td><td>0</td></tr></table><h3 class="dt3">공간 규칙</h3><table class="dtab"><tr><th>항목</th><th>값</th></tr><tr><td>기본 단위 / 페이지 폭</td><td>4px / <code>min(1078px, 92vw)</code></td></tr><tr><td>섹션 간격 / 카드 패딩</td><td>46px / 34px</td></tr><tr><td>요소 간격</td><td>14px</td></tr><tr><td>모서리</td><td>버튼·태그 75px / 카드·이미지·입력 0px</td></tr><tr><td>모션</td><td><code>cubic-bezier(0.19, 1, 0.22, 1)</code> 0.8~1.25s</td></tr></table><h3 class="dt3">금지</h3><ul class="dlist"><li>UI 요소에 유채색을 넣지 않습니다. 버튼·링크·태그 모두 무채색입니다.</li><li>그림자를 쓰지 않습니다. 구분은 1px 헤어라인과 여백으로만 합니다.</li><li>카드와 이미지 모서리를 둥글게 만들지 않습니다. 0px을 유지합니다.</li><li>본문 굵기는 400을 넘기지 않습니다. 위계는 크기로 세웁니다.</li></ul>`;
   }

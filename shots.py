@@ -15,7 +15,7 @@ MAT = (u"용량: 50ml\n가격: 38,000원\n핵심성분: 세라마이드NP 5%, �
        u"임상: 4주 후 수분 42% 증가\n만족도: 32명 중 29명\n타깃: 건성·민감성")
 
 # 시스템마다 생김새가 다른 것을 보여 줄 네 가지
-COMPARE = ['monopo', 'carbon', 'airbnb', 'm3']
+COMPARE = ['monopo', 'carbon', 'airbnb', 'm3', 'bevel']
 
 
 def shot(pg, path, clip=None, full=False):

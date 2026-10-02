@@ -10,7 +10,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Design System Kit, 디자인 시스템 도구</title>
-<meta name="description" content="디자인 시스템 17종, 레이아웃 22종, 콘텐츠 구조 9종을 보관하고 AI 프롬프트, CLAUDE.md, CSS 토큰, 실제 페이지까지 만들어내는 한 파일짜리 도구.">
+<meta name="description" content="디자인 시스템 18종, 레이아웃 22종, 콘텐츠 구조 9종을 보관하고 AI 프롬프트, CLAUDE.md, CSS 토큰, 실제 페이지까지 만들어내는 한 파일짜리 도구.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
@@ -130,7 +130,7 @@ footer{max-width:var(--page-max);margin:0 auto;padding-top:var(--sp-28);
       <a class="s" href="guide.html">사용법 보기</a>
     </div>
     <div class="counts">
-      <div><b>17</b><span>디자인 시스템</span></div>
+      <div><b id="cSys">17</b><span>디자인 시스템</span></div>
       <div><b>22</b><span>레이아웃</span></div>
       <div><b>9</b><span>콘텐츠 구조</span></div>
       <div><b>48</b><span>아이콘</span></div>
@@ -208,6 +208,9 @@ document.getElementById('btnUi').onclick=function(){
 (function(){
   var S=window.SHOWCASE;
   if(!S) return;
+
+  var cs=document.getElementById('cSys');
+  if(cs && S.sys) cs.textContent=S.sys.length;
 
   var sg=document.getElementById('sysGrid');
   if(sg && S.sys) sg.innerHTML=S.sys.map(function(x){

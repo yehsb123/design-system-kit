@@ -98,8 +98,11 @@ with sync_playwright() as p:
     # ---- 3. 키보드만으로 시스템을 연다 ----
     pg.set_viewport_size({'width': 1360, 'height': 900})
     pg.goto(URL + '#library'); pg.wait_for_timeout(1800)
+    # 시스템 수를 박아 두지 않는다. 늘어나면 테스트가 먼저 틀린다.
+    total = q(pg, """D.querySelectorAll('#cards .dscard').length""")
     reach = q(pg, """D.querySelectorAll('#cards .dscard[tabindex="0"]').length""")
-    ok('시스템 카드가 키보드로 닿는다', reach == 17, reach)
+    ok('시스템 카드가 모두 키보드로 닿는다', total > 0 and reach == total,
+       '%d / %d' % (reach, total))
     opened = pg.evaluate("""(()=>{const D=%s;
       const c=D.querySelector('#cards .dscard[onclick*="monopo"]');
       c.focus();
