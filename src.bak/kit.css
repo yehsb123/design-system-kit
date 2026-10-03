@@ -1,0 +1,518 @@
+/* Design System Kit
+   Copyright (C) 2026 yehsb123
+   Licensed under the GNU Affero General Public License v3.0. */
+/* ===========================================================
+   Design System Kit 셸 스타일시트
+
+   화면 다섯 개가 함께 쓰는 한 벌이다. 화면마다 따로 정의하지 않는다.
+   값은 monopo saigon 토큰 원본(refero 추출본)을 그대로 쓴다.
+
+   각 화면의 <style> 뒤에 실려서 같은 선택자면 이 파일이 이긴다.
+   !important 는 쓰지 않는다. 깊은 선택자를 덮어야 할 때는
+   클래스를 두 번 적어(.chip.chip) 우선순위만 올린다.
+
+   미리보기 영역(.demo 안쪽)은 각 시스템 고유 토큰이 지배한다.
+   이 파일은 그 안쪽을 건드리지 않는다.
+   =========================================================== */
+
+/* ---------- 토큰 ---------- */
+:root{
+  --obsidian:#000000;
+  --paper:#ffffff;
+  --inkstone:#181818;
+  --felt-gray:#6d6d6d;
+  --slate-pill:#636363;
+  --ash-mist:#9a9a9a;
+  --pewter:#808080;
+  --iridescent:linear-gradient(90deg,rgb(160,224,171),rgb(255,172,46) 50%,rgb(165,45,37));
+
+  --sp-8:8px; --sp-12:12px; --sp-28:28px; --sp-40:40px;
+  --sp-48:48px; --sp-64:64px; --sp-68:68px; --sp-152:152px;
+
+  --page-max:1078px;
+  --section-gap:46px;
+  --card-pad:34px;
+  --el-gap:14px;
+
+  --r-pill:75px;
+  --r-flat:0px;
+  --hair:1px;
+  --ease:cubic-bezier(.19,1,.22,1);
+
+  /* 글자 단. 제목 행간은 스펙 값, 본문 행간은 한글에 맞춰 연다.
+     스펙의 본문 1.15~1.21 은 라틴 기준이라 한글에서 줄이 붙는다. */
+  --t-eyebrow:11px;  --lh-eyebrow:1.36;
+  --t-caption:12px;  --lh-caption:1.5;
+  --t-small:14px;    --lh-small:1.6;
+  --t-body:16px;     --lh-body:1.6;
+  --t-lead:18px;     --lh-lead:1.6;
+  --t-card:20px;     --lh-card:1.35;
+  --t-sub:29px;      --lh-sub:1.3;
+  --t-sec:39px;      --lh-sec:1.19;
+  --t-head:78px;     --lh-head:1.1;
+
+  --font-sans:"Inter","Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;
+  --font-mono:"Roboto Mono",ui-monospace,Consolas,monospace;
+}
+
+:root,
+:root[data-theme="light"],
+:root[data-ui="light"]{
+  --ui-canvas:var(--paper);
+  --ui-panel:var(--paper);
+  --ui-panel-2:#F4F4F4;
+  --ui-fg:var(--obsidian);
+  --ui-fg-strong:var(--obsidian);
+  --ui-fg-lower:var(--felt-gray);
+  /* Ash Mist 와 Pewter 는 스펙에서 테두리와 비활성 면에 쓰라고 한 값이다.
+     흰 바탕에서 2.81 대 1 이라 글자에 쓰면 읽히지 않는다. 글자에는 4.5 를 넘는 값을 쓴다. */
+  --ui-fg-dim:#767676;
+  --ui-border:#E3E3E3;
+  --ui-border-low:#F0F0F0;
+  --ui-line:var(--obsidian);
+  --ui-accent:var(--obsidian);
+  --ui-shadow-sm:none; --ui-shadow-md:none; --ui-shadow-lg:none;
+  --ui-sh:none; --ui-sh-md:none;
+}
+
+:root[data-theme="dark"],
+:root[data-ui="dark"]{
+  --ui-canvas:var(--obsidian);
+  --ui-panel:var(--obsidian);
+  --ui-panel-2:var(--inkstone);
+  --ui-fg:var(--paper);
+  --ui-fg-strong:var(--paper);
+  --ui-fg-lower:var(--ash-mist);
+  /* 검정 바탕에서 Felt Gray 는 4.06 대 1 이라 기준에 못 미친다 */
+  --ui-fg-dim:#8a8a8a;
+  --ui-border:rgba(255,255,255,.22);
+  --ui-border-low:rgba(255,255,255,.12);
+  --ui-line:rgba(255,255,255,.75);
+  --ui-accent:var(--paper);
+  --ui-shadow-sm:none; --ui-shadow-md:none; --ui-shadow-lg:none;
+  --ui-sh:none; --ui-sh-md:none;
+}
+
+/* ---------- 바탕과 한글 줄바꿈 ----------
+   브라우저 기본값은 한글을 글자 단위로 끊어 단어가 쪼개진다.
+   단어 단위로 바뀌게 처음부터 지정한다. */
+body{
+  font-family:var(--font-sans);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  letter-spacing:-.005em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  line-break:strict;
+  background:var(--ui-canvas);
+  color:var(--ui-fg);
+}
+h1,h2,h3,h4,.sectitle,.dt2,.dt3,.gtitle,.ct,.hero h1{ text-wrap:balance; }
+p,.lead,.dsc,.csub,.secsub,.desc,.d{ text-wrap:pretty; }
+
+.mono,code,pre,.specview,.specta{ font-family:var(--font-mono); }
+a{ text-decoration:none; color:inherit; }
+
+/* ---------- 글자 단 ---------- */
+h1,.hero h1{
+  font-family:var(--font-sans);
+  font-weight:300;
+  font-size:clamp(34px,5.4vw,var(--t-head));
+  line-height:var(--lh-head);
+  letter-spacing:-.035em;
+  margin:0 0 var(--sp-28);
+  color:var(--ui-fg-strong);
+}
+h2,.sectitle,.dt2,.gtitle{
+  font-family:var(--font-sans);
+  font-weight:400;
+  font-size:var(--t-sub);
+  line-height:var(--lh-sub);
+  letter-spacing:-.025em;
+}
+h3,.dt3,.ct{
+  font-weight:400;
+  font-size:var(--t-card);
+  line-height:var(--lh-card);
+  letter-spacing:-.02em;
+}
+.dscard h3,.c .n,.st .t{
+  font-weight:400;
+  font-size:var(--t-card);
+  line-height:var(--lh-card);
+  letter-spacing:-.02em;
+}
+.lead,.hero p,.csub,.secsub,.dsc{
+  font-size:var(--t-small);
+  line-height:var(--lh-small);
+  color:var(--ui-fg-lower);
+  max-width:74ch;
+}
+.en{
+  font-size:var(--t-eyebrow);
+  line-height:var(--lh-eyebrow);
+  font-weight:400;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ui-fg-dim);
+}
+/* 45px 위로는 굵게 쓰지 않는다. 본문 강조는 굵기 대신 색으로 준다. */
+h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
+.lead b,.lead strong,.hero p b,.csub b,.secsub b,
+.dsc b,.dsc strong,.c .d b,.st .d b{
+  font-weight:400;
+  color:var(--ui-fg-strong);
+}
+
+/* ---------- 상단 바 ---------- */
+.top,.topbar{
+  border-bottom:var(--hair) solid var(--ui-border);
+  background:var(--ui-canvas);
+  backdrop-filter:none;
+  padding:var(--sp-12) var(--sp-28);
+}
+.topbar .logo,.top .logo{
+  font-family:var(--font-sans);
+  font-weight:400;
+  font-size:var(--t-body);
+  letter-spacing:-.02em;
+}
+.topbar .logo .mk,.top .logo .mk,.mk.mk{
+  border-radius:var(--r-flat);
+  background:var(--ui-fg-strong);
+  width:20px;
+  height:20px;
+}
+.topbar .logo .dim,.top .logo .dim{ color:var(--ui-fg-dim); font-weight:400; }
+
+.appnav{
+  background:transparent;
+  border:0;
+  border-radius:var(--r-flat);
+  padding:0;
+  gap:var(--sp-8);
+}
+.appnav a{
+  border:var(--hair) solid transparent;
+  border-radius:var(--r-pill);
+  font-weight:400;
+  font-size:var(--t-small);
+  padding:7px 16px;
+  color:var(--ui-fg-lower);
+  transition:color .4s ease,border-color .4s ease;
+}
+.appnav a:hover{
+  background:transparent;
+  border-color:var(--ui-border);
+  color:var(--ui-fg-strong);
+}
+.appnav a.on{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border-color:transparent;
+}
+
+/* ---------- 조작부. 알약은 행동에만 쓴다 ---------- */
+.tbtn,.filterchip,.backbtn,.morebtn,.cbtn,
+.tabs button,.dtabs button,.seg button,.exbtns button{
+  border-radius:var(--r-pill);
+  box-shadow:none;
+  font-weight:400;
+  font-size:var(--t-small);
+  padding:9px 20px;
+  background:transparent;
+  border:var(--hair) solid var(--ui-border);
+  color:var(--ui-fg-lower);
+  transition:color .4s ease,border-color .4s ease,background .4s ease;
+}
+.tbtn:hover,.filterchip:hover,.backbtn:hover,
+.tabs button:hover,.dtabs button:hover{
+  border-color:var(--ui-line);
+  color:var(--ui-fg-strong);
+}
+.filterchip.on,.tabs button.on,.dtabs button.on,.seg button.on{
+  font-weight:400;
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border-color:transparent;
+}
+.cgo,.gbtn,.gobtn{
+  border-radius:var(--r-pill);
+  box-shadow:none;
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border:var(--hair) solid var(--ui-fg-strong);
+  font-weight:400;
+  font-size:var(--t-body);
+  padding:11px 33px;
+}
+.iconbtn{
+  font-family:var(--font-sans);
+  font-weight:400;
+  border-radius:var(--r-pill);
+  box-shadow:none;
+  width:auto;
+  min-width:36px;
+  height:36px;
+  padding:0 14px;
+  border:var(--hair) solid var(--ui-border);
+  background:transparent;
+  color:var(--ui-fg-lower);
+  font-size:var(--t-caption);
+}
+.iconbtn:hover{ border-color:var(--ui-line); color:var(--ui-fg-strong); }
+/* 어두운 코드 상자 위의 복사 버튼 */
+.copy{
+  border-radius:var(--r-pill);
+  background:var(--paper);
+  color:var(--obsidian);
+  border:var(--hair) solid var(--paper);
+  font-weight:400;
+  font-size:var(--t-caption);
+  padding:7px 16px;
+  box-shadow:none;
+}
+
+/* ---------- 태그는 고스트 알약 ---------- */
+.pill,.count,.stats span{
+  border-radius:var(--r-pill);
+  background:transparent;
+  border:var(--hair) solid var(--ui-border);
+  color:var(--ui-fg-lower);
+  font-weight:400;
+  font-size:var(--t-caption);
+  padding:5px 14px;
+  box-shadow:none;
+}
+
+/* ---------- 면은 직각, 그림자 없음 ---------- */
+.card,.panel,.out,.stage,.frame,.search,.searchbar,.composer,.cout,.export,
+.note,.infobox,.dscard,.addcard,.lcard,.rec,.foldbody,.specview,.specta,
+.rulebox,.myrules,.qa,.case,.file,.c,.st,.preview,.gcard,.layprev,.brief,
+.autoinfo,.cwrap,.selectbox,.sel,.step,.dsec,.warn,.tip{
+  border-radius:var(--r-flat);
+  box-shadow:none;
+}
+.search,.searchbar,.cwrap,.selectbox,.sel{
+  border:var(--hair) solid var(--ui-border);
+}
+.dscard,.lcard,.rec,.c,.file,.qa,.case{
+  border:var(--hair) solid var(--ui-border);
+  transition:border-color .8s var(--ease);
+}
+.dscard:hover,.lcard:hover,.rec:hover,.c:hover,.file:hover{
+  transform:none;
+  border-color:var(--ui-line);
+}
+.export,.cout{ background:var(--obsidian); color:var(--paper); }
+
+/* ---------- 간격 ---------- */
+.wrap{ max-width:var(--page-max); }
+.sectitle{ margin-top:var(--section-gap); }
+.cards,.steps,.recs,.lwrap{ gap:var(--el-gap); }
+
+/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ---------- */
+#detail .demo,#detail .demo *,
+#sview .demo,#sview .demo *{
+  border-radius:revert;
+  font-family:revert;
+  font-size:revert;
+  line-height:revert;
+  letter-spacing:revert;
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{ transition-duration:.01ms; animation-duration:.01ms; }
+}
+@media(max-width:768px){
+  :root{ --card-pad:20px; --section-gap:32px; }
+  .top,.topbar{ padding:10px 16px; }
+}
+
+/* ===========================================================
+   화면별 규칙
+   선택자는 그 화면에만 있는 이름이라 다른 화면에서는 걸리지 않는다.
+   =========================================================== */
+
+/* ---- 시작 화면 ---- */
+.lead{ font-size:var(--t-lead); }
+.c{ padding:var(--card-pad); }
+.c .d{ font-size:var(--t-small); line-height:var(--lh-small); }
+.c .go{ color:var(--ui-fg-lower); font-weight:400; font-size:var(--t-caption); }
+/* 이 페이지의 유일한 유채색. 글자가 앉는 아래쪽만 눌러 대비를 만든다. */
+.c.main{
+  background:linear-gradient(180deg,rgba(0,0,0,0) 22%,rgba(0,0,0,.88)),var(--iridescent);
+  border-color:transparent;
+  padding:var(--sp-152) var(--card-pad) var(--sp-40);
+  justify-content:flex-end;
+}
+.c.main .n{ color:var(--paper); font-size:var(--t-sub); font-weight:300; }
+.c.main .d,.c.main .go{ color:rgba(255,255,255,.9); max-width:62ch; }
+.c.main .d b{ font-weight:400; color:var(--paper); }
+.c.main:hover{ border-color:transparent; }
+.st{ padding:var(--card-pad); border:var(--hair) solid var(--ui-border); }
+.st .n{
+  border-radius:var(--r-pill);
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+}
+.st .d{ font-size:var(--t-small); line-height:var(--lh-small); }
+
+/* ---- 사용설명서 ---- */
+.file,.qa,.case{ padding:var(--card-pad); }
+.fd,.q,.a{ font-size:var(--t-small); line-height:var(--lh-small); }
+
+/* ---- 조립기 ---- */
+.swatchpick,.ramp,.rl{ border-radius:var(--r-flat); }
+.seg{
+  border-radius:var(--r-pill);
+  padding:3px;
+  background:transparent;
+  border:var(--hair) solid var(--ui-border);
+}
+.hint,.psub{ font-size:var(--t-caption); color:var(--ui-fg-lower); }
+
+/* ---- 생성기 ---- */
+.lbl{
+  font-size:var(--t-caption);
+  color:var(--ui-fg-lower);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+/* ---- 모음집 ---- */
+.composer{ padding:var(--card-pad); border:var(--hair) solid var(--ui-border); }
+.dscard .body{ padding:var(--card-pad); }
+.dscard .desc{ font-size:var(--t-small); line-height:var(--lh-small); }
+.dscard .cover{ border-bottom:var(--hair) solid var(--ui-border); }
+.backbar{ border-bottom:var(--hair) solid var(--ui-border); }
+/* 구분은 헤어라인만 쓴다. 굵은 줄을 두지 않는다. */
+.dhead,.crumbs,.refbar,.dnav{
+  border-bottom-width:var(--hair);
+  border-bottom-color:var(--ui-border);
+}
+.dsec{
+  border-top:var(--hair) solid var(--ui-border);
+  padding-top:var(--section-gap);
+  margin-top:var(--section-gap);
+}
+.dtabs{ gap:var(--sp-8); }
+.grouphint{ font-size:var(--t-caption); color:var(--ui-fg-lower); }
+.specbar .filterchip{ padding:8px 18px; }
+.specview{
+  background:var(--ui-panel-2);
+  color:var(--ui-fg-lower);
+  border:var(--hair) solid var(--ui-border);
+  font-size:var(--t-caption);
+}
+
+/* ---- 화면 자체 CSS 가 더 깊은 선택자로 잡아 둔 자리 ----
+   같은 깊이로 다시 적어 킷 값이 적용되게 한다. */
+.composer h3,.panel h2,.sec h2{
+  font-family:var(--font-sans);
+  font-weight:400;
+  font-size:var(--t-card);
+  line-height:var(--lh-card);
+  letter-spacing:-.02em;
+  color:var(--ui-fg-strong);
+}
+.composer .csub{ font-size:var(--t-small); line-height:var(--lh-small); }
+
+/* ---- 복사한 다음 할 일 ---- */
+.cnext{
+  margin-top:var(--el-gap);
+  padding:12px 16px;
+  border:var(--hair) solid var(--ui-line);
+  border-radius:var(--r-flat);
+  font-size:var(--t-small);
+  line-height:var(--lh-small);
+  color:var(--ui-fg-strong);
+  background:var(--ui-panel-2);
+}
+.scount{ font-size:var(--t-caption); color:var(--ui-fg-dim); white-space:nowrap; }
+.noresult{
+  grid-column:1/-1;
+  padding:var(--sp-64) var(--card-pad);
+  border:var(--hair) dashed var(--ui-border);
+  text-align:center;
+  font-size:var(--t-small);
+  line-height:var(--lh-small);
+  color:var(--ui-fg-lower);
+}
+.noresult .filterchip{ margin-top:var(--el-gap); }
+
+/* ---- 키보드로 닿는 자리를 보이게 ----
+   킷이 접근성을 가르치면서 정작 자기 화면에는 초점 표시가 없었다.
+   카드는 button 이 아니라 div 라 role 과 tabindex 로 닿게 해 뒀다. */
+:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:2px;
+}
+.dscard[role="button"],.lcard[role="button"],.rec[role="button"],.logo[role="button"]{
+  cursor:pointer;
+}
+.dscard:focus-visible,.lcard:focus-visible,.rec:focus-visible{
+  outline:2px solid var(--ui-line);
+  outline-offset:-2px;
+  border-color:var(--ui-line);
+}
+/* 마우스로 누를 때는 테두리를 그리지 않는다 */
+.dscard:focus:not(:focus-visible),.lcard:focus:not(:focus-visible),
+.rec:focus:not(:focus-visible),.logo:focus:not(:focus-visible){ outline:none; }
+
+/* 터치로 누르는 자리는 44px 이상 */
+@media(pointer:coarse){
+  .tbtn,.filterchip,.backbtn,.tabs button,.dtabs button,.appnav a,.iconbtn,.seg button{
+    min-height:44px;
+  }
+}
+
+/* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
+   화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
+.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border-color:transparent;
+  font-weight:400;
+}
+.tbtn.pri{ border-radius:var(--r-pill); }
+
+/* ---- 좁은 화면에서 상단 바가 가로로 넘치지 않게 ---- */
+@media(max-width:768px){
+  .top,.topbar{ flex-wrap:wrap; row-gap:8px; }
+  .appnav{ order:10; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .appnav::-webkit-scrollbar{ height:0; }
+  .top .sp,.topbar .spacer{ flex:1 1 auto; }
+}
+
+/* ---- 대비를 보장하는 자리 ---- */
+
+/* 카드 표지의 글꼴 미리보기는 시스템 색 띠 위에 올라간다.
+   띠 색이 밝으면 흰 글씨가 묻히므로 아래쪽에 어두운 막을 깐다. */
+.dscard .cover::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 38%,rgba(0,0,0,.66));
+  pointer-events:none;
+}
+.dscard .cover .fontpreview{
+  position:relative;
+  z-index:1;
+  color:#fff;
+  font-weight:400;
+  text-shadow:none;
+}
+
+/* 흐린 글자가 회색 면 위에 앉으면 4.5 를 못 넘는다. 한 단 진하게 쓴다. */
+.autoinfo,.hint,.psub,.grouphint,.note,.foldbody .hint{ color:var(--ui-fg-lower); }
+
+/* 규칙 추가 버튼과 주의 상자 제목 */
+.ruleadd button{
+  background:var(--ui-fg-strong);
+  color:var(--ui-canvas);
+  border:var(--hair) solid var(--ui-fg-strong);
+  border-radius:var(--r-pill);
+  font-weight:400;
+}
+.warn .th,.tip .th{ color:var(--ui-fg-strong); font-weight:400; }

@@ -1,5 +1,5 @@
 src/
 docs/
 *.py
-pages.json
+/pages.json
 블로그_*.md

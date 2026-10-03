@@ -36,6 +36,8 @@ button{font:inherit;}
 @media(max-width:640px){.appnav a span{display:none;}}
 
 .tbtn{cursor:pointer;}
+.tbtn.pri{background:var(--ui-accent);color:#fff;border-color:transparent;font-weight:700;}
+
 .wrap{display:grid;grid-template-columns:340px 1fr;gap:22px;margin:0 auto;padding:22px 24px 80px;}
 @media(max-width:900px){.wrap{grid-template-columns:1fr;}}
 
@@ -75,6 +77,7 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
 .row+.row{margin-top:14px;}
 .gbtn{cursor:pointer;}
+.gbtn.pri{background:var(--g-primary);color:#fff;}
 .gbtn.sec{background:var(--g-primary-low);color:var(--g-primary-fg);}
 .gbtn.out{background:var(--g-bg);color:var(--g-fg-strong);border-color:var(--g-border-strong);}
 .gbtn.ghost{background:transparent;color:var(--g-fg-lower);}

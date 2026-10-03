@@ -19,6 +19,8 @@
 /* 시작 화면에만 쓰는 배치. 색과 글자 단위는 kit.css 가 정한다. */
 *{box-sizing:border-box;}
 body{margin:0;-webkit-font-smoothing:antialiased;}
+a{color:inherit;}
+
 .top{display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;}
 .top .sp{flex:1;}
 .logo{display:flex;align-items:center;gap:8px;cursor:default;}
@@ -84,7 +86,7 @@ section{max-width:var(--page-max);margin:0 auto var(--section-gap);}
 .icorow svg{width:20px;height:20px;}
 
 /* ---- 단계 ---- */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--el-gap);}
 .step{border:1px solid var(--ui-border);padding:var(--card-pad);}
 .step .n{font-size:clamp(34px,4vw,54px);font-weight:300;line-height:1;letter-spacing:-.04em;
   color:var(--ui-fg-dim);display:block;margin-bottom:var(--sp-12);}
