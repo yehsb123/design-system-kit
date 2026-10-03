@@ -1,0 +1,292 @@
+{
+ "generated": "2026-10-03",
+ "count": 19,
+ "license": "AGPL-3.0",
+ "systems": [
+  {
+   "id": "toss",
+   "name": "Toss (TDS)",
+   "category": "앱",
+   "font": "Toss Product Sans · Pretendard",
+   "description": "토스 공식 디자인 토큰(WTS) 기반. 명료한 그레이 스케일과 토스 블루가 핵심인 핀테크 SaaS 시스템.",
+   "cover": [
+    "#3182F6",
+    "#03B26C",
+    "#F04452",
+    "#191F28"
+   ],
+   "href": "systems/toss.json",
+   "css": "systems/toss/tokens.css"
+  },
+  {
+   "id": "aurora",
+   "name": "Aurora",
+   "category": "SaaS",
+   "font": "Pretendard Variable",
+   "description": "태그 12색·차트·다크/그린 테마까지 갖춘 풀세트 범용 SaaS 시스템. 대시보드·어드민에 바로 적용.",
+   "cover": [
+    "#4178FF",
+    "#00CCC2",
+    "#A78BFA",
+    "#F472B6"
+   ],
+   "href": "systems/aurora.json",
+   "css": "systems/aurora/tokens.css"
+  },
+  {
+   "id": "graphite",
+   "name": "Graphite",
+   "category": "엔터프라이즈",
+   "font": "Pretendard Variable",
+   "description": "인디고 브랜드 · 슬레이트 중립색의 데이터 집약형 어드민 시스템. 고밀도 그리드·표 계층색에 최적화.",
+   "cover": [
+    "#4F46E5",
+    "#64748B",
+    "#0D9488",
+    "#0F172A"
+   ],
+   "href": "systems/graphite.json",
+   "css": "systems/graphite/tokens.css"
+  },
+  {
+   "id": "antd",
+   "name": "Ant Design",
+   "category": "엔터프라이즈",
+   "font": "-apple-system · Segoe UI · Roboto",
+   "description": "엔터프라이즈 UI의 표준. Daybreak Blue #1677FF와 촘촘한 팔레트로 어드민과 백오피스에 강합니다.",
+   "cover": [
+    "#1677FF",
+    "#52C41A",
+    "#FAAD14",
+    "#FF4D4F"
+   ],
+   "href": "systems/antd.json",
+   "css": "systems/antd/tokens.css"
+  },
+  {
+   "id": "m3",
+   "name": "Material 3",
+   "category": "앱",
+   "font": "Roboto",
+   "description": "구글 머티리얼 디자인 3. 보라 계열 프라이머리(#6750A4)와 부드러운 라운드가 특징.",
+   "cover": [
+    "#6750A4",
+    "#4CAF50",
+    "#FF9800",
+    "#B3261E"
+   ],
+   "href": "systems/m3.json",
+   "css": "systems/m3/tokens.css"
+  },
+  {
+   "id": "carbon",
+   "name": "IBM Carbon",
+   "category": "엔터프라이즈",
+   "font": "IBM Plex Sans",
+   "description": "IBM 엔터프라이즈 시스템. Blue 60 #0F62FE, 각진 형태(라운드 최소)와 명확한 그레이 계층.",
+   "cover": [
+    "#0F62FE",
+    "#24A148",
+    "#F1C21B",
+    "#DA1E28"
+   ],
+   "href": "systems/carbon.json",
+   "css": "systems/carbon/tokens.css"
+  },
+  {
+   "id": "apple",
+   "name": "Apple HIG",
+   "category": "앱",
+   "font": "SF Pro · -apple-system",
+   "description": "애플 휴먼 인터페이스. System Blue #007AFF와 시스템 그레이·시맨틱 컬러 기반.",
+   "cover": [
+    "#007AFF",
+    "#34C759",
+    "#FF9500",
+    "#FF3B30"
+   ],
+   "href": "systems/apple.json",
+   "css": "systems/apple/tokens.css"
+  },
+  {
+   "id": "polaris",
+   "name": "Shopify Polaris",
+   "category": "커머스",
+   "font": "Inter · -apple-system",
+   "description": "쇼피파이 커머스 어드민 시스템. 그린 브랜드(#008060)와 잉크 계열 중립색이 특징.",
+   "cover": [
+    "#008060",
+    "#303030",
+    "#F1A417",
+    "#D72C0D"
+   ],
+   "href": "systems/polaris.json",
+   "css": "systems/polaris/tokens.css"
+  },
+  {
+   "id": "neon",
+   "name": "Neon",
+   "category": "랜딩",
+   "font": "Space Grotesk",
+   "description": "다크 우선 네온 랜딩/마케팅 템플릿. 바이올렛에서 시안으로 가는 그라디언트와 글로우 이펙트가 핵심.",
+   "cover": [
+    "#7C4DFF",
+    "#22D3EE",
+    "#F5155F",
+    "#0F1018"
+   ],
+   "href": "systems/neon.json",
+   "css": "systems/neon/tokens.css"
+  },
+  {
+   "id": "editorial",
+   "name": "Editorial",
+   "category": "에디토리얼",
+   "font": "Playfair Display",
+   "description": "세리프 기반 매거진/콘텐츠 템플릿. 높은 대비, 절제된 여백, 각진 형태로 읽기에 최적.",
+   "cover": [
+    "#B91C1C",
+    "#1A1813",
+    "#B7791F",
+    "#FAF8F3"
+   ],
+   "href": "systems/editorial.json",
+   "css": "systems/editorial/tokens.css"
+  },
+  {
+   "id": "playful",
+   "name": "Playful",
+   "category": "랜딩",
+   "font": "Poppins",
+   "description": "밝고 둥근 캔디 팔레트의 소비자·캠페인 템플릿. 알약형 버튼과 큰 라운드로 친근합니다.",
+   "cover": [
+    "#F72AAA",
+    "#8B5CF6",
+    "#17C964",
+    "#FF4FC0"
+   ],
+   "href": "systems/playful.json",
+   "css": "systems/playful/tokens.css"
+  },
+  {
+   "id": "mobile",
+   "name": "Mobile Kit",
+   "category": "모바일",
+   "font": "Pretendard",
+   "description": "모바일 앱 전용 킷. 큰 터치 타깃, 넉넉한 라운드, 민트 브랜드로 온보딩·헬스·라이프스타일에 적합.",
+   "cover": [
+    "#0FB39B",
+    "#2E90FA",
+    "#FFB020",
+    "#151A1E"
+   ],
+   "href": "systems/mobile.json",
+   "css": "systems/mobile/tokens.css"
+  },
+  {
+   "id": "vercel",
+   "name": "Vercel / Geist",
+   "category": "랜딩",
+   "font": "DM Sans",
+   "description": "흑백 모노크롬 미니멀 시스템. 검정 프라이머리와 절제된 뉴트럴로 개발 도구와 랜딩에 강합니다.",
+   "cover": [
+    "#000000",
+    "#0070F3",
+    "#0CB85F",
+    "#EAEAEA"
+   ],
+   "href": "systems/vercel.json",
+   "css": "systems/vercel/tokens.css"
+  },
+  {
+   "id": "gitlab",
+   "name": "GitLab (Pajamas)",
+   "category": "데브옵스",
+   "font": "Sora",
+   "description": "오렌지 브랜드의 데브옵스 시스템. 파이프라인·이슈보드 등 개발 협업 화면에 최적.",
+   "cover": [
+    "#FC6D26",
+    "#E24329",
+    "#1F75CB",
+    "#171321"
+   ],
+   "href": "systems/gitlab.json",
+   "css": "systems/gitlab/tokens.css"
+  },
+  {
+   "id": "airbnb",
+   "name": "Airbnb",
+   "category": "여행",
+   "font": "Manrope",
+   "description": "코랄/로즈 브랜드의 여행·숙박 시스템. 사진 중심 카드와 큰 라운드로 따뜻하고 친근합니다.",
+   "cover": [
+    "#FF385C",
+    "#E61E76",
+    "#008A05",
+    "#222222"
+   ],
+   "href": "systems/airbnb.json",
+   "css": "systems/airbnb/tokens.css"
+  },
+  {
+   "id": "slack",
+   "name": "Slack",
+   "category": "협업",
+   "font": "Pretendard",
+   "description": "오버진(플럼) 브랜드의 협업 메신저 시스템. 플럼에서 시안으로 가는 포인트로 채널·스레드 UI에 적합.",
+   "cover": [
+    "#4A154B",
+    "#36C5F0",
+    "#2BAC76",
+    "#1A1A1D"
+   ],
+   "href": "systems/slack.json",
+   "css": "systems/slack/tokens.css"
+  },
+  {
+   "id": "monopo",
+   "name": "monopo saigon",
+   "category": "포트폴리오",
+   "font": "Inter (Roobert 대체)",
+   "description": "무채색만 쓰는 에디토리얼 갤러리 시스템. 카드·이미지·입력은 직각 0px으로 두고 버튼·태그만 75px 알약으로 대비를 만듭니다. 그림자 없이 1px 헤어라인만 씁니다.",
+   "cover": [
+    "#000000",
+    "#A0E0AB",
+    "#FFAC2E",
+    "#A52D25"
+   ],
+   "href": "systems/monopo.json",
+   "css": "systems/monopo/tokens.css"
+  },
+  {
+   "id": "bevel",
+   "name": "Bevel",
+   "category": "헬스케어",
+   "font": "Plus Jakarta Sans",
+   "description": "부드러운 구름빛 카드와 하늘 그라디언트를 쓰는 헬스케어 시스템. 버튼은 128px 완전 알약, 카드는 28px 큰 라운드로 둥글게 통일합니다.",
+   "cover": [
+    "#415EEE",
+    "#EBF0F8",
+    "#31CE01",
+    "#222326"
+   ],
+   "href": "systems/bevel.json",
+   "css": "systems/bevel/tokens.css"
+  },
+  {
+   "id": "wise",
+   "name": "Wise",
+   "category": "핀테크",
+   "font": "Inter",
+   "description": "짙은 숲색 위에 라임을 한 점만 두는 평평한 핀테크 시스템. 그라디언트와 블러를 쓰지 않고, 흰 구역과 리넨 구역과 숲색 구역을 번갈아 둡니다.",
+   "cover": [
+    "#9FE870",
+    "#163300",
+    "#E2F6D5",
+    "#0E0F0C"
+   ],
+   "href": "systems/wise.json",
+   "css": "systems/wise/tokens.css"
+  }
+ ]
+}

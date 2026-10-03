@@ -138,7 +138,8 @@ cd design-system-kit
 
 ```
 index.html           화면 다섯 개를 담은 한 파일. 이것만 열면 됩니다
-build.py             src 를 index.html 로 묶습니다
+build.py             src 를 index.html 로 묶고 api/ 를 만듭니다
+build_api.py         화면 함수를 불러 api/ 파일을 꺼냅니다
 restyle.py           화면마다 kit.css 를 연결합니다
 shots.py             README 에 쓰는 그림을 다시 찍습니다
 dedupe_css.py        화면 CSS 에서 kit.css 와 겹치는 선언을 지웁니다
@@ -153,6 +154,8 @@ docs/screenshots     README용 이미지
 test_ui.py           조작부를 하나씩 눌러 반응을 봅니다
 test_flow.py         쓰는 순서대로 밟습니다
 test_a11y.py         다크 모드, 모바일 폭, 키보드, 대비를 봅니다
+test_api.py          api/ 가 화면과 같은 값인지 대조합니다
+api/                 정적 API 파일
 ```
 
 셸 스타일은 `src/kit.css` 한 곳에만 있습니다. 화면마다 따로 정의하지 않습니다.
@@ -161,12 +164,61 @@ test_a11y.py         다크 모드, 모바일 폭, 키보드, 대비를 봅니�
 새 디자인 시스템을 추가하려면 `src/library.html` 의 `SYSTEMS` 배열에 항목을 하나 더하면 됩니다.
 색 램프(50~950)와 이름과 분류만 있으면 카드, 상세, 스펙 문서, 내보내기가 모두 자동으로 생깁니다.
 
+## API
+
+빌드할 때 `api/` 아래에 정적 파일을 같이 만듭니다. 서버가 없어도 주소만 열면 읽힙니다.
+
+```
+api/systems.json                    19종 목록
+api/systems/{id}.json               그 시스템 전부
+api/systems/{id}/tokens.css         CSS 변수 (라이트)
+api/systems/{id}/tokens.dark.css    CSS 변수 (다크)
+api/systems/{id}/tailwind.js        Tailwind 설정
+api/systems/{id}/spec.md            스펙 문서
+api/layouts.json                    레이아웃 22종
+api/pages.json                      콘텐츠 구조 9종
+api/icons.json                      아이콘 48개
+```
+
+주소 예시입니다.
+
+```
+https://design-system-kit-theta.vercel.app/api/systems.json
+https://design-system-kit-theta.vercel.app/api/systems/wise.json
+https://design-system-kit-theta.vercel.app/api/systems/wise/tokens.css
+```
+
+`systems.json` 응답은 이렇게 생겼습니다.
+
+```json
+{
+  "generated": "2026-10-03",
+  "count": 19,
+  "license": "AGPL-3.0",
+  "systems": [
+    {
+      "id": "wise",
+      "name": "Wise",
+      "category": "핀테크",
+      "font": "Inter",
+      "description": "짙은 숲색 위에 라임을 한 점만 두는 평평한 핀테크 시스템.",
+      "cover": ["#9FE870", "#163300", "#E2F6D5", "#0E0F0C"],
+      "href": "systems/wise.json",
+      "css": "systems/wise/tokens.css"
+    }
+  ]
+}
+```
+
+값은 따로 계산하지 않습니다. 모음집 화면을 띄워 그 안의 함수를 그대로 불러 꺼내므로 화면이 쓰는 값과 같습니다. `test_api.py` 가 글자 단위로 대조합니다.
+
 ## 검사
 
 ```bash
 python test_ui.py     # 조작부 하나씩
 python test_flow.py   # 쓰는 순서대로
 python test_a11y.py   # 다크 모드, 390px, 키보드, 대비
+python test_api.py    # API 가 화면과 같은 값인지
 ```
 
 세 벌 모두 `index.html` 을 헤드리스 크롬으로 열어 돌립니다. 고치고 나면 `python build.py` 로 다시 묶은 뒤 검사합니다.

@@ -148,6 +148,13 @@ def main():
     io.open(OUT, 'w', encoding='utf-8').write(shell)
     print('->', os.path.basename(OUT), len(shell))
 
+    # 정적 API 도 같이 만든다. 화면만 고치고 API 를 안 만들면 낡는다.
+    try:
+        import build_api
+        build_api.main()
+    except Exception as e:
+        print('api 생성을 건너뜁니다:', e)
+
 
 SHELL = u"""<!doctype html>
 <!--
