@@ -8,7 +8,7 @@ import os, io, json, re
 from playwright.sync_api import sync_playwright
 
 D = os.path.dirname(os.path.abspath(__file__))
-API = os.path.join(D, 'api')
+API = os.path.join(D, 'v1')
 URL = 'file:///' + os.path.join(D, 'index.html').replace(os.sep, '/')
 DOC = "document.getElementById('stage').contentDocument"
 
@@ -24,7 +24,7 @@ def jread(path):
 
 
 # ---- 파일이 다 있는가 ----
-ok('api/systems.json 이 있다', os.path.exists(os.path.join(API, 'systems.json')))
+ok('v1/systems.json 이 있다', os.path.exists(os.path.join(API, 'systems.json')))
 idx = jread('systems.json')
 ids = [s['id'] for s in idx['systems']]
 ok('목록에 19종이 있다', idx['count'] == len(ids) == 19, '%d / %d' % (idx['count'], len(ids)))

@@ -17,3 +17,6 @@ _probe.txt
 _allpages.txt
 _api.txt
 __pycache__/
+_snap_*.json
+_diff.txt
+_dedupe_report.json

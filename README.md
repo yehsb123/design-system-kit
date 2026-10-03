@@ -138,8 +138,8 @@ cd design-system-kit
 
 ```
 index.html           화면 다섯 개를 담은 한 파일. 이것만 열면 됩니다
-build.py             src 를 index.html 로 묶고 api/ 를 만듭니다
-build_api.py         화면 함수를 불러 api/ 파일을 꺼냅니다
+build.py             src 를 index.html 로 묶고 v1/ 를 만듭니다
+build_api.py         화면 함수를 불러 v1/ 파일을 꺼냅니다
 restyle.py           화면마다 kit.css 를 연결합니다
 shots.py             README 에 쓰는 그림을 다시 찍습니다
 dedupe_css.py        화면 CSS 에서 kit.css 와 겹치는 선언을 지웁니다
@@ -154,8 +154,8 @@ docs/screenshots     README용 이미지
 test_ui.py           조작부를 하나씩 눌러 반응을 봅니다
 test_flow.py         쓰는 순서대로 밟습니다
 test_a11y.py         다크 모드, 모바일 폭, 키보드, 대비를 봅니다
-test_api.py          api/ 가 화면과 같은 값인지 대조합니다
-api/                 정적 API 파일
+test_api.py          v1/ 가 화면과 같은 값인지 대조합니다
+v1/                  정적 API 파일
 ```
 
 셸 스타일은 `src/kit.css` 한 곳에만 있습니다. 화면마다 따로 정의하지 않습니다.
@@ -166,26 +166,26 @@ api/                 정적 API 파일
 
 ## API
 
-빌드할 때 `api/` 아래에 정적 파일을 같이 만듭니다. 서버가 없어도 주소만 열면 읽힙니다.
+빌드할 때 `v1/` 아래에 정적 파일을 같이 만듭니다. 서버가 없어도 주소만 열면 읽힙니다.
 
 ```
-api/systems.json                    19종 목록
-api/systems/{id}.json               그 시스템 전부
-api/systems/{id}/tokens.css         CSS 변수 (라이트)
-api/systems/{id}/tokens.dark.css    CSS 변수 (다크)
-api/systems/{id}/tailwind.js        Tailwind 설정
-api/systems/{id}/spec.md            스펙 문서
-api/layouts.json                    레이아웃 22종
-api/pages.json                      콘텐츠 구조 9종
-api/icons.json                      아이콘 48개
+v1/systems.json                    19종 목록
+v1/systems/{id}.json               그 시스템 전부
+v1/systems/{id}/tokens.css         CSS 변수 (라이트)
+v1/systems/{id}/tokens.dark.css    CSS 변수 (다크)
+v1/systems/{id}/tailwind.js        Tailwind 설정
+v1/systems/{id}/spec.md            스펙 문서
+v1/layouts.json                    레이아웃 22종
+v1/pages.json                      콘텐츠 구조 9종
+v1/icons.json                      아이콘 48개
 ```
 
 주소 예시입니다.
 
 ```
-https://design-system-kit-theta.vercel.app/api/systems.json
-https://design-system-kit-theta.vercel.app/api/systems/wise.json
-https://design-system-kit-theta.vercel.app/api/systems/wise/tokens.css
+https://design-system-kit-theta.vercel.app/v1/systems.json
+https://design-system-kit-theta.vercel.app/v1/systems/wise.json
+https://design-system-kit-theta.vercel.app/v1/systems/wise/tokens.css
 ```
 
 `systems.json` 응답은 이렇게 생겼습니다.
@@ -209,6 +209,8 @@ https://design-system-kit-theta.vercel.app/api/systems/wise/tokens.css
   ]
 }
 ```
+
+폴더 이름이 `api` 가 아니라 `v1` 입니다. Vercel 이 `api/` 아래를 서버리스 함수로 보고 빌드하려다 실패하기 때문입니다. 두 배포 주소가 같은 경로를 씁니다.
 
 값은 따로 계산하지 않습니다. 모음집 화면을 띄워 그 안의 함수를 그대로 불러 꺼내므로 화면이 쓰는 값과 같습니다. `test_api.py` 가 글자 단위로 대조합니다.
 

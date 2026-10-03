@@ -5,17 +5,17 @@
 화면이 쓰는 값과 같은 값을 꺼낸다. 따로 계산하면 화면과 달라진다.
 
 만드는 파일:
-  api/systems.json            목록
-  api/systems/{id}.json       한 시스템 전부
-  api/systems/{id}/tokens.css CSS 변수 (라이트)
-  api/systems/{id}/tokens.dark.css CSS 변수 (다크)
+  v1/systems.json            목록
+  v1/systems/{id}.json       한 시스템 전부
+  v1/systems/{id}/tokens.css CSS 변수 (라이트)
+  v1/systems/{id}/tokens.dark.css CSS 변수 (다크)
 """
 import io, os, json, shutil
 from playwright.sync_api import sync_playwright
 
 D = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(D, 'src')
-API = os.path.join(D, 'api')
+API = os.path.join(D, 'v1')
 
 DUMP = """(() => {
   const pick = (t) => {
@@ -134,7 +134,7 @@ def main():
         ensure_ascii=False, indent=1))
 
     n = sum(len(f) for _, _, f in os.walk(API))
-    print('api 파일 %d개, 시스템 %d종' % (n, len(syss)))
+    print('v1 파일 %d개, 시스템 %d종' % (n, len(syss)))
 
 
 if __name__ == '__main__':
