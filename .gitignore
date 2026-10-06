@@ -2,6 +2,7 @@
 Thumbs.db
 _*.py
 _*.js
+_*.txt
 _*.html
 _*.json
 _*.md
@@ -12,11 +13,6 @@ tail.txt
 _test_ui.json
 _test_flow.json
 _test_a11y.json
-_a11y.txt
-_probe.txt
-_allpages.txt
-_api.txt
 __pycache__/
 _snap_*.json
-_diff.txt
 _dedupe_report.json

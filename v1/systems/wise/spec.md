@@ -1,360 +1,485 @@
-# Wise — 시스템 스펙
-> 짙은 숲색 위에 라임을 한 점만 두는 평평한 핀테크 시스템. 그라디언트와 블러를 쓰지 않고, 흰 구역과 리넨 구역과 숲색 구역을 번갈아 둡니다.
+# Wise — Style Reference
+> deep moss with lime voltage. Lime sparks on a near-black forest floor, with massive blocky display type announcing every move.
 
-이 문서는 킷이 들고 있는 토큰에서 만들었습니다. 원래 사이트를 재서 나온 값이 아니므로, 실제 타이포 크기와 모션 곡선은 담지 않습니다.
+**Theme:** light
 
-**분류:** 핀테크  ·  **프레임워크:** React · 웹
+Source measurements are normalized; roles and recommendations are interpreted. Font summary lists are independent, not paired by position. HTML examples are reconstructions, not source components.
 
-## 토큰 — 색
+Wise speaks in a confident, slightly loud voice: a deep forest green (#163300) carries most of the surface area — text, nav, dark sections, icons — while a single electric lime (#9fe870) acts as functional punctuation on CTAs, active tabs, and key highlights. The display type is almost aggressive: Wise Sans at weight 900, tightly tracked, shouted across the hero in 100px+ block letters. The rest of the system stays restrained on a near-white canvas with soft gray surfaces (#e8ebe6). Components are pill-shaped by default — buttons, nav segments, flag thumbnails, image masks — with gentle 10px radii reserved for cards and inputs. Color rarely gradients; instead, the lime–forest pairing inverts cleanly when sections go dark, creating rhythm without decoration.
 
-모든 색은 11단계 램프로 정의합니다. 램프는 테마에 따라 바뀌지 않는 원시값입니다.
+## Tokens — Colors
 
-### primary — 브랜드 행동과 강조
+| Name | Value | Token | Role |
+|------|-------|-------|------|
+| Forest Ink | `#163300` | `--color-forest-ink` | Dominant brand dark — nav text, dark section backgrounds, primary copy on light surfaces, icon strokes, filled navigation pills. This is the brand's gravity: wherever you need weight or authority, you reach for Forest Ink |
+| Lime Voltage | `#9fe870` | `--color-lime-voltage` | Green supporting accent for decorative details and low-frequency emphasis. Do not promote it to the primary CTA color |
+| Spruce | `#054d28` | `--color-spruce` | Secondary dark green for card surfaces, supporting iconography, and tonal depth on dark sections where Forest Ink is too heavy |
+| Linen Mist | `#e2f6d5` | `--color-linen-mist` | Pale green wash for soft highlight surfaces, tinted card backgrounds, nav hover states. A whisper of the brand green for low-emphasis containers |
+| Signal Blue | `#0b4c72` | `--color-signal-blue` | Blue supporting accent for decorative details and low-frequency emphasis |
+| Alarm Red | `#cb272f` | `--color-alarm-red` | Red supporting accent for decorative details and low-frequency emphasis. Use as a supporting accent, not as a status color |
+| Charcoal | `#454745` | `--color-charcoal` | Primary text, body copy, dense UI — slightly warm black that feels softer than pure #000 against white |
+| Obsidian | `#0e0f0c` | `--color-obsidian` | Display headlines, high-contrast headings, pure-black moments in nav and hero. Slightly green-tinted black, not neutral gray |
+| Pebble | `#868685` | `--color-pebble` | Muted secondary text, placeholder copy, icon strokes, input borders. The mid-gray that recedes |
+| Slate | `#6a6c6a` | `--color-slate` | Supporting body text, helper labels, subdued iconography. One step darker than Pebble for slightly more emphasis |
+| Fog | `#e8ebe6` | `--color-fog` | Card surfaces, section dividers, subtle panel backgrounds on the white canvas. Green-tinted off-white, not pure neutral |
+| Paper | `#ffffff` | `--color-paper` | Page canvas, inverted card surfaces, button text on lime fill |
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#F4FDEE` | `#E2F6D5` | `#CBF0B3` | `#B5EB91` | `#9FE870` | `#9FE870` | `#7BC94E` | `#4F9B2C` | `#2E6B18` | `#1B4310` | `#163300` |
+## Tokens — Typography
 
-### gray — 글자, 테두리, 면
+### Inter — Body, UI, labels, and sub-headings across the entire product. The 700 weight handles mid-tier headings (36–45px), 500–600 for subheadings and labels, 400 for body and captions. Inter does the quiet work while Wise Sans shouts. · `--font-inter`
+- **Substitute:** Inter (native Google Fonts)
+- **Weights:** 400,500,600,700
+- **Sizes:** 12px, 14px, 16px, 18px, 20px, 22px, 25px, 36px, 45px, 61px, 300px
+- **Line height:** 0.72, 1.00, 1.10, 1.25, 1.30, 1.40, 1.43, 1.44, 1.50, 1.55, 1.63, 1.71, 1.86, 2.17
+- **Letter spacing:** -0.030em at 105px, -0.015em at 61px, -0.011em at 36px, -0.009em at 25px, -0.007em at 18px, -0.006em at 16px, -0.005em at 14px, -0.003em at 12px
+- **OpenType features:** `"calt"`
+- **Role:** Body, UI, labels, and sub-headings across the entire product. The 700 weight handles mid-tier headings (36–45px), 500–600 for subheadings and labels, 400 for body and captions. Inter does the quiet work while Wise Sans shouts.
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#F7F8F6` | `#E8EBE6` | `#D5D8D3` | `#B3B5B2` | `#868685` | `#6A6C6A` | `#545654` | `#454745` | `#2C2E2B` | `#0E0F0C` | `#080906` |
+### Wise Sans — Display headlines — the brand's signature shout. Ultra-heavy weight 900 at 89–105px with tight -0.03em tracking makes every headline a block-letter announcement. Used sparingly: hero, section openers, campaign moments. · `--font-wise-sans`
+- **Substitute:** Inter Black (900) with -0.04em tracking
+- **Weights:** 900
+- **Sizes:** 40px, 52px, 59px, 89px, 105px, 300px
+- **Line height:** 0.85, 1.50
+- **Letter spacing:** -0.0020em
+- **OpenType features:** `"calt"`
+- **Role:** Display headlines — the brand's signature shout. Ultra-heavy weight 900 at 89–105px with tight -0.03em tracking makes every headline a block-letter announcement. Used sparingly: hero, section openers, campaign moments.
 
-### success — 완료와 정상
+### monospace — monospace — detected in extracted data but not described by AI · `--font-monospace`
+- **Weights:** 400
+- **Sizes:** 300px
+- **Line height:** 
+- **OpenType features:** `"calt"`
+- **Role:** monospace — detected in extracted data but not described by AI
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#EAF7EF` | `#C7EBD6` | `#92D9B0` | `#5CC389` | `#2FA869` | `#054D28` | `#04401F` | `#033218` | `#022511` | `#01180B` | `#000C05` |
+### sans-serif — sans-serif — detected in extracted data but not described by AI · `--font-sans-serif`
+- **Weights:** 400
+- **Sizes:** 300px
+- **Line height:** 
+- **OpenType features:** `"calt"`
+- **Role:** sans-serif — detected in extracted data but not described by AI
 
-### warning — 주의와 대기
+### Type Scale
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#FFF8E6` | `#FFEDBF` | `#FFDE8A` | `#FFCE55` | `#FFC02B` | `#E8A600` | `#BC8600` | `#8F6700` | `#664900` | `#3D2C00` | `#1F1600` |
+| Role | Family | Weight | Size | Line Height | Letter Spacing | Token |
+|------|--------|--------|------|-------------|----------------|-------|
+| micro | — | — | 12px | 1.63 | -0.036px | `--text-micro` |
+| caption | — | — | 14px | 1.55 | -0.07px | `--text-caption` |
+| body-sm | — | — | 16px | 1.5 | -0.096px | `--text-body-sm` |
+| body | — | — | 18px | 1.5 | -0.126px | `--text-body` |
+| body-lg | — | — | 25px | 1.3 | -0.225px | `--text-body-lg` |
+| subheading | — | — | 36px | 1.25 | -0.396px | `--text-subheading` |
+| heading-sm | — | — | 45px | 1.1 | -0.495px | `--text-heading-sm` |
+| heading | — | — | 61px | 1.1 | -0.915px | `--text-heading` |
+| heading-lg | — | — | 89px | 0.85 | -2.67px | `--text-heading-lg` |
+| display | — | — | 105px | 0.85 | -3.15px | `--text-display` |
 
-### error — 실패와 위험
+## Tokens — Spacing & Shapes
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#FDEDEE` | `#F9D3D5` | `#F1A5A9` | `#E7787E` | `#DB4C54` | `#CB272F` | `#A91F26` | `#84181E` | `#5E1115` | `#380A0D` | `#1C0506` |
+**Base unit:** 4px
 
-### info — 안내와 진행
+**Density:** comfortable
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#E8F2F8` | `#C5DEEE` | `#8FBEDC` | `#589DC9` | `#2B7FB4` | `#0B4C72` | `#093E5D` | `#073048` | `#052334` | `#031620` | `#010B10` |
+### Spacing Scale
 
-## 토큰 — 역할별 색
+| Name | Value | Token |
+|------|-------|-------|
+| 4 | 4px | `--spacing-4` |
+| 8 | 8px | `--spacing-8` |
+| 12 | 12px | `--spacing-12` |
+| 16 | 16px | `--spacing-16` |
+| 20 | 20px | `--spacing-20` |
+| 24 | 24px | `--spacing-24` |
+| 28 | 28px | `--spacing-28` |
+| 32 | 32px | `--spacing-32` |
+| 40 | 40px | `--spacing-40` |
+| 44 | 44px | `--spacing-44` |
+| 48 | 48px | `--spacing-48` |
+| 56 | 56px | `--spacing-56` |
+| 64 | 64px | `--spacing-64` |
+| 100 | 100px | `--spacing-100` |
+| 124 | 124px | `--spacing-124` |
 
-램프를 역할에 매핑한 값입니다. 라이트와 다크에서 서로 다릅니다.
+### Border Radius
 
-| 토큰 | 쓰임새 | Light | Dark |
-|---|---|---|---|
-| `--bg` | 바탕이 되는 면 | `#FFFFFF` | `#0E0F0C` |
-| `--canvas` | 페이지 바닥 | `#F7F8F6` | `#080906` |
-| `--fg` | 본문 글자 | `#0E0F0C` | `#FFFFFF` |
-| `--fg-strong` | 제목과 강조 글자 | `#0E0F0C` | `#F7F8F6` |
-| `--fg-lower` | 보조 설명 | `#545654` | `#868685` |
-| `--fg-disabled` | 비활성 글자 | `#868685` | `#545654` |
-| `--border` | 기본 경계선 | `#D5D8D3` | `#2C2E2B` |
-| `--border-strong` | 강조 경계선 | `#B3B5B2` | `#545654` |
-| `--bg-primary` | 주된 행동 버튼 바탕 | `#9FE870` | `#9FE870` |
-| `--bg-primary-low` | 주된 색의 엷은 면 | `#F4FDEE` | `#1B4310` |
-| `--fg-primary` | 주된 색 글자 | `#7BC94E` | `#B5EB91` |
-| `--bg-success` | 완료 표시 | `#054D28` | `#054D28` |
-| `--bg-warning` | 주의 표시 | `#E8A600` | `#E8A600` |
-| `--bg-critical` | 위험 표시 | `#CB272F` | `#CB272F` |
-| `--bg-info` | 안내 표시 | `#093E5D` | `#2B7FB4` |
+| Element | Value |
+|---------|-------|
+| tags | 9999px |
+| cards | 10px |
+| inputs | 10px |
+| buttons | 9999px |
+| imageMasks | 1000px |
+| largeCards | 28px |
+| navSegments | 9999px |
 
-## 토큰 — 타이포
+### Shadows
 
-**글꼴:** `"Inter","Pretendard",-apple-system,system-ui,sans-serif`
+| Name | Value | Token |
+|------|-------|-------|
+| subtle | `rgba(14, 15, 12, 0.12) 0px 0px 0px 1px` | `--shadow-subtle` |
+| subtle-2 | `rgb(134, 134, 133) 0px 0px 0px 1px inset` | `--shadow-subtle-2` |
+| xl | `rgba(0, 0, 0, 0.15) 0px 10px 32px 0px, rgba(0, 0, 0, 0.04...` | `--shadow-xl` |
+| lg | `rgba(0, 0, 0, 0.08) 0px 6px 20px 0px` | `--shadow-lg` |
 
-본문 행간은 150% 를 기준으로 합니다. 한글은 단어 단위로 끊어 쓰므로 `word-break: keep-all` 을 붙입니다.
+### Layout
 
-| 쓰임새 | 크기 | 굵기 |
-|---|---|---|
-| 페이지 제목 | clamp(28px, 5vw, 44px) | 700 |
-| 섹션 제목 | clamp(20px, 3vw, 30px) | 700 |
-| 본문 | 15~16px | 400 |
-| 보조 설명 | 13~14px | 400 |
-| 라벨 | 11~12px | 400 |
-| 버튼 | 14~15px | 700 |
+- **Page max-width:** 1200px
+- **Section gap:** 64-80px
+- **Card padding:** 24px
+- **Element gap:** 8-12px
 
-## 토큰 — 간격과 모양
+## Components
 
-**기본 단위:** 4px
+### Primary CTA Pill Button
+**Role:** The signature action element — filled lime pill that signals "do this next."
 
-간격: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px
+Fully rounded (9999px radius) button with Lime Voltage (#9fe870) fill and Charcoal (#454745) or Forest Ink (#163300) text. Padding 11px vertical, 24px horizontal. Inter weight 500 at 16px. No border, no shadow — the fill does all the work.
 
-| 요소 | 모서리 |
-|---|---|
-| 버튼 | 9999px |
-| 카드 | 10px |
-| 입력 | 10px |
-| 태그 | 999px |
-| 작은 조작부 | 10px |
+### Outlined Pill Button
+**Role:** Secondary action in the nav and inline CTAs.
 
-| 항목 | 값 |
-|---|---|
-| 버튼 좌우 안쪽 여백 | 24px |
-| 버튼 글자 굵기 | 700 |
-| 버튼 그림자 | 쓰지 않음 |
-| 페이지 폭 | min(1200px, 92vw) |
+White fill, 1px Forest Ink border, 9999px radius. Same padding as primary. Used for "Sign up" in the header and non-primary calls to action where the lime would compete with a primary action nearby.
 
-## 아이콘
+### Text Link Button
+**Role:** Inline secondary action with low visual weight.
 
-24×24 보기틀, 선 굵기 2.2px, 끝처리 `round`, 꼬임 `round`.
-선은 `currentColor` 를 씁니다. 색을 아이콘 안에 박지 않습니다.
+Underlined Forest Ink text at 16px Inter weight 500, no background, no border. Pairs with the primary CTA when two adjacent actions are needed (e.g. "Open an account" + "Send money now").
 
-## 컴포넌트
+### Top Navigation Bar
+**Role:** Persistent header with brand, section switcher, and account access.
 
-| 컴포넌트 | 규칙 |
-|---|---|
-| 버튼 | primary, secondary, outline, ghost, danger 다섯 가지. 크기는 sm, md, lg. 상태는 hover, focus-visible, active, disabled, loading |
-| 태그 | 상태 5종. 바탕과 글자를 짝으로 씁니다 |
-| 입력 | 기본, 포커스, 에러, 성공, 비활성. 도움말과 필수 표시를 두고 색으로만 알리지 않습니다 |
-| 오버레이 | 모달은 `role="dialog"`, `aria-modal`, Esc 닫기. 드로어, 토스트(`aria-live`), 툴팁, 드롭다운 |
-| 내비 | 탭은 `role="tablist"`. 스텝, 페이지네이션, 브레드크럼 |
-| 표 | 헤더, 상세, 소계, 합계의 계층색을 지킵니다 |
+White background, 64px height. Logo left, three-segment pill nav (Personal / Business / Platform) with 9999px radius and Forest Ink text, right cluster has language flag, Help, Log in, and outlined Sign up pill.
 
-## 대비
+### Segmented Tab Control
+**Role:** In-page section switcher — single active state in lime.
 
-| 짝 | 비율 | 기준(AA 4.5) |
-|---|---|---|
-| 본문 대 바탕 | 19.23 : 1 | 통과 |
-| 흰글씨 대 주된 색 | 1.47 : 1 | 미달 |
+Pill container (9999px radius) holding multiple text labels. Active tab: Lime Voltage fill with Charcoal text. Inactive tabs: transparent with Charcoal text. ~40px height, 12px horizontal padding per segment.
 
-## 지킬 규칙과 금지 사항
+### Display Headline
+**Role:** The brand's voice — used in hero and major section openers.
 
-### 지킬 규칙
+Wise Sans weight 900 at 89–105px, line-height 0.85, letter-spacing -3.15px. Charcoal (#454745) or Obsidian (#0e0f0c) on light, Lime Voltage on dark sections. Set as block text, often in ALL CAPS for hero moments.
 
-- 모서리는 버튼 9999px, 카드 10px, 입력 10px 으로 고정합니다
-- 색은 램프와 역할 토큰에서만 가져옵니다
-- 라이트와 다크를 항상 같이 맞춥니다
-- 여백과 글자 크기는 `clamp()` 로 화면 폭에 따라 줍니다
-- 터치로 누르는 자리는 44×44px 이상으로 둡니다
-- 초점 표시는 `focus-visible` 로 남깁니다
+### Feature Row
+**Role:** Three-column trust signal block — icon + heading + supporting line.
 
-### 금지 사항
+Single-column-on-mobile, three-column-on-desktop. Icon (24px, Charcoal stroke) at top, heading in Inter 700 at 18px, body in Inter 400 at 16px Pebble. Generous 24px vertical gap between icon and heading.
 
-- 토큰에 없는 색을 직접 적지 않습니다
-- 보라와 바이올렛을 강조색으로 쓰지 않습니다
-- 왼쪽에 굵은 선이 붙은 인용 카드를 두지 않습니다
-- 색만으로 상태를 알리지 않습니다. 글자나 모양을 같이 둡니다
-- 모서리를 한 화면 안에서 여러 값으로 섮지 않습니다
+### Country Grid Item
+**Role:** Flag thumbnail + country name link in a 5-column grid.
 
-## 화면 규격
+Circular flag thumbnail (1000px radius, ~56px diameter), 12px gap to country name in Inter 500 at 16px Forest Ink. Name is a text link with no underline at rest, underline on hover. Items sit in a generous grid with ~32px row gap.
 
-- 컨테이너 `width: min(1200px, 92vw)`
-- 끊는 폭 1280, 1024, 768, 480px
-- 768px 미만은 1열로 내립니다
-- 여백 `clamp(24px, 5vw, 80px)`
-- 이미지는 WebP, 비율을 고정해 흔들림을 막습니다
-- 모션은 150~250ms. `prefers-reduced-motion` 을 따릅니다
+### Dark Section Card
+**Role:** Inverted surface for emphasis — used for the send-money CTA block.
 
-## AI 에게 넘길 빠른 참조
+Forest Ink (#163300) background, 28px radius, 40px padding. Lime Voltage text for headline, Paper for body. Contains an inset white card (10px radius, 16px padding) for the currency selector.
 
-- 본문 글자: `#0E0F0C`
-- 보조 글자: `#545654`
-- 바탕: `#FFFFFF`
-- 페이지 바닥: `#F7F8F6`
-- 경계선: `#D5D8D3`
-- 주된 행동: `#9FE870`
-- 글꼴: `"Inter","Pretendard",-apple-system,system-ui,sans-serif`
+### Currency Selector Pill
+**Role:** Interactive country/currency picker with a "Change" action.
 
-## 바로 쓰기
+White pill inside a dark section card. Left: circular flag (24px) + country name in Charcoal Inter 500. Right: outlined "Change" button in Forest Ink. 9999px radius, 8px vertical padding.
 
-### CSS 변수
+### Input Field
+**Role:** Form input — used for amounts, emails, references.
+
+10px radius, 1px Pebble (#868685) border, 12px vertical and 16px horizontal padding. Inter 400 at 16px. Focus state: Forest Ink border, no glow ring.
+
+### Floating QR Badge
+**Role:** Persistent "Get the Wise app" download prompt.
+
+Forest Ink (#163300) rounded square (16px radius), fixed bottom-right, 120px wide. QR code in Paper at top, "Get the Wise app" label in Lime Voltage Inter 500 at 12px below.
+
+### Badge / Tag
+**Role:** Small status labels and category tags.
+
+9999px radius, 8px vertical and 12px horizontal padding. Linen Mist (#e2f6d5) background with Forest Ink text, or Forest Ink background with Lime Voltage text. Inter 500 at 12px.
+
+## Do's and Don'ts
+
+### Do
+- Set display headlines in Wise Sans weight 900 with letter-spacing -3.15px at 105px; the extreme heaviness is the brand's signature — don't soften it to 700.
+- Use Lime Voltage (#9fe870) exclusively for primary action fills and active states; one lime element per visible viewport section is usually enough.
+- Default to 9999px radius for all buttons, tags, and nav segments — pill shapes are foundational, not decorative.
+- Use Forest Ink (#163300) for text and dark surfaces, not pure black; the green-tinted near-black is warmer and more on-brand.
+- Apply tight negative letter-spacing at large sizes (-0.030em at 100px+ down to -0.003em at 12px); headings should feel compact, not airy.
+- Pair a filled primary CTA with an underlined text link as the secondary action — never two filled buttons side by side.
+- Invert section backgrounds from white to Forest Ink to create rhythm; the lime text on dark green is the system's built-in emphasis.
+
+### Don't
+- Don't use Charcoal (#454745) for display headlines — reserve Obsidian (#0e0f0c) or Forest Ink for maximum contrast at large sizes.
+- Don't introduce gradients, drop shadows beyond hairline borders, or decorative blurs — the system is flat by design.
+- Don't use Lime Voltage as text color on light backgrounds; its contrast is too low. It only works as fill or on dark green.
+- Don't use sharp corners (0–4px radius) on buttons, tags, or nav elements; pills are the default shape language.
+- Don't set display headlines in Inter — Wise Sans 900 is the only acceptable voice for 60px+ type.
+- Don't stack multiple lime elements close together; space them so the accent reads as a single punctuation mark.
+- Don't use #000000 for body text; Charcoal (#454745) at 18px on white is the baseline that keeps the page from feeling harsh.
+
+## Surfaces
+
+| Level | Name | Value | Purpose |
+|-------|------|-------|---------|
+| 0 | Paper | `#ffffff` | Page canvas — the default background for all content sections |
+| 1 | Fog | `#e8ebe6` | Card surfaces, soft panels, and section backgrounds on the white canvas |
+| 2 | Linen Mist | `#e2f6d5` | Tinted highlight surfaces — pale green wash for accent containers and hover states |
+| 3 | Lime Voltage | `#9fe870` | Active surface — selected tabs, primary CTA fill, emphasis zones |
+| 4 | Forest Ink | `#163300` | Inverted surface — dark section backgrounds, nav, high-contrast blocks |
+
+## Elevation
+
+- **Cards:** `rgba(0, 0, 0, 0.15) 0px 10px 32px 0px, rgba(0, 0, 0, 0.04) 0px 40px 40px 0px`
+- **Elevated panels:** `rgba(0, 0, 0, 0.08) 0px 6px 20px 0px`
+- **Input/button focus:** `rgb(134, 134, 133) 0px 0px 0px 1px inset`
+- **Icon containers:** `rgba(14, 15, 12, 0.12) 0px 0px 0px 1px`
+
+## Imagery
+
+Painted 3D-style illustrations of a globe with gold coins establish the brand's visual world — tactile, slightly surreal, rendered with soft gradients and warm light. Photography is minimal; when used, it's high-key and lifestyle-casual. Country flags appear as circular thumbnails in a 5-column grid — the only "icon" system is national identity. No abstract graphics, no stock patterns. The globe and coins are the recurring mascot motif, signaling global reach through a single warm, optimistic object rather than a montage.
+
+## Layout
+
+Max-width 1200px centered container, with hero and dark sections going full-bleed. Hero pattern: centered massive display headline over white space, with a large illustration (globe) breaking the lower edge of the viewport. Section rhythm alternates white → light green band → dark Forest Ink section, creating a natural color cadence. Content arrangement is predominantly centered stacks in the hero, then 2-column text+visual or 3-column feature rows in supporting sections. A 5-column flag grid handles the country directory. Navigation is a single sticky top bar with a segmented pill switcher. The QR badge floats fixed in the bottom-right corner across all scroll positions.
+
+## Agent Prompt Guide
+
+Quick Color Reference
+- text: #454745 (Charcoal) for body, #0e0f0c (Obsidian) for display
+- background: #ffffff (Paper) canvas, #e8ebe6 (Fog) cards
+- border: #868685 (Pebble) for hairlines, #163300 (Forest Ink) for emphasis
+- accent: #9fe870 (Lime Voltage) for active states and highlights
+- primary action: no distinct CTA color
+- dark surface: #163300 (Forest Ink) for inverted sections
+
+Example Component Prompts
+
+No distinct primary action color was observed; use the extracted neutral button treatments instead of inventing a filled CTA color.
+
+2. Feature row (3-column): icon at 24px stroke #454745, 24px gap to heading at 18px Inter 700 in #0e0f0c, 8px gap to body at 16px Inter 400 in #868685. Column gap 32px, centered max-width 1200px.
+
+3. Country grid item: circular flag thumbnail at 56px diameter (1000px radius), 12px vertical gap to country name in Inter 500 at 16px #163300. Arranged in a 5-column grid with 32px row gap and 24px column gap. Hover state: underline appears on the country name.
+
+4. Dark section card: Forest Ink (#163300) background, 28px radius, 40px padding. Headline in Lime Voltage (#9fe870) at 36px Inter 700. Body text in #ffffff at 16px Inter 400. Contains an inset white card (10px radius) for a currency selector: circular flag + country name in Charcoal + outlined "Change" button.
+
+5. Outlined nav button: white fill, 1px solid #163300 border, 9999px radius, 8px 16px padding, Inter 500 at 16px in #163300. Used in the top-right nav cluster for secondary account actions.
+
+## Similar Brands
+
+- **Revolut** — Same dual-brand color strategy — deep brand color as dominant surface and text, one bright accent for CTAs and highlights, with pill-shaped buttons and large confident headlines.
+- **Monzo** — Bright single-accent color system on a neutral canvas, pill-shaped interactive elements, friendly rounded geometry, and display type that speaks directly to the user.
+- **Cash App** — High-contrast near-black text on white with a single vivid brand accent, oversized bold headlines as the primary brand expression, minimal decoration.
+- **N26** — Flat surfaces, hairline borders instead of shadows, generous white space, and a single saturated accent color driving all interactive emphasis.
+
+## Quick Start
+
+### CSS Custom Properties
 
 ```css
-:root{
-  --primary-50: #F4FDEE;
-  --primary-100: #E2F6D5;
-  --primary-200: #CBF0B3;
-  --primary-300: #B5EB91;
-  --primary-400: #9FE870;
-  --primary-500: #9FE870;
-  --primary-600: #7BC94E;
-  --primary-700: #4F9B2C;
-  --primary-800: #2E6B18;
-  --primary-900: #1B4310;
-  --primary-950: #163300;
-  --gray-50: #F7F8F6;
-  --gray-100: #E8EBE6;
-  --gray-200: #D5D8D3;
-  --gray-300: #B3B5B2;
-  --gray-400: #868685;
-  --gray-500: #6A6C6A;
-  --gray-600: #545654;
-  --gray-700: #454745;
-  --gray-800: #2C2E2B;
-  --gray-900: #0E0F0C;
-  --gray-950: #080906;
-  --success-50: #EAF7EF;
-  --success-100: #C7EBD6;
-  --success-200: #92D9B0;
-  --success-300: #5CC389;
-  --success-400: #2FA869;
-  --success-500: #054D28;
-  --success-600: #04401F;
-  --success-700: #033218;
-  --success-800: #022511;
-  --success-900: #01180B;
-  --success-950: #000C05;
-  --warning-50: #FFF8E6;
-  --warning-100: #FFEDBF;
-  --warning-200: #FFDE8A;
-  --warning-300: #FFCE55;
-  --warning-400: #FFC02B;
-  --warning-500: #E8A600;
-  --warning-600: #BC8600;
-  --warning-700: #8F6700;
-  --warning-800: #664900;
-  --warning-900: #3D2C00;
-  --warning-950: #1F1600;
-  --error-50: #FDEDEE;
-  --error-100: #F9D3D5;
-  --error-200: #F1A5A9;
-  --error-300: #E7787E;
-  --error-400: #DB4C54;
-  --error-500: #CB272F;
-  --error-600: #A91F26;
-  --error-700: #84181E;
-  --error-800: #5E1115;
-  --error-900: #380A0D;
-  --error-950: #1C0506;
-  --info-50: #E8F2F8;
-  --info-100: #C5DEEE;
-  --info-200: #8FBEDC;
-  --info-300: #589DC9;
-  --info-400: #2B7FB4;
-  --info-500: #0B4C72;
-  --info-600: #093E5D;
-  --info-700: #073048;
-  --info-800: #052334;
-  --info-900: #031620;
-  --info-950: #010B10;
-  --bg-primary: #9FE870;
-  --bg-primary-low: #F4FDEE;
-  --fg-primary: #7BC94E;
-  --fg-primary-low: #F4FDEE;
-  --fg-point: #163300;
-  --border-primary: #9FE870;
-  --bg: #FFFFFF;
-  --bg-inset: #FFFFFF;
-  --bg-inset-neutral: #E8EBE6;
-  --bg-neutral: #E8EBE6;
-  --bg-neutral-low: #F7F8F6;
-  --bg-neutral-lower: #F7F8F6;
-  --bg-disabled: #E8EBE6;
-  --bg-contrast: #0E0F0C;
-  --bg-success: #054D28;
-  --bg-success-low: #EAF7EF;
-  --bg-warning: #E8A600;
-  --bg-warning-low: #FFF8E6;
-  --bg-critical: #CB272F;
-  --bg-critical-low: #FDEDEE;
-  --bg-info: #093E5D;
-  --bg-info-low: #E8F2F8;
-  --fg: #0E0F0C;
-  --fg-strong: #0E0F0C;
-  --fg-lower: #545654;
-  --fg-disabled: #868685;
-  --fg-contrast: #FFFFFF;
-  --fg-on-primary: #0E0F0C;
-  --fg-success: #033218;
-  --fg-warning: #664900;
-  --fg-error: #84181E;
-  --border: #D5D8D3;
-  --border-low: #E8EBE6;
-  --border-strong: #B3B5B2;
-  --border-disabled: #D5D8D3;
-  --shadow-1: 0 0 8px rgba(0,0,0,.10);
-  --shadow-2: 0 4px 8px rgba(0,0,0,.10);
-  --shadow-3: 0 6px 16px rgba(0,0,0,.06);
-  --shadow-4: 0 6px 24px rgba(0,0,0,.08);
-  --shadow-5: 0 8px 24px rgba(0,0,0,.12);
-  --shadow-6: 0 16px 40px rgba(0,0,0,.16);
-  --panel: #FFFFFF;
-  --canvas: #F7F8F6;
-  --tag-bg-success: #E5FFF0;
-  --tag-fg-success: #007A33;
-  --tag-bg-warning: #FFF9E5;
-  --tag-fg-warning: #A65F00;
-  --tag-bg-error: #FFEFEF;
-  --tag-fg-error: #C20E1F;
-  --tag-bg-info: #E5F0FF;
-  --tag-fg-info: #1E40AF;
-  --tag-bg-neutral: #F1F1F1;
-  --tag-fg-neutral: #4B4C52;
-  --tag-bg-indigo: #EEF0FE;
-  --tag-fg-indigo: #4F46E5;
-  --tag-bg-ocean: #E0F4F7;
-  --tag-fg-ocean: #0E7490;
-  --tag-bg-teal: #DCFAF5;
-  --tag-fg-teal: #0D9488;
-  --tag-bg-emerald: #DDF7EA;
-  --tag-fg-emerald: #047857;
-  --tag-bg-lime: #ECFCCB;
-  --tag-fg-lime: #4D7C0F;
-  --tag-bg-rose: #FCE7F0;
-  --tag-fg-rose: #BE185D;
-  --tag-bg-magenta: #F5E0F7;
-  --tag-fg-magenta: #A21CAF;
-  --tag-bg-violet: #EDE3FE;
-  --tag-fg-violet: #6D28D9;
-  --tag-bg-slate: #E2E8F0;
-  --tag-fg-slate: #475569;
-  --tag-bg-bronze: #FBE9D0;
-  --tag-fg-bronze: #92400E;
-  --graph-chart-1: #4178FF;
-  --graph-chart-2: #00CCC2;
-  --graph-chart-3: #7BAAF7;
-  --graph-chart-4: #8FCE96;
-  --graph-chart-5: #F2968F;
-  --graph-chart-6: #A78BFA;
-  --graph-chart-7: #FDBA74;
-  --graph-chart-8: #F472B6;
-  --radius-xs: 10px;
-  --radius-sm: 10px;
-  --radius-md: 10px;
-  --radius-lg: 28px;
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --font-family: "Inter","Pretendard",-apple-system,system-ui,sans-serif;
-  --btn-radius: 9999px;
-  --btn-weight: 700;
-  --btn-shadow: none;
-  --ctl-radius: 10px;
-  --card-radius: 10px;
-  --btn-padx: 24px;
-  --in-radius: 10px;
-  --tag-radius: 999px;
+:root {
+  /* Colors */
+  --color-forest-ink: #163300;
+  --color-lime-voltage: #9fe870;
+  --color-spruce: #054d28;
+  --color-linen-mist: #e2f6d5;
+  --color-signal-blue: #0b4c72;
+  --color-alarm-red: #cb272f;
+  --color-charcoal: #454745;
+  --color-obsidian: #0e0f0c;
+  --color-pebble: #868685;
+  --color-slate: #6a6c6a;
+  --color-fog: #e8ebe6;
+  --color-paper: #ffffff;
+
+  /* Typography — Font Families */
+  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-wise-sans: 'Wise Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-monospace: 'monospace', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans-serif: 'sans-serif', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-micro: 12px;
+  --leading-micro: 1.63;
+  --tracking-micro: -0.036px;
+  --text-caption: 14px;
+  --leading-caption: 1.55;
+  --tracking-caption: -0.07px;
+  --text-body-sm: 16px;
+  --leading-body-sm: 1.5;
+  --tracking-body-sm: -0.096px;
+  --text-body: 18px;
+  --leading-body: 1.5;
+  --tracking-body: -0.126px;
+  --text-body-lg: 25px;
+  --leading-body-lg: 1.3;
+  --tracking-body-lg: -0.225px;
+  --text-subheading: 36px;
+  --leading-subheading: 1.25;
+  --tracking-subheading: -0.396px;
+  --text-heading-sm: 45px;
+  --leading-heading-sm: 1.1;
+  --tracking-heading-sm: -0.495px;
+  --text-heading: 61px;
+  --leading-heading: 1.1;
+  --tracking-heading: -0.915px;
+  --text-heading-lg: 89px;
+  --leading-heading-lg: 0.85;
+  --tracking-heading-lg: -2.67px;
+  --text-display: 105px;
+  --leading-display: 0.85;
+  --tracking-display: -3.15px;
+
+  /* Typography — Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* Spacing */
+  --spacing-unit: 4px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-44: 44px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-100: 100px;
+  --spacing-124: 124px;
+
+  /* Layout */
+  --page-max-width: 1200px;
+  --section-gap: 64-80px;
+  --card-padding: 24px;
+  --element-gap: 8-12px;
+
+  /* Border Radius */
+  --radius-sm: 2px;
+  --radius-lg: 10px;
+  --radius-2xl: 16px;
+  --radius-2xl-2: 18.7693px;
+  --radius-3xl: 28.1539px;
+  --radius-3xl-2: 32px;
+  --radius-3xl-3: 37.5385px;
+  --radius-full: 1000px;
+  --radius-full-2: 9999px;
+
+  /* Named Radii */
+  --radius-tags: 9999px;
+  --radius-cards: 10px;
+  --radius-inputs: 10px;
+  --radius-buttons: 9999px;
+  --radius-imagemasks: 1000px;
+  --radius-largecards: 28px;
+  --radius-navsegments: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: rgba(14, 15, 12, 0.12) 0px 0px 0px 1px;
+  --shadow-subtle-2: rgb(134, 134, 133) 0px 0px 0px 1px inset;
+  --shadow-xl: rgba(0, 0, 0, 0.15) 0px 10px 32px 0px, rgba(0, 0, 0, 0.04) 0px 40px 40px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.08) 0px 6px 20px 0px;
+
+  /* Surfaces */
+  --surface-paper: #ffffff;
+  --surface-fog: #e8ebe6;
+  --surface-linen-mist: #e2f6d5;
+  --surface-lime-voltage: #9fe870;
+  --surface-forest-ink: #163300;
 }
 ```
 
-### Tailwind
+### Tailwind v4
 
-```js
-// tailwind.config.js
-export default {
-  theme:{ extend:{
-    colors:{
-      primary:{50:"#F4FDEE",100:"#E2F6D5",200:"#CBF0B3",300:"#B5EB91",400:"#9FE870",500:"#9FE870",600:"#7BC94E",700:"#4F9B2C",800:"#2E6B18",900:"#1B4310",950:"#163300"},
-      gray:{50:"#F7F8F6",100:"#E8EBE6",200:"#D5D8D3",300:"#B3B5B2",400:"#868685",500:"#6A6C6A",600:"#545654",700:"#454745",800:"#2C2E2B",900:"#0E0F0C",950:"#080906"},
-      success:"#054D28", warning:"#E8A600", critical:"#CB272F",
-    },
-    borderRadius:{ btn:"9999px", card:"10px", input:"10px" },
-    fontFamily:{ sans:["Inter","Pretendard","-apple-system","system-ui","sans-serif"] },
-  }}
+```css
+@theme {
+  /* Colors */
+  --color-forest-ink: #163300;
+  --color-lime-voltage: #9fe870;
+  --color-spruce: #054d28;
+  --color-linen-mist: #e2f6d5;
+  --color-signal-blue: #0b4c72;
+  --color-alarm-red: #cb272f;
+  --color-charcoal: #454745;
+  --color-obsidian: #0e0f0c;
+  --color-pebble: #868685;
+  --color-slate: #6a6c6a;
+  --color-fog: #e8ebe6;
+  --color-paper: #ffffff;
+
+  /* Typography */
+  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-wise-sans: 'Wise Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-monospace: 'monospace', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans-serif: 'sans-serif', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-micro: 12px;
+  --leading-micro: 1.63;
+  --tracking-micro: -0.036px;
+  --text-caption: 14px;
+  --leading-caption: 1.55;
+  --tracking-caption: -0.07px;
+  --text-body-sm: 16px;
+  --leading-body-sm: 1.5;
+  --tracking-body-sm: -0.096px;
+  --text-body: 18px;
+  --leading-body: 1.5;
+  --tracking-body: -0.126px;
+  --text-body-lg: 25px;
+  --leading-body-lg: 1.3;
+  --tracking-body-lg: -0.225px;
+  --text-subheading: 36px;
+  --leading-subheading: 1.25;
+  --tracking-subheading: -0.396px;
+  --text-heading-sm: 45px;
+  --leading-heading-sm: 1.1;
+  --tracking-heading-sm: -0.495px;
+  --text-heading: 61px;
+  --leading-heading: 1.1;
+  --tracking-heading: -0.915px;
+  --text-heading-lg: 89px;
+  --leading-heading-lg: 0.85;
+  --tracking-heading-lg: -2.67px;
+  --text-display: 105px;
+  --leading-display: 0.85;
+  --tracking-display: -3.15px;
+
+  /* Spacing */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-44: 44px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-100: 100px;
+  --spacing-124: 124px;
+
+  /* Border Radius */
+  --radius-sm: 2px;
+  --radius-lg: 10px;
+  --radius-2xl: 16px;
+  --radius-2xl-2: 18.7693px;
+  --radius-3xl: 28.1539px;
+  --radius-3xl-2: 32px;
+  --radius-3xl-3: 37.5385px;
+  --radius-full: 1000px;
+  --radius-full-2: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: rgba(14, 15, 12, 0.12) 0px 0px 0px 1px;
+  --shadow-subtle-2: rgb(134, 134, 133) 0px 0px 0px 1px inset;
+  --shadow-xl: rgba(0, 0, 0, 0.15) 0px 10px 32px 0px, rgba(0, 0, 0, 0.04) 0px 40px 40px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.08) 0px 6px 20px 0px;
 }
 ```

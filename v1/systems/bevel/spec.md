@@ -1,360 +1,390 @@
-# Bevel — 시스템 스펙
-> 부드러운 구름빛 카드와 하늘 그라디언트를 쓰는 헬스케어 시스템. 버튼은 128px 완전 알약, 카드는 28px 큰 라운드로 둥글게 통일합니다.
+# Bevel — Style Reference
+> Morning metrics in cloudlight. Build screens as a bright white health journal punctuated by a softly glowing wearable dashboard.
 
-이 문서는 킷이 들고 있는 토큰에서 만들었습니다. 원래 사이트를 재서 나온 값이 아니므로, 실제 타이포 크기와 모션 곡선은 담지 않습니다.
+**Theme:** light
 
-**분류:** 헬스케어  ·  **프레임워크:** React · 웹앱
+Source measurements are normalized; roles and recommendations are interpreted. Font summary lists are independent, not paired by position. HTML examples are reconstructions, not source components.
 
-## 토큰 — 색
+Bevel frames health data as a sunlit consumer device experience: a white editorial canvas, near-black SF Pro headlines, mist-blue bento surfaces, and realistic iPhone/Apple Watch product imagery. Oversized 600-weight headings use tight negative tracking and compact line-height, while supporting copy stays soft gray and generously spaced. Color is restrained in the site shell; pale sky gradients and small multicolor health-data rings are reserved for product visuals and feature atmosphere rather than universal controls.
 
-모든 색은 11단계 램프로 정의합니다. 램프는 테마에 따라 바뀌지 않는 원시값입니다.
+## Tokens — Colors
 
-### primary — 브랜드 행동과 강조
+| Name | Value | Token | Role |
+|------|-------|-------|------|
+| Paper White | `#ffffff` | `--color-paper-white` | Page backgrounds, navigation surfaces, footer backgrounds, and open whitespace |
+| Charcoal | `#1f2025` | `--color-charcoal` | Filled download controls, dark surface blocks, logos, and monochrome iconography |
+| Ink | `#222326` | `--color-ink` | Display headings, section headings, feature titles, and primary text |
+| Cloud Card | `#ebf0f8` | `--color-cloud-card` | Feature-card surfaces, light icon fills, and text inside Charcoal download controls |
+| Body Gray | `#747679` | `--color-body-gray` | Body copy, muted navigation links, helper text, and secondary labels |
+| Signal Gold | `#ffca00` | `--color-signal-gold` | Rating stars and small positive health-data indicators |
+| Coral Signal | `#ffab94` | `--color-coral-signal` | Warm metric accents and lower-edge washes in feature visualizations |
+| Recovery Green | `#31ce01` | `--color-recovery-green` | Recovery rings and green-tinted metric visualizations |
+| Metric Blue | `#415eee` | `--color-metric-blue` | Circular metric indicators and blue gradient treatments in product visuals |
+| Sleep Lilac | `#b9a6ff` | `--color-sleep-lilac` | Sleep-oriented metric rings and soft violet visual accents |
+| Hero Sky | `linear-gradient(#d2e5ff, #fff9ee)` | `--color-hero-sky` | Top hero atmosphere behind the device composition, fading from cool daylight into warm paper |
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#EEF1FE` | `#DCE2FD` | `#BCC6FB` | `#93A4F6` | `#6B82F2` | `#415EEE` | `#2E48D4` | `#2439A8` | `#1B2B7E` | `#141F5B` | `#0A1033` |
+## Tokens — Typography
 
-### gray — 글자, 테두리, 면
+### -apple-system, BlinkMacSystemFont, Inter, "Segoe UI", sans-serif — SF Pro system typography carries every interface layer. Use 600-weight display text at 40px–80px with -0.03em tracking: its compact, almost lockup-like lines make wellness claims feel like product labels rather than editorial copy. Use 400-weight body text at 18px–24px and 500-weight navigation/actions at 16px–18px. · `--font-apple-system-blinkmacsystemfont-inter-segoe-ui-sans-serif`
+- **Substitute:** Inter
+- **Weights:** 400, 500, 600
+- **Sizes:** 12px, 16px, 18px, 24px, 40px, 64px, 80px
+- **Line height:** 0.90, 1.00, 1.10, 1.30, 1.40
+- **Letter spacing:** -2.4px at 80px, -1.92px at 64px, -1.2px at 40px, -0.24px at 24px, +0.16px at 18px navigation, and normal at 16px body controls
+- **Role:** SF Pro system typography carries every interface layer. Use 600-weight display text at 40px–80px with -0.03em tracking: its compact, almost lockup-like lines make wellness claims feel like product labels rather than editorial copy. Use 400-weight body text at 18px–24px and 500-weight navigation/actions at 16px–18px.
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#F7F9FC` | `#EBF0F8` | `#DDE3EC` | `#C3CAD5` | `#9BA2AD` | `#747679` | `#5A5C60` | `#45474B` | `#2F3135` | `#222326` | `#1F2025` |
+### Type Scale
 
-### success — 완료와 정상
+| Role | Family | Weight | Size | Line Height | Letter Spacing | Token |
+|------|--------|--------|------|-------------|----------------|-------|
+| caption | -apple-system | 400 | 12px | 1.1 | 0px | `--text-caption` |
+| nav | -apple-system | 500 | 16px | 1.4 | 0px | `--text-nav` |
+| brand-nav | -apple-system | 500 | 18px | 1.4 | 0.162px | `--text-brand-nav` |
+| body | -apple-system | 400 | 24px | 1.3 | 0px | `--text-body` |
+| section-label | -apple-system | 600 | 24px | 0.9 | -0.24px | `--text-section-label` |
+| card-heading | -apple-system | 600 | 40px | 1 | -1.2px | `--text-card-heading` |
+| display | -apple-system | 600 | 64px | 1 | -1.92px | `--text-display` |
+| hero-display | -apple-system | 600 | 80px | 1 | -2.4px | `--text-hero-display` |
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#EFFCE9` | `#D7F7C9` | `#AEEF95` | `#7FE35A` | `#55D927` | `#31CE01` | `#27A601` | `#1E7F01` | `#155A01` | `#0D3800` | `#061C00` |
+## Tokens — Spacing & Shapes
 
-### warning — 주의와 대기
+**Base unit:** 8px
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#FFF9E0` | `#FFF1B8` | `#FFE680` | `#FFDA47` | `#FFD11F` | `#FFCA00` | `#D4A700` | `#A68200` | `#785E00` | `#4A3A00` | `#261E00` |
+**Density:** comfortable
 
-### error — 실패와 위험
+### Spacing Scale
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#FFF1ED` | `#FFE1D8` | `#FFC6B5` | `#FFAB94` | `#FF8B6B` | `#F2674A` | `#D14E33` | `#A53B26` | `#78291A` | `#4A1810` | `#260B07` |
+| Name | Value | Token |
+|------|-------|-------|
+| 8 | 8px | `--spacing-8` |
+| 16 | 16px | `--spacing-16` |
+| 24 | 24px | `--spacing-24` |
+| 32 | 32px | `--spacing-32` |
+| 40 | 40px | `--spacing-40` |
+| 48 | 48px | `--spacing-48` |
+| 80 | 80px | `--spacing-80` |
+| 96 | 96px | `--spacing-96` |
+| 160 | 160px | `--spacing-160` |
 
-### info — 안내와 진행
+### Border Radius
 
-| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#EFF6FF` | `#D2E5FF` | `#AFD0FF` | `#83B4FD` | `#5A98F8` | `#2F80ED` | `#2366C4` | `#1A4E97` | `#13376B` | `#0C2140` | `#061121` |
+| Element | Value |
+|---------|-------|
+| cards | 24-32px |
+| pills | 9999px |
+| images | 16-24px |
+| buttons | 128px |
+| navigation | 32px |
 
-## 토큰 — 역할별 색
+### Shadows
 
-램프를 역할에 매핑한 값입니다. 라이트와 다크에서 서로 다릅니다.
+| Name | Value | Token |
+|------|-------|-------|
+| md | `rgba(0, 0, 0, 0.25) 0px 0px 16px -8px` | `--shadow-md` |
+| subtle | `rgb(255, 255, 255) 0px 1px 0px 0px inset, rgba(255, 255, ...` | `--shadow-subtle` |
+| lg | `rgb(255, 255, 255) 0px 0px 24px 0px inset` | `--shadow-lg` |
+| md-2 | `rgba(0, 0, 0, 0.15) 0px 2px 16px 0px` | `--shadow-md-2` |
+| subtle-2 | `rgba(255, 255, 255, 0.36) 0px 1px 0px 0px inset` | `--shadow-subtle-2` |
 
-| 토큰 | 쓰임새 | Light | Dark |
-|---|---|---|---|
-| `--bg` | 바탕이 되는 면 | `#FFFFFF` | `#222326` |
-| `--canvas` | 페이지 바닥 | `#F7F9FC` | `#1F2025` |
-| `--fg` | 본문 글자 | `#222326` | `#FFFFFF` |
-| `--fg-strong` | 제목과 강조 글자 | `#222326` | `#F7F9FC` |
-| `--fg-lower` | 보조 설명 | `#5A5C60` | `#9BA2AD` |
-| `--fg-disabled` | 비활성 글자 | `#9BA2AD` | `#5A5C60` |
-| `--border` | 기본 경계선 | `#DDE3EC` | `#2F3135` |
-| `--border-strong` | 강조 경계선 | `#C3CAD5` | `#5A5C60` |
-| `--bg-primary` | 주된 행동 버튼 바탕 | `#415EEE` | `#6B82F2` |
-| `--bg-primary-low` | 주된 색의 엷은 면 | `#EEF1FE` | `#141F5B` |
-| `--fg-primary` | 주된 색 글자 | `#2E48D4` | `#93A4F6` |
-| `--bg-success` | 완료 표시 | `#31CE01` | `#31CE01` |
-| `--bg-warning` | 주의 표시 | `#FFCA00` | `#FFCA00` |
-| `--bg-critical` | 위험 표시 | `#F2674A` | `#F2674A` |
-| `--bg-info` | 안내 표시 | `#2366C4` | `#5A98F8` |
+### Layout
 
-## 토큰 — 타이포
+- **Section gap:** 80px
+- **Card padding:** 32px
+- **Element gap:** 16px
 
-**글꼴:** `"Plus Jakarta Sans","Pretendard",-apple-system,system-ui,sans-serif`
+## Components
 
-본문 행간은 150% 를 기준으로 합니다. 한글은 단어 단위로 끊어 쓰므로 `word-break: keep-all` 을 붙입니다.
+### Floating Capsule Navigation
+**Role:** Public-site header
 
-| 쓰임새 | 크기 | 굵기 |
-|---|---|---|
-| 페이지 제목 | clamp(28px, 5vw, 44px) | 700 |
-| 섹션 제목 | clamp(20px, 3vw, 30px) | 700 |
-| 본문 | 15~16px | 400 |
-| 보조 설명 | 13~14px | 400 |
-| 라벨 | 11~12px | 400 |
-| 버튼 | 14~15px | 600 |
+Use a Paper White (#ffffff) rounded bar with a 32px radius, a 12-20px backdrop blur, and 16px internal control spacing. Brand text is Ink at 18px/25.2px, weight 500, +0.16px tracking; secondary links are Body Gray at 16px/22.4px, weight 500.
 
-## 토큰 — 간격과 모양
+### Charcoal Download Pill
+**Role:** Public conversion control
 
-**기본 단위:** 4px
+Fill with Charcoal (#1f2025), set Cloud Card (#ebf0f8) label and Apple icon color, use 128px radius, 8px vertical and 16px horizontal padding, and 16px/22.4px weight-500 text. Keep the control short and capsule-shaped rather than promoting it into a rectangular button.
 
-간격: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px
+### Cloudlight Device Hero
+**Role:** Hero product showcase
 
-| 요소 | 모서리 |
-|---|---|
-| 버튼 | 128px |
-| 카드 | 28px |
-| 입력 | 16px |
-| 태그 | 999px |
-| 작은 조작부 | 14px |
+Use the Hero Sky gradient from #d2e5ff to #fff9ee as a tall rounded visual field, then center layered iPhone and Apple Watch renders beneath an Ink headline. Keep the device artwork raw and dimensional; the hero background, not a card border, contains the composition.
 
-| 항목 | 값 |
-|---|---|
-| 버튼 좌우 안쪽 여백 | 28px |
-| 버튼 글자 굵기 | 600 |
-| 버튼 그림자 | 쓰지 않음 |
-| 페이지 폭 | min(1200px, 92vw) |
+### Hero Rating Strip
+**Role:** App-store proof
 
-## 아이콘
+Place compact Signal Gold (#ffca00) stars beside small Body Gray metadata below the Charcoal download pill. Use 12px text for metadata and keep the strip visually subordinate to the hero callout.
 
-24×24 보기틀, 선 굵기 1.8px, 끝처리 `round`, 꼬임 `round`.
-선은 `currentColor` 를 씁니다. 색을 아이콘 안에 박지 않습니다.
+### Wearable Partner Row
+**Role:** Compatibility proof
 
-## 컴포넌트
+Center an Ink 24px/21.6px, weight-600 heading with -0.24px tracking above a single horizontal row of monochrome partner wordmarks. Keep wordmarks Charcoal (#1f2025) with generous 24px gaps and no enclosing cards.
 
-| 컴포넌트 | 규칙 |
-|---|---|
-| 버튼 | primary, secondary, outline, ghost, danger 다섯 가지. 크기는 sm, md, lg. 상태는 hover, focus-visible, active, disabled, loading |
-| 태그 | 상태 5종. 바탕과 글자를 짝으로 씁니다 |
-| 입력 | 기본, 포커스, 에러, 성공, 비활성. 도움말과 필수 표시를 두고 색으로만 알리지 않습니다 |
-| 오버레이 | 모달은 `role="dialog"`, `aria-modal`, Esc 닫기. 드로어, 토스트(`aria-live`), 툴팁, 드롭다운 |
-| 내비 | 탭은 `role="tablist"`. 스텝, 페이지네이션, 브레드크럼 |
-| 표 | 헤더, 상세, 소계, 합계의 계층색을 지킵니다 |
+### Recognition Laurel Pair
+**Role:** Editorial social proof
 
-## 대비
+Render two small neutral-gray laurel marks and award labels centered above the next display headline. Use Body Gray (#747679) for the labels and preserve a 16px gap between the two awards.
 
-| 짝 | 비율 | 기준(AA 4.5) |
-|---|---|---|
-| 본문 대 바탕 | 15.71 : 1 | 통과 |
-| 흰글씨 대 주된 색 | 5.17 : 1 | 통과 |
+### Community Story Carousel Card
+**Role:** Member social-proof media
 
-## 지킬 규칙과 금지 사항
+Use portrait-format photographic and app-capture tiles with 16px rounded corners. Apply the image lift shadow rgba(0, 0, 0, 0.25) 0px 0px 16px -8px and allow outer carousel tiles to fade into the page edge.
 
-### 지킬 규칙
+### Cloud Feature Card
+**Role:** Health metric explanation
 
-- 모서리는 버튼 128px, 카드 28px, 입력 16px 으로 고정합니다
-- 색은 램프와 역할 토큰에서만 가져옵니다
-- 라이트와 다크를 항상 같이 맞춥니다
-- 여백과 글자 크기는 `clamp()` 로 화면 폭에 따라 줍니다
-- 터치로 누르는 자리는 44×44px 이상으로 둡니다
-- 초점 표시는 `focus-visible` 로 남깁니다
+Use a Cloud Card (#ebf0f8) surface with a 24px radius and 32px padding. Set the feature name in Ink at 40px/40px, weight 600, -1.2px tracking; body copy uses Body Gray at 24px/31.2px, weight 400.
 
-### 금지 사항
+### Inset Metric Visualization
+**Role:** Feature-card product preview
 
-- 토큰에 없는 색을 직접 적지 않습니다
-- 보라와 바이올렛을 강조색으로 쓰지 않습니다
-- 왼쪽에 굵은 선이 붙은 인용 카드를 두지 않습니다
-- 색만으로 상태를 알리지 않습니다. 글자나 모양을 같이 둡니다
-- 모서리를 한 화면 안에서 여러 값으로 섮지 않습니다
+Layer compact health charts, circular scores, and metric chips inside rounded 16px-24px imagery. Use Recovery Green (#31ce01), Metric Blue (#415eee), Sleep Lilac (#b9a6ff), and Coral Signal (#ffab94) only as data-category accents against pale surfaces.
 
-## 화면 규격
+### Elevated QR Download Card
+**Role:** Persistent mobile-download prompt
 
-- 컨테이너 `width: min(1200px, 92vw)`
-- 끊는 폭 1280, 1024, 768, 480px
-- 768px 미만은 1열로 내립니다
-- 여백 `clamp(24px, 5vw, 80px)`
-- 이미지는 WebP, 비율을 고정해 흔들림을 막습니다
-- 모션은 150~250ms. `prefers-reduced-motion` 을 따릅니다
+Use a compact Charcoal (#1f2025) card with Cloud Card (#ebf0f8) text and a high-contrast QR code. Round the card to 16px and apply rgba(0, 0, 0, 0.15) 0px 2px 16px 0px elevation.
 
-## AI 에게 넘길 빠른 참조
+### Footer Link Group
+**Role:** Site footer navigation
 
-- 본문 글자: `#222326`
-- 보조 글자: `#5A5C60`
-- 바탕: `#FFFFFF`
-- 페이지 바닥: `#F7F9FC`
-- 경계선: `#DDE3EC`
-- 주된 행동: `#415EEE`
-- 글꼴: `"Plus Jakarta Sans","Pretendard",-apple-system,system-ui,sans-serif`
+Group Ink (#222326) 18px/25.2px weight-500 links under compact headings on Paper White (#ffffff). Use 16px vertical link spacing and preserve the generous 160px section padding used around footer content.
 
-## 바로 쓰기
+## Do's and Don'ts
 
-### CSS 변수
+### Do
+- Use Paper White (#ffffff) as the default canvas and Cloud Card (#ebf0f8) for large feature surfaces.
+- Set display headings in Ink (#222326), weight 600, with -0.03em tracking at the 40px, 64px, and 80px steps.
+- Use 80px vertical section gaps and 32px padding inside Cloud Feature Cards.
+- Use 128px radius, 8px 16px padding, Charcoal (#1f2025) fill, and Cloud Card (#ebf0f8) text for public download buttons.
+- Use 24px or 32px card radii and 16px-24px radii for product imagery.
+- Keep Body Gray (#747679) supporting copy at 24px/31.2px, weight 400.
+- Restrict Recovery Green (#31ce01), Metric Blue (#415eee), Sleep Lilac (#b9a6ff), and Coral Signal (#ffab94) to health-data visuals and soft washes.
+
+### Don't
+- Do not use saturated metric colors as universal page backgrounds or filled public conversion buttons.
+- Do not set large headings above 600 weight or remove their -0.03em tracking.
+- Do not use square buttons; public download controls require a 128px radius.
+- Do not add visible borders to Cloud Feature Cards; use #ebf0f8 surfaces with no border and no shadow.
+- Do not replace the 80px section rhythm with dense 24px-40px stacked sections.
+- Do not use heavy drop shadows on cards; reserve rgba(0, 0, 0, 0.25) 0px 0px 16px -8px for floating imagery.
+- Do not turn the supporting Body Gray (#747679) copy into black or weight 600 text.
+
+## Surfaces
+
+| Level | Name | Value | Purpose |
+|-------|------|-------|---------|
+| 0 | Paper White | `#ffffff` | Primary page canvas, open sections, navigation, and footer. |
+| 1 | Cloud Card | `#ebf0f8` | Feature-card backgrounds and pale inset surfaces. |
+| 2 | Charcoal | `#1f2025` | Download pills, QR prompt surfaces, and dark monochrome blocks. |
+
+## Elevation
+
+- **Community Story Carousel Card:** `rgba(0, 0, 0, 0.25) 0px 0px 16px -8px`
+- **Elevated QR Download Card:** `rgba(0, 0, 0, 0.15) 0px 2px 16px 0px`
+
+## Imagery
+
+Product-render imagery leads the page: a realistic iPhone dashboard and Apple Watch overlap within the hero, with soft reflections and raw device edges rather than flat illustrations. Community proof appears as a horizontal sequence of portrait social posts, candid fitness images, food captures, and app screenshots, each rounded at 16px and softly lifted from the white canvas. Product visuals use small multicolor data rings and metric chips against mostly pale UI surfaces; the site shell itself remains almost entirely monochrome. Partner logos are black wordmarks, while award laurels are faint gray editorial marks. The composition is text-dominant between media moments, with imagery used as product evidence and member proof rather than decoration.
+
+## Layout
+
+The page is a vertically scrolling, center-aligned public landing page on Paper White, opening with a large rounded full-width hero field rather than a boxed content panel. A floating capsule navigation bar sits over the hero and remains visually available as the page moves through product imagery. The first screen centers a large two-line headline, muted supporting copy, a pill download control, compact rating proof, and overlapping phone-and-watch renders over a pale sky-to-warm gradient. Subsequent sections use broad white bands with centered compatibility logos, award proof, and large centered display statements; a horizontal community-media strip breaks the text rhythm with edge-faded portrait tiles. The lower content shifts to centered introduction copy followed by a three-column row of pale-blue feature cards, creating spacious 80px section intervals rather than dense dashboard stacking.
+
+## Agent Prompt Guide
+
+Quick Color Reference:
+- Paper White: #ffffff — Page backgrounds, navigation surfaces, footer backgrounds, and open whitespace
+- Charcoal: #1f2025 — Filled download controls, dark surface blocks, logos, and monochrome iconography
+- Ink: #222326 — Display headings, section headings, feature titles, and primary text
+- Cloud Card: #ebf0f8 — Feature-card surfaces, light icon fills, and text inside Charcoal download controls
+- Body Gray: #747679 — Body copy, muted navigation links, helper text, and secondary labels
+- Signal Gold: #ffca00 — Rating stars and small positive health-data indicators
+- Coral Signal: #ffab94 — Warm metric accents and lower-edge washes in feature visualizations
+- Recovery Green: #31ce01 — Recovery rings and green-tinted metric visualizations
+- Metric Blue: #415eee — Circular metric indicators and blue gradient treatments in product visuals
+- Sleep Lilac: #b9a6ff — Sleep-oriented metric rings and soft violet visual accents
+- Hero Sky: linear-gradient(#d2e5ff, #fff9ee) — Top hero atmosphere behind the device composition, fading from cool daylight into warm paper
+
+Create a centered health-app hero on the Hero Sky gradient, with an Ink (#222326) 80px/80px, weight-600 headline tracked at -2.4px; place Body Gray (#747679) 24px/31.2px copy, a Charcoal Download Pill, then overlapping iPhone and Apple Watch renders.
+Create a compatibility section on Paper White (#ffffff) with an Ink (#222326) 24px/21.6px, weight-600 heading tracked at -0.24px and a centered monochrome partner-wordmark row with 24px gaps.
+Create three Cloud Feature Cards using #ebf0f8, 24px radius, and 32px padding; set each title in Ink at 40px/40px, weight 600, -1.2px tracking, and its supporting copy in Body Gray at 24px/31.2px.
+Create a community-story carousel of rounded 16px portrait media tiles, using photographic member posts and app captures with rgba(0, 0, 0, 0.25) 0px 0px 16px -8px shadows and faded outer edges.
+
+## Similar Brands
+
+- **Gentler Streak** — Shares the Apple-platform health framing, large SF-style type, pale surfaces, and wearable-data visualization.
+- **Apple Fitness+** — Shares prominent Apple Watch product imagery, dark capsule controls, and restrained metric-color accents.
+- **Oura** — Shares a bright wellness canvas with product-led health insights and compact circular score visualizations.
+- **WHOOP** — Shares wearables-centered performance tracking, recovery-focused metric categories, and member-proof content.
+
+## Quick Start
+
+### CSS Custom Properties
 
 ```css
-:root{
-  --primary-50: #EEF1FE;
-  --primary-100: #DCE2FD;
-  --primary-200: #BCC6FB;
-  --primary-300: #93A4F6;
-  --primary-400: #6B82F2;
-  --primary-500: #415EEE;
-  --primary-600: #2E48D4;
-  --primary-700: #2439A8;
-  --primary-800: #1B2B7E;
-  --primary-900: #141F5B;
-  --primary-950: #0A1033;
-  --gray-50: #F7F9FC;
-  --gray-100: #EBF0F8;
-  --gray-200: #DDE3EC;
-  --gray-300: #C3CAD5;
-  --gray-400: #9BA2AD;
-  --gray-500: #747679;
-  --gray-600: #5A5C60;
-  --gray-700: #45474B;
-  --gray-800: #2F3135;
-  --gray-900: #222326;
-  --gray-950: #1F2025;
-  --success-50: #EFFCE9;
-  --success-100: #D7F7C9;
-  --success-200: #AEEF95;
-  --success-300: #7FE35A;
-  --success-400: #55D927;
-  --success-500: #31CE01;
-  --success-600: #27A601;
-  --success-700: #1E7F01;
-  --success-800: #155A01;
-  --success-900: #0D3800;
-  --success-950: #061C00;
-  --warning-50: #FFF9E0;
-  --warning-100: #FFF1B8;
-  --warning-200: #FFE680;
-  --warning-300: #FFDA47;
-  --warning-400: #FFD11F;
-  --warning-500: #FFCA00;
-  --warning-600: #D4A700;
-  --warning-700: #A68200;
-  --warning-800: #785E00;
-  --warning-900: #4A3A00;
-  --warning-950: #261E00;
-  --error-50: #FFF1ED;
-  --error-100: #FFE1D8;
-  --error-200: #FFC6B5;
-  --error-300: #FFAB94;
-  --error-400: #FF8B6B;
-  --error-500: #F2674A;
-  --error-600: #D14E33;
-  --error-700: #A53B26;
-  --error-800: #78291A;
-  --error-900: #4A1810;
-  --error-950: #260B07;
-  --info-50: #EFF6FF;
-  --info-100: #D2E5FF;
-  --info-200: #AFD0FF;
-  --info-300: #83B4FD;
-  --info-400: #5A98F8;
-  --info-500: #2F80ED;
-  --info-600: #2366C4;
-  --info-700: #1A4E97;
-  --info-800: #13376B;
-  --info-900: #0C2140;
-  --info-950: #061121;
-  --bg-primary: #415EEE;
-  --bg-primary-low: #EEF1FE;
-  --fg-primary: #2E48D4;
-  --fg-primary-low: #EEF1FE;
-  --fg-point: #FFAB94;
-  --border-primary: #415EEE;
-  --bg: #FFFFFF;
-  --bg-inset: #FFFFFF;
-  --bg-inset-neutral: #EBF0F8;
-  --bg-neutral: #EBF0F8;
-  --bg-neutral-low: #F7F9FC;
-  --bg-neutral-lower: #F7F9FC;
-  --bg-disabled: #EBF0F8;
-  --bg-contrast: #222326;
-  --bg-success: #31CE01;
-  --bg-success-low: #EFFCE9;
-  --bg-warning: #FFCA00;
-  --bg-warning-low: #FFF9E0;
-  --bg-critical: #F2674A;
-  --bg-critical-low: #FFF1ED;
-  --bg-info: #2366C4;
-  --bg-info-low: #EFF6FF;
-  --fg: #222326;
-  --fg-strong: #222326;
-  --fg-lower: #5A5C60;
-  --fg-disabled: #9BA2AD;
-  --fg-contrast: #FFFFFF;
-  --fg-on-primary: #FFFFFF;
-  --fg-success: #1E7F01;
-  --fg-warning: #785E00;
-  --fg-error: #A53B26;
-  --border: #DDE3EC;
-  --border-low: #EBF0F8;
-  --border-strong: #C3CAD5;
-  --border-disabled: #DDE3EC;
-  --shadow-1: 0 0 8px rgba(0,0,0,.10);
-  --shadow-2: 0 4px 8px rgba(0,0,0,.10);
-  --shadow-3: 0 6px 16px rgba(0,0,0,.06);
-  --shadow-4: 0 6px 24px rgba(0,0,0,.08);
-  --shadow-5: 0 8px 24px rgba(0,0,0,.12);
-  --shadow-6: 0 16px 40px rgba(0,0,0,.16);
-  --panel: #FFFFFF;
-  --canvas: #F7F9FC;
-  --tag-bg-success: #E5FFF0;
-  --tag-fg-success: #007A33;
-  --tag-bg-warning: #FFF9E5;
-  --tag-fg-warning: #A65F00;
-  --tag-bg-error: #FFEFEF;
-  --tag-fg-error: #C20E1F;
-  --tag-bg-info: #E5F0FF;
-  --tag-fg-info: #1E40AF;
-  --tag-bg-neutral: #F1F1F1;
-  --tag-fg-neutral: #4B4C52;
-  --tag-bg-indigo: #EEF0FE;
-  --tag-fg-indigo: #4F46E5;
-  --tag-bg-ocean: #E0F4F7;
-  --tag-fg-ocean: #0E7490;
-  --tag-bg-teal: #DCFAF5;
-  --tag-fg-teal: #0D9488;
-  --tag-bg-emerald: #DDF7EA;
-  --tag-fg-emerald: #047857;
-  --tag-bg-lime: #ECFCCB;
-  --tag-fg-lime: #4D7C0F;
-  --tag-bg-rose: #FCE7F0;
-  --tag-fg-rose: #BE185D;
-  --tag-bg-magenta: #F5E0F7;
-  --tag-fg-magenta: #A21CAF;
-  --tag-bg-violet: #EDE3FE;
-  --tag-fg-violet: #6D28D9;
-  --tag-bg-slate: #E2E8F0;
-  --tag-fg-slate: #475569;
-  --tag-bg-bronze: #FBE9D0;
-  --tag-fg-bronze: #92400E;
-  --graph-chart-1: #4178FF;
-  --graph-chart-2: #00CCC2;
-  --graph-chart-3: #7BAAF7;
-  --graph-chart-4: #8FCE96;
-  --graph-chart-5: #F2968F;
-  --graph-chart-6: #A78BFA;
-  --graph-chart-7: #FDBA74;
-  --graph-chart-8: #F472B6;
-  --radius-xs: 12px;
-  --radius-sm: 16px;
-  --radius-md: 24px;
-  --radius-lg: 32px;
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --font-family: "Plus Jakarta Sans","Pretendard",-apple-system,system-ui,sans-serif;
-  --btn-radius: 128px;
-  --btn-weight: 600;
-  --btn-shadow: none;
-  --ctl-radius: 14px;
-  --card-radius: 28px;
-  --btn-padx: 28px;
-  --in-radius: 16px;
-  --tag-radius: 999px;
+:root {
+  /* Colors */
+  --color-paper-white: #ffffff;
+  --color-charcoal: #1f2025;
+  --color-ink: #222326;
+  --color-cloud-card: #ebf0f8;
+  --color-body-gray: #747679;
+  --color-signal-gold: #ffca00;
+  --color-coral-signal: #ffab94;
+  --color-recovery-green: #31ce01;
+  --color-metric-blue: #415eee;
+  --color-sleep-lilac: #b9a6ff;
+  --color-hero-sky: #d2e5ff;
+  --gradient-hero-sky: linear-gradient(#d2e5ff, #fff9ee);
+
+  /* Typography — Font Families */
+  --font-apple-system-blinkmacsystemfont-inter-segoe-ui-sans-serif: '-apple-system, BlinkMacSystemFont, Inter, "Segoe UI", sans-serif', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-caption: 12px;
+  --leading-caption: 1.1;
+  --tracking-caption: 0px;
+  --text-nav: 16px;
+  --leading-nav: 1.4;
+  --tracking-nav: 0px;
+  --text-brand-nav: 18px;
+  --leading-brand-nav: 1.4;
+  --tracking-brand-nav: 0.162px;
+  --text-body: 24px;
+  --leading-body: 1.3;
+  --tracking-body: 0px;
+  --text-section-label: 24px;
+  --leading-section-label: 0.9;
+  --tracking-section-label: -0.24px;
+  --text-card-heading: 40px;
+  --leading-card-heading: 1;
+  --tracking-card-heading: -1.2px;
+  --text-display: 64px;
+  --leading-display: 1;
+  --tracking-display: -1.92px;
+  --text-hero-display: 80px;
+  --leading-hero-display: 1;
+  --tracking-hero-display: -2.4px;
+
+  /* Typography — Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Spacing */
+  --spacing-unit: 8px;
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-80: 80px;
+  --spacing-96: 96px;
+  --spacing-160: 160px;
+
+  /* Layout */
+  --section-gap: 80px;
+  --card-padding: 32px;
+  --element-gap: 16px;
+
+  /* Border Radius */
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-3xl-2: 32px;
+  --radius-full: 128px;
+  --radius-full-2: 9999px;
+
+  /* Named Radii */
+  --radius-cards: 24-32px;
+  --radius-pills: 9999px;
+  --radius-images: 16-24px;
+  --radius-buttons: 128px;
+  --radius-navigation: 32px;
+
+  /* Shadows */
+  --shadow-md: rgba(0, 0, 0, 0.25) 0px 0px 16px -8px;
+  --shadow-subtle: rgb(255, 255, 255) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.25) 0px 0px 4px 0px inset;
+  --shadow-lg: rgb(255, 255, 255) 0px 0px 24px 0px inset;
+  --shadow-md-2: rgba(0, 0, 0, 0.15) 0px 2px 16px 0px;
+  --shadow-subtle-2: rgba(255, 255, 255, 0.36) 0px 1px 0px 0px inset;
+
+  /* Surfaces */
+  --surface-paper-white: #ffffff;
+  --surface-cloud-card: #ebf0f8;
+  --surface-charcoal: #1f2025;
 }
 ```
 
-### Tailwind
+### Tailwind v4
 
-```js
-// tailwind.config.js
-export default {
-  theme:{ extend:{
-    colors:{
-      primary:{50:"#EEF1FE",100:"#DCE2FD",200:"#BCC6FB",300:"#93A4F6",400:"#6B82F2",500:"#415EEE",600:"#2E48D4",700:"#2439A8",800:"#1B2B7E",900:"#141F5B",950:"#0A1033"},
-      gray:{50:"#F7F9FC",100:"#EBF0F8",200:"#DDE3EC",300:"#C3CAD5",400:"#9BA2AD",500:"#747679",600:"#5A5C60",700:"#45474B",800:"#2F3135",900:"#222326",950:"#1F2025"},
-      success:"#31CE01", warning:"#FFCA00", critical:"#F2674A",
-    },
-    borderRadius:{ btn:"128px", card:"28px", input:"16px" },
-    fontFamily:{ sans:["Plus Jakarta Sans","Pretendard","-apple-system","system-ui","sans-serif"] },
-  }}
+```css
+@theme {
+  /* Colors */
+  --color-paper-white: #ffffff;
+  --color-charcoal: #1f2025;
+  --color-ink: #222326;
+  --color-cloud-card: #ebf0f8;
+  --color-body-gray: #747679;
+  --color-signal-gold: #ffca00;
+  --color-coral-signal: #ffab94;
+  --color-recovery-green: #31ce01;
+  --color-metric-blue: #415eee;
+  --color-sleep-lilac: #b9a6ff;
+  --color-hero-sky: #d2e5ff;
+
+  /* Typography */
+  --font-apple-system-blinkmacsystemfont-inter-segoe-ui-sans-serif: '-apple-system, BlinkMacSystemFont, Inter, "Segoe UI", sans-serif', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-caption: 12px;
+  --leading-caption: 1.1;
+  --tracking-caption: 0px;
+  --text-nav: 16px;
+  --leading-nav: 1.4;
+  --tracking-nav: 0px;
+  --text-brand-nav: 18px;
+  --leading-brand-nav: 1.4;
+  --tracking-brand-nav: 0.162px;
+  --text-body: 24px;
+  --leading-body: 1.3;
+  --tracking-body: 0px;
+  --text-section-label: 24px;
+  --leading-section-label: 0.9;
+  --tracking-section-label: -0.24px;
+  --text-card-heading: 40px;
+  --leading-card-heading: 1;
+  --tracking-card-heading: -1.2px;
+  --text-display: 64px;
+  --leading-display: 1;
+  --tracking-display: -1.92px;
+  --text-hero-display: 80px;
+  --leading-hero-display: 1;
+  --tracking-hero-display: -2.4px;
+
+  /* Spacing */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-80: 80px;
+  --spacing-96: 96px;
+  --spacing-160: 160px;
+
+  /* Border Radius */
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-3xl-2: 32px;
+  --radius-full: 128px;
+  --radius-full-2: 9999px;
+
+  /* Shadows */
+  --shadow-md: rgba(0, 0, 0, 0.25) 0px 0px 16px -8px;
+  --shadow-subtle: rgb(255, 255, 255) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.25) 0px 0px 4px 0px inset;
+  --shadow-lg: rgb(255, 255, 255) 0px 0px 24px 0px inset;
+  --shadow-md-2: rgba(0, 0, 0, 0.15) 0px 2px 16px 0px;
+  --shadow-subtle-2: rgba(255, 255, 255, 0.36) 0px 1px 0px 0px inset;
 }
 ```

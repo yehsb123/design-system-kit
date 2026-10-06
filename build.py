@@ -124,13 +124,21 @@ def main():
     kit = io.open(os.path.join(SRC, 'kit.css'), encoding='utf-8').read()
     kit_tag = u'<style>\n/* src/kit.css */\n' + kit + u'</style>'
 
+    # 먼저 v1/ 을 만든다. 화면에 심을 데이터를 거기서 읽기 때문이다.
+    import build_api
+    build_api.main()
+    import gensys
+
     show = showcase()
+    gen = gensys.tag()
 
     for name, fn in TOOLS:
         p = os.path.join(SRC, fn)
         s = io.open(p, encoding='utf-8').read()
         if '<!-- SHOWCASE_DATA -->' in s:
             s = s.replace('<!-- SHOWCASE_DATA -->', show, 1)
+        if '<!-- GENSYS_DATA -->' in s:
+            s = s.replace('<!-- GENSYS_DATA -->', gen, 1)
         assert s.count(KIT_LINK) == 1, fn + ': kit.css 연결을 찾지 못했습니다'
         s = s.replace(KIT_LINK, kit_tag)
         for a, b in REWRITE:
@@ -147,13 +155,6 @@ def main():
     shell = SHELL.replace('__BLOCKS__', '\n'.join(blocks))
     io.open(OUT, 'w', encoding='utf-8').write(shell)
     print('->', os.path.basename(OUT), len(shell))
-
-    # 정적 API 도 같이 만든다. 화면만 고치고 API 를 안 만들면 낡는다.
-    try:
-        import build_api
-        build_api.main()
-    except Exception as e:
-        print('api 생성을 건너뜁니다:', e)
 
 
 SHELL = u"""<!doctype html>

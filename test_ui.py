@@ -86,6 +86,24 @@ CLICK = """(path)=>{const D=%s;
 }""" % DOC
 
 
+def wait_ready(pg, ms=20000):
+    """iframe 이 다 그려질 때까지 기다린다.
+
+    묶은 파일이 커져서 goto 직후에는 비어 있을 수 있다. 시간을 고정으로 주면
+    느린 날에 0개로 읽힌다.
+    """
+    step = 200
+    for _ in range(ms // step):
+        n = pg.evaluate("""(()=>{const f=document.getElementById('stage');
+            const D=f&&f.contentDocument;
+            return (D && D.readyState==='complete') ? D.body.innerHTML.length : 0;})()""")
+        if n > 2000:
+            pg.wait_for_timeout(400)
+            return True
+        pg.wait_for_timeout(step)
+    return False
+
+
 def main():
     result, errs = {}, []
     with sync_playwright() as p:
@@ -97,7 +115,8 @@ def main():
         pg.on('console', lambda m: errs.append('console: ' + m.text[:200]) if m.type == 'error' else None)
 
         for screen in SCREENS:
-            pg.goto(URL + '#' + screen); pg.wait_for_timeout(1700)
+            pg.goto(URL + '#' + screen, wait_until='domcontentloaded')
+            wait_ready(pg)
             pg.evaluate(HOOK)
             targets = pg.evaluate(LIST)
             rows = []
@@ -135,7 +154,8 @@ def main():
                 rows.append({**t, 'ok': bool(why) and not bad,
                              'why': (', '.join(why) or '반응 없음') + (' / 오류' if bad else '')})
                 if pg.evaluate("parent.location.hash") != '#' + screen:
-                    pg.goto(URL + '#' + screen); pg.wait_for_timeout(1400)
+                    pg.goto(URL + '#' + screen, wait_until='domcontentloaded')
+                    wait_ready(pg)
                     pg.evaluate(HOOK)
             result[screen] = rows
             ok = sum(1 for r in rows if r['ok'])

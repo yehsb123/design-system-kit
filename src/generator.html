@@ -100,6 +100,7 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
 <link rel="stylesheet" href="kit.css">
 </head>
 <body>
+<!-- GENSYS_DATA -->
 
 <div class="top">
   <div class="logo"><span class="mk"></span>페이지 생성기 <span style="color:var(--ui-fg-dim);font-weight:500">레퍼런스 + 규칙 + 디자인시스템</span></div>
@@ -583,6 +584,10 @@ function saveBrief(){ try{ localStorage.setItem(BK, JSON.stringify({n:$('#bName'
 
 /* ===== UI 초기화 ===== */
 $('#selPage').innerHTML=PAGES.map((p,i)=>'<option value="'+i+'">'+p.n+'</option>').join('');
+// 모음집이 가진 시스템을 그대로 쓴다. 손으로 적은 목록은 모음집이 늘면 낡는다.
+// 묶을 때 심어 주고, src/generator.html 을 따로 열면 위의 기본 목록을 쓴다.
+if(window.GENSYS && window.GENSYS.length){ SYS.length=0; window.GENSYS.forEach(function(x){SYS.push(x);}); }
+
 try{ const raw=localStorage.getItem('my_system');
   if(raw){ const m=JSON.parse(raw); if(m&&m.p) SYS.unshift(m); }
 }catch(e){}
