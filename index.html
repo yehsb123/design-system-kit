@@ -731,14 +731,14 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 
   <section>
     <div class="head"><h2>아이콘</h2><a class="more" href="library.html">에셋 전체 보기</a></div>
-    <p class="sub">SVG 스프라이트, 개별 파일, React 컴포넌트, CSS로 내보냅니다. 선 굵기와 끝처리는 고른 시스템을 따릅니다.</p>
+    <p class="sub">SVG 스프라이트, 개별 파일, React 컴포넌트, CSS로 내보냅니다. 선 굵기와 끝처리는 정한 시스템을 따릅니다.</p>
     <div class="icorow" id="icoRow"></div>
   </section>
 
   <section>
     <div class="head"><h2>쓰는 순서</h2></div>
     <div class="steps">
-      <div class="step"><span class="n">01</span><div class="t">CHOOSE</div><div class="d">무엇을 만들지(콘텐츠), 어떤 구조로(레이아웃), 어떤 톤으로(디자인 시스템)를 고릅니다.</div></div>
+      <div class="step"><span class="n">01</span><div class="t">CHOOSE</div><div class="d">무엇을 만들지(콘텐츠), 어떤 구조로(레이아웃), 어떤 톤으로(디자인 시스템)를 정합니다.</div></div>
       <div class="step"><span class="n">02</span><div class="t">EXPORT</div><div class="d">AI 프롬프트, CLAUDE.md, CSS 토큰, 컴포넌트 CSS를 복사하거나 파일로 저장합니다.</div></div>
       <div class="step"><span class="n">03</span><div class="t">BUILD</div><div class="d">AI에 붙여넣거나 생성기에서 완성된 HTML을 받습니다.</div></div>
     </div>
@@ -759,7 +759,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
       </a>
       <a class="tool" href="generator.html">
         <span class="nm">생성기</span>
-        <span class="d">제품이나 병원 정보를 붙여넣고 콘텐츠, 레이아웃, 시스템을 고릅니다. 실제 동작하는 HTML이 나옵니다.</span>
+        <span class="d">제품이나 병원 정보를 붙여넣고 콘텐츠, 레이아웃, 시스템을 정합니다. 실제 동작하는 HTML이 나옵니다.</span>
         <span class="go">페이지 만들기</span>
       </a>
       <a class="tool" href="guide.html">
@@ -1928,7 +1928,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
     </div>
     <div class="composer">
       <h3>프롬프트 조립기</h3>
-      <div class="csub">콘텐츠 + 레이아웃 + 디자인시스템을 고르면 <b>AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 · Tailwind</b>를 한자리에서 뽑습니다. <span style="color:var(--ui-fg-strong)">드롭다운에 마우스를 올리면 미리보기가 뜹니다.</span></div>
+      <div class="csub">콘텐츠 + 레이아웃 + 디자인시스템을 정하면 <b>AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 · Tailwind</b>를 한자리에서 뽑습니다. <span style="color:var(--ui-fg-strong)">드롭다운에 마우스를 올리면 미리보기가 뜹니다.</span></div>
       <div class="crow">
         <div class="cfield"><label>1. 콘텐츠 (무엇을 만드나)</label><div class="cwrap" id="wPage"><select id="cPage"></select></div></div>
         <div class="cfield"><label>2. 레이아웃 (구조)</label><div class="cwrap" id="wLayout"><select id="cLayout"></select></div></div>
@@ -4488,7 +4488,7 @@ function renderDetail(sys){
   const R=sys.ramps;
   scope.innerHTML=`
   <section class="dsec" id="s-export"><h2 class="dt2">내보내기 <span class="en">Export</span></h2>
-    <p class="dsc"><b>버튼 하나(복사)로 선택한 탭 전체가 복사</b>됩니다. 현재 테마(${theme()}) 값이 반영됩니다. 탭을 바꿔 원하는 형식을 고르세요.</p>
+    <p class="dsc"><b>버튼 하나(복사)로 선택한 탭 전체가 복사</b>됩니다. 현재 테마(${theme()}) 값이 반영됩니다. 탭을 눌러 원하는 형식으로 바꿔 주세요.</p>
     <div class="tabs" id="exportTabs">
       ${hasSpec(sys.id)?`<button data-fmt="spec">원문 스펙</button>`:``}
       <button data-fmt="css" class="on">CSS 변수 (전체)</button><button data-fmt="tw">Tailwind</button>
@@ -8718,7 +8718,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 
 <div class="wrap">
   <h1>어떻게 쓰는가</h1>
-  <p class="lead">파일 3개가 한 세트입니다. 목적에 따라 <b>하나만</b> 쓰면 되고, 이어서 쓰면 색 고르기부터 완성 페이지까지 한 번에 갑니다.</p>
+  <p class="lead">파일 3개가 한 세트입니다. 목적에 따라 <b>하나만</b> 쓰면 되고, 이어서 쓰면 색 정하기부터 완성 페이지까지 한 번에 갑니다.</p>
 
   <div class="files">
     <a class="file" href="library.html">
@@ -8736,7 +8736,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
     <a class="file" href="generator.html">
       <span class="ico"></span>
       <span class="fn">생성기</span>
-      <span class="fd">콘텐츠 + 레이아웃 + 시스템을 골라 <b>실제 동작하는 HTML</b>을 만들고 저장합니다.</span>
+      <span class="fd">콘텐츠 + 레이아웃 + 시스템을 정해 <b>실제 동작하는 HTML</b>을 만들고 저장합니다.</span>
       <span class="fw">결과물 파일이 필요할 때</span>
     </a>
   </div>
@@ -8748,7 +8748,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
     <div class="cw">가장 흔한 경우 · 소요 30초</div>
     <ol>
       <li><b>모음집</b>을 엽니다.</li>
-      <li>맨 위 조립기에서 <b>1콘텐츠</b>(예: 뷰티 상세페이지) <b>2레이아웃</b>(모듈러 그리드) <b>3디자인시스템</b>(Toss)을 고릅니다.</li>
+      <li>맨 위 조립기에서 <b>1콘텐츠</b>(예: 뷰티 상세페이지) <b>2레이아웃</b>(모듈러 그리드) <b>3디자인시스템</b>(Toss)을 정합니다.</li>
       <li>탭을 <b>AI 프롬프트</b>로 두고 <b>복사</b>.</li>
       <li>클로드 코드에 붙여넣고 엔터. 끝.</li>
     </ol>
@@ -8760,7 +8760,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
     <div class="ct">상황 B. 프로젝트에 규칙을 심어둘 때</div>
     <div class="cw">한 번만 해두면 계속 적용 · 소요 1분</div>
     <ol>
-      <li>모음집 조립기에서 쓸 <b>디자인 시스템</b>을 고릅니다.</li>
+      <li>모음집 조립기에서 쓸 <b>디자인 시스템</b>을 정합니다.</li>
       <li>탭을 <b>CLAUDE.md</b>로 바꿉니다.</li>
       <li><b>파일로 저장</b>, <code>CLAUDE.md</code> 파일이 받아집니다.</li>
       <li>그 파일을 <b>프로젝트 폴더 최상단</b>에 넣습니다.</li>
@@ -8778,7 +8778,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
       <li><b>브랜드 색</b>에 고객이 준 HEX를 붙여넣습니다 (예: <code>#2E7D6B</code>)., 램프가 자동 생성됩니다.</li>
       <li><b>중립색 온도 · 폰트 · 모서리 · 밀도</b>를 취향에 맞게 조절 (오른쪽에서 즉시 확인).</li>
       <li>상단 <b>이 시스템으로 페이지 만들기</b> 클릭.</li>
-      <li>생성기로 넘어가면서 <b>내가 조립한 시스템</b>이 자동 선택됩니다. 콘텐츠·레이아웃만 고르면 페이지 완성.</li>
+      <li>생성기로 넘어가면서 <b>내가 조립한 시스템</b>이 자동 선택됩니다. 콘텐츠·레이아웃만 정하면 페이지가 완성됩니다.</li>
       <li><b>HTML 저장</b>으로 파일을 받아 고객에게 보냅니다.</li>
     </ol>
   </div>
@@ -8788,7 +8788,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   <h3>모음집</h3>
   <table>
     <tr><th style="width:26%">위치</th><th>하는 일</th></tr>
-    <tr><td><b>맨 위 조립기</b></td><td>콘텐츠·레이아웃·시스템 3개를 고르면 <b>AI 프롬프트 / CLAUDE.md / CSS 토큰 / Tailwind</b> 4가지가 나옵니다. 복사 또는 파일 저장.</td></tr>
+    <tr><td><b>맨 위 조립기</b></td><td>콘텐츠·레이아웃·시스템 3개를 정하면 <b>AI 프롬프트 / CLAUDE.md / CSS 토큰 / Tailwind</b> 4가지가 나옵니다. 복사 또는 파일 저장.</td></tr>
     <tr><td><b>디자인 시스템 카드</b></td><td>19종. 카드를 누르면 상세로 들어가 색 램프·컴포넌트·에셋·차트를 보고, 개별 내보내기도 가능합니다.</td></tr>
     <tr><td><b>업종별 추천</b></td><td>병원·금융·교육 등 업종을 누르면 어울리는 시스템으로 바로 이동합니다.</td></tr>
     <tr><td><b>레이아웃 레퍼런스</b></td><td>22종 구조 뼈대. 클릭하면 확대된 와이어프레임과 설명이 나옵니다.</td></tr>
@@ -8801,7 +8801,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   <h3>조립기</h3>
   <table>
     <tr><th style="width:26%">설정</th><th>설명</th></tr>
-    <tr><td><b>브랜드 색</b></td><td>색을 고르면 <b>50~950 11단계</b>가 자동 계산됩니다. 아래 프리셋을 눌러도 됩니다.</td></tr>
+    <tr><td><b>브랜드 색</b></td><td>색을 정하면 <b>50~950 11단계</b>가 자동 계산됩니다. 아래 프리셋을 눌러도 됩니다.</td></tr>
     <tr><td><b>중립색 온도</b></td><td>회색에 도는 기운. <b>웜</b>=종이·따뜻함, <b>쿨</b>=테크·차가움, <b>뉴트럴</b>=중간.</td></tr>
     <tr><td><b>폰트 / 모서리 / 밀도</b></td><td>밀도는 <b>촘촘</b>=데이터 많은 어드민, <b>여유</b>=랜딩·브랜드에 적합합니다.</td></tr>
     <tr><td><b>내보내기</b></td><td>CSS 변수 / Tailwind / JSON / AI 프롬프트. AI 프롬프트에는 <b>대비(WCAG) 검사 결과</b>가 자동으로 들어갑니다.</td></tr>
@@ -8809,7 +8809,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   </table>
 
   <h3>생성기</h3>
-  <p>왼쪽에서 <b>고르기만</b> 하면 오른쪽이 즉시 갱신됩니다. 따로 생성 버튼을 누를 필요가 없습니다.</p>
+  <p>왼쪽에서 <b>정하기만</b> 하면 오른쪽이 즉시 갱신됩니다. 따로 생성 버튼을 누를 필요가 없습니다.</p>
   <table>
     <tr><th style="width:26%">항목</th><th>설명</th></tr>
     <tr><td><b>1 콘텐츠 구조</b></td><td>무엇을 만들지 (뷰티 상세 / SaaS 랜딩 / 메뉴판 / 병원 / 포트폴리오 / 앱 소개)</td></tr>

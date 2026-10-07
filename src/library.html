@@ -486,7 +486,7 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
     </div>
     <div class="composer">
       <h3>프롬프트 조립기</h3>
-      <div class="csub">콘텐츠 + 레이아웃 + 디자인시스템을 고르면 <b>AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 · Tailwind</b>를 한자리에서 뽑습니다. <span style="color:var(--ui-fg-strong)">드롭다운에 마우스를 올리면 미리보기가 뜹니다.</span></div>
+      <div class="csub">콘텐츠 + 레이아웃 + 디자인시스템을 정하면 <b>AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 · Tailwind</b>를 한자리에서 뽑습니다. <span style="color:var(--ui-fg-strong)">드롭다운에 마우스를 올리면 미리보기가 뜹니다.</span></div>
       <div class="crow">
         <div class="cfield"><label>1. 콘텐츠 (무엇을 만드나)</label><div class="cwrap" id="wPage"><select id="cPage"></select></div></div>
         <div class="cfield"><label>2. 레이아웃 (구조)</label><div class="cwrap" id="wLayout"><select id="cLayout"></select></div></div>
@@ -3046,7 +3046,7 @@ function renderDetail(sys){
   const R=sys.ramps;
   scope.innerHTML=`
   <section class="dsec" id="s-export"><h2 class="dt2">내보내기 <span class="en">Export</span></h2>
-    <p class="dsc"><b>버튼 하나(복사)로 선택한 탭 전체가 복사</b>됩니다. 현재 테마(${theme()}) 값이 반영됩니다. 탭을 바꿔 원하는 형식을 고르세요.</p>
+    <p class="dsc"><b>버튼 하나(복사)로 선택한 탭 전체가 복사</b>됩니다. 현재 테마(${theme()}) 값이 반영됩니다. 탭을 눌러 원하는 형식으로 바꿔 주세요.</p>
     <div class="tabs" id="exportTabs">
       ${hasSpec(sys.id)?`<button data-fmt="spec">원문 스펙</button>`:``}
       <button data-fmt="css" class="on">CSS 변수 (전체)</button><button data-fmt="tw">Tailwind</button>
