@@ -28,7 +28,7 @@ body{margin:0;-webkit-font-smoothing:antialiased;}
 button{font:inherit;}
 
 .top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;}
-.top .logo{display:flex;align-items:center;gap:8px;}
+.top .logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:inherit;}
 .top .mk{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 140deg,#A24E38,#C98A5B,#3F5E56,#A24E38);}
 .top .sp{flex:1;}
 .appnav{display:flex;}
@@ -108,7 +108,7 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
 <body>
 
 <div class="top">
-  <div class="logo"><span class="mk"></span>디자인 시스템 <span style="color:var(--ui-fg-dim);font-weight:500">조립기</span></div>
+  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>디자인 시스템 <span style="color:var(--ui-fg-dim);font-weight:500">조립기</span></a>
   <nav class="appnav"><a href="library.html"><span>모음집</span></a><a href="builder.html" class="on"><span>조립기</span></a><a href="generator.html"><span>생성기</span></a><a href="guide.html"><span>설명서</span></a></nav><div class="sp"></div>
   <button class="tbtn" id="btnRandom">무작위</button>
   <button class="tbtn" id="btnUi">테마</button>

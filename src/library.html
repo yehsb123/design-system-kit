@@ -28,7 +28,7 @@
 html{scroll-behavior:smooth;}
 body{margin:0;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s;}
 .topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:14px;}
-.topbar .logo{display:flex;align-items:center;gap:8px;cursor:pointer;}
+.topbar .logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:inherit;}
 .topbar .spacer{flex:1;}
 .appnav{display:flex;}
 .appnav a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap;}
@@ -471,7 +471,7 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
 <body>
 
 <div class="topbar">
-  <div class="logo" role="button" tabindex="0" aria-label="모음집 목록으로" onclick="showCatalog()"><span class="mk"></span>디자인 시스템 <span class="dim">모음집</span></div>
+  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>디자인 시스템 <span class="dim">모음집</span></a>
   <nav class="appnav"><a href="library.html" class="on"><span>모음집</span></a><a href="builder.html"><span>조립기</span></a><a href="generator.html"><span>생성기</span></a><a href="guide.html"><span>설명서</span></a></nav><div class="spacer"></div>
   <span class="count" id="count"></span>
   <button class="iconbtn" id="themeBtn" title="라이트와 다크 전환">테마</button>

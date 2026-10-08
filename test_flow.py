@@ -118,6 +118,15 @@ with sync_playwright() as p:
     t2 = q(pg, "D.documentElement.getAttribute('data-ui')")
     ok('테마가 화면을 넘어가도 남는다', t1 == t2, '%s / %s' % (t1, t2))
 
+    # 12. 로고로 시작 화면에 돌아온다
+    # 위쪽 띄의 이동 링크에는 시작 화면이 없다. 로고가 그 길이라 막히면 돌아올 데가 없다.
+    for name in ['library', 'builder', 'generator', 'guide']:
+        pg.goto(URL + '#' + name); pg.wait_for_timeout(1700)
+        click(pg, '.logo', 1700)
+        ok(name + u' 로고로 시작 화면에 돌아온다',
+           pg.evaluate("location.hash") == '#index',
+           pg.evaluate("location.hash"))
+
     b.close()
 
 res.append({'name': 'JS 오류 없음', 'ok': not errs, 'got': '; '.join(errs[:3])})

@@ -26,7 +26,7 @@
 body{margin:0;-webkit-font-smoothing:antialiased;}
 button{font:inherit;}
 .top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;}
-.top .logo{display:flex;align-items:center;gap:8px;}
+.top .logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:inherit;}
 .top .mk{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 140deg,#A24E38,#C98A5B,#3F5E56,#A24E38);}
 .top .sp{flex:1;}
 .appnav{display:flex;}
@@ -86,7 +86,7 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
 <body>
 
 <div class="top">
-  <div class="logo"><span class="mk"></span>사용설명서</div>
+  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>사용설명서</a>
   <div class="sp"></div>
   <nav class="appnav">
     <a href="library.html"><span>모음집</span></a>

@@ -44,7 +44,7 @@
 body{margin:0;-webkit-font-smoothing:antialiased;}
 .top{display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;}
 .top .sp{flex:1;}
-.logo{display:flex;align-items:center;gap:8px;cursor:default;}
+.logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:inherit;}
 
 .wrap{margin:0 auto;padding:0 clamp(16px,4vw,32px) var(--sp-152);}
 
@@ -691,7 +691,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 })();
 >
 <div class="top">
-  <div class="logo"><span class="mk"></span>Design System Kit</div>
+  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>Design System Kit</a>
   <div class="sp"></div>
   <a class="tbtn" href="guide.html">사용법</a>
   <button class="tbtn" id="btnUi">테마</button>
@@ -915,7 +915,7 @@ document.getElementById('btnUi').onclick=function(){
 html{scroll-behavior:smooth;}
 body{margin:0;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s;}
 .topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:14px;}
-.topbar .logo{display:flex;align-items:center;gap:8px;cursor:pointer;}
+.topbar .logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:inherit;}
 .topbar .spacer{flex:1;}
 .appnav{display:flex;}
 .appnav a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap;}
@@ -1913,7 +1913,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 >
 
 <div class="topbar">
-  <div class="logo" role="button" tabindex="0" aria-label="모음집 목록으로" onclick="showCatalog()"><span class="mk"></span>디자인 시스템 <span class="dim">모음집</span></div>
+  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>디자인 시스템 <span class="dim">모음집</span></a>
   <nav class="appnav"><a href="library.html" class="on"><span>모음집</span></a><a href="builder.html"><span>조립기</span></a><a href="generator.html"><span>생성기</span></a><a href="guide.html"><span>설명서</span></a></nav><div class="spacer"></div>
   <span class="count" id="count"></span>
   <button class="iconbtn" id="themeBtn" title="라이트와 다크 전환">테마</button>
@@ -5526,7 +5526,7 @@ body{margin:0;-webkit-font-smoothing:antialiased;}
 button{font:inherit;}
 
 .top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;}
-.top .logo{display:flex;align-items:center;gap:8px;}
+.top .logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:inherit;}
 .top .mk{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 140deg,#A24E38,#C98A5B,#3F5E56,#A24E38);}
 .top .sp{flex:1;}
 .appnav{display:flex;}
@@ -6161,7 +6161,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 >
 
 <div class="top">
-  <div class="logo"><span class="mk"></span>디자인 시스템 <span style="color:var(--ui-fg-dim);font-weight:500">조립기</span></div>
+  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>디자인 시스템 <span style="color:var(--ui-fg-dim);font-weight:500">조립기</span></a>
   <nav class="appnav"><a href="library.html"><span>모음집</span></a><a href="builder.html" class="on"><span>조립기</span></a><a href="generator.html"><span>생성기</span></a><a href="guide.html"><span>설명서</span></a></nav><div class="sp"></div>
   <button class="tbtn" id="btnRandom">무작위</button>
   <button class="tbtn" id="btnUi">테마</button>
@@ -6567,7 +6567,7 @@ setPrimary(S.primary); syncSegs(); renderAll();
 body{margin:0;-webkit-font-smoothing:antialiased;}
 button{font:inherit;}
 .top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;}
-.top .logo{display:flex;align-items:center;gap:8px;}
+.top .logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:inherit;}
 .top .mk{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 140deg,#A24E38,#C98A5B,#3F5E56,#A24E38);}
 .top .sp{flex:1;}
 .appnav{display:flex;}
@@ -7201,7 +7201,7 @@ window.GENSYS=[{"id": "toss", "n": "Toss (TDS)", "p": "#3182F6", "pl": "#E8F3FF"
 >
 
 <div class="top">
-  <div class="logo"><span class="mk"></span>페이지 생성기 <span style="color:var(--ui-fg-dim);font-weight:500">레퍼런스 + 규칙 + 디자인시스템</span></div>
+  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>페이지 생성기 <span style="color:var(--ui-fg-dim);font-weight:500">레퍼런스 + 규칙 + 디자인시스템</span></a>
   <nav class="appnav"><a href="library.html"><span>모음집</span></a><a href="builder.html"><span>조립기</span></a><a href="generator.html" class="on"><span>생성기</span></a><a href="guide.html"><span>설명서</span></a></nav><div class="sp"></div>
   <button class="tbtn" id="btnUi">테마</button>
   <button class="tbtn" id="btnDown">HTML 저장</button>
@@ -8090,7 +8090,7 @@ loadPage(0); renderMy(); renderLayPrev(); build();
 body{margin:0;-webkit-font-smoothing:antialiased;}
 button{font:inherit;}
 .top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;}
-.top .logo{display:flex;align-items:center;gap:8px;}
+.top .logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:inherit;}
 .top .mk{width:22px;height:22px;border-radius:7px;background:conic-gradient(from 140deg,#A24E38,#C98A5B,#3F5E56,#A24E38);}
 .top .sp{flex:1;}
 .appnav{display:flex;}
@@ -8705,7 +8705,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 >
 
 <div class="top">
-  <div class="logo"><span class="mk"></span>사용설명서</div>
+  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>사용설명서</a>
   <div class="sp"></div>
   <nav class="appnav">
     <a href="library.html"><span>모음집</span></a>

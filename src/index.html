@@ -21,7 +21,7 @@
 body{margin:0;-webkit-font-smoothing:antialiased;}
 .top{display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;}
 .top .sp{flex:1;}
-.logo{display:flex;align-items:center;gap:8px;cursor:default;}
+.logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:inherit;}
 
 .wrap{margin:0 auto;padding:0 clamp(16px,4vw,32px) var(--sp-152);}
 
@@ -113,7 +113,7 @@ footer{max-width:var(--page-max);margin:0 auto;padding-top:var(--sp-28);
 </head>
 <body>
 <div class="top">
-  <div class="logo"><span class="mk"></span>Design System Kit</div>
+  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>Design System Kit</a>
   <div class="sp"></div>
   <a class="tbtn" href="guide.html">사용법</a>
   <button class="tbtn" id="btnUi">테마</button>
