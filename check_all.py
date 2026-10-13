@@ -74,6 +74,7 @@ with sync_playwright() as p:
     for sid in ids:
         pg.goto(URL + '#library?sys=' + sid); pg.wait_for_timeout(900)
         shown = pg.evaluate("""(()=>{const D=%s;
+            const m=D.querySelector('#dMore'); if(m) m.open=true;
             const t=D.querySelector('#exportTabs [data-fmt="css"]'); if(t) t.click();
             return D.querySelector('#exportBody').textContent;})()""" % DOC)
         want = io.open(os.path.join(D, 'v1', 'systems', sid, 'theme.css'), encoding='utf-8').read()

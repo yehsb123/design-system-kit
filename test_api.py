@@ -86,7 +86,7 @@ with sync_playwright() as p:
         pg.goto(URL + '#library?sys=' + sid)
         pg.wait_for_timeout(900)
         shown = pg.evaluate("""(()=>{const D=%s;
-          const e=D.querySelector('#exportBody');
+          const m=D.querySelector('#dMore'); if(m) m.open=true;
           const tabs=D.querySelector('#exportTabs [data-fmt="css"]');
           if(tabs) tabs.click();
           return D.querySelector('#exportBody').textContent;})()""" % DOC)

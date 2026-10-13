@@ -154,6 +154,22 @@ body{margin:0;-webkit-font-smoothing:antialiased;transition:background .2s,color
 .cfield select:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
 .cgo{font:inherit;cursor:pointer;white-space:nowrap;}
 .cgo:hover{filter:brightness(1.08);}
+/* 내보내기는 두 길로 좁힌다. 나머지 형식은 접어 둔다 */
+.gorow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.goact{font:inherit;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:6px;min-width:0;
+  padding:18px 20px;border:1px solid var(--ui-border);border-radius:12px;background:transparent;color:var(--ui-fg-strong);}
+.goact:hover{border-color:var(--ui-fg-lower);}
+.goact .gt{font-size:16px;font-weight:600;}
+.goact .gd{font-size:13px;font-weight:400;color:var(--ui-fg-lower);}
+.goact.main{background:var(--ui-fg-strong);border-color:var(--ui-fg-strong);color:var(--ui-canvas);}
+.goact.main .gd{color:var(--ui-canvas);}
+.more{margin-top:24px;}
+.more>summary{font-size:13px;color:var(--ui-fg-lower);cursor:pointer;padding:8px 0;list-style:none;}
+.more>summary::-webkit-details-marker{display:none;}
+.more>summary::before{content:"+ ";}
+.more[open]>summary::before{content:"\2212 ";}
+.more>summary:hover{color:var(--ui-fg-strong);}
+@media(max-width:640px){.gorow{grid-template-columns:1fr;}}
 .cout{position:relative;padding:14px;font-family:"Roboto Mono",monospace;font-size:11.5px;line-height:1.6;max-height:220px;overflow:auto;white-space:pre-wrap;margin-top:13px;}
 .lcard:hover{box-shadow:var(--ui-shadow-md);}
 .lcli{font-size:11px;font-weight:700;color:var(--ui-accent);margin-top:8px;opacity:0;transition:.14s;}
@@ -486,26 +502,34 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
     </div>
     <div class="composer">
       <h3>프롬프트 조립기</h3>
-      <div class="csub">콘텐츠 + 레이아웃 + 디자인시스템을 정하면 <b>AI 프롬프트 · CLAUDE.md · CSS 토큰 · 컴포넌트 · Tailwind</b>를 한자리에서 뽑습니다. <span style="color:var(--ui-fg-strong)">드롭다운에 마우스를 올리면 미리보기가 뜹니다.</span></div>
+      <div class="csub">콘텐츠, 레이아웃, 디자인 시스템 세 가지를 정하면 됩니다. 드롭다운에 마우스를 올리면 미리보기가 뜹니다.</div>
       <div class="crow">
-        <div class="cfield"><label>1. 콘텐츠 (무엇을 만드나)</label><div class="cwrap" id="wPage"><select id="cPage"></select></div></div>
-        <div class="cfield"><label>2. 레이아웃 (구조)</label><div class="cwrap" id="wLayout"><select id="cLayout"></select></div></div>
-        <div class="cfield"><label>3. 디자인 시스템 (색·폰트)</label><div class="cwrap" id="wSystem"><select id="cSystem"></select></div></div>
+        <div class="cfield"><label>1. 콘텐츠</label><div class="cwrap" id="wPage"><select id="cPage"></select></div></div>
+        <div class="cfield"><label>2. 레이아웃</label><div class="cwrap" id="wLayout"><select id="cLayout"></select></div></div>
+        <div class="cfield"><label>3. 디자인 시스템</label><div class="cwrap" id="wSystem"><select id="cSystem"></select></div></div>
       </div>
-      <div class="tabs" id="cTabs" style="margin-top:12px">
-        <button data-f="prompt" class="on">AI 프롬프트 (전체)</button>
-        <button data-f="claude">CLAUDE.md (규칙 파일)</button>
-        <button data-f="css">CSS 토큰</button>
-        <button data-f="comp">컴포넌트 CSS</button>
-        <button data-f="tw">Tailwind</button>
-        <button data-f="spec">원문 스펙</button>
-        <button data-f="all">전체</button>
+      <div class="gorow">
+        <button class="goact main" id="cCopyAll"><span class="gt">AI 에게 넘기기</span><span class="gd">클로드 코드에 붙여넣으면 끝납니다</span></button>
+        <button class="goact" id="cFiles"><span class="gt">코드에 넣기</span><span class="gd">파일 3개를 받아 프로젝트에 넣으세요</span></button>
       </div>
-      <div class="cout" id="cOut"></div>
-      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-        <button class="cgo" id="cCopyAll">전체 복사 (프롬프트+규칙+토큰+컴포넌트)</button>
-        <button class="filterchip" id="cCopy">현재 탭만 복사</button>
-        <button class="filterchip" id="cDown">파일로 저장</button>
+      <details class="more" id="cMore">
+        <summary>다른 형식 (6가지)</summary>
+        <div class="tabs" id="cTabs" style="margin-top:12px">
+          <button data-f="prompt" class="on">AI 프롬프트 (전체)</button>
+          <button data-f="claude">CLAUDE.md (규칙 파일)</button>
+          <button data-f="css">CSS 토큰</button>
+          <button data-f="comp">컴포넌트 CSS</button>
+          <button data-f="tw">Tailwind</button>
+          <button data-f="spec">원문 스펙</button>
+          <button data-f="all">전체</button>
+        </div>
+        <div class="cout" id="cOut"></div>
+        <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="filterchip" id="cCopy">현재 탭만 복사</button>
+          <button class="filterchip" id="cDown">파일로 저장</button>
+        </div>
+      </details>
+      <div style="margin-top:16px">
         <a class="filterchip" href="generator.html" style="text-decoration:none;display:inline-block">실제 페이지까지 만들기</a>
       </div>
       <div class="cnext" id="cNext" hidden></div>
@@ -2613,6 +2637,17 @@ function renderLayouts(){
 const RULES = [
 '## 공통 제작 규칙',
 '',
+'### 위계와 정돈',
+'- 글자는 일곱 단계만 쓴다. 24/800, 20/700, 18/600, 16/500, 15/400, 14/600, 13/400',
+'- 한 화면에서 24px 은 한 번만 쓴다',
+'- 제목과 본문은 최소 두 단계를 벌린다. 16 옆에 15 를 제목으로 쓰지 않는다',
+'- 카드 안에 카드를 넣지 않는다. 테두리 있는 상자는 한 겹까지다',
+'- 구분은 여백을 먼저 쓰고, 안 되면 배경색, 그래도 안 되면 테두리를 쓴다',
+'- 테두리와 그림자를 한 요소에 같이 쓰지 않는다',
+'- 바탕은 흰색과 gray-50 두 가지를 번갈아 쓴다. 전부 흰색으로 깔지 않는다',
+'- 섹션 사이 48px, 묶음 사이 24px, 줄 사이 8px 을 기본으로 한다',
+'- 같은 여백을 세 번 연달아 쓰지 않는다',
+'',
 '### 반응형',
 '- 여백·타이포는 vw + clamp() 사용 (예: padding: clamp(24px,5vw,80px); font-size: clamp(20px,3.2vw,44px))',
 '- 컨테이너는 width: min(1200px, 92vw)',
@@ -2983,6 +3018,11 @@ function renderComposer(){
     copy(t, nm+' 복사됨');
     showNext(t, nm);
   };
+  const cf=$('#cFiles');
+  if(cf) cf.onclick=function(){
+    const el=$('#cNext'); if(!el) return;
+    el.hidden=false; el.textContent=downloadKit(cSys());
+  };
   $('#cCopyAll').onclick=function(){
     const t=buildEverything();
     copy(t,'전체 복사됨');
@@ -3000,6 +3040,23 @@ function renderComposer(){
   upd();
   wirePeek();
 }
+// theme.css 가 먼저 깔려야 components.css 의 var() 가 값을 찾는다.
+// 순서를 사람이 기억하지 않아도 되게 안내 문구에 같이 적는다.
+function downloadKit(sys){
+  const files=[['theme.css', cssTokensBoth(sys)],
+               ['components.css', componentCss(sys)],
+               ['tailwind.config.js', twTokens(sys)]];
+  files.forEach(function(f,i){
+    setTimeout(function(){
+      const b=new Blob([f[1]],{type:'text/plain;charset=utf-8'});
+      const a=document.createElement('a');
+      a.href=URL.createObjectURL(b); a.download=f[0]; a.click();
+      URL.revokeObjectURL(a.href);
+    }, i*250);
+  });
+  return 'theme.css, components.css, tailwind.config.js \ub97c \ubc1b\uc558\uc2b5\ub2c8\ub2e4. '
+       + 'HTML \uc5d0\uc11c theme.css \ub97c \uba3c\uc800 \ubd88\ub7ec\uc624\uc138\uc694.';
+}
 function renderRecs(){
   $('#recs').innerHTML=RECS.map(r=>{const sys=SYSTEMS.find(s=>s.id===r.b);const nm=sys?sys.name:r.b;
     return `<div class="rec" role="button" tabindex="0" aria-label="${r.t} 추천 시스템 ${nm} 열기" onclick="openSystem('${r.b}')"><div class="em">${r.em}</div><div><div class="rt">${r.t}</div><div class="rd">${r.d}</div><div class="rb">추천 베이스 · ${nm}</div></div></div>`;}).join('');
@@ -3011,7 +3068,7 @@ function resetFind(){ curQuery=''; curFilter='all'; const si=$('#searchInput'); 
 // 주소를 그대로 보내면 같은 시스템이 열린다.
 function markPlace(q){ try{ parent.dsk.setQuery(q); }catch(e){} }
 function showCatalog(){markPlace('');$('#catalog').classList.remove('hidden');$('#detail').classList.remove('active');const sv=$('#sview');if(sv)sv.classList.remove('active');curSys=null;closeAllOverlays();window.scrollTo(0,0);}
-function openSystem(id){markPlace('sys='+id);dGroup='start';curSys=SYSTEMS.find(s=>s.id===id);const sv=$('#sview');if(sv)sv.classList.remove('active');$('#catalog').classList.add('hidden');$('#detail').classList.add('active');renderDetail(curSys);window.scrollTo(0,0);}
+function openSystem(id){markPlace('sys='+id);dGroup='color';curSys=SYSTEMS.find(s=>s.id===id);const sv=$('#sview');if(sv)sv.classList.remove('active');$('#catalog').classList.add('hidden');$('#detail').classList.add('active');renderDetail(curSys);window.scrollTo(0,0);}
 
 /* ===================== RENDER PIECES ===================== */
 function rampRow(name,arr){return `<div class="ramp"><div class="lbl">${name}</div><div class="strip">${
@@ -3020,18 +3077,19 @@ function swatch(name,val){return `<div class="sw"><div class="chip" style="backg
 function semGroup(T,keys){return keys.filter(k=>T[k]).map(k=>swatch(k,T[k])).join('');}
 
 const DGROUPS=[
- {k:'start', n:'\ub0b4\ubcf4\ub0b4\uae30', ids:['s-export','s-spec','s-sig'],
-  h:'\ubcf5\uc0ac\ud574\uc11c \ubc14\ub85c \uc4f0\ub294 \uacf3. \uc774 \uc2dc\uc2a4\ud15c\uc758 \uc131\uaca9\uc744 \ubcf4\uc5ec\uc8fc\ub294 \ub300\ud45c UI\ub3c4 \ud568\uaed8 \uc788\uc2b5\ub2c8\ub2e4.'},
- {k:'color', n:'\uc0c9\u00b7\ud0c0\uc774\ud3ec', ids:['s-color','s-semantic','s-type','s-space'],
-  h:'\uc0c9 \ub7a8\ud504(50~950), \uc5ed\ud560\ubcc4 \uc2dc\ub9e8\ud2f1 \ud1a0\ud070, \uae00\uc790 \ud06c\uae30, \uc5ec\ubc31\u00b7\ubaa8\uc11c\ub9ac\u00b7\uadf8\ub9bc\uc790.'},
+ {k:'color', n:'\uc0c9\u00b7\ud0c0\uc774\ud3ec', ids:['s-sig','s-color','s-semantic','s-type','s-space'],
+  h:'\uc774 \uc2dc\uc2a4\ud15c\uc758 \uc131\uaca9\uc744 \ubcf4\uc5ec\uc8fc\ub294 \ub300\ud45c UI, \uc0c9 \ub7a8\ud504(50~950), \uc2dc\ub9e8\ud2f1 \ud1a0\ud070, \uae00\uc790 \ud06c\uae30, \uc5ec\ubc31\u00b7\ubaa8\uc11c\ub9ac\u00b7\uadf8\ub9bc\uc790.'},
  {k:'comp', n:'\ucef4\ud3ec\ub10c\ud2b8', ids:['s-comp','s-select','s-overlay','s-nav','s-feed','s-more','s-formstate','s-state','s-table'],
   h:'\ubc84\ud2bc\u00b7\ud3fc\u00b7\ubaa8\ub2ec\u00b7\ud0ed\u00b7\ud45c \ub4f1 \uc2e4\uc81c UI \uc870\uac01\ub4e4. \uc2dc\uc2a4\ud15c\ub9c8\ub2e4 \ubaa8\uc591\uacfc \ud3f0\ud2b8\uac00 \ub2e4\ub985\ub2c8\ub2e4.'},
  {k:'asset', n:'\uc5d0\uc14b\u00b7\ucc28\ud2b8', ids:['s-assets','s-charts','s-fx','s-build'],
   h:'\uc544\uc774\ucf58 48\uac1c(SVG \uc800\uc7a5 \uac00\ub2a5), \uadf8\ub77c\ub514\uc5b8\ud2b8\u00b7\ud328\ud134, \ucc28\ud2b8, \uc774\ud399\ud2b8, \uc870\ub9bd \ube4c\ub354.'},
  {k:'spec', n:'\uaddc\uaca9\u00b7\uc9c0\uce68', ids:['s-layout','s-motion','s-a11y','s-extra'],
-  h:'\ub808\uc774\uc544\uc6c3 \uadf8\ub9ac\ub4dc, \ubaa8\uc158 \uc18d\ub3c4, \uc811\uadfc\uc131 \uac80\uc0ac, \uc774 \uc2dc\uc2a4\ud15c\ub9cc\uc758 \uaddc\uce59.'}
+  h:'\ub808\uc774\uc544\uc6c3 \uadf8\ub9ac\ub4dc, \ubaa8\uc158 \uc18d\ub3c4, \uc811\uadfc\uc131 \uac80\uc0ac, \uc774 \uc2dc\uc2a4\ud15c\ub9cc\uc758 \uaddc\uce59.'},
+ {k:'start', n:'\ub0b4\ubcf4\ub0b4\uae30', ids:['s-export','s-spec'],
+  h:'\ubcf4\uace0 \ub9c8\uc74c\uc5d0 \ub4e4\uba74 \uc5ec\uae30\uc11c \uac00\uc838\uac11\ub2c8\ub2e4. \uc6d0\ubb38 \uc2a4\ud399\ub3c4 \uac19\uc774 \uc788\uc2b5\ub2c8\ub2e4.'}
 ];
-let dGroup='start';
+
+let dGroup='color';
 function applyGroup(){
   const g=DGROUPS.find(function(x){return x.k===dGroup;})||DGROUPS[0];
   document.querySelectorAll('#scope .dsec').forEach(function(sec){
@@ -3077,36 +3135,6 @@ function renderDetail(sys){
 
   const R=sys.ramps;
   scope.innerHTML=`
-  <section class="dsec" id="s-export"><h2 class="dt2">내보내기 <span class="en">Export</span></h2>
-    <p class="dsc"><b>버튼 하나(복사)로 선택한 탭 전체가 복사</b>됩니다. CSS, Tailwind, JSON 은 라이트와 다크를 모두 담습니다. 탭을 눌러 원하는 형식으로 바꿔 주세요.</p>
-    <div class="tabs" id="exportTabs">
-      ${hasSpec(sys.id)?`<button data-fmt="spec">원문 스펙</button>`:``}
-      <button data-fmt="css" class="on">CSS 변수 (전체)</button><button data-fmt="tw">Tailwind</button>
-      <button data-fmt="json">JSON 토큰</button><button data-fmt="react">React 컴포넌트</button><button data-fmt="ai">AI 프롬프트</button>
-    </div>
-    <div class="export"><button class="copy" id="copyExport">전체 복사</button><span id="exportBody"></span></div>
-    <div class="cnext" id="dNext" hidden></div>
-  </section>
-
-  <section class="dsec" id="s-spec"><h2 class="dt2">원문 스펙 <span class="en">Source Spec</span></h2>
-    <p class="dsc">시스템마다 스펙 문서가 있습니다. 붙여넣은 원문은 한 글자도 고치지 않고 보관하고, 없는 시스템은 킷이 들고 있는 토큰으로 만듭니다. 토큰으로 재해석한 값과 따로 남아 있어, 원본 표현이 줄어들지 않습니다. 저장하면 이 브라우저에 남고, 위 내보내기의 <b>원문 스펙</b> 탭과 조립기의 <b>전체</b>에 들어갑니다.</p>
-    <div class="specbar">
-      <span class="specstate" id="specState"></span>
-      <button class="filterchip" id="specCopy">복사</button>
-      <button class="filterchip" id="specDown">.md 로 저장</button>
-      <button class="filterchip" id="specEdit">내 스펙 붙여넣기</button>
-      <button class="filterchip" id="specReset" style="display:none">원문으로 되돌리기</button>
-    </div>
-    <div id="specEditor" style="display:none">
-      <textarea id="specText" class="specta" placeholder="여기에 스펙을 통째로 붙여넣으세요. 마크다운·CSS·일반 글 무엇이든 그대로 보관됩니다."></textarea>
-      <div class="specbar" style="margin-top:8px">
-        <button class="cgo" id="specSave">저장</button>
-        <button class="filterchip" id="specCancel">취소</button>
-      </div>
-    </div>
-    <pre class="specview" id="specView"></pre>
-  </section>
-
   <section class="dsec" id="s-sig"><h2 class="dt2">시그니처 미리보기 <span class="en">Signature</span></h2>
     <p class="dsc">이 시스템의 성격이 가장 잘 드러나는 대표 UI입니다. 같은 토큰이라도 조합과 구조가 시스템마다 다릅니다.</p>
     ${renderSignature(sys)}
@@ -3413,7 +3441,44 @@ function renderDetail(sys){
     </div>
   </section>
 
-  <section class="dsec" id="s-extra"><h2 class="dt2">${sys.extra.title} <span class="en">System-specific</span></h2>${renderExtra(sys)}</section>`;
+  <section class="dsec" id="s-extra"><h2 class="dt2">${sys.extra.title} <span class="en">System-specific</span></h2>${renderExtra(sys)}</section>
+
+  <section class="dsec" id="s-export"><h2 class="dt2">내보내기 <span class="en">Export</span></h2>
+    <p class="dsc">이 시스템을 가져가는 길은 두 가지입니다. AI 에게 넘기거나, 이미 있는 코드에 넣거나입니다.</p>
+    <div class="gorow">
+      <button class="goact main" id="dGive"><span class="gt">AI 에게 넘기기</span><span class="gd">프롬프트를 복사해 붙여넣으세요</span></button>
+      <button class="goact" id="dFiles"><span class="gt">코드에 넣기</span><span class="gd">파일 3개를 받아 프로젝트에 넣으세요</span></button>
+    </div>
+    <details class="more" id="dMore">
+      <summary>다른 형식 (6가지)</summary>
+      <div class="tabs" id="exportTabs" style="margin-top:12px">
+        ${hasSpec(sys.id)?`<button data-fmt="spec">원문 스펙</button>`:``}
+        <button data-fmt="css" class="on">CSS 변수 (전체)</button><button data-fmt="tw">Tailwind</button>
+        <button data-fmt="json">JSON 토큰</button><button data-fmt="react">React 컴포넌트</button><button data-fmt="ai">AI 프롬프트</button>
+      </div>
+      <div class="export"><button class="copy" id="copyExport">전체 복사</button><span id="exportBody"></span></div>
+    </details>
+    <div class="cnext" id="dNext" hidden></div>
+  </section>
+
+  <section class="dsec" id="s-spec"><h2 class="dt2">원문 스펙 <span class="en">Source Spec</span></h2>
+    <p class="dsc">시스템마다 스펙 문서가 있습니다. 붙여넣은 원문은 한 글자도 고치지 않고 보관하고, 없는 시스템은 킷이 들고 있는 토큰으로 만듭니다. 토큰으로 재해석한 값과 따로 남아 있어, 원본 표현이 줄어들지 않습니다. 저장하면 이 브라우저에 남고, 위 내보내기의 <b>원문 스펙</b> 탭과 조립기의 <b>전체</b>에 들어갑니다.</p>
+    <div class="specbar">
+      <span class="specstate" id="specState"></span>
+      <button class="filterchip" id="specCopy">복사</button>
+      <button class="filterchip" id="specDown">.md 로 저장</button>
+      <button class="filterchip" id="specEdit">내 스펙 붙여넣기</button>
+      <button class="filterchip" id="specReset" style="display:none">원문으로 되돌리기</button>
+    </div>
+    <div id="specEditor" style="display:none">
+      <textarea id="specText" class="specta" placeholder="여기에 스펙을 통째로 붙여넣으세요. 마크다운·CSS·일반 글 무엇이든 그대로 보관됩니다."></textarea>
+      <div class="specbar" style="margin-top:8px">
+        <button class="cgo" id="specSave">저장</button>
+        <button class="filterchip" id="specCancel">취소</button>
+      </div>
+    </div>
+    <pre class="specview" id="specView"></pre>
+  </section>`;
 
   // wiring
   wireDetail(sys);
@@ -3944,6 +4009,13 @@ function wireDetail(sys){
       react:'React 컴포넌트',ai:'AI 프롬프트',spec:'원문 스펙'};
     copyNext($('#exportBody').textContent, NM[exportFmt]||'내보내기', HOW[exportFmt]||'');
   };
+  const dg=$('#dGive');
+  if(dg) dg.onclick=function(){
+    copyNext(aiPrompt(sys), 'AI \ud504\ub86c\ud504\ud2b8',
+      '\ud074\ub85c\ub4dc \ucf54\ub4dc\ub098 \ucc44\ud305\ucc3d\uc5d0 \ubd99\uc5ec\ub123\uace0 \uc5d4\ud130\ub97c \ub204\ub974\uba74 \ub429\ub2c8\ub2e4.');
+  };
+  const df=$('#dFiles');
+  if(df) df.onclick=function(){ sayNext(downloadKit(sys)); };
   renderExport(sys);
   wireSpec(sys);
   // tabs
