@@ -76,8 +76,8 @@ with sync_playwright() as p:
         shown = pg.evaluate("""(()=>{const D=%s;
             const t=D.querySelector('#exportTabs [data-fmt="css"]'); if(t) t.click();
             return D.querySelector('#exportBody').textContent;})()""" % DOC)
-        want = io.open(os.path.join(D, 'v1', 'systems', sid, 'tokens.css'), encoding='utf-8').read()
-        if shown.strip() != want.split('\n', 1)[1].strip():
+        want = io.open(os.path.join(D, 'v1', 'systems', sid, 'theme.css'), encoding='utf-8').read()
+        if shown.strip() != want.split('\n', 2)[2].strip():
             diff.append(sid)
     say('API 토큰이 화면 내보내기와 같다', not diff, diff[:5])
 

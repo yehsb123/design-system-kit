@@ -10,7 +10,7 @@
   v1/systems/{id}/tokens.css CSS 변수 (라이트)
   v1/systems/{id}/tokens.dark.css CSS 변수 (다크)
 """
-import io, os, json, shutil
+import io, os, json
 from playwright.sync_api import sync_playwright
 
 D = os.path.dirname(os.path.abspath(__file__))
@@ -24,6 +24,7 @@ DUMP = """(() => {
       id: s.id,
       tokens: allTokens(s),
       css: cssTokens(s),
+      cssBoth: cssTokensBoth(s),
       tailwind: twTokens(s)
     }));
   };
@@ -55,6 +56,7 @@ DUMP = """(() => {
       tokens: { light: L[s.id].tokens, dark: K[s.id].tokens },
       css: { light: L[s.id].css, dark: K[s.id].css },
       tailwind: L[s.id].tailwind,
+      cssBoth: L[s.id].cssBoth,
       spec: getSpec(s.id)
     })),
     layouts: LAYOUTS.map(([name, note]) => ({ name, note })),
@@ -67,10 +69,29 @@ DUMP = """(() => {
 })()"""
 
 
+WRITTEN = set()
+
+
 def write(path, text):
     p = os.path.join(API, path)
     os.makedirs(os.path.dirname(p), exist_ok=True)
     io.open(p, 'w', encoding='utf-8').write(text)
+    WRITTEN.add(os.path.normcase(os.path.normpath(p)))
+
+
+def sweep():
+    """이번 빌드가 쓰지 않은 파일을 치운다.
+
+    빈 폴더는 그대로 둔다. 윈도우가 폴더를 붙잡고 있어도 빌드는 끝나야 한다.
+    """
+    gone = []
+    for base, _, files in os.walk(API):
+        for f in files:
+            p = os.path.normcase(os.path.normpath(os.path.join(base, f)))
+            if p not in WRITTEN:
+                os.remove(p)
+                gone.append(p)
+    return gone
 
 
 def main():
@@ -86,9 +107,7 @@ def main():
         b.close()
     assert not errs, '모음집에서 오류가 났습니다: %s' % errs[:2]
 
-    if os.path.isdir(API):
-        shutil.rmtree(API)
-    os.makedirs(API)
+    os.makedirs(API, exist_ok=True)
 
     syss = data['systems']
     assert len(syss) >= 19, '시스템 수가 모자랍니다: %d' % len(syss)
@@ -102,7 +121,8 @@ def main():
             'id': s['id'], 'name': s['name'], 'category': s['category'],
             'font': s['font'], 'description': s['description'], 'cover': s['cover'],
             'href': 'systems/%s.json' % s['id'],
-            'css': 'systems/%s/tokens.css' % s['id']
+            'css': 'systems/%s/tokens.css' % s['id'],
+            'theme': 'systems/%s/theme.css' % s['id']
         } for s in syss]
     }, ensure_ascii=False, indent=1))
 
@@ -112,6 +132,7 @@ def main():
         css_light = body['css']['light']
         css_dark = body['css']['dark']
         tw = body.pop('tailwind')
+        both = body.pop('cssBoth')
         body.pop('css')
         write('systems/%s.json' % s['id'], json.dumps(body, ensure_ascii=False, indent=1))
         write('systems/%s/tokens.css' % s['id'],
@@ -120,6 +141,10 @@ def main():
         write('systems/%s/tokens.dark.css' % s['id'],
               u'/* %s, 다크. Design System Kit 에서 생성. AGPL-3.0 */\n%s\n'
               % (s['name'], css_dark))
+        write('systems/%s/theme.css' % s['id'],
+              u'/* %s. 라이트 + 다크 한 파일. Design System Kit 에서 생성. AGPL-3.0 */\n'
+              u'/* 다크는 html 에 data-theme="dark" 를 붙이거나 기기 설정을 따릅니다. */\n%s\n'
+              % (s['name'], both))
         write('systems/%s/tailwind.js' % s['id'], tw + u'\n')
         write('systems/%s/spec.md' % s['id'], s['spec'])
 
@@ -133,8 +158,9 @@ def main():
         {'count': len(data['icons']), 'icons': data['icons']},
         ensure_ascii=False, indent=1))
 
+    gone = sweep()
     n = sum(len(f) for _, _, f in os.walk(API))
-    print('v1 파일 %d개, 시스템 %d종' % (n, len(syss)))
+    print('v1 파일 %d개, 시스템 %d종, 치운 파일 %d개' % (n, len(syss), len(gone)))
 
 
 if __name__ == '__main__':

@@ -3813,6 +3813,38 @@ function allTokens(sys){
   out["--tag-radius"]=TAGR[sys.id]||"999px";
   return out;
 }
+// allTokens 는 지금 화면의 테마만 본다. 내보내기는 두 벌 다 있어야
+// 받는 쪽에서 라이트와 다크를 모두 쓸 수 있다. 잠깐 바꿔 뽑고 되돌린다.
+function bothTokens(sys){
+  const keep=root.getAttribute('data-theme');
+  root.setAttribute('data-theme','light'); const light=allTokens(sys);
+  root.setAttribute('data-theme','dark');  const dark=allTokens(sys);
+  root.setAttribute('data-theme',keep||'light');
+  return {light:light, dark:dark};
+}
+// 라이트를 :root 에, 다크에서 달라지는 값만 [data-theme="dark"] 에 담는다.
+function cssTokensBoth(sys){
+  const B=bothTokens(sys), L=[':root{'];
+  Object.keys(B.light).forEach(function(k){ L.push('  '+k+': '+B.light[k]+';'); });
+  L.push('}');
+  const diff=Object.keys(B.dark).filter(function(k){ return B.dark[k]!==B.light[k]; });
+  if(diff.length){
+    const rows=diff.map(function(k){ return '  '+k+': '+B.dark[k]+';'; });
+    L.push('');
+    L.push('[data-theme="dark"]{');
+    rows.forEach(function(r){ L.push(r); });
+    L.push('}');
+    // 직접 고르지 않은 사람은 기기 설정을 따르게 둔다.
+    // data-theme="light" 를 붙여 둔 경우에는 비켜 간다.
+    L.push('');
+    L.push('@media (prefers-color-scheme: dark){');
+    L.push('  :root:not([data-theme="light"]){');
+    rows.forEach(function(r){ L.push('  '+r); });
+    L.push('  }');
+    L.push('}');
+  }
+  return L.join('\n');
+}
 
 // contrast
 function lum(hex){const c=hex.replace('#','');const n=parseInt(c.length===3?c.split('').map(x=>x+x).join(''):c,16);
@@ -4231,7 +4263,7 @@ function buildEverything(){
     '',
     '## design-tokens.css (전체 토큰)',
     '```css',
-    cssTokens(sys),
+    cssTokensBoth(sys),
     '```',
     '',
     '## components.css (컴포넌트)',
@@ -4254,7 +4286,7 @@ function buildOut(){
   }
   return cFmt==='prompt' ? buildCombined()
        : cFmt==='claude' ? claudeMd(sys)
-       : cFmt==='css'    ? cssTokens(sys)
+       : cFmt==='css'    ? cssTokensBoth(sys)
        : cFmt==='comp'   ? componentCss(sys)
        : cFmt==='all'    ? buildEverything()
        : twTokens(sys);
@@ -4376,7 +4408,7 @@ function renderComposer(){
   const NEXT={
     prompt:'클로드 코드나 채팅창에 붙여넣고 엔터를 누르면 됩니다.',
     claude:'프로젝트 맨 위에 CLAUDE.md 로 저장하면 그 폴더에서 자동으로 적용됩니다.',
-    css:'design-tokens.css 로 저장하고 HTML 에서 불러오면 됩니다.',
+    css:'design-tokens.css 로 저장하고 HTML 에서 불러오면 됩니다. 다크는 html 에 data-theme="dark" 를 붙이면 켜집니다.',
     comp:'components.css 로 저장해 토큰 파일 다음에 불러오세요.',
     tw:'tailwind.config.js 에 덮어쓰면 됩니다.',
     spec:'스펙 원문입니다. 프롬프트 앞에 붙여 근거로 쓰세요.',
@@ -4488,7 +4520,7 @@ function renderDetail(sys){
   const R=sys.ramps;
   scope.innerHTML=`
   <section class="dsec" id="s-export"><h2 class="dt2">내보내기 <span class="en">Export</span></h2>
-    <p class="dsc"><b>버튼 하나(복사)로 선택한 탭 전체가 복사</b>됩니다. 현재 테마(${theme()}) 값이 반영됩니다. 탭을 눌러 원하는 형식으로 바꿔 주세요.</p>
+    <p class="dsc"><b>버튼 하나(복사)로 선택한 탭 전체가 복사</b>됩니다. CSS, Tailwind, JSON 은 라이트와 다크를 모두 담습니다. 탭을 눌러 원하는 형식으로 바꿔 주세요.</p>
     <div class="tabs" id="exportTabs">
       ${hasSpec(sys.id)?`<button data-fmt="spec">원문 스펙</button>`:``}
       <button data-fmt="css" class="on">CSS 변수 (전체)</button><button data-fmt="tw">Tailwind</button>
@@ -5205,22 +5237,17 @@ function aiPrompt(sys){
       +(sys.extra.type==='grid'?`\n- 고밀도 그리드: 본문 11px, 헤더행 26px·상세행 30px, 세로 채움 준수`:'');
 }
 function renderExport(sys){
-  const T=allTokens(sys);const body=$('#exportBody');
+  const body=$('#exportBody');
   if(exportFmt==='spec'){
     body.textContent=getSpec(sys.id)||'(원문 스펙이 없습니다. 아래 “원문 스펙” 칸에 붙여넣으세요.)';
   }else if(exportFmt==='css'){
-    body.textContent=`:root{\n`+Object.entries(T).map(([k,v])=>`  ${k}: ${v};`).join('\n')+`\n}`;
+    body.textContent=cssTokensBoth(sys);
   }else if(exportFmt==='tw'){
-    const c=(k)=>T[k]||'';
-    body.textContent=`// tailwind.config.js\nexport default {\n  theme:{ extend:{\n    colors:{\n`
-      +`      primary:{50:"${c('--primary-50')}",100:"${c('--primary-100')}",500:"${c('--primary-500')}",600:"${c('--primary-600')}",700:"${c('--primary-700')}",DEFAULT:"${c('--bg-primary')}"},\n`
-      +`      gray:{50:"${c('--gray-50')}",100:"${c('--gray-100')}",200:"${c('--gray-200')}",500:"${c('--gray-500')}",700:"${c('--gray-700')}",900:"${c('--gray-900')}"},\n`
-      +`      success:"${c('--bg-success')}", warning:"${c('--bg-warning')}", critical:"${c('--bg-critical')}", info:"${c('--bg-info')}",\n`
-      +`      fg:"${c('--fg')}","fg-lower":"${c('--fg-lower')}", border:"${c('--border')}",\n    },\n`
-      +`    borderRadius:{ sm:"${c('--radius-sm')}", md:"${c('--radius-md')}", lg:"${c('--radius-lg')}", pill:"999px" },\n`
-      +`    fontFamily:{ sans:["${sys.font}","system-ui","sans-serif"] },\n  }}\n}`;
+    body.textContent=twTokens(sys);
   }else if(exportFmt==='json'){
-    body.textContent=JSON.stringify({name:sys.name,theme:theme(),font:sys.font,tokens:T},null,2);
+    const B=bothTokens(sys);
+    body.textContent=JSON.stringify({name:sys.name,font:sys.font,
+      fontStack:B.light['--font-family'],tokens:B},null,2);
   }else if(exportFmt==='react'){
     body.textContent=
 `// ${sys.name} 하이브리드 컴포넌트 (Flat + Compound · 공통 primitive)
@@ -5349,9 +5376,9 @@ function wireDetail(sys){
   // export
   $('#exportTabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;exportFmt=b.dataset.fmt;document.querySelectorAll('#exportTabs button').forEach(x=>x.classList.toggle('on',x===b));renderExport(sys);};
   $('#copyExport').onclick=()=>{
-    const HOW={css:'design-tokens.css 로 저장하고 HTML 에서 불러오세요.',
+    const HOW={css:'design-tokens.css 로 저장하고 HTML 에서 불러오세요. 다크는 html 에 data-theme="dark" 를 붙이면 켜집니다.',
       tw:'tailwind.config.js 에 덮어쓰면 됩니다.',
-      json:'디자인 토큰 도구나 스크립트의 입력으로 씁니다.',
+      json:'라이트와 다크가 tokens 아래에 따로 들어 있습니다.',
       react:'컴포넌트 파일로 저장해 바로 불러 씁니다.',
       ai:'클로드 코드나 채팅창에 붙여넣고 엔터를 누르면 됩니다.',
       spec:'스펙 원문입니다. 프롬프트 앞에 붙여 근거로 쓰세요.'};

@@ -32,11 +32,30 @@ ok('목록에 19종이 있다', idx['count'] == len(ids) == 19, '%d / %d' % (idx
 missing = []
 for sid in ids:
     for f in ['systems/%s.json' % sid, 'systems/%s/tokens.css' % sid,
-              'systems/%s/tokens.dark.css' % sid, 'systems/%s/tailwind.js' % sid,
+              'systems/%s/tokens.dark.css' % sid, 'systems/%s/theme.css' % sid,
+              'systems/%s/tailwind.js' % sid,
               'systems/%s/spec.md' % sid]:
         if not os.path.exists(os.path.join(API, f)):
             missing.append(f)
-ok('시스템마다 파일 다섯 개가 다 있다', not missing, missing[:4])
+ok('시스템마다 파일 여섯 개가 다 있다', not missing, missing[:4])
+
+# ---- theme.css 는 링크 한 줄로 끝나야 한다 ----
+# tokens.css 와 tokens.dark.css 는 둘 다 :root 라 같이 걸면 다크가 고정된다.
+# theme.css 는 다크를 선택자 안에 넣어 그 사고를 막는 파일이다.
+bad = []
+for sid in ids:
+    css = io.open(os.path.join(API, 'systems/%s/theme.css' % sid), encoding='utf-8').read()
+    if css.count(':root{') != 1:
+        bad.append('%s root=%d' % (sid, css.count(':root{')))
+    if '[data-theme="dark"]{' not in css:
+        bad.append('%s 다크선택자없음' % sid)
+    if 'prefers-color-scheme: dark' not in css:
+        bad.append('%s 기기설정없음' % sid)
+    light = io.open(os.path.join(API, 'systems/%s/tokens.css' % sid), encoding='utf-8').read()
+    n_light = light.count(';')
+    if css[:css.index('}')].count(';') != n_light:
+        bad.append('%s 라이트토큰수 다름' % sid)
+ok('theme.css 가 라이트와 다크를 한 파일에 담는다', not bad, bad[:4])
 
 # ---- 내용이 비지 않았는가 ----
 thin = []
@@ -71,8 +90,8 @@ with sync_playwright() as p:
           const tabs=D.querySelector('#exportTabs [data-fmt="css"]');
           if(tabs) tabs.click();
           return D.querySelector('#exportBody').textContent;})()""" % DOC)
-        want = io.open(os.path.join(API, 'systems/%s/tokens.css' % sid), encoding='utf-8').read()
-        want_body = want.split('\n', 1)[1].strip()
+        want = io.open(os.path.join(API, 'systems/%s/theme.css' % sid), encoding='utf-8').read()
+        want_body = want.split('\n', 2)[2].strip()
         if shown.strip() != want_body:
             diffs.append(sid)
     ok('tokens.css 가 화면 내보내기와 같다', not diffs, diffs[:5])

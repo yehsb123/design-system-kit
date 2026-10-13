@@ -183,6 +183,7 @@ v1/systems.json                    19종 목록
 v1/systems/{id}.json               그 시스템 전부
 v1/systems/{id}/tokens.css         CSS 변수 (라이트)
 v1/systems/{id}/tokens.dark.css    CSS 변수 (다크)
+v1/systems/{id}/theme.css          CSS 변수 (라이트 + 다크 한 파일)
 v1/systems/{id}/tailwind.js        Tailwind 설정
 v1/systems/{id}/spec.md            스펙 문서
 v1/layouts.json                    레이아웃 22종

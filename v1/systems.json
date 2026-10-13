@@ -16,7 +16,8 @@
     "#191F28"
    ],
    "href": "systems/toss.json",
-   "css": "systems/toss/tokens.css"
+   "css": "systems/toss/tokens.css",
+   "theme": "systems/toss/theme.css"
   },
   {
    "id": "aurora",
@@ -31,7 +32,8 @@
     "#F472B6"
    ],
    "href": "systems/aurora.json",
-   "css": "systems/aurora/tokens.css"
+   "css": "systems/aurora/tokens.css",
+   "theme": "systems/aurora/theme.css"
   },
   {
    "id": "graphite",
@@ -46,7 +48,8 @@
     "#0F172A"
    ],
    "href": "systems/graphite.json",
-   "css": "systems/graphite/tokens.css"
+   "css": "systems/graphite/tokens.css",
+   "theme": "systems/graphite/theme.css"
   },
   {
    "id": "antd",
@@ -61,7 +64,8 @@
     "#FF4D4F"
    ],
    "href": "systems/antd.json",
-   "css": "systems/antd/tokens.css"
+   "css": "systems/antd/tokens.css",
+   "theme": "systems/antd/theme.css"
   },
   {
    "id": "m3",
@@ -76,7 +80,8 @@
     "#B3261E"
    ],
    "href": "systems/m3.json",
-   "css": "systems/m3/tokens.css"
+   "css": "systems/m3/tokens.css",
+   "theme": "systems/m3/theme.css"
   },
   {
    "id": "carbon",
@@ -91,7 +96,8 @@
     "#DA1E28"
    ],
    "href": "systems/carbon.json",
-   "css": "systems/carbon/tokens.css"
+   "css": "systems/carbon/tokens.css",
+   "theme": "systems/carbon/theme.css"
   },
   {
    "id": "apple",
@@ -106,7 +112,8 @@
     "#FF3B30"
    ],
    "href": "systems/apple.json",
-   "css": "systems/apple/tokens.css"
+   "css": "systems/apple/tokens.css",
+   "theme": "systems/apple/theme.css"
   },
   {
    "id": "polaris",
@@ -121,7 +128,8 @@
     "#D72C0D"
    ],
    "href": "systems/polaris.json",
-   "css": "systems/polaris/tokens.css"
+   "css": "systems/polaris/tokens.css",
+   "theme": "systems/polaris/theme.css"
   },
   {
    "id": "neon",
@@ -136,7 +144,8 @@
     "#0F1018"
    ],
    "href": "systems/neon.json",
-   "css": "systems/neon/tokens.css"
+   "css": "systems/neon/tokens.css",
+   "theme": "systems/neon/theme.css"
   },
   {
    "id": "editorial",
@@ -151,7 +160,8 @@
     "#FAF8F3"
    ],
    "href": "systems/editorial.json",
-   "css": "systems/editorial/tokens.css"
+   "css": "systems/editorial/tokens.css",
+   "theme": "systems/editorial/theme.css"
   },
   {
    "id": "playful",
@@ -166,7 +176,8 @@
     "#FF4FC0"
    ],
    "href": "systems/playful.json",
-   "css": "systems/playful/tokens.css"
+   "css": "systems/playful/tokens.css",
+   "theme": "systems/playful/theme.css"
   },
   {
    "id": "mobile",
@@ -181,7 +192,8 @@
     "#151A1E"
    ],
    "href": "systems/mobile.json",
-   "css": "systems/mobile/tokens.css"
+   "css": "systems/mobile/tokens.css",
+   "theme": "systems/mobile/theme.css"
   },
   {
    "id": "vercel",
@@ -196,7 +208,8 @@
     "#EAEAEA"
    ],
    "href": "systems/vercel.json",
-   "css": "systems/vercel/tokens.css"
+   "css": "systems/vercel/tokens.css",
+   "theme": "systems/vercel/theme.css"
   },
   {
    "id": "gitlab",
@@ -211,7 +224,8 @@
     "#171321"
    ],
    "href": "systems/gitlab.json",
-   "css": "systems/gitlab/tokens.css"
+   "css": "systems/gitlab/tokens.css",
+   "theme": "systems/gitlab/theme.css"
   },
   {
    "id": "airbnb",
@@ -226,7 +240,8 @@
     "#222222"
    ],
    "href": "systems/airbnb.json",
-   "css": "systems/airbnb/tokens.css"
+   "css": "systems/airbnb/tokens.css",
+   "theme": "systems/airbnb/theme.css"
   },
   {
    "id": "slack",
@@ -241,7 +256,8 @@
     "#1A1A1D"
    ],
    "href": "systems/slack.json",
-   "css": "systems/slack/tokens.css"
+   "css": "systems/slack/tokens.css",
+   "theme": "systems/slack/theme.css"
   },
   {
    "id": "monopo",
@@ -256,7 +272,8 @@
     "#A52D25"
    ],
    "href": "systems/monopo.json",
-   "css": "systems/monopo/tokens.css"
+   "css": "systems/monopo/tokens.css",
+   "theme": "systems/monopo/theme.css"
   },
   {
    "id": "bevel",
@@ -271,7 +288,8 @@
     "#222326"
    ],
    "href": "systems/bevel.json",
-   "css": "systems/bevel/tokens.css"
+   "css": "systems/bevel/tokens.css",
+   "theme": "systems/bevel/theme.css"
   },
   {
    "id": "wise",
@@ -286,7 +304,8 @@
     "#0E0F0C"
    ],
    "href": "systems/wise.json",
-   "css": "systems/wise/tokens.css"
+   "css": "systems/wise/tokens.css",
+   "theme": "systems/wise/theme.css"
   }
  ]
 }
