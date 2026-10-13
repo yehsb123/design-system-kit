@@ -33,7 +33,7 @@ button{font:inherit;}
 .top .sp{flex:1;}
 .appnav{display:flex;}
 .appnav a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap;}
-@media(max-width:640px){.appnav a span{display:none;}}
+@media(max-width:640px){.appnav{overflow-x:auto;}.appnav a{font-size:13px;padding:6px 12px;white-space:nowrap;}}
 
 .tbtn{cursor:pointer;}
 .wrap{display:grid;grid-template-columns:340px 1fr;gap:22px;margin:0 auto;padding:22px 24px 80px;}
@@ -74,7 +74,10 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
 .preview{padding:22px;font-family:var(--gf);background:var(--g-canvas);color:var(--g-fg);border:1px solid var(--g-border);}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
 .row+.row{margin-top:14px;}
-.gbtn{cursor:pointer;}
+.gbtn{cursor:pointer;border-radius:var(--gr-btn);border:1px solid transparent;
+  font-family:var(--gf);font-weight:var(--gw);font-size:14px;
+  padding:var(--gpy) var(--gpx);box-shadow:none;}
+.gbtn.pri{background:var(--g-primary);color:var(--g-on-primary);border-color:transparent;}
 .gbtn.sec{background:var(--g-primary-low);color:var(--g-primary-fg);}
 .gbtn.out{background:var(--g-bg);color:var(--g-fg-strong);border-color:var(--g-border-strong);}
 .gbtn.ghost{background:transparent;color:var(--g-fg-lower);}
@@ -306,6 +309,14 @@ function grayRamp(tone){
   const s = tone==='neutral'?3 : 8;
   return STEPS.map((k,i)=>[k, hsl2hex(h, i<5?s:s*.85, LT[i]===null?60:LT[i])]);
 }
+// 바탕색 위에 올릴 글자색을 정한다. 흰 글씨 대비가 3 에 못 미치면 짙은 쪽을 쓴다.
+function onBg(bg, P){
+  const w=cRatio(bg,'#FFFFFF');
+  if(w>=3) return '#FFFFFF';
+  return cRatio(bg,P['950'])>=cRatio(bg,P['900']) ? P['950'] : P['900'];
+}
+function cRatio(a,b){const L1=lum(a),L2=lum(b);
+  return (Math.max(L1,L2)+.05)/(Math.min(L1,L2)+.05);}
 function lum(hex){const c=hex.replace('#','');const n=parseInt(c,16);
   const f=x=>{x/=255;return x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4);};
   return .2126*f(n>>16&255)+.7152*f(n>>8&255)+.0722*f(n&255);}
@@ -335,6 +346,7 @@ function tokens(){
     fg: dark?'#FFFFFF':G['950'], fgStrong: dark?G['50']:G['900'], fgLower: dark?G['400']:G['600'], fgDim: dark?G['600']:G['400'],
     border: dark?G['800']:G['200'], borderStrong: dark?G['600']:G['300'], neutral: dark?G['800']:G['100'], disabled: dark?G['800']:G['100'],
     primary: dark?P['400']:P['500'], primaryLow: dark?P['900']:P['50'], primaryFg: dark?P['300']:P['600'],
+    onPrimary: onBg(dark?P['400']:P['500'], P),
     success: dark?SU['400']:SU['600'], warning: dark?WA['400']:WA['600'], critical: dark?ER['400']:ER['600'],
     tagOk:[dark?SU['900']:SU['50'], dark?SU['300']:SU['700']],
     tagWarn:[dark?WA['900']:WA['50'], dark?WA['300']:WA['700']],
@@ -364,6 +376,7 @@ function applyPreview(){
     '--g-canvas':T.canvas,'--g-bg':T.bg,'--g-fg':T.fg,'--g-fg-strong':T.fgStrong,'--g-fg-lower':T.fgLower,'--g-fg-dim':T.fgDim,
     '--g-border':T.border,'--g-border-strong':T.borderStrong,'--g-neutral':T.neutral,'--g-disabled':T.disabled,
     '--g-primary':T.primary,'--g-primary-low':T.primaryLow,'--g-primary-fg':T.primaryFg,
+    '--g-on-primary':T.onPrimary,
     '--g-success':T.success,'--g-warning':T.warning,'--g-critical':T.critical,
     '--gr-btn':R.btn,'--gr-card':R.card,'--gr-in':R.input,'--gr-tag':R.tag,
     '--gpx':D.px+'px','--gpy':D.py+'px','--gw':S.weight

@@ -31,7 +31,7 @@ button{font:inherit;}
 .top .sp{flex:1;}
 .appnav{display:flex;}
 .appnav a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap;}
-@media(max-width:640px){.appnav a span{display:none;}}
+@media(max-width:640px){.appnav{overflow-x:auto;}.appnav a{font-size:13px;padding:6px 12px;white-space:nowrap;}}
 
 .tbtn{cursor:pointer;}
 .wrap{display:grid;grid-template-columns:360px 1fr;gap:22px;margin:0 auto;padding:22px 24px 60px;}
@@ -592,7 +592,31 @@ try{ const raw=localStorage.getItem('my_system');
   if(raw){ const m=JSON.parse(raw); if(m&&m.p) SYS.unshift(m); }
 }catch(e){}
 $('#selSys').innerHTML=SYS.map((s,i)=>'<option value="'+i+'">'+s.n+'</option>').join('');
-if(SYS[0]&&SYS[0].id==='mine'&&/[?&]sys=mine/.test(location.search)) $('#selSys').value='0';
+function handoff(){
+  let q='';
+  try{ q=window.dskQuery?window.dskQuery():''; }catch(e){}
+  return new URLSearchParams((q||location.search).replace(/^\?/,''));
+}
+(function(){
+  const Q=handoff();
+  const sys=Q.get('sys');
+  if(sys){
+    const i=SYS.findIndex(function(x){return x.id===sys;});
+    if(i>=0) $('#selSys').value=String(i);
+  }
+  // 두 화면의 목록이 달라서 이름으로 맞춘다. 없으면 기본값을 그대로 둔다.
+  const pg=Q.get('page');
+  if(pg){
+    const i=PAGES.findIndex(function(x){return x.n===pg;});
+    if(i>=0) $('#selPage').value=String(i);
+  }
+  const lay=Q.get('layout');
+  if(lay){
+    const o=[].slice.call($('#selLayout').options)
+      .filter(function(x){return x.textContent.indexOf(lay)===0;})[0];
+    if(o) $('#selLayout').value=o.value;
+  }
+})();
 const PAGEINFO={
  beauty:{flow:'감성으로 잡고, 성분·수치로 신뢰, 루틴 세트로 객단가',
    key:'임상 수치와 전성분은 <b>있는 자료만</b>. 없는 효능은 절대 쓰지 말 것 (화장품법)',

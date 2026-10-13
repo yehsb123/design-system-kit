@@ -10,7 +10,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Design System Kit</title>
-<meta name="description" content="디자인 시스템 17종, 레이아웃 22종, 콘텐츠 구조 9종을 보관하고 AI 프롬프트·CLAUDE.md·CSS 토큰·실제 페이지까지 만들어내는 한 파일짜리 도구.">
+<meta name="description" content="디자인 시스템 19종, 레이아웃 22종, 콘텐츠 구조 9종을 보관하고 AI 프롬프트·CLAUDE.md·CSS 토큰·실제 페이지까지 만들어내는 한 파일짜리 도구.">
 <style>
   html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#F6F5F2;}
   html[data-ui="dark"],html[data-ui="dark"] body{background:#141317;}
@@ -372,7 +372,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-canvas);
   border-color:transparent;
 }
-.cgo,.gbtn,.gobtn{
+.cgo,.gobtn{
   border-radius:var(--r-pill);
   box-shadow:none;
   background:var(--ui-fg-strong);
@@ -447,15 +447,10 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 .sectitle{ margin-top:var(--section-gap); }
 .cards,.steps,.recs,.lwrap{ gap:var(--el-gap); }
 
-/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ---------- */
-#detail .demo,#detail .demo *,
-#sview .demo,#sview .demo *{
-  border-radius:revert;
-  font-family:revert;
-  font-size:revert;
-  line-height:revert;
-  letter-spacing:revert;
-}
+/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ----------
+   전에는 revert 로 되돌렸는데, revert 는 작성자 스타일을 통째로 버려서
+   시스템의 .btn 규칙까지 같이 사라졌다. 셸은 .demo 안을 건드리지 않고,
+   글꼴과 색은 #scope 가 토큰으로 내려 준다. */
 
 @media(prefers-reduced-motion:reduce){
   *{ transition-duration:.01ms; animation-duration:.01ms; }
@@ -605,7 +600,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 
 /* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
    화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
-.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+.tbtn.pri,.fstep .n,.st .n{
   background:var(--ui-fg-strong);
   color:var(--ui-canvas);
   border-color:transparent;
@@ -719,7 +714,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 
   <section>
     <div class="head"><h2>디자인 시스템</h2><a class="more" href="library.html">모음집에서 전체 보기</a></div>
-    <p class="sub">시스템마다 폰트, 모서리, 그림자, 아이콘 굵기, 컴포넌트 모양이 다릅니다. 색만 바뀌는 것이 아닙니다. 카드를 누르면 상세로 들어갑니다.</p>
+    <p class="sub">시스템마다 폰트, 모서리, 그림자, 아이콘 굵기, 컴포넌트 모양이 다릅니다. 색만 바뀌지 않습니다. 카드를 누르면 상세로 들어갑니다.</p>
     <div class="sysgrid" id="sysGrid"></div>
   </section>
 
@@ -919,7 +914,7 @@ body{margin:0;-webkit-font-smoothing:antialiased;transition:background .2s,color
 .topbar .spacer{flex:1;}
 .appnav{display:flex;}
 .appnav a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap;}
-@media(max-width:640px){.appnav a span{display:none;}}
+@media(max-width:640px){.appnav{overflow-x:auto;}.appnav a{font-size:13px;padding:6px 12px;white-space:nowrap;}}
 
 .iconbtn{cursor:pointer;display:inline-grid;place-items:center;}
 .wrap{margin:0 auto;padding:34px 30px 90px;}
@@ -1609,7 +1604,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-canvas);
   border-color:transparent;
 }
-.cgo,.gbtn,.gobtn{
+.cgo,.gobtn{
   border-radius:var(--r-pill);
   box-shadow:none;
   background:var(--ui-fg-strong);
@@ -1684,15 +1679,10 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 .sectitle{ margin-top:var(--section-gap); }
 .cards,.steps,.recs,.lwrap{ gap:var(--el-gap); }
 
-/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ---------- */
-#detail .demo,#detail .demo *,
-#sview .demo,#sview .demo *{
-  border-radius:revert;
-  font-family:revert;
-  font-size:revert;
-  line-height:revert;
-  letter-spacing:revert;
-}
+/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ----------
+   전에는 revert 로 되돌렸는데, revert 는 작성자 스타일을 통째로 버려서
+   시스템의 .btn 규칙까지 같이 사라졌다. 셸은 .demo 안을 건드리지 않고,
+   글꼴과 색은 #scope 가 토큰으로 내려 준다. */
 
 @media(prefers-reduced-motion:reduce){
   *{ transition-duration:.01ms; animation-duration:.01ms; }
@@ -1842,7 +1832,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 
 /* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
    화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
-.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+.tbtn.pri,.fstep .n,.st .n{
   background:var(--ui-fg-strong);
   color:var(--ui-canvas);
   border-color:transparent;
@@ -1972,7 +1962,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
         </div>
       </details>
       <div style="margin-top:16px">
-        <a class="filterchip" href="generator.html" style="text-decoration:none;display:inline-block">실제 페이지까지 만들기</a>
+        <a class="filterchip" id="toGen" href="generator.html" style="text-decoration:none;display:inline-block">실제 페이지까지 만들기</a>
       </div>
       <div class="cnext" id="cNext" hidden></div>
     </div>
@@ -4435,7 +4425,15 @@ function renderComposer(){
   psel.innerHTML='<option value="">콘텐츠 없이 레이아웃만</option>'+PAGES.map(function(x,i){return '<option value="'+i+'">'+x.name+'</option>';}).join('');
   lsel.innerHTML=LAYOUTS.map(function(x,i){return '<option value="'+i+'">'+x[0]+'</option>';}).join('');
   ssel.innerHTML=SYSTEMS.map(function(x){return '<option value="'+x.id+'">'+x.name+' · '+x.cat+'</option>';}).join('');
-  const upd=function(){ $('#cOut').textContent=buildOut(); };
+  // 정한 값을 생성기가 이어받게 한다. 여기만 빠져 있어 늘 기본값으로 열렸다.
+  const syncGen=function(){
+    const tg=$('#toGen'); if(!tg) return;
+    const p=cPageObj(), L=LAYOUTS[+$('#cLayout').value];
+    tg.href='generator.html?sys='+encodeURIComponent($('#cSystem').value)
+      +(p?'&page='+encodeURIComponent(p.name):'')
+      +(L?'&layout='+encodeURIComponent(L[0]):'');
+  };
+  const upd=function(){ $('#cOut').textContent=buildOut(); syncGen(); };
   psel.onchange=upd; lsel.onchange=upd; ssel.onchange=upd;
   $('#cTabs').onclick=function(e){ const b=e.target.closest('button'); if(!b) return;
     cFmt=b.dataset.f; $('#cTabs').querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);}); upd(); };
@@ -5630,7 +5628,7 @@ button{font:inherit;}
 .top .sp{flex:1;}
 .appnav{display:flex;}
 .appnav a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap;}
-@media(max-width:640px){.appnav a span{display:none;}}
+@media(max-width:640px){.appnav{overflow-x:auto;}.appnav a{font-size:13px;padding:6px 12px;white-space:nowrap;}}
 
 .tbtn{cursor:pointer;}
 .wrap{display:grid;grid-template-columns:340px 1fr;gap:22px;margin:0 auto;padding:22px 24px 80px;}
@@ -5671,7 +5669,10 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
 .preview{padding:22px;font-family:var(--gf);background:var(--g-canvas);color:var(--g-fg);border:1px solid var(--g-border);}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
 .row+.row{margin-top:14px;}
-.gbtn{cursor:pointer;}
+.gbtn{cursor:pointer;border-radius:var(--gr-btn);border:1px solid transparent;
+  font-family:var(--gf);font-weight:var(--gw);font-size:14px;
+  padding:var(--gpy) var(--gpx);box-shadow:none;}
+.gbtn.pri{background:var(--g-primary);color:var(--g-on-primary);border-color:transparent;}
 .gbtn.sec{background:var(--g-primary-low);color:var(--g-primary-fg);}
 .gbtn.out{background:var(--g-bg);color:var(--g-fg-strong);border-color:var(--g-border-strong);}
 .gbtn.ghost{background:transparent;color:var(--g-fg-lower);}
@@ -5940,7 +5941,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-canvas);
   border-color:transparent;
 }
-.cgo,.gbtn,.gobtn{
+.cgo,.gobtn{
   border-radius:var(--r-pill);
   box-shadow:none;
   background:var(--ui-fg-strong);
@@ -6015,15 +6016,10 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 .sectitle{ margin-top:var(--section-gap); }
 .cards,.steps,.recs,.lwrap{ gap:var(--el-gap); }
 
-/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ---------- */
-#detail .demo,#detail .demo *,
-#sview .demo,#sview .demo *{
-  border-radius:revert;
-  font-family:revert;
-  font-size:revert;
-  line-height:revert;
-  letter-spacing:revert;
-}
+/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ----------
+   전에는 revert 로 되돌렸는데, revert 는 작성자 스타일을 통째로 버려서
+   시스템의 .btn 규칙까지 같이 사라졌다. 셸은 .demo 안을 건드리지 않고,
+   글꼴과 색은 #scope 가 토큰으로 내려 준다. */
 
 @media(prefers-reduced-motion:reduce){
   *{ transition-duration:.01ms; animation-duration:.01ms; }
@@ -6173,7 +6169,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 
 /* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
    화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
-.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+.tbtn.pri,.fstep .n,.st .n{
   background:var(--ui-fg-strong);
   color:var(--ui-canvas);
   border-color:transparent;
@@ -6458,6 +6454,14 @@ function grayRamp(tone){
   const s = tone==='neutral'?3 : 8;
   return STEPS.map((k,i)=>[k, hsl2hex(h, i<5?s:s*.85, LT[i]===null?60:LT[i])]);
 }
+// 바탕색 위에 올릴 글자색을 정한다. 흰 글씨 대비가 3 에 못 미치면 짙은 쪽을 쓴다.
+function onBg(bg, P){
+  const w=cRatio(bg,'#FFFFFF');
+  if(w>=3) return '#FFFFFF';
+  return cRatio(bg,P['950'])>=cRatio(bg,P['900']) ? P['950'] : P['900'];
+}
+function cRatio(a,b){const L1=lum(a),L2=lum(b);
+  return (Math.max(L1,L2)+.05)/(Math.min(L1,L2)+.05);}
 function lum(hex){const c=hex.replace('#','');const n=parseInt(c,16);
   const f=x=>{x/=255;return x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4);};
   return .2126*f(n>>16&255)+.7152*f(n>>8&255)+.0722*f(n&255);}
@@ -6487,6 +6491,7 @@ function tokens(){
     fg: dark?'#FFFFFF':G['950'], fgStrong: dark?G['50']:G['900'], fgLower: dark?G['400']:G['600'], fgDim: dark?G['600']:G['400'],
     border: dark?G['800']:G['200'], borderStrong: dark?G['600']:G['300'], neutral: dark?G['800']:G['100'], disabled: dark?G['800']:G['100'],
     primary: dark?P['400']:P['500'], primaryLow: dark?P['900']:P['50'], primaryFg: dark?P['300']:P['600'],
+    onPrimary: onBg(dark?P['400']:P['500'], P),
     success: dark?SU['400']:SU['600'], warning: dark?WA['400']:WA['600'], critical: dark?ER['400']:ER['600'],
     tagOk:[dark?SU['900']:SU['50'], dark?SU['300']:SU['700']],
     tagWarn:[dark?WA['900']:WA['50'], dark?WA['300']:WA['700']],
@@ -6516,6 +6521,7 @@ function applyPreview(){
     '--g-canvas':T.canvas,'--g-bg':T.bg,'--g-fg':T.fg,'--g-fg-strong':T.fgStrong,'--g-fg-lower':T.fgLower,'--g-fg-dim':T.fgDim,
     '--g-border':T.border,'--g-border-strong':T.borderStrong,'--g-neutral':T.neutral,'--g-disabled':T.disabled,
     '--g-primary':T.primary,'--g-primary-low':T.primaryLow,'--g-primary-fg':T.primaryFg,
+    '--g-on-primary':T.onPrimary,
     '--g-success':T.success,'--g-warning':T.warning,'--g-critical':T.critical,
     '--gr-btn':R.btn,'--gr-card':R.card,'--gr-in':R.input,'--gr-tag':R.tag,
     '--gpx':D.px+'px','--gpy':D.py+'px','--gw':S.weight
@@ -6671,7 +6677,7 @@ button{font:inherit;}
 .top .sp{flex:1;}
 .appnav{display:flex;}
 .appnav a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap;}
-@media(max-width:640px){.appnav a span{display:none;}}
+@media(max-width:640px){.appnav{overflow-x:auto;}.appnav a{font-size:13px;padding:6px 12px;white-space:nowrap;}}
 
 .tbtn{cursor:pointer;}
 .wrap{display:grid;grid-template-columns:360px 1fr;gap:22px;margin:0 auto;padding:22px 24px 60px;}
@@ -6977,7 +6983,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-canvas);
   border-color:transparent;
 }
-.cgo,.gbtn,.gobtn{
+.cgo,.gobtn{
   border-radius:var(--r-pill);
   box-shadow:none;
   background:var(--ui-fg-strong);
@@ -7052,15 +7058,10 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 .sectitle{ margin-top:var(--section-gap); }
 .cards,.steps,.recs,.lwrap{ gap:var(--el-gap); }
 
-/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ---------- */
-#detail .demo,#detail .demo *,
-#sview .demo,#sview .demo *{
-  border-radius:revert;
-  font-family:revert;
-  font-size:revert;
-  line-height:revert;
-  letter-spacing:revert;
-}
+/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ----------
+   전에는 revert 로 되돌렸는데, revert 는 작성자 스타일을 통째로 버려서
+   시스템의 .btn 규칙까지 같이 사라졌다. 셸은 .demo 안을 건드리지 않고,
+   글꼴과 색은 #scope 가 토큰으로 내려 준다. */
 
 @media(prefers-reduced-motion:reduce){
   *{ transition-duration:.01ms; animation-duration:.01ms; }
@@ -7210,7 +7211,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 
 /* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
    화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
-.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+.tbtn.pri,.fstep .n,.st .n{
   background:var(--ui-fg-strong);
   color:var(--ui-canvas);
   border-color:transparent;
@@ -7789,7 +7790,31 @@ try{ const raw=localStorage.getItem('my_system');
   if(raw){ const m=JSON.parse(raw); if(m&&m.p) SYS.unshift(m); }
 }catch(e){}
 $('#selSys').innerHTML=SYS.map((s,i)=>'<option value="'+i+'">'+s.n+'</option>').join('');
-if(SYS[0]&&SYS[0].id==='mine'&&/[?&]sys=mine/.test(dskQuery())) $('#selSys').value='0';
+function handoff(){
+  let q='';
+  try{ q=window.dskQuery?window.dskQuery():''; }catch(e){}
+  return new URLSearchParams((q||location.search).replace(/^\?/,''));
+}
+(function(){
+  const Q=handoff();
+  const sys=Q.get('sys');
+  if(sys){
+    const i=SYS.findIndex(function(x){return x.id===sys;});
+    if(i>=0) $('#selSys').value=String(i);
+  }
+  // 두 화면의 목록이 달라서 이름으로 맞춘다. 없으면 기본값을 그대로 둔다.
+  const pg=Q.get('page');
+  if(pg){
+    const i=PAGES.findIndex(function(x){return x.n===pg;});
+    if(i>=0) $('#selPage').value=String(i);
+  }
+  const lay=Q.get('layout');
+  if(lay){
+    const o=[].slice.call($('#selLayout').options)
+      .filter(function(x){return x.textContent.indexOf(lay)===0;})[0];
+    if(o) $('#selLayout').value=o.value;
+  }
+})();
 const PAGEINFO={
  beauty:{flow:'감성으로 잡고, 성분·수치로 신뢰, 루틴 세트로 객단가',
    key:'임상 수치와 전성분은 <b>있는 자료만</b>. 없는 효능은 절대 쓰지 말 것 (화장품법)',
@@ -8194,7 +8219,7 @@ button{font:inherit;}
 .top .sp{flex:1;}
 .appnav{display:flex;}
 .appnav a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap;}
-@media(max-width:640px){.appnav a span{display:none;}}
+@media(max-width:640px){.appnav{overflow-x:auto;}.appnav a{font-size:13px;padding:6px 12px;white-space:nowrap;}}
 .tbtn{cursor:pointer;}
 
 .wrap{margin:0 auto;padding:30px 24px 90px;}
@@ -8484,7 +8509,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-canvas);
   border-color:transparent;
 }
-.cgo,.gbtn,.gobtn{
+.cgo,.gobtn{
   border-radius:var(--r-pill);
   box-shadow:none;
   background:var(--ui-fg-strong);
@@ -8559,15 +8584,10 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 .sectitle{ margin-top:var(--section-gap); }
 .cards,.steps,.recs,.lwrap{ gap:var(--el-gap); }
 
-/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ---------- */
-#detail .demo,#detail .demo *,
-#sview .demo,#sview .demo *{
-  border-radius:revert;
-  font-family:revert;
-  font-size:revert;
-  line-height:revert;
-  letter-spacing:revert;
-}
+/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ----------
+   전에는 revert 로 되돌렸는데, revert 는 작성자 스타일을 통째로 버려서
+   시스템의 .btn 규칙까지 같이 사라졌다. 셸은 .demo 안을 건드리지 않고,
+   글꼴과 색은 #scope 가 토큰으로 내려 준다. */
 
 @media(prefers-reduced-motion:reduce){
   *{ transition-duration:.01ms; animation-duration:.01ms; }
@@ -8717,7 +8737,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 
 /* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
    화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
-.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+.tbtn.pri,.fstep .n,.st .n{
   background:var(--ui-fg-strong);
   color:var(--ui-canvas);
   border-color:transparent;

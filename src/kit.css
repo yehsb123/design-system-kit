@@ -236,7 +236,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
   color:var(--ui-canvas);
   border-color:transparent;
 }
-.cgo,.gbtn,.gobtn{
+.cgo,.gobtn{
   border-radius:var(--r-pill);
   box-shadow:none;
   background:var(--ui-fg-strong);
@@ -311,15 +311,10 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 .sectitle{ margin-top:var(--section-gap); }
 .cards,.steps,.recs,.lwrap{ gap:var(--el-gap); }
 
-/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ---------- */
-#detail .demo,#detail .demo *,
-#sview .demo,#sview .demo *{
-  border-radius:revert;
-  font-family:revert;
-  font-size:revert;
-  line-height:revert;
-  letter-spacing:revert;
-}
+/* ---------- 미리보기 영역은 각 시스템 토큰이 지배한다 ----------
+   전에는 revert 로 되돌렸는데, revert 는 작성자 스타일을 통째로 버려서
+   시스템의 .btn 규칙까지 같이 사라졌다. 셸은 .demo 안을 건드리지 않고,
+   글꼴과 색은 #scope 가 토큰으로 내려 준다. */
 
 @media(prefers-reduced-motion:reduce){
   *{ transition-duration:.01ms; animation-duration:.01ms; }
@@ -469,7 +464,7 @@ h1 b,h1 strong,h2 b,h2 strong{ font-weight:400; }
 
 /* ---- 강조 버튼. 바탕과 글자가 같은 색이 되지 않게 짝으로 둔다 ----
    화면 CSS 는 color:#fff 로 박아 둬서 다크 모드에서 흰 바탕에 흰 글씨가 됐다. */
-.tbtn.pri,.gbtn.pri,.fstep .n,.st .n{
+.tbtn.pri,.fstep .n,.st .n{
   background:var(--ui-fg-strong);
   color:var(--ui-canvas);
   border-color:transparent;

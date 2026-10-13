@@ -32,7 +32,7 @@ body{margin:0;-webkit-font-smoothing:antialiased;transition:background .2s,color
 .topbar .spacer{flex:1;}
 .appnav{display:flex;}
 .appnav a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;white-space:nowrap;}
-@media(max-width:640px){.appnav a span{display:none;}}
+@media(max-width:640px){.appnav{overflow-x:auto;}.appnav a{font-size:13px;padding:6px 12px;white-space:nowrap;}}
 
 .iconbtn{cursor:pointer;display:inline-grid;place-items:center;}
 .wrap{margin:0 auto;padding:34px 30px 90px;}
@@ -530,7 +530,7 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
         </div>
       </details>
       <div style="margin-top:16px">
-        <a class="filterchip" href="generator.html" style="text-decoration:none;display:inline-block">실제 페이지까지 만들기</a>
+        <a class="filterchip" id="toGen" href="generator.html" style="text-decoration:none;display:inline-block">실제 페이지까지 만들기</a>
       </div>
       <div class="cnext" id="cNext" hidden></div>
     </div>
@@ -2993,7 +2993,15 @@ function renderComposer(){
   psel.innerHTML='<option value="">콘텐츠 없이 레이아웃만</option>'+PAGES.map(function(x,i){return '<option value="'+i+'">'+x.name+'</option>';}).join('');
   lsel.innerHTML=LAYOUTS.map(function(x,i){return '<option value="'+i+'">'+x[0]+'</option>';}).join('');
   ssel.innerHTML=SYSTEMS.map(function(x){return '<option value="'+x.id+'">'+x.name+' · '+x.cat+'</option>';}).join('');
-  const upd=function(){ $('#cOut').textContent=buildOut(); };
+  // 정한 값을 생성기가 이어받게 한다. 여기만 빠져 있어 늘 기본값으로 열렸다.
+  const syncGen=function(){
+    const tg=$('#toGen'); if(!tg) return;
+    const p=cPageObj(), L=LAYOUTS[+$('#cLayout').value];
+    tg.href='generator.html?sys='+encodeURIComponent($('#cSystem').value)
+      +(p?'&page='+encodeURIComponent(p.name):'')
+      +(L?'&layout='+encodeURIComponent(L[0]):'');
+  };
+  const upd=function(){ $('#cOut').textContent=buildOut(); syncGen(); };
   psel.onchange=upd; lsel.onchange=upd; ssel.onchange=upd;
   $('#cTabs').onclick=function(e){ const b=e.target.closest('button'); if(!b) return;
     cFmt=b.dataset.f; $('#cTabs').querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);}); upd(); };
