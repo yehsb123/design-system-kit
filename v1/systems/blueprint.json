@@ -1,0 +1,754 @@
+{
+ "id": "blueprint",
+ "name": "Palantir Blueprint",
+ "category": "데이터",
+ "font": "Inter · -apple-system",
+ "fontStack": "\"Inter\",-apple-system,BlinkMacSystemFont,system-ui,sans-serif",
+ "framework": "React · TypeScript",
+ "description": "팔란티어 블루프린트 공식 토큰. 모서리를 2px로 거의 깎지 않고 간격을 좁혀, 한 화면에 표와 그래프를 최대한 많이 올리는 분석 도구용 체계입니다.",
+ "cover": [
+  "#2D72D2",
+  "#238551",
+  "#C87619",
+  "#CD4246"
+ ],
+ "hasTags": false,
+ "hasChart": true,
+ "radius": {
+  "xs": "2px",
+  "sm": "2px",
+  "md": "4px",
+  "lg": "6px"
+ },
+ "ui": {
+  "btnR": "2px",
+  "btnW": "400",
+  "btnSh": "0 1px 1px rgba(17,20,24,.2)",
+  "ctlR": "2px",
+  "cardR": "2px",
+  "padx": "10px",
+  "inR": "2px"
+ },
+ "iconStyle": {
+  "sw": 2,
+  "cap": "butt",
+  "join": "miter"
+ },
+ "tagRadius": "2px",
+ "signature": "",
+ "ramps": {
+  "primary": [
+   [
+    "50",
+    "#EDF4FF"
+   ],
+   [
+    "100",
+    "#B1D2FF"
+   ],
+   [
+    "200",
+    "#7EB2FC"
+   ],
+   [
+    "300",
+    "#5899F3"
+   ],
+   [
+    "400",
+    "#4084E4"
+   ],
+   [
+    "500",
+    "#2D72D2"
+   ],
+   [
+    "600",
+    "#2665BE"
+   ],
+   [
+    "700",
+    "#1F59AA"
+   ],
+   [
+    "800",
+    "#1A4E96"
+   ],
+   [
+    "900",
+    "#12396F"
+   ],
+   [
+    "950",
+    "#0A1F3D"
+   ]
+  ],
+  "gray": [
+   [
+    "50",
+    "#F6F7F9"
+   ],
+   [
+    "100",
+    "#E1E5E9"
+   ],
+   [
+    "200",
+    "#C8CED5"
+   ],
+   [
+    "300",
+    "#8994A3"
+   ],
+   [
+    "400",
+    "#4C5664"
+   ],
+   [
+    "500",
+    "#2F343C"
+   ],
+   [
+    "600",
+    "#2B3038"
+   ],
+   [
+    "700",
+    "#272C33"
+   ],
+   [
+    "800",
+    "#23282F"
+   ],
+   [
+    "900",
+    "#20252B"
+   ],
+   [
+    "950",
+    "#1C2127"
+   ]
+  ],
+  "success": [
+   [
+    "50",
+    "#E9F7F0"
+   ],
+   [
+    "100",
+    "#A2DCBD"
+   ],
+   [
+    "200",
+    "#65C291"
+   ],
+   [
+    "300",
+    "#3FAC71"
+   ],
+   [
+    "400",
+    "#2C985E"
+   ],
+   [
+    "500",
+    "#238551"
+   ],
+   [
+    "600",
+    "#1F7748"
+   ],
+   [
+    "700",
+    "#1B6A40"
+   ],
+   [
+    "800",
+    "#175E38"
+   ],
+   [
+    "900",
+    "#114529"
+   ],
+   [
+    "950",
+    "#092416"
+   ]
+  ],
+  "warning": [
+   [
+    "50",
+    "#FEF2E3"
+   ],
+   [
+    "100",
+    "#FCCC94"
+   ],
+   [
+    "200",
+    "#F8AE59"
+   ],
+   [
+    "300",
+    "#EF9F43"
+   ],
+   [
+    "400",
+    "#DE8C2E"
+   ],
+   [
+    "500",
+    "#C87619"
+   ],
+   [
+    "600",
+    "#A86314"
+   ],
+   [
+    "700",
+    "#8D530F"
+   ],
+   [
+    "800",
+    "#7D480E"
+   ],
+   [
+    "900",
+    "#5A340A"
+   ],
+   [
+    "950",
+    "#2F1B05"
+   ]
+  ],
+  "error": [
+   [
+    "50",
+    "#FEF0F1"
+   ],
+   [
+    "100",
+    "#FCBCBE"
+   ],
+   [
+    "200",
+    "#F69093"
+   ],
+   [
+    "300",
+    "#EB7377"
+   ],
+   [
+    "400",
+    "#DD5A5E"
+   ],
+   [
+    "500",
+    "#CD4246"
+   ],
+   [
+    "600",
+    "#B9373B"
+   ],
+   [
+    "700",
+    "#A62E32"
+   ],
+   [
+    "800",
+    "#942A2D"
+   ],
+   [
+    "900",
+    "#6D1F22"
+   ],
+   [
+    "950",
+    "#3C1113"
+   ]
+  ],
+  "info": [
+   [
+    "50",
+    "#E8F6FC"
+   ],
+   [
+    "100",
+    "#9BD6F4"
+   ],
+   [
+    "200",
+    "#60BCEA"
+   ],
+   [
+    "300",
+    "#47ABDE"
+   ],
+   [
+    "400",
+    "#2E96CA"
+   ],
+   [
+    "500",
+    "#147EB3"
+   ],
+   [
+    "600",
+    "#1171A0"
+   ],
+   [
+    "700",
+    "#0E638E"
+   ],
+   [
+    "800",
+    "#0D567A"
+   ],
+   [
+    "900",
+    "#093E59"
+   ],
+   [
+    "950",
+    "#052231"
+   ]
+  ]
+ },
+ "semantic": {
+  "light": {
+   "--bg-primary": "#2D72D2",
+   "--bg-primary-low": "#EDF4FF",
+   "--fg-primary": "#2665BE",
+   "--fg-primary-low": "#EDF4FF",
+   "--fg-point": "#2D72D2",
+   "--border-primary": "#2D72D2",
+   "--bg": "#FFFFFF",
+   "--bg-inset": "#FFFFFF",
+   "--bg-inset-neutral": "#E1E5E9",
+   "--bg-neutral": "#E1E5E9",
+   "--bg-neutral-low": "#F6F7F9",
+   "--bg-neutral-lower": "#F6F7F9",
+   "--bg-disabled": "#E1E5E9",
+   "--bg-contrast": "#20252B",
+   "--bg-success": "#238551",
+   "--bg-success-low": "#E9F7F0",
+   "--bg-warning": "#C87619",
+   "--bg-warning-low": "#FEF2E3",
+   "--bg-critical": "#CD4246",
+   "--bg-critical-low": "#FEF0F1",
+   "--bg-info": "#1171A0",
+   "--bg-info-low": "#E8F6FC",
+   "--fg": "#20252B",
+   "--fg-strong": "#20252B",
+   "--fg-lower": "#2B3038",
+   "--fg-disabled": "#4C5664",
+   "--fg-contrast": "#FFFFFF",
+   "--fg-on-primary": "#FFFFFF",
+   "--fg-success": "#1B6A40",
+   "--fg-warning": "#7D480E",
+   "--fg-error": "#A62E32",
+   "--border": "#C8CED5",
+   "--border-low": "#E1E5E9",
+   "--border-strong": "#8994A3",
+   "--border-disabled": "#C8CED5",
+   "--shadow-1": "0 0 8px rgba(0,0,0,.10)",
+   "--shadow-2": "0 4px 8px rgba(0,0,0,.10)",
+   "--shadow-3": "0 6px 16px rgba(0,0,0,.06)",
+   "--shadow-4": "0 6px 24px rgba(0,0,0,.08)",
+   "--shadow-5": "0 8px 24px rgba(0,0,0,.12)",
+   "--shadow-6": "0 16px 40px rgba(0,0,0,.16)",
+   "--panel": "#FFFFFF",
+   "--canvas": "#F6F7F9"
+  },
+  "dark": {
+   "--bg-primary": "#4084E4",
+   "--bg-primary-low": "#12396F",
+   "--fg-primary": "#5899F3",
+   "--fg-primary-low": "#12396F",
+   "--fg-point": "#2D72D2",
+   "--border-primary": "#4084E4",
+   "--bg": "#20252B",
+   "--bg-inset": "#20252B",
+   "--bg-inset-neutral": "#23282F",
+   "--bg-neutral": "#23282F",
+   "--bg-neutral-low": "#20252B",
+   "--bg-neutral-lower": "#1C2127",
+   "--bg-disabled": "#23282F",
+   "--bg-contrast": "#FFFFFF",
+   "--bg-success": "#238551",
+   "--bg-success-low": "#114529",
+   "--bg-warning": "#C87619",
+   "--bg-warning-low": "#5A340A",
+   "--bg-critical": "#CD4246",
+   "--bg-critical-low": "#6D1F22",
+   "--bg-info": "#2E96CA",
+   "--bg-info-low": "#093E59",
+   "--fg": "#FFFFFF",
+   "--fg-strong": "#F6F7F9",
+   "--fg-lower": "#4C5664",
+   "--fg-disabled": "#2B3038",
+   "--fg-contrast": "#20252B",
+   "--fg-on-primary": "#FFFFFF",
+   "--fg-success": "#2C985E",
+   "--fg-warning": "#EF9F43",
+   "--fg-error": "#EB7377",
+   "--border": "#23282F",
+   "--border-low": "#20252B",
+   "--border-strong": "#2B3038",
+   "--border-disabled": "#23282F",
+   "--shadow-1": "0 0 8px rgba(0,0,0,.5)",
+   "--shadow-2": "0 4px 8px rgba(0,0,0,.5)",
+   "--shadow-3": "0 6px 16px rgba(0,0,0,.4)",
+   "--shadow-4": "0 6px 24px rgba(0,0,0,.5)",
+   "--shadow-5": "0 8px 24px rgba(0,0,0,.5)",
+   "--shadow-6": "0 16px 40px rgba(0,0,0,.6)",
+   "--panel": "#20252B",
+   "--canvas": "#1C2127"
+  }
+ },
+ "tokens": {
+  "light": {
+   "--primary-50": "#EDF4FF",
+   "--primary-100": "#B1D2FF",
+   "--primary-200": "#7EB2FC",
+   "--primary-300": "#5899F3",
+   "--primary-400": "#4084E4",
+   "--primary-500": "#2D72D2",
+   "--primary-600": "#2665BE",
+   "--primary-700": "#1F59AA",
+   "--primary-800": "#1A4E96",
+   "--primary-900": "#12396F",
+   "--primary-950": "#0A1F3D",
+   "--gray-50": "#F6F7F9",
+   "--gray-100": "#E1E5E9",
+   "--gray-200": "#C8CED5",
+   "--gray-300": "#8994A3",
+   "--gray-400": "#4C5664",
+   "--gray-500": "#2F343C",
+   "--gray-600": "#2B3038",
+   "--gray-700": "#272C33",
+   "--gray-800": "#23282F",
+   "--gray-900": "#20252B",
+   "--gray-950": "#1C2127",
+   "--success-50": "#E9F7F0",
+   "--success-100": "#A2DCBD",
+   "--success-200": "#65C291",
+   "--success-300": "#3FAC71",
+   "--success-400": "#2C985E",
+   "--success-500": "#238551",
+   "--success-600": "#1F7748",
+   "--success-700": "#1B6A40",
+   "--success-800": "#175E38",
+   "--success-900": "#114529",
+   "--success-950": "#092416",
+   "--warning-50": "#FEF2E3",
+   "--warning-100": "#FCCC94",
+   "--warning-200": "#F8AE59",
+   "--warning-300": "#EF9F43",
+   "--warning-400": "#DE8C2E",
+   "--warning-500": "#C87619",
+   "--warning-600": "#A86314",
+   "--warning-700": "#8D530F",
+   "--warning-800": "#7D480E",
+   "--warning-900": "#5A340A",
+   "--warning-950": "#2F1B05",
+   "--error-50": "#FEF0F1",
+   "--error-100": "#FCBCBE",
+   "--error-200": "#F69093",
+   "--error-300": "#EB7377",
+   "--error-400": "#DD5A5E",
+   "--error-500": "#CD4246",
+   "--error-600": "#B9373B",
+   "--error-700": "#A62E32",
+   "--error-800": "#942A2D",
+   "--error-900": "#6D1F22",
+   "--error-950": "#3C1113",
+   "--info-50": "#E8F6FC",
+   "--info-100": "#9BD6F4",
+   "--info-200": "#60BCEA",
+   "--info-300": "#47ABDE",
+   "--info-400": "#2E96CA",
+   "--info-500": "#147EB3",
+   "--info-600": "#1171A0",
+   "--info-700": "#0E638E",
+   "--info-800": "#0D567A",
+   "--info-900": "#093E59",
+   "--info-950": "#052231",
+   "--bg-primary": "#2D72D2",
+   "--bg-primary-low": "#EDF4FF",
+   "--fg-primary": "#2665BE",
+   "--fg-primary-low": "#EDF4FF",
+   "--fg-point": "#2D72D2",
+   "--border-primary": "#2D72D2",
+   "--bg": "#FFFFFF",
+   "--bg-inset": "#FFFFFF",
+   "--bg-inset-neutral": "#E1E5E9",
+   "--bg-neutral": "#E1E5E9",
+   "--bg-neutral-low": "#F6F7F9",
+   "--bg-neutral-lower": "#F6F7F9",
+   "--bg-disabled": "#E1E5E9",
+   "--bg-contrast": "#20252B",
+   "--bg-success": "#238551",
+   "--bg-success-low": "#E9F7F0",
+   "--bg-warning": "#C87619",
+   "--bg-warning-low": "#FEF2E3",
+   "--bg-critical": "#CD4246",
+   "--bg-critical-low": "#FEF0F1",
+   "--bg-info": "#1171A0",
+   "--bg-info-low": "#E8F6FC",
+   "--fg": "#20252B",
+   "--fg-strong": "#20252B",
+   "--fg-lower": "#2B3038",
+   "--fg-disabled": "#4C5664",
+   "--fg-contrast": "#FFFFFF",
+   "--fg-on-primary": "#FFFFFF",
+   "--fg-success": "#1B6A40",
+   "--fg-warning": "#7D480E",
+   "--fg-error": "#A62E32",
+   "--border": "#C8CED5",
+   "--border-low": "#E1E5E9",
+   "--border-strong": "#8994A3",
+   "--border-disabled": "#C8CED5",
+   "--shadow-1": "0 0 8px rgba(0,0,0,.10)",
+   "--shadow-2": "0 4px 8px rgba(0,0,0,.10)",
+   "--shadow-3": "0 6px 16px rgba(0,0,0,.06)",
+   "--shadow-4": "0 6px 24px rgba(0,0,0,.08)",
+   "--shadow-5": "0 8px 24px rgba(0,0,0,.12)",
+   "--shadow-6": "0 16px 40px rgba(0,0,0,.16)",
+   "--panel": "#FFFFFF",
+   "--canvas": "#F6F7F9",
+   "--tag-bg-success": "#E5FFF0",
+   "--tag-fg-success": "#007A33",
+   "--tag-bg-warning": "#FFF9E5",
+   "--tag-fg-warning": "#A65F00",
+   "--tag-bg-error": "#FFEFEF",
+   "--tag-fg-error": "#C20E1F",
+   "--tag-bg-info": "#E5F0FF",
+   "--tag-fg-info": "#1E40AF",
+   "--tag-bg-neutral": "#F1F1F1",
+   "--tag-fg-neutral": "#4B4C52",
+   "--tag-bg-indigo": "#EEF0FE",
+   "--tag-fg-indigo": "#4F46E5",
+   "--tag-bg-ocean": "#E0F4F7",
+   "--tag-fg-ocean": "#0E7490",
+   "--tag-bg-teal": "#DCFAF5",
+   "--tag-fg-teal": "#0D9488",
+   "--tag-bg-emerald": "#DDF7EA",
+   "--tag-fg-emerald": "#047857",
+   "--tag-bg-lime": "#ECFCCB",
+   "--tag-fg-lime": "#4D7C0F",
+   "--tag-bg-rose": "#FCE7F0",
+   "--tag-fg-rose": "#BE185D",
+   "--tag-bg-magenta": "#F5E0F7",
+   "--tag-fg-magenta": "#A21CAF",
+   "--tag-bg-violet": "#EDE3FE",
+   "--tag-fg-violet": "#6D28D9",
+   "--tag-bg-slate": "#E2E8F0",
+   "--tag-fg-slate": "#475569",
+   "--tag-bg-bronze": "#FBE9D0",
+   "--tag-fg-bronze": "#92400E",
+   "--graph-chart-1": "#4178FF",
+   "--graph-chart-2": "#00CCC2",
+   "--graph-chart-3": "#7BAAF7",
+   "--graph-chart-4": "#8FCE96",
+   "--graph-chart-5": "#F2968F",
+   "--graph-chart-6": "#A78BFA",
+   "--graph-chart-7": "#FDBA74",
+   "--graph-chart-8": "#F472B6",
+   "--radius-xs": "2px",
+   "--radius-sm": "2px",
+   "--radius-md": "4px",
+   "--radius-lg": "6px",
+   "--space-1": "4px",
+   "--space-2": "8px",
+   "--space-3": "12px",
+   "--space-4": "16px",
+   "--space-5": "20px",
+   "--space-6": "24px",
+   "--space-8": "32px",
+   "--space-10": "40px",
+   "--space-12": "48px",
+   "--font-family": "\"Inter\",-apple-system,BlinkMacSystemFont,system-ui,sans-serif",
+   "--btn-radius": "2px",
+   "--btn-weight": "400",
+   "--btn-shadow": "0 1px 1px rgba(17,20,24,.2)",
+   "--ctl-radius": "2px",
+   "--card-radius": "2px",
+   "--btn-padx": "10px",
+   "--in-radius": "2px",
+   "--tag-radius": "2px"
+  },
+  "dark": {
+   "--primary-50": "#EDF4FF",
+   "--primary-100": "#B1D2FF",
+   "--primary-200": "#7EB2FC",
+   "--primary-300": "#5899F3",
+   "--primary-400": "#4084E4",
+   "--primary-500": "#2D72D2",
+   "--primary-600": "#2665BE",
+   "--primary-700": "#1F59AA",
+   "--primary-800": "#1A4E96",
+   "--primary-900": "#12396F",
+   "--primary-950": "#0A1F3D",
+   "--gray-50": "#F6F7F9",
+   "--gray-100": "#E1E5E9",
+   "--gray-200": "#C8CED5",
+   "--gray-300": "#8994A3",
+   "--gray-400": "#4C5664",
+   "--gray-500": "#2F343C",
+   "--gray-600": "#2B3038",
+   "--gray-700": "#272C33",
+   "--gray-800": "#23282F",
+   "--gray-900": "#20252B",
+   "--gray-950": "#1C2127",
+   "--success-50": "#E9F7F0",
+   "--success-100": "#A2DCBD",
+   "--success-200": "#65C291",
+   "--success-300": "#3FAC71",
+   "--success-400": "#2C985E",
+   "--success-500": "#238551",
+   "--success-600": "#1F7748",
+   "--success-700": "#1B6A40",
+   "--success-800": "#175E38",
+   "--success-900": "#114529",
+   "--success-950": "#092416",
+   "--warning-50": "#FEF2E3",
+   "--warning-100": "#FCCC94",
+   "--warning-200": "#F8AE59",
+   "--warning-300": "#EF9F43",
+   "--warning-400": "#DE8C2E",
+   "--warning-500": "#C87619",
+   "--warning-600": "#A86314",
+   "--warning-700": "#8D530F",
+   "--warning-800": "#7D480E",
+   "--warning-900": "#5A340A",
+   "--warning-950": "#2F1B05",
+   "--error-50": "#FEF0F1",
+   "--error-100": "#FCBCBE",
+   "--error-200": "#F69093",
+   "--error-300": "#EB7377",
+   "--error-400": "#DD5A5E",
+   "--error-500": "#CD4246",
+   "--error-600": "#B9373B",
+   "--error-700": "#A62E32",
+   "--error-800": "#942A2D",
+   "--error-900": "#6D1F22",
+   "--error-950": "#3C1113",
+   "--info-50": "#E8F6FC",
+   "--info-100": "#9BD6F4",
+   "--info-200": "#60BCEA",
+   "--info-300": "#47ABDE",
+   "--info-400": "#2E96CA",
+   "--info-500": "#147EB3",
+   "--info-600": "#1171A0",
+   "--info-700": "#0E638E",
+   "--info-800": "#0D567A",
+   "--info-900": "#093E59",
+   "--info-950": "#052231",
+   "--bg-primary": "#4084E4",
+   "--bg-primary-low": "#12396F",
+   "--fg-primary": "#5899F3",
+   "--fg-primary-low": "#12396F",
+   "--fg-point": "#2D72D2",
+   "--border-primary": "#4084E4",
+   "--bg": "#20252B",
+   "--bg-inset": "#20252B",
+   "--bg-inset-neutral": "#23282F",
+   "--bg-neutral": "#23282F",
+   "--bg-neutral-low": "#20252B",
+   "--bg-neutral-lower": "#1C2127",
+   "--bg-disabled": "#23282F",
+   "--bg-contrast": "#FFFFFF",
+   "--bg-success": "#238551",
+   "--bg-success-low": "#114529",
+   "--bg-warning": "#C87619",
+   "--bg-warning-low": "#5A340A",
+   "--bg-critical": "#CD4246",
+   "--bg-critical-low": "#6D1F22",
+   "--bg-info": "#2E96CA",
+   "--bg-info-low": "#093E59",
+   "--fg": "#FFFFFF",
+   "--fg-strong": "#F6F7F9",
+   "--fg-lower": "#4C5664",
+   "--fg-disabled": "#2B3038",
+   "--fg-contrast": "#20252B",
+   "--fg-on-primary": "#FFFFFF",
+   "--fg-success": "#2C985E",
+   "--fg-warning": "#EF9F43",
+   "--fg-error": "#EB7377",
+   "--border": "#23282F",
+   "--border-low": "#20252B",
+   "--border-strong": "#2B3038",
+   "--border-disabled": "#23282F",
+   "--shadow-1": "0 0 8px rgba(0,0,0,.5)",
+   "--shadow-2": "0 4px 8px rgba(0,0,0,.5)",
+   "--shadow-3": "0 6px 16px rgba(0,0,0,.4)",
+   "--shadow-4": "0 6px 24px rgba(0,0,0,.5)",
+   "--shadow-5": "0 8px 24px rgba(0,0,0,.5)",
+   "--shadow-6": "0 16px 40px rgba(0,0,0,.6)",
+   "--panel": "#20252B",
+   "--canvas": "#1C2127",
+   "--tag-bg-success": "#16401F",
+   "--tag-fg-success": "#4DCD6A",
+   "--tag-bg-warning": "#4D3514",
+   "--tag-fg-warning": "#FFC916",
+   "--tag-bg-error": "#4D1616",
+   "--tag-fg-error": "#F87171",
+   "--tag-bg-info": "#14304D",
+   "--tag-fg-info": "#7BA4FF",
+   "--tag-bg-neutral": "#3D3D40",
+   "--tag-fg-neutral": "#C0C1C6",
+   "--tag-bg-indigo": "#25224D",
+   "--tag-fg-indigo": "#818CF8",
+   "--tag-bg-ocean": "#14425A",
+   "--tag-fg-ocean": "#22D3EE",
+   "--tag-bg-teal": "#144D45",
+   "--tag-fg-teal": "#2DD4BF",
+   "--tag-bg-emerald": "#144D38",
+   "--tag-fg-emerald": "#34D399",
+   "--tag-bg-lime": "#354D10",
+   "--tag-fg-lime": "#A3E635",
+   "--tag-bg-rose": "#4D1428",
+   "--tag-fg-rose": "#FB7185",
+   "--tag-bg-magenta": "#4D1450",
+   "--tag-fg-magenta": "#E879F9",
+   "--tag-bg-violet": "#38144D",
+   "--tag-fg-violet": "#A78BFA",
+   "--tag-bg-slate": "#2A3A50",
+   "--tag-fg-slate": "#94A3B8",
+   "--tag-bg-bronze": "#4D2E14",
+   "--tag-fg-bronze": "#FDBA74",
+   "--graph-chart-1": "#5A8AFF",
+   "--graph-chart-2": "#4DDDD0",
+   "--graph-chart-3": "#7BAAF7",
+   "--graph-chart-4": "#8FCE96",
+   "--graph-chart-5": "#F2968F",
+   "--graph-chart-6": "#A78BFA",
+   "--graph-chart-7": "#FDBA74",
+   "--graph-chart-8": "#F472B6",
+   "--radius-xs": "2px",
+   "--radius-sm": "2px",
+   "--radius-md": "4px",
+   "--radius-lg": "6px",
+   "--space-1": "4px",
+   "--space-2": "8px",
+   "--space-3": "12px",
+   "--space-4": "16px",
+   "--space-5": "20px",
+   "--space-6": "24px",
+   "--space-8": "32px",
+   "--space-10": "40px",
+   "--space-12": "48px",
+   "--font-family": "\"Inter\",-apple-system,BlinkMacSystemFont,system-ui,sans-serif",
+   "--btn-radius": "2px",
+   "--btn-weight": "400",
+   "--btn-shadow": "0 1px 1px rgba(17,20,24,.2)",
+   "--ctl-radius": "2px",
+   "--card-radius": "2px",
+   "--btn-padx": "10px",
+   "--in-radius": "2px",
+   "--tag-radius": "2px"
+  }
+ },
+ "spec": "# Palantir Blueprint — 시스템 스펙\n> 팔란티어 블루프린트 공식 토큰. 모서리를 2px로 거의 깎지 않고 간격을 좁혀, 한 화면에 표와 그래프를 최대한 많이 올리는 분석 도구용 체계입니다.\n\n이 문서는 킷이 들고 있는 토큰에서 만들었습니다. 원래 사이트를 재서 나온 값이 아니므로, 실제 타이포 크기와 모션 곡선은 담지 않습니다.\n\n**분류:** 데이터  ·  **프레임워크:** React · TypeScript\n\n## 토큰 — 색\n\n모든 색은 11단계 램프로 정의합니다. 램프는 테마에 따라 바뀌지 않는 원시값입니다.\n\n### primary — 브랜드 행동과 강조\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#EDF4FF` | `#B1D2FF` | `#7EB2FC` | `#5899F3` | `#4084E4` | `#2D72D2` | `#2665BE` | `#1F59AA` | `#1A4E96` | `#12396F` | `#0A1F3D` |\n\n### gray — 글자, 테두리, 면\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#F6F7F9` | `#E1E5E9` | `#C8CED5` | `#8994A3` | `#4C5664` | `#2F343C` | `#2B3038` | `#272C33` | `#23282F` | `#20252B` | `#1C2127` |\n\n### success — 완료와 정상\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#E9F7F0` | `#A2DCBD` | `#65C291` | `#3FAC71` | `#2C985E` | `#238551` | `#1F7748` | `#1B6A40` | `#175E38` | `#114529` | `#092416` |\n\n### warning — 주의와 대기\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FEF2E3` | `#FCCC94` | `#F8AE59` | `#EF9F43` | `#DE8C2E` | `#C87619` | `#A86314` | `#8D530F` | `#7D480E` | `#5A340A` | `#2F1B05` |\n\n### error — 실패와 위험\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FEF0F1` | `#FCBCBE` | `#F69093` | `#EB7377` | `#DD5A5E` | `#CD4246` | `#B9373B` | `#A62E32` | `#942A2D` | `#6D1F22` | `#3C1113` |\n\n### info — 안내와 진행\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#E8F6FC` | `#9BD6F4` | `#60BCEA` | `#47ABDE` | `#2E96CA` | `#147EB3` | `#1171A0` | `#0E638E` | `#0D567A` | `#093E59` | `#052231` |\n\n## 토큰 — 역할별 색\n\n램프를 역할에 매핑한 값입니다. 라이트와 다크에서 서로 다릅니다.\n\n| 토큰 | 쓰임새 | Light | Dark |\n|---|---|---|---|\n| `--bg` | 바탕이 되는 면 | `#FFFFFF` | `#20252B` |\n| `--canvas` | 페이지 바닥 | `#F6F7F9` | `#1C2127` |\n| `--fg` | 본문 글자 | `#20252B` | `#FFFFFF` |\n| `--fg-strong` | 제목과 강조 글자 | `#20252B` | `#F6F7F9` |\n| `--fg-lower` | 보조 설명 | `#2B3038` | `#4C5664` |\n| `--fg-disabled` | 비활성 글자 | `#4C5664` | `#2B3038` |\n| `--border` | 기본 경계선 | `#C8CED5` | `#23282F` |\n| `--border-strong` | 강조 경계선 | `#8994A3` | `#2B3038` |\n| `--bg-primary` | 주된 행동 버튼 바탕 | `#2D72D2` | `#4084E4` |\n| `--bg-primary-low` | 주된 색의 엷은 면 | `#EDF4FF` | `#12396F` |\n| `--fg-primary` | 주된 색 글자 | `#2665BE` | `#5899F3` |\n| `--bg-success` | 완료 표시 | `#238551` | `#238551` |\n| `--bg-warning` | 주의 표시 | `#C87619` | `#C87619` |\n| `--bg-critical` | 위험 표시 | `#CD4246` | `#CD4246` |\n| `--bg-info` | 안내 표시 | `#1171A0` | `#2E96CA` |\n\n## 토큰 — 타이포\n\n**글꼴:** `\"Inter\",-apple-system,BlinkMacSystemFont,system-ui,sans-serif`\n\n본문 행간은 150% 를 기준으로 합니다. 한글은 단어 단위로 끊어 쓰므로 `word-break: keep-all` 을 붙입니다.\n\n| 쓰임새 | 크기 | 굵기 |\n|---|---|---|\n| 페이지 제목 | clamp(28px, 5vw, 44px) | 400 |\n| 섹션 제목 | clamp(20px, 3vw, 30px) | 400 |\n| 본문 | 15~16px | 400 |\n| 보조 설명 | 13~14px | 400 |\n| 라벨 | 11~12px | 400 |\n| 버튼 | 14~15px | 400 |\n\n## 토큰 — 간격과 모양\n\n**기본 단위:** 4px\n\n간격: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px\n\n| 요소 | 모서리 |\n|---|---|\n| 버튼 | 2px |\n| 카드 | 2px |\n| 입력 | 2px |\n| 태그 | 2px |\n| 작은 조작부 | 2px |\n\n| 항목 | 값 |\n|---|---|\n| 버튼 좌우 안쪽 여백 | 10px |\n| 버튼 글자 굵기 | 400 |\n| 버튼 그림자 | `0 1px 1px rgba(17,20,24,.2)` |\n| 페이지 폭 | min(1200px, 92vw) |\n\n## 아이콘\n\n24×24 보기틀, 선 굵기 2px, 끝처리 `butt`, 꼬임 `miter`.\n선은 `currentColor` 를 씁니다. 색을 아이콘 안에 박지 않습니다.\n\n## 컴포넌트\n\n| 컴포넌트 | 규칙 |\n|---|---|\n| 버튼 | primary, secondary, outline, ghost, danger 다섯 가지. 크기는 sm, md, lg. 상태는 hover, focus-visible, active, disabled, loading |\n| 태그 | 상태 5종. 바탕과 글자를 짝으로 씁니다 |\n| 입력 | 기본, 포커스, 에러, 성공, 비활성. 도움말과 필수 표시를 두고 색으로만 알리지 않습니다 |\n| 오버레이 | 모달은 `role=\"dialog\"`, `aria-modal`, Esc 닫기. 드로어, 토스트(`aria-live`), 툴팁, 드롭다운 |\n| 내비 | 탭은 `role=\"tablist\"`. 스텝, 페이지네이션, 브레드크럼 |\n| 표 | 헤더, 상세, 소계, 합계의 계층색을 지킵니다 |\n\n## 대비\n\n| 짝 | 비율 | 기준(AA 4.5) |\n|---|---|---|\n| 본문 대 바탕 | 15.43 : 1 | 통과 |\n| 흰글씨 대 주된 색 | 4.72 : 1 | 통과 |\n\n## 지킬 규칙과 금지 사항\n\n### 지킬 규칙\n\n- 모서리는 버튼 2px, 카드 2px, 입력 2px 으로 고정합니다\n- 색은 램프와 역할 토큰에서만 가져옵니다\n- 라이트와 다크를 항상 같이 맞춥니다\n- 여백과 글자 크기는 `clamp()` 로 화면 폭에 따라 줍니다\n- 터치로 누르는 자리는 44×44px 이상으로 둡니다\n- 초점 표시는 `focus-visible` 로 남깁니다\n\n### 금지 사항\n\n- 토큰에 없는 색을 직접 적지 않습니다\n- 보라와 바이올렛을 강조색으로 쓰지 않습니다\n- 왼쪽에 굵은 선이 붙은 인용 카드를 두지 않습니다\n- 색만으로 상태를 알리지 않습니다. 글자나 모양을 같이 둡니다\n- 모서리를 한 화면 안에서 여러 값으로 섮지 않습니다\n\n## 화면 규격\n\n- 컨테이너 `width: min(1200px, 92vw)`\n- 끊는 폭 1280, 1024, 768, 480px\n- 768px 미만은 1열로 내립니다\n- 여백 `clamp(24px, 5vw, 80px)`\n- 이미지는 WebP, 비율을 고정해 흔들림을 막습니다\n- 모션은 150~250ms. `prefers-reduced-motion` 을 따릅니다\n\n## AI 에게 넘길 빠른 참조\n\n- 본문 글자: `#20252B`\n- 보조 글자: `#2B3038`\n- 바탕: `#FFFFFF`\n- 페이지 바닥: `#F6F7F9`\n- 경계선: `#C8CED5`\n- 주된 행동: `#2D72D2`\n- 글꼴: `\"Inter\",-apple-system,BlinkMacSystemFont,system-ui,sans-serif`\n\n## 바로 쓰기\n\n### CSS 변수\n\n```css\n:root{\n  --primary-50: #EDF4FF;\n  --primary-100: #B1D2FF;\n  --primary-200: #7EB2FC;\n  --primary-300: #5899F3;\n  --primary-400: #4084E4;\n  --primary-500: #2D72D2;\n  --primary-600: #2665BE;\n  --primary-700: #1F59AA;\n  --primary-800: #1A4E96;\n  --primary-900: #12396F;\n  --primary-950: #0A1F3D;\n  --gray-50: #F6F7F9;\n  --gray-100: #E1E5E9;\n  --gray-200: #C8CED5;\n  --gray-300: #8994A3;\n  --gray-400: #4C5664;\n  --gray-500: #2F343C;\n  --gray-600: #2B3038;\n  --gray-700: #272C33;\n  --gray-800: #23282F;\n  --gray-900: #20252B;\n  --gray-950: #1C2127;\n  --success-50: #E9F7F0;\n  --success-100: #A2DCBD;\n  --success-200: #65C291;\n  --success-300: #3FAC71;\n  --success-400: #2C985E;\n  --success-500: #238551;\n  --success-600: #1F7748;\n  --success-700: #1B6A40;\n  --success-800: #175E38;\n  --success-900: #114529;\n  --success-950: #092416;\n  --warning-50: #FEF2E3;\n  --warning-100: #FCCC94;\n  --warning-200: #F8AE59;\n  --warning-300: #EF9F43;\n  --warning-400: #DE8C2E;\n  --warning-500: #C87619;\n  --warning-600: #A86314;\n  --warning-700: #8D530F;\n  --warning-800: #7D480E;\n  --warning-900: #5A340A;\n  --warning-950: #2F1B05;\n  --error-50: #FEF0F1;\n  --error-100: #FCBCBE;\n  --error-200: #F69093;\n  --error-300: #EB7377;\n  --error-400: #DD5A5E;\n  --error-500: #CD4246;\n  --error-600: #B9373B;\n  --error-700: #A62E32;\n  --error-800: #942A2D;\n  --error-900: #6D1F22;\n  --error-950: #3C1113;\n  --info-50: #E8F6FC;\n  --info-100: #9BD6F4;\n  --info-200: #60BCEA;\n  --info-300: #47ABDE;\n  --info-400: #2E96CA;\n  --info-500: #147EB3;\n  --info-600: #1171A0;\n  --info-700: #0E638E;\n  --info-800: #0D567A;\n  --info-900: #093E59;\n  --info-950: #052231;\n  --bg-primary: #2D72D2;\n  --bg-primary-low: #EDF4FF;\n  --fg-primary: #2665BE;\n  --fg-primary-low: #EDF4FF;\n  --fg-point: #2D72D2;\n  --border-primary: #2D72D2;\n  --bg: #FFFFFF;\n  --bg-inset: #FFFFFF;\n  --bg-inset-neutral: #E1E5E9;\n  --bg-neutral: #E1E5E9;\n  --bg-neutral-low: #F6F7F9;\n  --bg-neutral-lower: #F6F7F9;\n  --bg-disabled: #E1E5E9;\n  --bg-contrast: #20252B;\n  --bg-success: #238551;\n  --bg-success-low: #E9F7F0;\n  --bg-warning: #C87619;\n  --bg-warning-low: #FEF2E3;\n  --bg-critical: #CD4246;\n  --bg-critical-low: #FEF0F1;\n  --bg-info: #1171A0;\n  --bg-info-low: #E8F6FC;\n  --fg: #20252B;\n  --fg-strong: #20252B;\n  --fg-lower: #2B3038;\n  --fg-disabled: #4C5664;\n  --fg-contrast: #FFFFFF;\n  --fg-on-primary: #FFFFFF;\n  --fg-success: #1B6A40;\n  --fg-warning: #7D480E;\n  --fg-error: #A62E32;\n  --border: #C8CED5;\n  --border-low: #E1E5E9;\n  --border-strong: #8994A3;\n  --border-disabled: #C8CED5;\n  --shadow-1: 0 0 8px rgba(0,0,0,.10);\n  --shadow-2: 0 4px 8px rgba(0,0,0,.10);\n  --shadow-3: 0 6px 16px rgba(0,0,0,.06);\n  --shadow-4: 0 6px 24px rgba(0,0,0,.08);\n  --shadow-5: 0 8px 24px rgba(0,0,0,.12);\n  --shadow-6: 0 16px 40px rgba(0,0,0,.16);\n  --panel: #FFFFFF;\n  --canvas: #F6F7F9;\n  --tag-bg-success: #E5FFF0;\n  --tag-fg-success: #007A33;\n  --tag-bg-warning: #FFF9E5;\n  --tag-fg-warning: #A65F00;\n  --tag-bg-error: #FFEFEF;\n  --tag-fg-error: #C20E1F;\n  --tag-bg-info: #E5F0FF;\n  --tag-fg-info: #1E40AF;\n  --tag-bg-neutral: #F1F1F1;\n  --tag-fg-neutral: #4B4C52;\n  --tag-bg-indigo: #EEF0FE;\n  --tag-fg-indigo: #4F46E5;\n  --tag-bg-ocean: #E0F4F7;\n  --tag-fg-ocean: #0E7490;\n  --tag-bg-teal: #DCFAF5;\n  --tag-fg-teal: #0D9488;\n  --tag-bg-emerald: #DDF7EA;\n  --tag-fg-emerald: #047857;\n  --tag-bg-lime: #ECFCCB;\n  --tag-fg-lime: #4D7C0F;\n  --tag-bg-rose: #FCE7F0;\n  --tag-fg-rose: #BE185D;\n  --tag-bg-magenta: #F5E0F7;\n  --tag-fg-magenta: #A21CAF;\n  --tag-bg-violet: #EDE3FE;\n  --tag-fg-violet: #6D28D9;\n  --tag-bg-slate: #E2E8F0;\n  --tag-fg-slate: #475569;\n  --tag-bg-bronze: #FBE9D0;\n  --tag-fg-bronze: #92400E;\n  --graph-chart-1: #4178FF;\n  --graph-chart-2: #00CCC2;\n  --graph-chart-3: #7BAAF7;\n  --graph-chart-4: #8FCE96;\n  --graph-chart-5: #F2968F;\n  --graph-chart-6: #A78BFA;\n  --graph-chart-7: #FDBA74;\n  --graph-chart-8: #F472B6;\n  --radius-xs: 2px;\n  --radius-sm: 2px;\n  --radius-md: 4px;\n  --radius-lg: 6px;\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --space-4: 16px;\n  --space-5: 20px;\n  --space-6: 24px;\n  --space-8: 32px;\n  --space-10: 40px;\n  --space-12: 48px;\n  --font-family: \"Inter\",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;\n  --btn-radius: 2px;\n  --btn-weight: 400;\n  --btn-shadow: 0 1px 1px rgba(17,20,24,.2);\n  --ctl-radius: 2px;\n  --card-radius: 2px;\n  --btn-padx: 10px;\n  --in-radius: 2px;\n  --tag-radius: 2px;\n}\n```\n\n### Tailwind\n\n```js\n// tailwind.config.js\nexport default {\n  theme:{ extend:{\n    colors:{\n      primary:{50:\"#EDF4FF\",100:\"#B1D2FF\",200:\"#7EB2FC\",300:\"#5899F3\",400:\"#4084E4\",500:\"#2D72D2\",600:\"#2665BE\",700:\"#1F59AA\",800:\"#1A4E96\",900:\"#12396F\",950:\"#0A1F3D\"},\n      gray:{50:\"#F6F7F9\",100:\"#E1E5E9\",200:\"#C8CED5\",300:\"#8994A3\",400:\"#4C5664\",500:\"#2F343C\",600:\"#2B3038\",700:\"#272C33\",800:\"#23282F\",900:\"#20252B\",950:\"#1C2127\"},\n      success:\"#238551\", warning:\"#C87619\", critical:\"#CD4246\",\n    },\n    borderRadius:{ btn:\"2px\", card:\"2px\", input:\"2px\" },\n    fontFamily:{ sans:[\"Inter\",\"-apple-system\",\"BlinkMacSystemFont\",\"system-ui\",\"sans-serif\"] },\n  }}\n}\n```"
+}

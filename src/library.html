@@ -2247,7 +2247,7 @@ mkSystem({
   }
 }),
 mkSystem({
-  id:"garden",name:"Zendesk Garden",cat:"고객지원",font:"system-ui · Segoe UI · Roboto",framework:"React · TypeScript",point:"#16494F",
+  id:"garden",name:"Zendesk Garden",cat:"협업",font:"system-ui · Segoe UI · Roboto",framework:"React · TypeScript",point:"#16494F",
   desc:"젠데스크 공식 토큰. 짙은 케일 그린을 중심에 두고 모서리를 4px로 낮게 깎아 상담 화면의 표와 목록을 빽빽하게 담습니다.",
   cover:["#16494F", "#037F52", "#AC5918", "#CD3642"],hasChart:true,
   radius:{xs:"2px",sm:"4px",md:"4px",lg:"8px"},
@@ -2331,7 +2331,7 @@ mkSystem({
   }
 }),
 mkSystem({
-  id:"bootstrap",name:"Bootstrap",cat:"웹",font:"system-ui · Segoe UI · Helvetica Neue",framework:"CSS · Sass · 바닐라 JS",point:"#0D6EFD",
+  id:"bootstrap",name:"Bootstrap",cat:"SaaS",font:"system-ui · Segoe UI · Helvetica Neue",framework:"CSS · Sass · 바닐라 JS",point:"#0D6EFD",
   desc:"부트스트랩 5 기본 변수. 기준색 하나에서 밝은 쪽 네 단계와 어두운 쪽 네 단계를 같은 비율로 떠서 만드는 가장 익숙한 체계입니다.",
   cover:["#0D6EFD", "#198754", "#FFC107", "#DC3545"],hasChart:true,
   radius:{xs:"4px",sm:"6px",md:"8px",lg:"16px"},
@@ -2342,6 +2342,76 @@ mkSystem({
     warning:[["50","#FFF3CD"],["100","#FFE9A6"],["200","#FFDF7E"],["300","#FFD556"],["400","#FFCB2F"],["500","#FFC107"],["600","#D6A206"],["700","#AD8305"],["800","#856404"],["900","#5C4503"],["950","#332701"]],
     error:[["50","#FDF1F2"],["100","#F8D7DA"],["200","#F1AEB5"],["300","#EA868F"],["400","#E35D6A"],["500","#DC3545"],["600","#B92C3A"],["700","#96242F"],["800","#721C24"],["900","#4F1319"],["950","#2C0B0E"]],
     info:[["50","#CFF4FC"],["100","#A8ECFA"],["200","#81E3F7"],["300","#5ADBF5"],["400","#33D3F2"],["500","#0DCAF0"],["600","#0BAACA"],["700","#0989A3"],["800","#07697D"],["900","#054956"],["950","#032830"]]
+  }
+}),
+mkSystem({
+  id:"tailwind",name:"Tailwind CSS",cat:"SaaS",font:"Inter · system-ui",framework:"CSS 유틸리티 · 모든 프레임워크",point:"#0EA5E9",
+  desc:"테일윈드 기본 팔레트. 스물두 색이 저마다 열한 단계를 갖춘 체계로, 클래스 이름이 곧 토큰 이름이라 코드와 디자인이 어긋나지 않습니다.",
+  cover:["#0EA5E9", "#10B981", "#F59E0B", "#F43F5E"],hasChart:true,
+  radius:{xs:"4px",sm:"6px",md:"8px",lg:"12px"},
+  ramps:{
+    primary:[["50","#F0F9FF"],["100","#E0F2FE"],["200","#BAE6FD"],["300","#7DD3FC"],["400","#38BDF8"],["500","#0EA5E9"],["600","#0284C7"],["700","#0369A1"],["800","#075985"],["900","#0C4A6E"],["950","#082F49"]],
+    gray:[["50","#F8FAFC"],["100","#F1F5F9"],["200","#E2E8F0"],["300","#CBD5E1"],["400","#94A3B8"],["500","#64748B"],["600","#475569"],["700","#334155"],["800","#1E293B"],["900","#0F172A"],["950","#020617"]],
+    success:[["50","#ECFDF5"],["100","#D1FAE5"],["200","#A7F3D0"],["300","#6EE7B7"],["400","#34D399"],["500","#10B981"],["600","#059669"],["700","#047857"],["800","#065F46"],["900","#064E3B"],["950","#022C22"]],
+    warning:[["50","#FFFBEB"],["100","#FEF3C7"],["200","#FDE68A"],["300","#FCD34D"],["400","#FBBF24"],["500","#F59E0B"],["600","#D97706"],["700","#B45309"],["800","#92400E"],["900","#78350F"],["950","#451A03"]],
+    error:[["50","#FFF1F2"],["100","#FFE4E6"],["200","#FECDD3"],["300","#FDA4AF"],["400","#FB7185"],["500","#F43F5E"],["600","#E11D48"],["700","#BE123C"],["800","#9F1239"],["900","#881337"],["950","#4C0519"]],
+    info:[["50","#ECFEFF"],["100","#CFFAFE"],["200","#A5F3FC"],["300","#67E8F9"],["400","#22D3EE"],["500","#06B6D4"],["600","#0891B2"],["700","#0E7490"],["800","#155E75"],["900","#164E63"],["950","#083344"]]
+  }
+}),
+mkSystem({
+  id:"lightning",name:"Salesforce Lightning",cat:"엔터프라이즈",font:"Salesforce Sans · Inter",framework:"Web Components · Aura · React",point:"#0176D3",
+  desc:"세일즈포스 라이트닝 공식 토큰. 색마다 열두 단계를 두고 10 이 가장 어둡습니다. 영업 화면처럼 표와 입력이 빽빽한 자리에 맞춘 체계입니다.",
+  cover:["#0176D3", "#2E844A", "#A96404", "#EA001E"],hasChart:true,
+  radius:{xs:"2px",sm:"4px",md:"4px",lg:"8px"},
+  ramps:{
+    primary:[["50","#EEF4FF"],["100","#D8E6FE"],["200","#AACBFF"],["300","#71ADFD"],["400","#339BFE"],["500","#0176D3"],["600","#0B5CAB"],["700","#014486"],["800","#032D60"],["900","#03234D"],["950","#001639"]],
+    gray:[["50","#FFFFFF"],["100","#EBEBEB"],["200","#C9C9C9"],["300","#AEAEAE"],["400","#9B9B9B"],["500","#757575"],["600","#5C5C5C"],["700","#444444"],["800","#2E2E2E"],["900","#242424"],["950","#181818"]],
+    success:[["50","#EBF7E6"],["100","#CDEFC4"],["200","#91DB8B"],["300","#44C35A"],["400","#3DAD56"],["500","#2E844A"],["600","#396547"],["700","#194E31"],["800","#193626"],["900","#0C2912"],["950","#071B12"]],
+    warning:[["50","#FFF1EA"],["100","#FEDFD0"],["200","#FFBA90"],["300","#FC902E"],["400","#E67E02"],["500","#A96404"],["600","#825101"],["700","#5F3E02"],["800","#3E2B02"],["900","#302104"],["950","#201600"]],
+    error:[["50","#FEF1EE"],["100","#FEDED8"],["200","#FEB8AB"],["300","#FE8A78"],["400","#FE6756"],["500","#EA001E"],["600","#BA0517"],["700","#8E030F"],["800","#640103"],["900","#4A0C04"],["950","#300C01"]],
+    info:[["50","#EAF5FE"],["100","#CFE9FE"],["200","#90D0FE"],["300","#16B6FB"],["400","#0BA3E2"],["500","#107CAD"],["600","#05628A"],["700","#084968"],["800","#023248"],["900","#0A2636"],["950","#001A28"]]
+  }
+}),
+mkSystem({
+  id:"leafygreen",name:"MongoDB LeafyGreen",cat:"데이터",font:"Euclid Circular A · Inter",framework:"React · TypeScript",point:"#00ED64",
+  desc:"몽고DB 리피그린 공식 토큰. 형광에 가까운 초록을 한 점만 쓰고 나머지를 짙은 청록 회색으로 눌러 데이터베이스 콘솔의 긴 목록을 읽게 만듭니다.",
+  cover:["#00ED64", "#00A35C", "#FFC010", "#DB3030"],hasChart:true,
+  radius:{xs:"4px",sm:"6px",md:"12px",lg:"16px"},
+  ramps:{
+    primary:[["50","#E3FCF7"],["100","#CEFBED"],["200","#B0F9DD"],["300","#81F7C3"],["400","#44F298"],["500","#00ED64"],["600","#00C15F"],["700","#009758"],["800","#00744E"],["900","#015340"],["950","#023430"]],
+    gray:[["50","#F9FBFA"],["100","#EFF3F1"],["200","#E0E5E4"],["300","#C9CFCD"],["400","#AAB2B3"],["500","#889397"],["600","#65747C"],["700","#495B64"],["800","#30414B"],["900","#1A2C37"],["950","#112733"]],
+    success:[["50","#E3FCF7"],["100","#C7FAE9"],["200","#91F8CC"],["300","#44F298"],["400","#00DE62"],["500","#00A35C"],["600","#008B55"],["700","#00744E"],["800","#005E45"],["900","#01493A"],["950","#023430"]],
+    warning:[["50","#FEF7DB"],["100","#FEF3C3"],["200","#FFEEAA"],["300","#FFE382"],["400","#FFD249"],["500","#FFC010"],["600","#D4930A"],["700","#A96604"],["800","#864601"],["900","#693300"],["950","#4C2100"]],
+    error:[["50","#FFEAE5"],["100","#FFD9D3"],["200","#FFB9B2"],["300","#FF7D75"],["400","#F1524D"],["500","#DB3030"],["600","#C01F1F"],["700","#A50E0E"],["800","#8B0505"],["900","#730202"],["950","#5B0000"]],
+    info:[["50","#E1F7FF"],["100","#CFEDFE"],["200","#9DD7FA"],["300","#2AA8F0"],["400","#0386F1"],["500","#016BF8"],["600","#0B5DD1"],["700","#104FAF"],["800","#0A4198"],["900","#0A3379"],["950","#0C2657"]]
+  }
+}),
+mkSystem({
+  id:"blueprint",name:"Palantir Blueprint",cat:"데이터",font:"Inter · -apple-system",framework:"React · TypeScript",point:"#2D72D2",
+  desc:"팔란티어 블루프린트 공식 토큰. 모서리를 2px로 거의 깎지 않고 간격을 좁혀, 한 화면에 표와 그래프를 최대한 많이 올리는 분석 도구용 체계입니다.",
+  cover:["#2D72D2", "#238551", "#C87619", "#CD4246"],hasChart:true,
+  radius:{xs:"2px",sm:"2px",md:"4px",lg:"6px"},
+  ramps:{
+    primary:[["50","#EDF4FF"],["100","#B1D2FF"],["200","#7EB2FC"],["300","#5899F3"],["400","#4084E4"],["500","#2D72D2"],["600","#2665BE"],["700","#1F59AA"],["800","#1A4E96"],["900","#12396F"],["950","#0A1F3D"]],
+    gray:[["50","#F6F7F9"],["100","#E1E5E9"],["200","#C8CED5"],["300","#8994A3"],["400","#4C5664"],["500","#2F343C"],["600","#2B3038"],["700","#272C33"],["800","#23282F"],["900","#20252B"],["950","#1C2127"]],
+    success:[["50","#E9F7F0"],["100","#A2DCBD"],["200","#65C291"],["300","#3FAC71"],["400","#2C985E"],["500","#238551"],["600","#1F7748"],["700","#1B6A40"],["800","#175E38"],["900","#114529"],["950","#092416"]],
+    warning:[["50","#FEF2E3"],["100","#FCCC94"],["200","#F8AE59"],["300","#EF9F43"],["400","#DE8C2E"],["500","#C87619"],["600","#A86314"],["700","#8D530F"],["800","#7D480E"],["900","#5A340A"],["950","#2F1B05"]],
+    error:[["50","#FEF0F1"],["100","#FCBCBE"],["200","#F69093"],["300","#EB7377"],["400","#DD5A5E"],["500","#CD4246"],["600","#B9373B"],["700","#A62E32"],["800","#942A2D"],["900","#6D1F22"],["950","#3C1113"]],
+    info:[["50","#E8F6FC"],["100","#9BD6F4"],["200","#60BCEA"],["300","#47ABDE"],["400","#2E96CA"],["500","#147EB3"],["600","#1171A0"],["700","#0E638E"],["800","#0D567A"],["900","#093E59"],["950","#052231"]]
+  }
+}),
+mkSystem({
+  id:"canvas",name:"Workday Canvas",cat:"엔터프라이즈",font:"Roboto · Noto Sans",framework:"React · 웹 컴포넌트",point:"#0875E1",
+  desc:"워크데이 캔버스 공식 토큰. 버튼만 완전한 알약으로 두고 카드와 입력은 4px로 낮게 깎아, 인사·급여 업무 화면에서 누를 곳을 또렷하게 구분합니다.",
+  cover:["#0875E1", "#43C463", "#FFA126", "#FF5347"],hasChart:true,
+  radius:{xs:"2px",sm:"4px",md:"4px",lg:"8px"},
+  ramps:{
+    primary:[["50","#EBF5FE"],["100","#DBECFC"],["200","#BADCFE"],["300","#7DBEFF"],["400","#3597F9"],["500","#0875E1"],["600","#0366C9"],["700","#0057AF"],["800","#004891"],["900","#00356B"],["950","#002040"]],
+    gray:[["50","#F6F7F8"],["100","#EAECEE"],["200","#D5D9DE"],["300","#AFB7BF"],["400","#75808A"],["500","#4A5561"],["600","#414B57"],["700","#38424C"],["800","#2F3842"],["900","#272F38"],["950","#1F262E"]],
+    success:[["50","#EBFFF0"],["100","#C5F9D2"],["200","#9DF1B2"],["300","#6EE78C"],["400","#54D774"],["500","#43C463"],["600","#38AC55"],["700","#2E9548"],["800","#24813B"],["900","#185828"],["950","#0A2511"]],
+    warning:[["50","#FFEED9"],["100","#FDDEB6"],["200","#FDCF93"],["300","#FEC16F"],["400","#FFB14B"],["500","#FFA126"],["600","#F8940F"],["700","#E98500"],["800","#CA7200"],["900","#864C00"],["950","#301B00"]],
+    error:[["50","#FFEFEE"],["100","#FDD8D5"],["200","#FDBCB7"],["300","#FE938B"],["400","#FF7267"],["500","#FF5347"],["600","#EB3D30"],["700","#D22A1E"],["800","#AF1F15"],["900","#7C150E"],["950","#420B07"]],
+    info:[["50","#D7F1FC"],["100","#B2E7FE"],["200","#87D7FA"],["300","#52BDEA"],["400","#30A7DA"],["500","#1894C9"],["600","#0B7FB1"],["700","#026D9B"],["800","#005F88"],["900","#004462"],["950","#002331"]]
   }
 })
 ];
@@ -2454,7 +2524,12 @@ const FONT={
   fluent:'"Segoe UI Variable","Segoe UI",system-ui,-apple-system,sans-serif',
   patternfly:'"Red Hat Text","Red Hat Display",-apple-system,system-ui,sans-serif',
   primer:'-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif',
-  bootstrap:'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'
+  bootstrap:'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif',
+  tailwind:'"Inter",system-ui,-apple-system,sans-serif',
+  lightning:'"Salesforce Sans","Inter",-apple-system,system-ui,sans-serif',
+  leafygreen:'"Euclid Circular A","Inter",-apple-system,system-ui,sans-serif',
+  blueprint:'"Inter",-apple-system,BlinkMacSystemFont,system-ui,sans-serif',
+  canvas:'"Roboto","Noto Sans",-apple-system,system-ui,sans-serif'
 };
 const UI={
   toss:    {btnR:"10px",btnW:"600",btnSh:"none",ctlR:"8px",cardR:"16px",padx:"18px",inR:"10px"},
@@ -2483,7 +2558,12 @@ const UI={
   fluent:  {btnR:"4px", btnW:"600",btnSh:"none",ctlR:"4px",cardR:"8px",padx:"16px",inR:"4px"},
   patternfly:{btnR:"3px",btnW:"600",btnSh:"none",ctlR:"3px",cardR:"8px",padx:"16px",inR:"3px"},
   primer:  {btnR:"6px", btnW:"600",btnSh:"0 1px 0 rgba(31,35,40,.04)",ctlR:"6px",cardR:"6px",padx:"16px",inR:"6px"},
-  bootstrap:{btnR:"6px",btnW:"400",btnSh:"none",ctlR:"6px",cardR:"8px",padx:"12px",inR:"6px"}
+  bootstrap:{btnR:"6px",btnW:"400",btnSh:"none",ctlR:"6px",cardR:"8px",padx:"12px",inR:"6px"},
+  tailwind:  {btnR:"6px", btnW:"600",btnSh:"none",ctlR:"6px",cardR:"8px",padx:"16px",inR:"6px"},
+  lightning: {btnR:"4px", btnW:"400",btnSh:"none",ctlR:"4px",cardR:"4px",padx:"16px",inR:"4px"},
+  leafygreen:{btnR:"6px", btnW:"500",btnSh:"0 1px 2px rgba(0,30,43,.12)",ctlR:"4px",cardR:"16px",padx:"16px",inR:"6px"},
+  blueprint: {btnR:"2px", btnW:"400",btnSh:"0 1px 1px rgba(17,20,24,.2)",ctlR:"2px",cardR:"2px",padx:"10px",inR:"2px"},
+  canvas:    {btnR:"999px",btnW:"700",btnSh:"none",ctlR:"4px",cardR:"4px",padx:"24px",inR:"4px"}
 };
 // 시스템별 아이콘 성격(굵기와 끝처리). 에셋이 시스템마다 달라 보이게 한다
 const ICONSTYLE={
@@ -2501,11 +2581,15 @@ const ICONSTYLE={
   gestalt:{sw:2.4,cap:"round",join:"round"}, garden:{sw:1.5,cap:"round",join:"round"},
   mantine:{sw:1.5,cap:"round",join:"round"}, spectrum:{sw:2,cap:"round",join:"round"},
   fluent:{sw:1.5,cap:"round",join:"round"}, patternfly:{sw:1.75,cap:"butt",join:"miter"},
-  primer:{sw:2,cap:"round",join:"round"}, bootstrap:{sw:1.5,cap:"round",join:"round"}
+  primer:{sw:2,cap:"round",join:"round"}, bootstrap:{sw:1.5,cap:"round",join:"round"},
+  tailwind:{sw:1.5,cap:"round",join:"round"}, lightning:{sw:2,cap:"round",join:"round"},
+  leafygreen:{sw:1.6,cap:"round",join:"round"}, blueprint:{sw:2,cap:"butt",join:"miter"},
+  canvas:{sw:2,cap:"round",join:"round"}
 };
 // 시스템별 뱃지/칩 모서리 (각진 계열 vs 알약)
 const TAGR={carbon:"0px",vercel:"4px",editorial:"2px",gitlab:"4px",antd:"4px",graphite:"6px",monopo:"75px",
-  garden:"4px",mantine:"4px",fluent:"4px",patternfly:"3px",primer:"999px",bootstrap:"6px"};
+  garden:"4px",mantine:"4px",fluent:"4px",patternfly:"3px",primer:"999px",bootstrap:"6px",
+  blueprint:"2px",lightning:"4px",canvas:"4px",tailwind:"6px"};
 
 // full flattened tokens for a system+theme (ramps are theme-independent)
 function allTokens(sys){

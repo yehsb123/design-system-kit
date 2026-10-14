@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-14",
- "count": 27,
+ "count": 32,
  "license": "AGPL-3.0",
  "systems": [
   {
@@ -326,7 +326,7 @@
   {
    "id": "garden",
    "name": "Zendesk Garden",
-   "category": "고객지원",
+   "category": "협업",
    "font": "system-ui · Segoe UI · Roboto",
    "description": "젠데스크 공식 토큰. 짙은 케일 그린을 중심에 두고 모서리를 4px로 낮게 깎아 상담 화면의 표와 목록을 빽빽하게 담습니다.",
    "cover": [
@@ -422,7 +422,7 @@
   {
    "id": "bootstrap",
    "name": "Bootstrap",
-   "category": "웹",
+   "category": "SaaS",
    "font": "system-ui · Segoe UI · Helvetica Neue",
    "description": "부트스트랩 5 기본 변수. 기준색 하나에서 밝은 쪽 네 단계와 어두운 쪽 네 단계를 같은 비율로 떠서 만드는 가장 익숙한 체계입니다.",
    "cover": [
@@ -434,6 +434,86 @@
    "href": "systems/bootstrap.json",
    "css": "systems/bootstrap/tokens.css",
    "theme": "systems/bootstrap/theme.css"
+  },
+  {
+   "id": "tailwind",
+   "name": "Tailwind CSS",
+   "category": "SaaS",
+   "font": "Inter · system-ui",
+   "description": "테일윈드 기본 팔레트. 스물두 색이 저마다 열한 단계를 갖춘 체계로, 클래스 이름이 곧 토큰 이름이라 코드와 디자인이 어긋나지 않습니다.",
+   "cover": [
+    "#0EA5E9",
+    "#10B981",
+    "#F59E0B",
+    "#F43F5E"
+   ],
+   "href": "systems/tailwind.json",
+   "css": "systems/tailwind/tokens.css",
+   "theme": "systems/tailwind/theme.css"
+  },
+  {
+   "id": "lightning",
+   "name": "Salesforce Lightning",
+   "category": "엔터프라이즈",
+   "font": "Salesforce Sans · Inter",
+   "description": "세일즈포스 라이트닝 공식 토큰. 색마다 열두 단계를 두고 10 이 가장 어둡습니다. 영업 화면처럼 표와 입력이 빽빽한 자리에 맞춘 체계입니다.",
+   "cover": [
+    "#0176D3",
+    "#2E844A",
+    "#A96404",
+    "#EA001E"
+   ],
+   "href": "systems/lightning.json",
+   "css": "systems/lightning/tokens.css",
+   "theme": "systems/lightning/theme.css"
+  },
+  {
+   "id": "leafygreen",
+   "name": "MongoDB LeafyGreen",
+   "category": "데이터",
+   "font": "Euclid Circular A · Inter",
+   "description": "몽고DB 리피그린 공식 토큰. 형광에 가까운 초록을 한 점만 쓰고 나머지를 짙은 청록 회색으로 눌러 데이터베이스 콘솔의 긴 목록을 읽게 만듭니다.",
+   "cover": [
+    "#00ED64",
+    "#00A35C",
+    "#FFC010",
+    "#DB3030"
+   ],
+   "href": "systems/leafygreen.json",
+   "css": "systems/leafygreen/tokens.css",
+   "theme": "systems/leafygreen/theme.css"
+  },
+  {
+   "id": "blueprint",
+   "name": "Palantir Blueprint",
+   "category": "데이터",
+   "font": "Inter · -apple-system",
+   "description": "팔란티어 블루프린트 공식 토큰. 모서리를 2px로 거의 깎지 않고 간격을 좁혀, 한 화면에 표와 그래프를 최대한 많이 올리는 분석 도구용 체계입니다.",
+   "cover": [
+    "#2D72D2",
+    "#238551",
+    "#C87619",
+    "#CD4246"
+   ],
+   "href": "systems/blueprint.json",
+   "css": "systems/blueprint/tokens.css",
+   "theme": "systems/blueprint/theme.css"
+  },
+  {
+   "id": "canvas",
+   "name": "Workday Canvas",
+   "category": "엔터프라이즈",
+   "font": "Roboto · Noto Sans",
+   "description": "워크데이 캔버스 공식 토큰. 버튼만 완전한 알약으로 두고 카드와 입력은 4px로 낮게 깎아, 인사·급여 업무 화면에서 누를 곳을 또렷하게 구분합니다.",
+   "cover": [
+    "#0875E1",
+    "#43C463",
+    "#FFA126",
+    "#FF5347"
+   ],
+   "href": "systems/canvas.json",
+   "css": "systems/canvas/tokens.css",
+   "theme": "systems/canvas/theme.css"
   }
  ]
 }
