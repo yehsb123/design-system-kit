@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-13",
- "count": 19,
+ "generated": "2026-10-14",
+ "count": 27,
  "license": "AGPL-3.0",
  "systems": [
   {
@@ -306,6 +306,134 @@
    "href": "systems/wise.json",
    "css": "systems/wise/tokens.css",
    "theme": "systems/wise/theme.css"
+  },
+  {
+   "id": "gestalt",
+   "name": "Pinterest Gestalt",
+   "category": "소셜",
+   "font": "Pinterest Sans · Helvetica Neue",
+   "description": "핀터레스트 공식 토큰. 완전히 둥근 빨강 버튼 하나로 화면을 끌고 가고, 나머지는 흰 바탕과 검정 글씨로 비웁니다.",
+   "cover": [
+    "#E60023",
+    "#1DAD65",
+    "#FF5B45",
+    "#CC0000"
+   ],
+   "href": "systems/gestalt.json",
+   "css": "systems/gestalt/tokens.css",
+   "theme": "systems/gestalt/theme.css"
+  },
+  {
+   "id": "garden",
+   "name": "Zendesk Garden",
+   "category": "고객지원",
+   "font": "system-ui · Segoe UI · Roboto",
+   "description": "젠데스크 공식 토큰. 짙은 케일 그린을 중심에 두고 모서리를 4px로 낮게 깎아 상담 화면의 표와 목록을 빽빽하게 담습니다.",
+   "cover": [
+    "#16494F",
+    "#037F52",
+    "#AC5918",
+    "#CD3642"
+   ],
+   "href": "systems/garden.json",
+   "css": "systems/garden/tokens.css",
+   "theme": "systems/garden/theme.css"
+  },
+  {
+   "id": "mantine",
+   "name": "Mantine",
+   "category": "SaaS",
+   "font": "system-ui · Segoe UI · Roboto",
+   "description": "만틴 공식 토큰. 열 단계짜리 색 묶음을 그대로 쓰며, 모서리와 그림자를 작게 두어 관리 화면을 빠르게 짭니다.",
+   "cover": [
+    "#228BE6",
+    "#40C057",
+    "#FAB005",
+    "#FA5252"
+   ],
+   "href": "systems/mantine.json",
+   "css": "systems/mantine/tokens.css",
+   "theme": "systems/mantine/theme.css"
+  },
+  {
+   "id": "spectrum",
+   "name": "Adobe Spectrum",
+   "category": "크리에이티브",
+   "font": "Adobe Clean · Source Sans 3",
+   "description": "어도비 스펙트럼 공식 토큰. 밝기 네 벌을 따로 두는 체계라 색 단계가 촘촘하고, 편집 도구처럼 패널이 많은 화면에 맞습니다.",
+   "cover": [
+    "#274DEA",
+    "#036E45",
+    "#A73E00",
+    "#B72818"
+   ],
+   "href": "systems/spectrum.json",
+   "css": "systems/spectrum/tokens.css",
+   "theme": "systems/spectrum/theme.css"
+  },
+  {
+   "id": "fluent",
+   "name": "Microsoft Fluent 2",
+   "category": "엔터프라이즈",
+   "font": "Segoe UI Variable · Segoe UI",
+   "description": "마이크로소프트 플루언트 2 공식 토큰. 회색을 2씩 쉰 단계로 쪼개 쓰는 체계로, 창이 겹치는 업무용 화면의 층을 구분합니다.",
+   "cover": [
+    "#0078D4",
+    "#107C10",
+    "#EAA300",
+    "#D13438"
+   ],
+   "href": "systems/fluent.json",
+   "css": "systems/fluent/tokens.css",
+   "theme": "systems/fluent/theme.css"
+  },
+  {
+   "id": "patternfly",
+   "name": "Red Hat PatternFly",
+   "category": "데브옵스",
+   "font": "Red Hat Text · Red Hat Display",
+   "description": "레드햇 패턴플라이 공식 토큰. 로그와 상태 표가 끝없이 이어지는 운영 콘솔에 맞춰 경고색 네 가지를 분명하게 갈라 둡니다.",
+   "cover": [
+    "#0066CC",
+    "#3D7317",
+    "#CA6C0F",
+    "#EE0000"
+   ],
+   "href": "systems/patternfly.json",
+   "css": "systems/patternfly/tokens.css",
+   "theme": "systems/patternfly/theme.css"
+  },
+  {
+   "id": "primer",
+   "name": "GitHub Primer",
+   "category": "데브옵스",
+   "font": "-apple-system · Segoe UI · Noto Sans",
+   "description": "깃허브 프라이머 공식 토큰. 코드와 글이 섞인 화면을 위해 중립색을 열 단계로 길게 두고 모서리는 6px로 낮게 맞춥니다.",
+   "cover": [
+    "#0969DA",
+    "#1A7F37",
+    "#BC4C00",
+    "#CF222E"
+   ],
+   "href": "systems/primer.json",
+   "css": "systems/primer/tokens.css",
+   "theme": "systems/primer/theme.css"
+  },
+  {
+   "id": "bootstrap",
+   "name": "Bootstrap",
+   "category": "웹",
+   "font": "system-ui · Segoe UI · Helvetica Neue",
+   "description": "부트스트랩 5 기본 변수. 기준색 하나에서 밝은 쪽 네 단계와 어두운 쪽 네 단계를 같은 비율로 떠서 만드는 가장 익숙한 체계입니다.",
+   "cover": [
+    "#0D6EFD",
+    "#198754",
+    "#FFC107",
+    "#DC3545"
+   ],
+   "href": "systems/bootstrap.json",
+   "css": "systems/bootstrap/tokens.css",
+   "theme": "systems/bootstrap/theme.css"
   }
  ]
 }

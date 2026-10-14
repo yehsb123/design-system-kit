@@ -27,7 +27,7 @@ def jread(path):
 ok('v1/systems.json 이 있다', os.path.exists(os.path.join(API, 'systems.json')))
 idx = jread('systems.json')
 ids = [s['id'] for s in idx['systems']]
-ok('목록에 19종이 있다', idx['count'] == len(ids) == 19, '%d / %d' % (idx['count'], len(ids)))
+ok('목록에 27종이 있다', idx['count'] == len(ids) == 27, '%d / %d' % (idx['count'], len(ids)))
 
 missing = []
 for sid in ids:

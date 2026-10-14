@@ -16,3 +16,4 @@ _test_a11y.json
 __pycache__/
 _snap_*.json
 _dedupe_report.json
+_*.log
