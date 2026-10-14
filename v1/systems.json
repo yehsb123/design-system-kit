@@ -118,7 +118,7 @@
   {
    "id": "polaris",
    "name": "Shopify Polaris",
-   "category": "커머스",
+   "category": "생활 서비스",
    "font": "Inter · -apple-system",
    "description": "쇼피파이 커머스 어드민 시스템. 그린 브랜드(#008060)와 잉크 계열 중립색이 특징.",
    "cover": [
@@ -150,7 +150,7 @@
   {
    "id": "editorial",
    "name": "Editorial",
-   "category": "에디토리얼",
+   "category": "랜딩",
    "font": "Playfair Display",
    "description": "세리프 기반 매거진/콘텐츠 템플릿. 높은 대비, 절제된 여백, 각진 형태로 읽기에 최적.",
    "cover": [
@@ -182,7 +182,7 @@
   {
    "id": "mobile",
    "name": "Mobile Kit",
-   "category": "모바일",
+   "category": "앱",
    "font": "Pretendard",
    "description": "모바일 앱 전용 킷. 큰 터치 타깃, 넉넉한 라운드, 민트 브랜드로 온보딩·헬스·라이프스타일에 적합.",
    "cover": [
@@ -214,7 +214,7 @@
   {
    "id": "gitlab",
    "name": "GitLab (Pajamas)",
-   "category": "데브옵스",
+   "category": "개발·데이터",
    "font": "Sora",
    "description": "오렌지 브랜드의 데브옵스 시스템. 파이프라인·이슈보드 등 개발 협업 화면에 최적.",
    "cover": [
@@ -230,7 +230,7 @@
   {
    "id": "airbnb",
    "name": "Airbnb",
-   "category": "여행",
+   "category": "생활 서비스",
    "font": "Manrope",
    "description": "코랄/로즈 브랜드의 여행·숙박 시스템. 사진 중심 카드와 큰 라운드로 따뜻하고 친근합니다.",
    "cover": [
@@ -262,7 +262,7 @@
   {
    "id": "monopo",
    "name": "monopo saigon",
-   "category": "포트폴리오",
+   "category": "랜딩",
    "font": "Inter (Roobert 대체)",
    "description": "무채색만 쓰는 에디토리얼 갤러리 시스템. 카드·이미지·입력은 직각 0px으로 두고 버튼·태그만 75px 알약으로 대비를 만듭니다. 그림자 없이 1px 헤어라인만 씁니다.",
    "cover": [
@@ -278,7 +278,7 @@
   {
    "id": "bevel",
    "name": "Bevel",
-   "category": "헬스케어",
+   "category": "생활 서비스",
    "font": "Plus Jakarta Sans",
    "description": "부드러운 구름빛 카드와 하늘 그라디언트를 쓰는 헬스케어 시스템. 버튼은 128px 완전 알약, 카드는 28px 큰 라운드로 둥글게 통일합니다.",
    "cover": [
@@ -294,7 +294,7 @@
   {
    "id": "wise",
    "name": "Wise",
-   "category": "핀테크",
+   "category": "생활 서비스",
    "font": "Inter",
    "description": "짙은 숲색 위에 라임을 한 점만 두는 평평한 핀테크 시스템. 그라디언트와 블러를 쓰지 않고, 흰 구역과 리넨 구역과 숲색 구역을 번갈아 둡니다.",
    "cover": [
@@ -310,7 +310,7 @@
   {
    "id": "gestalt",
    "name": "Pinterest Gestalt",
-   "category": "소셜",
+   "category": "협업",
    "font": "Pinterest Sans · Helvetica Neue",
    "description": "핀터레스트 공식 토큰. 완전히 둥근 빨강 버튼 하나로 화면을 끌고 가고, 나머지는 흰 바탕과 검정 글씨로 비웁니다.",
    "cover": [
@@ -358,7 +358,7 @@
   {
    "id": "spectrum",
    "name": "Adobe Spectrum",
-   "category": "크리에이티브",
+   "category": "SaaS",
    "font": "Adobe Clean · Source Sans 3",
    "description": "어도비 스펙트럼 공식 토큰. 밝기 네 벌을 따로 두는 체계라 색 단계가 촘촘하고, 편집 도구처럼 패널이 많은 화면에 맞습니다.",
    "cover": [
@@ -390,7 +390,7 @@
   {
    "id": "patternfly",
    "name": "Red Hat PatternFly",
-   "category": "데브옵스",
+   "category": "개발·데이터",
    "font": "Red Hat Text · Red Hat Display",
    "description": "레드햇 패턴플라이 공식 토큰. 로그와 상태 표가 끝없이 이어지는 운영 콘솔에 맞춰 경고색 네 가지를 분명하게 갈라 둡니다.",
    "cover": [
@@ -406,7 +406,7 @@
   {
    "id": "primer",
    "name": "GitHub Primer",
-   "category": "데브옵스",
+   "category": "개발·데이터",
    "font": "-apple-system · Segoe UI · Noto Sans",
    "description": "깃허브 프라이머 공식 토큰. 코드와 글이 섞인 화면을 위해 중립색을 열 단계로 길게 두고 모서리는 6px로 낮게 맞춥니다.",
    "cover": [
@@ -470,7 +470,7 @@
   {
    "id": "leafygreen",
    "name": "MongoDB LeafyGreen",
-   "category": "데이터",
+   "category": "개발·데이터",
    "font": "Euclid Circular A · Inter",
    "description": "몽고DB 리피그린 공식 토큰. 형광에 가까운 초록을 한 점만 쓰고 나머지를 짙은 청록 회색으로 눌러 데이터베이스 콘솔의 긴 목록을 읽게 만듭니다.",
    "cover": [
@@ -486,7 +486,7 @@
   {
    "id": "blueprint",
    "name": "Palantir Blueprint",
-   "category": "데이터",
+   "category": "개발·데이터",
    "font": "Inter · -apple-system",
    "description": "팔란티어 블루프린트 공식 토큰. 모서리를 2px로 거의 깎지 않고 간격을 좁혀, 한 화면에 표와 그래프를 최대한 많이 올리는 분석 도구용 체계입니다.",
    "cover": [
@@ -566,7 +566,7 @@
   {
    "id": "uswds",
    "name": "USWDS",
-   "category": "공공",
+   "category": "엔터프라이즈",
    "font": "Public Sans · Source Sans Pro",
    "description": "미국 정부 표준 디자인 시스템. 색 단계마다 흰 바탕 대비 비율을 미리 재어 두고 번호를 붙인 체계라, 접근성 기준을 숫자로 맞출 수 있습니다.",
    "cover": [
@@ -598,7 +598,7 @@
   {
    "id": "helios",
    "name": "HashiCorp Helios",
-   "category": "데브옵스",
+   "category": "개발·데이터",
    "font": "Open Sans · Inter",
    "description": "해시코프 헬리오스 공식 토큰. 50 이 가장 밝고 500 이 가장 어두운 여섯 단계 체계로, 터미널 출력과 상태 배지가 섞인 인프라 도구 화면에 맞춰 경고색을 분명히 갈라 둡니다.",
    "cover": [

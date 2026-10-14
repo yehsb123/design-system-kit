@@ -103,7 +103,7 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
 <!-- GENSYS_DATA -->
 
 <div class="top">
-  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>페이지 생성기 <span style="color:var(--ui-fg-dim);font-weight:500">레퍼런스 + 규칙 + 디자인시스템</span></a>
+  <a class="logo" href="index.html" aria-label="시작 화면으로"><span class="mk"></span>디자인 시스템 <span style="color:var(--ui-fg-dim);font-weight:500">생성기</span></a>
   <nav class="appnav"><a href="library.html"><span>모음집</span></a><a href="builder.html"><span>조립기</span></a><a href="generator.html" class="on"><span>생성기</span></a><a href="guide.html"><span>설명서</span></a></nav><div class="sp"></div>
   <button class="tbtn" id="btnUi">테마</button>
   <button class="tbtn" id="btnDown">HTML 저장</button>
@@ -141,11 +141,12 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
     <div class="step">
       <label><i>3</i>레이아웃 배치</label>
       <select class="sel" id="selLayout">
-        <option value="alt">모듈러 그리드 (좌우 지그재그)</option>
-        <option value="stack">단일 열 (위에서 아래로)</option>
-        <option value="center">가운데 정렬 (좁은 폭)</option>
-        <option value="split">Split (사진과 글 반반 고정)</option>
+        <option value="alt">Modular Grid (지그재그 좌우교차)</option>
+        <option value="stack">Stacked (위에서 아래로 쌓기)</option>
+        <option value="center">Centered (가운데 한 줄)</option>
+        <option value="split">Split (화면 반반)</option>
       </select>
+      <div class="grouphint" id="layFrom" hidden></div>
       <div class="layprev" id="layPrev"></div>
       <div class="infobox" id="layInfo"></div>
     </div>
@@ -252,7 +253,13 @@ const PAGES=[
  s:[['히어로 스테이트먼트','대형 타이포로 선언 한 문장','statement'],['셀렉티드 워크','대표작 6~9개, 클라이언트명+연도','work'],['대표 케이스','1~2개를 확장, 과제, 접근, 결과','casestudy'],['서비스 / 역량','브랜딩·웹·모션 등 제공 범위','grid3'],['어바웃 · 철학','규모, 일하는 방식, 팀 사진','features'],['클라이언트 로고 · 어워드','협업 브랜드 + 수상 배지','logos'],['프로세스','발견, 전략, 디자인, 개발, 런칭','process'],['컨택 CTA + 푸터','문의 대형 링크, 이메일·SNS','cta']]},
 {id:'app',n:'앱 소개 랜딩',refs:'Toss · Duolingo · Revolut',
  s:[['히어로 (디바이스 목업)','폰 프레임 안 앱 화면 + 스토어 배지','appHero'],['다운로드 · 평점','누적 다운로드, 앱스토어 평점 숫자','stats'],['기능 스토리','폰 목업 안에서 화면 전환하며 기능 3~4개','features'],['기능 카드 그리드','부가 기능 아이콘+제목 2x3','grid3'],['사용 흐름 3스텝','가입, 연결, 사용','steps'],['보안 · 신뢰','인증 마크, 암호화, 규제 준수','grid3'],['사용자 후기','앱스토어 리뷰 카드','quotes'],['자주 묻는 질문','요금, 기기 지원, 해지','faq'],['QR + 마감 CTA','PC용 QR + 스토어 배지','qrcta']]}
-];
+,
+{id:'ecommerce',n:'이커머스 상품 상세',refs:'Apple · 무신사 · 쿠팡',
+ s:[['갤러리 + 구매 정보','좌측 이미지 슬라이드, 우측 스티키에 상품명·가격·옵션','hero'],['구매 박스','옵션 선택, 수량, 장바구니와 바로구매','pricebox'],['혜택 · 할인 배너','회원가, 쿠폰, 적립, 무이자, 빠른배송 뱃지','badges'],['앵커 탭','상세정보/리뷰/문의/배송 스티키 탭','catnav'],['상품 상세 이미지','브랜드 제작 상세컷, 착용컷, 소재 클로즈업','shot'],['스펙 · 사이즈 표','실측 사이즈, 소재 혼용률, 세탁법','accordion'],['코디 · 함께 구매','세트 구성과 액세서리 추가 제안','set'],['리뷰','평점 분포 + 사이즈·색감 만족도 + 포토리뷰','reviews'],['문의','재입고·배송 문의와 판매자 답변','faq'],['추천 상품','함께 본 상품 캐러셀','gallery']]},
+{id:'restaurant',n:'레스토랑 / 카페',refs:'미쉐린 등재 다이닝 · 스페셜티 카페',
+ s:[['히어로','매장 분위기 영상 또는 시그니처 요리 풀스크린','hero'],['퀵 인포 바','영업시간, 위치, 전화, 예약을 상시 노출','quickinfo'],['메뉴 미리보기','카테고리별 대표 5~6개 + 가격','menulist'],['시그니처 메뉴','간판 세 가지를 큰 사진 + 재료·조리 설명','signature'],['공간 갤러리','홀·바·룸·테라스 사진 그리드','gallery'],['브랜드 스토리 · 셰프','창업 배경, 식재료 철학, 셰프 프로필','team'],['리뷰 · 미디어','평점, 방송·매거진 로고, 후기 인용','quotes'],['예약 · 주문','예약 위젯, 배달앱, 단체 문의','cta'],['위치 · 영업시간 + 푸터','지도, 주차, 요일별 시간표, 사업자 정보','contact']]},
+{id:'realestate',n:'부동산 매물 상세',refs:'Zillow · 네이버 부동산 · 직방',
+ s:[['사진 갤러리 + 핵심 요약','사진 슬라이드 + 가격, 전용면적, 층수, 방·욕실','hero'],['스티키 문의 바','중개사 전화, 채팅, 방문 예약','pricebox'],['매물 기본 정보','공급·전용면적, 해당층, 방향, 준공년도, 주차','stats'],['관리비 · 입주 조건','관리비 포함 항목, 입주 가능일, 전입신고','accordion'],['평면도 · 구조','타입별 평면도와 파노라마 투어','shot'],['시세 · 실거래가','동일 평형 실거래가 추이와 평균 대비','stats'],['단지 · 건물 정보','세대수, 준공일, 시공사, 용적률','grid3'],['중개사 정보 · 검증','사무소명, 등록번호, 허위매물 확인 일자','quotes'],['지도 + 주변 인프라','도보 거리 기준 지하철·학교·마트·병원','contact'],['비슷한 매물','같은 단지·인근 유사 조건 카드','gallery']]}];
 
 /* ===== 붙여넣은 자료 읽기 =====
    자료에 없는 값은 지어내지 않는다. 빈칸으로 두고 무엇을 넣을 자리인지 적는다. */
@@ -610,14 +617,31 @@ function handoff(){
     const i=PAGES.findIndex(function(x){return x.n===pg;});
     if(i>=0) $('#selPage').value=String(i);
   }
-  const lay=Q.get('layout');
-  if(lay){
-    const o=[].slice.call($('#selLayout').options)
-      .filter(function(x){return x.textContent.indexOf(lay)===0;})[0];
-    if(o) $('#selLayout').value=o.value;
+  const lay=Q.get('layout'), layname=Q.get('layname');
+  if(lay && $('#selLayout').querySelector('[value="'+lay+'"]')){
+    $('#selLayout').value=lay;
+  }
+  // 생성기가 만드는 배치는 네 가지뿐이다. 모음집에서 고른 이름과 다르면 그 사실을 적는다.
+  const note=$('#layFrom');
+  if(note && layname){
+    const here=$('#selLayout').selectedOptions[0];
+    note.textContent = (here && here.textContent===layname)
+      ? '모음집에서 정한 배치입니다.'
+      : '모음집에서 ' + layname + ' 을(를) 정하셨습니다. 여기서는 '
+        + (here?here.textContent:'') + ' 로 만듭니다.';
+    note.hidden=false;
   }
 })();
 const PAGEINFO={
+ ecommerce:{flow:'상단은 구매 결정(가격·옵션·혜택), 하단은 설득(상세컷·리뷰·문의)',
+   key:'앵커 탭으로 긴 페이지를 잡아 줄 것. 리뷰는 <b>사이즈·색감 만족도</b>가 전환을 가른다',
+   len:'길게 (모바일 10~14화면)', who:'장바구니에 담을지 재고 있는 방문자'},
+ restaurant:{flow:'분위기로 끌고, 메뉴로 설득, 예약·위치로 마무리',
+   key:'메뉴는 <b>PDF 대신 웹 페이지</b>로. 전화·예약은 첫 화면에서 바로 닿게',
+   len:'짧게 (모바일 4~6화면)', who:'오늘 갈 곳을 정하는 손님'},
+ realestate:{flow:'사진과 핵심 세 가지 먼저, 표·지도·시세로 검증, 중개사 연결',
+   key:'허위매물 <b>확인 일자</b>를 노출할 것. 실거래가는 같은 평형만 비교',
+   len:'중간 (모바일 7~10화면)', who:'방문 전 조건을 추리는 사람'},
  beauty:{flow:'감성으로 잡고, 성분·수치로 신뢰, 루틴 세트로 객단가',
    key:'임상 수치와 전성분은 <b>있는 자료만</b>. 없는 효능은 절대 쓰지 말 것 (화장품법)',
    len:'스크롤 길이 길게 (모바일 8~12화면)', who:'구매 직전 비교 중인 방문자'},

@@ -169,7 +169,7 @@ SHELL = u"""<!doctype html>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Design System Kit</title>
-<meta name="description" content="디자인 시스템 38종, 레이아웃 22종, 콘텐츠 구조 9종을 보관하고 AI 프롬프트·CLAUDE.md·CSS 토큰·실제 페이지까지 만들어내는 한 파일짜리 도구.">
+<meta name="description" content="디자인 시스템 38종, 레이아웃 23종, 콘텐츠 구조 9종을 보관하고 AI 프롬프트·CLAUDE.md·CSS 토큰·실제 페이지까지 만들어내는 한 파일짜리 도구.">
 <style>
   html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#F6F5F2;}
   html[data-ui="dark"],html[data-ui="dark"] body{background:#141317;}
@@ -208,7 +208,7 @@ __BLOCKS__
     var hash='#'+name+(curQ?'?'+curQ:'');
     if(push!==false && location.hash!==hash) location.hash=hash;
     document.title=({index:'Design System Kit',library:'모음집',builder:'조립기',
-                     generator:'생성기',guide:'사용설명서'}[name])
+                     generator:'생성기',guide:'설명서'}[name])
                    +(name==='index'?'':' · Design System Kit');
   }
 

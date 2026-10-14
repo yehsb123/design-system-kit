@@ -1,7 +1,7 @@
 {
  "id": "wise",
  "name": "Wise",
- "category": "핀테크",
+ "category": "생활 서비스",
  "font": "Inter",
  "fontStack": "\"Inter\",\"Pretendard\",-apple-system,system-ui,sans-serif",
  "framework": "React · 웹",

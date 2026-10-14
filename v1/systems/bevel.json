@@ -1,7 +1,7 @@
 {
  "id": "bevel",
  "name": "Bevel",
- "category": "헬스케어",
+ "category": "생활 서비스",
  "font": "Plus Jakarta Sans",
  "fontStack": "\"Plus Jakarta Sans\",\"Pretendard\",-apple-system,system-ui,sans-serif",
  "framework": "React · 웹앱",

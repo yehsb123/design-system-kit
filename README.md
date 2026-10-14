@@ -18,7 +18,7 @@
 | | 수량 | 내용 |
 |---|---|---|
 | 디자인 시스템 | 38종 | Toss, Ant Design, Material 3, IBM Carbon, Apple HIG, Shopify Polaris, Vercel, GitLab, Airbnb, Slack, monopo saigon, Bevel, Wise, Pinterest Gestalt, Zendesk Garden, Mantine, Adobe Spectrum, Microsoft Fluent 2, Red Hat PatternFly, GitHub Primer, Bootstrap, Tailwind CSS, Salesforce Lightning, MongoDB LeafyGreen, Palantir Blueprint, Workday Canvas, Radix UI, Arco Design, Semi Design, USWDS, Segment Evergreen, HashiCorp Helios 등 |
-| 레이아웃 패턴 | 22종 | Holy Grail, 대시보드, 지그재그, 벤토, 메뉴판 4종 등 |
+| 레이아웃 패턴 | 23종 | Holy Grail, 대시보드, 지그재그, 벤토, 메뉴판 4종 등 |
 | 콘텐츠 구조 | 9종 | 뷰티 상세, SaaS 랜딩, 메뉴판, 병원, 포트폴리오, 앱 소개 등 |
 | 아이콘 | 48개 | SVG 스프라이트, 개별 파일, React 컴포넌트, CSS로 내보내기 |
 
@@ -45,7 +45,7 @@
 | 모음집 | 시스템, 레이아웃, 콘텐츠 구조, 제작 규칙을 보관합니다. 맨 위 조립기에서 프롬프트, CLAUDE.md, CSS, 컴포넌트를 뽑습니다 |
 | 조립기 | 브랜드 색 하나로 50~950 램프를 자동 생성해 나만의 시스템을 만듭니다 |
 | 생성기 | 제품이나 병원 정보를 넣고 실제 동작하는 HTML 페이지를 만듭니다 |
-| 사용설명서 | 상황별 사용법과 자주 묻는 질문 |
+| 설명서 | 상황별 사용법과 자주 묻는 질문 |
 
 주소가 자리를 기억합니다. `#library?sys=monopo` 처럼 바뀌므로 뒤로가기와 Esc로 목록에 돌아오고, 주소를 보내면 상대도 같은 화면을 봅니다.
 
@@ -118,7 +118,7 @@
 
 설명서에 상황별 순서와 화면마다 어떤 버튼이 무엇을 하는지 적어 두었습니다.
 
-![사용설명서](docs/screenshots/guide.png)
+![설명서](docs/screenshots/guide.png)
 
 ### 3. 고객이 브랜드 색을 줬을 때
 
@@ -158,7 +158,7 @@ src/index.html       시작 화면 (묶이기 전 원본)
 src/library.html     모음집
 src/builder.html     조립기
 src/generator.html   생성기
-src/guide.html       사용설명서
+src/guide.html       설명서
 pages.json           콘텐츠 구조 원본 데이터
 docs/screenshots     README용 이미지
 test_ui.py           조작부를 하나씩 눌러 반응을 봅니다
@@ -186,7 +186,7 @@ v1/systems/{id}/tokens.dark.css    CSS 변수 (다크)
 v1/systems/{id}/theme.css          CSS 변수 (라이트 + 다크 한 파일)
 v1/systems/{id}/tailwind.js        Tailwind 설정
 v1/systems/{id}/spec.md            스펙 문서
-v1/layouts.json                    레이아웃 22종
+v1/layouts.json                    레이아웃 23종
 v1/pages.json                      콘텐츠 구조 9종
 v1/icons.json                      아이콘 48개
 ```
