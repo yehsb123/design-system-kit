@@ -1,0 +1,754 @@
+{
+ "id": "radix",
+ "name": "Radix UI",
+ "category": "SaaS",
+ "font": "Inter · system-ui",
+ "fontStack": "\"Inter\",system-ui,-apple-system,sans-serif",
+ "framework": "React · 헤드리스 컴포넌트",
+ "description": "라딕스 공식 색 체계. 열두 단계마다 쓰임이 정해져 있어 9 는 꽉 찬 바탕, 11 은 글자처럼 번호만 보고 고를 수 있습니다.",
+ "cover": [
+  "#0090FF",
+  "#30A46C",
+  "#FFC53D",
+  "#E5484D"
+ ],
+ "hasTags": false,
+ "hasChart": true,
+ "radius": {
+  "xs": "3px",
+  "sm": "4px",
+  "md": "6px",
+  "lg": "12px"
+ },
+ "ui": {
+  "btnR": "6px",
+  "btnW": "500",
+  "btnSh": "none",
+  "ctlR": "4px",
+  "cardR": "12px",
+  "padx": "16px",
+  "inR": "6px"
+ },
+ "iconStyle": {
+  "sw": 1.6,
+  "cap": "round",
+  "join": "round"
+ },
+ "tagRadius": "999px",
+ "signature": "",
+ "ramps": {
+  "primary": [
+   [
+    "50",
+    "#FBFDFF"
+   ],
+   [
+    "100",
+    "#ECF6FE"
+   ],
+   [
+    "200",
+    "#D1EDFF"
+   ],
+   [
+    "300",
+    "#B0DBFD"
+   ],
+   [
+    "400",
+    "#7BBFF3"
+   ],
+   [
+    "500",
+    "#0090FF"
+   ],
+   [
+    "600",
+    "#038BF6"
+   ],
+   [
+    "700",
+    "#0784E9"
+   ],
+   [
+    "800",
+    "#0B78D5"
+   ],
+   [
+    "900",
+    "#0F5AA4"
+   ],
+   [
+    "950",
+    "#113264"
+   ]
+  ],
+  "gray": [
+   [
+    "50",
+    "#FCFCFD"
+   ],
+   [
+    "100",
+    "#F4F4F6"
+   ],
+   [
+    "200",
+    "#E6E7EB"
+   ],
+   [
+    "300",
+    "#DADBE1"
+   ],
+   [
+    "400",
+    "#C5C6D0"
+   ],
+   [
+    "500",
+    "#8B8D98"
+   ],
+   [
+    "600",
+    "#848791"
+   ],
+   [
+    "700",
+    "#7A7D86"
+   ],
+   [
+    "800",
+    "#666A73"
+   ],
+   [
+    "900",
+    "#45494F"
+   ],
+   [
+    "950",
+    "#1C2024"
+   ]
+  ],
+  "success": [
+   [
+    "50",
+    "#FBFEFC"
+   ],
+   [
+    "100",
+    "#ECF8EF"
+   ],
+   [
+    "200",
+    "#D2EFDC"
+   ],
+   [
+    "300",
+    "#B2DFC3"
+   ],
+   [
+    "400",
+    "#7AC69E"
+   ],
+   [
+    "500",
+    "#30A46C"
+   ],
+   [
+    "600",
+    "#2C9C67"
+   ],
+   [
+    "700",
+    "#258C5E"
+   ],
+   [
+    "800",
+    "#1E6647"
+   ],
+   [
+    "900",
+    "#173629"
+   ],
+   [
+    "950",
+    "#0F231B"
+   ]
+  ],
+  "warning": [
+   [
+    "50",
+    "#FEFDFB"
+   ],
+   [
+    "100",
+    "#FEFAE1"
+   ],
+   [
+    "200",
+    "#FFF3B3"
+   ],
+   [
+    "300",
+    "#FDE986"
+   ],
+   [
+    "400",
+    "#F5D974"
+   ],
+   [
+    "500",
+    "#FFC53D"
+   ],
+   [
+    "600",
+    "#FBBB27"
+   ],
+   [
+    "700",
+    "#E6B550"
+   ],
+   [
+    "800",
+    "#C17D16"
+   ],
+   [
+    "900",
+    "#613E1B"
+   ],
+   [
+    "950",
+    "#2B1C13"
+   ]
+  ],
+  "error": [
+   [
+    "50",
+    "#FFFCFC"
+   ],
+   [
+    "100",
+    "#FEF0F0"
+   ],
+   [
+    "200",
+    "#FFD8D9"
+   ],
+   [
+    "300",
+    "#FDC0C1"
+   ],
+   [
+    "400",
+    "#F09EA0"
+   ],
+   [
+    "500",
+    "#E5484D"
+   ],
+   [
+    "600",
+    "#E04246"
+   ],
+   [
+    "700",
+    "#D93A3F"
+   ],
+   [
+    "800",
+    "#D13034"
+   ],
+   [
+    "900",
+    "#A4242B"
+   ],
+   [
+    "950",
+    "#641723"
+   ]
+  ],
+  "info": [
+   [
+    "50",
+    "#FAFDFE"
+   ],
+   [
+    "100",
+    "#E6F8FA"
+   ],
+   [
+    "200",
+    "#C6EFF5"
+   ],
+   [
+    "300",
+    "#A2DFE9"
+   ],
+   [
+    "400",
+    "#63C6D7"
+   ],
+   [
+    "500",
+    "#00A2C7"
+   ],
+   [
+    "600",
+    "#0699BC"
+   ],
+   [
+    "700",
+    "#0C87A5"
+   ],
+   [
+    "800",
+    "#0F6378"
+   ],
+   [
+    "900",
+    "#0C3742"
+   ],
+   [
+    "950",
+    "#08232A"
+   ]
+  ]
+ },
+ "semantic": {
+  "light": {
+   "--bg-primary": "#0090FF",
+   "--bg-primary-low": "#FBFDFF",
+   "--fg-primary": "#038BF6",
+   "--fg-primary-low": "#FBFDFF",
+   "--fg-point": "#0090FF",
+   "--border-primary": "#0090FF",
+   "--bg": "#FFFFFF",
+   "--bg-inset": "#FFFFFF",
+   "--bg-inset-neutral": "#F4F4F6",
+   "--bg-neutral": "#F4F4F6",
+   "--bg-neutral-low": "#FCFCFD",
+   "--bg-neutral-lower": "#FCFCFD",
+   "--bg-disabled": "#F4F4F6",
+   "--bg-contrast": "#45494F",
+   "--bg-success": "#30A46C",
+   "--bg-success-low": "#FBFEFC",
+   "--bg-warning": "#FFC53D",
+   "--bg-warning-low": "#FEFDFB",
+   "--bg-critical": "#E5484D",
+   "--bg-critical-low": "#FFFCFC",
+   "--bg-info": "#0699BC",
+   "--bg-info-low": "#FAFDFE",
+   "--fg": "#45494F",
+   "--fg-strong": "#45494F",
+   "--fg-lower": "#848791",
+   "--fg-disabled": "#C5C6D0",
+   "--fg-contrast": "#FFFFFF",
+   "--fg-on-primary": "#FFFFFF",
+   "--fg-success": "#258C5E",
+   "--fg-warning": "#C17D16",
+   "--fg-error": "#D93A3F",
+   "--border": "#E6E7EB",
+   "--border-low": "#F4F4F6",
+   "--border-strong": "#DADBE1",
+   "--border-disabled": "#E6E7EB",
+   "--shadow-1": "0 0 8px rgba(0,0,0,.10)",
+   "--shadow-2": "0 4px 8px rgba(0,0,0,.10)",
+   "--shadow-3": "0 6px 16px rgba(0,0,0,.06)",
+   "--shadow-4": "0 6px 24px rgba(0,0,0,.08)",
+   "--shadow-5": "0 8px 24px rgba(0,0,0,.12)",
+   "--shadow-6": "0 16px 40px rgba(0,0,0,.16)",
+   "--panel": "#FFFFFF",
+   "--canvas": "#FCFCFD"
+  },
+  "dark": {
+   "--bg-primary": "#7BBFF3",
+   "--bg-primary-low": "#0F5AA4",
+   "--fg-primary": "#B0DBFD",
+   "--fg-primary-low": "#0F5AA4",
+   "--fg-point": "#0090FF",
+   "--border-primary": "#7BBFF3",
+   "--bg": "#45494F",
+   "--bg-inset": "#45494F",
+   "--bg-inset-neutral": "#666A73",
+   "--bg-neutral": "#666A73",
+   "--bg-neutral-low": "#45494F",
+   "--bg-neutral-lower": "#1C2024",
+   "--bg-disabled": "#666A73",
+   "--bg-contrast": "#FFFFFF",
+   "--bg-success": "#30A46C",
+   "--bg-success-low": "#173629",
+   "--bg-warning": "#FFC53D",
+   "--bg-warning-low": "#613E1B",
+   "--bg-critical": "#E5484D",
+   "--bg-critical-low": "#A4242B",
+   "--bg-info": "#63C6D7",
+   "--bg-info-low": "#0C3742",
+   "--fg": "#FFFFFF",
+   "--fg-strong": "#FCFCFD",
+   "--fg-lower": "#C5C6D0",
+   "--fg-disabled": "#848791",
+   "--fg-contrast": "#45494F",
+   "--fg-on-primary": "#1C2024",
+   "--fg-success": "#7AC69E",
+   "--fg-warning": "#FDE986",
+   "--fg-error": "#FDC0C1",
+   "--border": "#666A73",
+   "--border-low": "#45494F",
+   "--border-strong": "#848791",
+   "--border-disabled": "#666A73",
+   "--shadow-1": "0 0 8px rgba(0,0,0,.5)",
+   "--shadow-2": "0 4px 8px rgba(0,0,0,.5)",
+   "--shadow-3": "0 6px 16px rgba(0,0,0,.4)",
+   "--shadow-4": "0 6px 24px rgba(0,0,0,.5)",
+   "--shadow-5": "0 8px 24px rgba(0,0,0,.5)",
+   "--shadow-6": "0 16px 40px rgba(0,0,0,.6)",
+   "--panel": "#45494F",
+   "--canvas": "#1C2024"
+  }
+ },
+ "tokens": {
+  "light": {
+   "--primary-50": "#FBFDFF",
+   "--primary-100": "#ECF6FE",
+   "--primary-200": "#D1EDFF",
+   "--primary-300": "#B0DBFD",
+   "--primary-400": "#7BBFF3",
+   "--primary-500": "#0090FF",
+   "--primary-600": "#038BF6",
+   "--primary-700": "#0784E9",
+   "--primary-800": "#0B78D5",
+   "--primary-900": "#0F5AA4",
+   "--primary-950": "#113264",
+   "--gray-50": "#FCFCFD",
+   "--gray-100": "#F4F4F6",
+   "--gray-200": "#E6E7EB",
+   "--gray-300": "#DADBE1",
+   "--gray-400": "#C5C6D0",
+   "--gray-500": "#8B8D98",
+   "--gray-600": "#848791",
+   "--gray-700": "#7A7D86",
+   "--gray-800": "#666A73",
+   "--gray-900": "#45494F",
+   "--gray-950": "#1C2024",
+   "--success-50": "#FBFEFC",
+   "--success-100": "#ECF8EF",
+   "--success-200": "#D2EFDC",
+   "--success-300": "#B2DFC3",
+   "--success-400": "#7AC69E",
+   "--success-500": "#30A46C",
+   "--success-600": "#2C9C67",
+   "--success-700": "#258C5E",
+   "--success-800": "#1E6647",
+   "--success-900": "#173629",
+   "--success-950": "#0F231B",
+   "--warning-50": "#FEFDFB",
+   "--warning-100": "#FEFAE1",
+   "--warning-200": "#FFF3B3",
+   "--warning-300": "#FDE986",
+   "--warning-400": "#F5D974",
+   "--warning-500": "#FFC53D",
+   "--warning-600": "#FBBB27",
+   "--warning-700": "#E6B550",
+   "--warning-800": "#C17D16",
+   "--warning-900": "#613E1B",
+   "--warning-950": "#2B1C13",
+   "--error-50": "#FFFCFC",
+   "--error-100": "#FEF0F0",
+   "--error-200": "#FFD8D9",
+   "--error-300": "#FDC0C1",
+   "--error-400": "#F09EA0",
+   "--error-500": "#E5484D",
+   "--error-600": "#E04246",
+   "--error-700": "#D93A3F",
+   "--error-800": "#D13034",
+   "--error-900": "#A4242B",
+   "--error-950": "#641723",
+   "--info-50": "#FAFDFE",
+   "--info-100": "#E6F8FA",
+   "--info-200": "#C6EFF5",
+   "--info-300": "#A2DFE9",
+   "--info-400": "#63C6D7",
+   "--info-500": "#00A2C7",
+   "--info-600": "#0699BC",
+   "--info-700": "#0C87A5",
+   "--info-800": "#0F6378",
+   "--info-900": "#0C3742",
+   "--info-950": "#08232A",
+   "--bg-primary": "#0090FF",
+   "--bg-primary-low": "#FBFDFF",
+   "--fg-primary": "#038BF6",
+   "--fg-primary-low": "#FBFDFF",
+   "--fg-point": "#0090FF",
+   "--border-primary": "#0090FF",
+   "--bg": "#FFFFFF",
+   "--bg-inset": "#FFFFFF",
+   "--bg-inset-neutral": "#F4F4F6",
+   "--bg-neutral": "#F4F4F6",
+   "--bg-neutral-low": "#FCFCFD",
+   "--bg-neutral-lower": "#FCFCFD",
+   "--bg-disabled": "#F4F4F6",
+   "--bg-contrast": "#45494F",
+   "--bg-success": "#30A46C",
+   "--bg-success-low": "#FBFEFC",
+   "--bg-warning": "#FFC53D",
+   "--bg-warning-low": "#FEFDFB",
+   "--bg-critical": "#E5484D",
+   "--bg-critical-low": "#FFFCFC",
+   "--bg-info": "#0699BC",
+   "--bg-info-low": "#FAFDFE",
+   "--fg": "#45494F",
+   "--fg-strong": "#45494F",
+   "--fg-lower": "#848791",
+   "--fg-disabled": "#C5C6D0",
+   "--fg-contrast": "#FFFFFF",
+   "--fg-on-primary": "#FFFFFF",
+   "--fg-success": "#258C5E",
+   "--fg-warning": "#C17D16",
+   "--fg-error": "#D93A3F",
+   "--border": "#E6E7EB",
+   "--border-low": "#F4F4F6",
+   "--border-strong": "#DADBE1",
+   "--border-disabled": "#E6E7EB",
+   "--shadow-1": "0 0 8px rgba(0,0,0,.10)",
+   "--shadow-2": "0 4px 8px rgba(0,0,0,.10)",
+   "--shadow-3": "0 6px 16px rgba(0,0,0,.06)",
+   "--shadow-4": "0 6px 24px rgba(0,0,0,.08)",
+   "--shadow-5": "0 8px 24px rgba(0,0,0,.12)",
+   "--shadow-6": "0 16px 40px rgba(0,0,0,.16)",
+   "--panel": "#FFFFFF",
+   "--canvas": "#FCFCFD",
+   "--tag-bg-success": "#E5FFF0",
+   "--tag-fg-success": "#007A33",
+   "--tag-bg-warning": "#FFF9E5",
+   "--tag-fg-warning": "#A65F00",
+   "--tag-bg-error": "#FFEFEF",
+   "--tag-fg-error": "#C20E1F",
+   "--tag-bg-info": "#E5F0FF",
+   "--tag-fg-info": "#1E40AF",
+   "--tag-bg-neutral": "#F1F1F1",
+   "--tag-fg-neutral": "#4B4C52",
+   "--tag-bg-indigo": "#EEF0FE",
+   "--tag-fg-indigo": "#4F46E5",
+   "--tag-bg-ocean": "#E0F4F7",
+   "--tag-fg-ocean": "#0E7490",
+   "--tag-bg-teal": "#DCFAF5",
+   "--tag-fg-teal": "#0D9488",
+   "--tag-bg-emerald": "#DDF7EA",
+   "--tag-fg-emerald": "#047857",
+   "--tag-bg-lime": "#ECFCCB",
+   "--tag-fg-lime": "#4D7C0F",
+   "--tag-bg-rose": "#FCE7F0",
+   "--tag-fg-rose": "#BE185D",
+   "--tag-bg-magenta": "#F5E0F7",
+   "--tag-fg-magenta": "#A21CAF",
+   "--tag-bg-violet": "#EDE3FE",
+   "--tag-fg-violet": "#6D28D9",
+   "--tag-bg-slate": "#E2E8F0",
+   "--tag-fg-slate": "#475569",
+   "--tag-bg-bronze": "#FBE9D0",
+   "--tag-fg-bronze": "#92400E",
+   "--graph-chart-1": "#4178FF",
+   "--graph-chart-2": "#00CCC2",
+   "--graph-chart-3": "#7BAAF7",
+   "--graph-chart-4": "#8FCE96",
+   "--graph-chart-5": "#F2968F",
+   "--graph-chart-6": "#A78BFA",
+   "--graph-chart-7": "#FDBA74",
+   "--graph-chart-8": "#F472B6",
+   "--radius-xs": "3px",
+   "--radius-sm": "4px",
+   "--radius-md": "6px",
+   "--radius-lg": "12px",
+   "--space-1": "4px",
+   "--space-2": "8px",
+   "--space-3": "12px",
+   "--space-4": "16px",
+   "--space-5": "20px",
+   "--space-6": "24px",
+   "--space-8": "32px",
+   "--space-10": "40px",
+   "--space-12": "48px",
+   "--font-family": "\"Inter\",system-ui,-apple-system,sans-serif",
+   "--btn-radius": "6px",
+   "--btn-weight": "500",
+   "--btn-shadow": "none",
+   "--ctl-radius": "4px",
+   "--card-radius": "12px",
+   "--btn-padx": "16px",
+   "--in-radius": "6px",
+   "--tag-radius": "999px"
+  },
+  "dark": {
+   "--primary-50": "#FBFDFF",
+   "--primary-100": "#ECF6FE",
+   "--primary-200": "#D1EDFF",
+   "--primary-300": "#B0DBFD",
+   "--primary-400": "#7BBFF3",
+   "--primary-500": "#0090FF",
+   "--primary-600": "#038BF6",
+   "--primary-700": "#0784E9",
+   "--primary-800": "#0B78D5",
+   "--primary-900": "#0F5AA4",
+   "--primary-950": "#113264",
+   "--gray-50": "#FCFCFD",
+   "--gray-100": "#F4F4F6",
+   "--gray-200": "#E6E7EB",
+   "--gray-300": "#DADBE1",
+   "--gray-400": "#C5C6D0",
+   "--gray-500": "#8B8D98",
+   "--gray-600": "#848791",
+   "--gray-700": "#7A7D86",
+   "--gray-800": "#666A73",
+   "--gray-900": "#45494F",
+   "--gray-950": "#1C2024",
+   "--success-50": "#FBFEFC",
+   "--success-100": "#ECF8EF",
+   "--success-200": "#D2EFDC",
+   "--success-300": "#B2DFC3",
+   "--success-400": "#7AC69E",
+   "--success-500": "#30A46C",
+   "--success-600": "#2C9C67",
+   "--success-700": "#258C5E",
+   "--success-800": "#1E6647",
+   "--success-900": "#173629",
+   "--success-950": "#0F231B",
+   "--warning-50": "#FEFDFB",
+   "--warning-100": "#FEFAE1",
+   "--warning-200": "#FFF3B3",
+   "--warning-300": "#FDE986",
+   "--warning-400": "#F5D974",
+   "--warning-500": "#FFC53D",
+   "--warning-600": "#FBBB27",
+   "--warning-700": "#E6B550",
+   "--warning-800": "#C17D16",
+   "--warning-900": "#613E1B",
+   "--warning-950": "#2B1C13",
+   "--error-50": "#FFFCFC",
+   "--error-100": "#FEF0F0",
+   "--error-200": "#FFD8D9",
+   "--error-300": "#FDC0C1",
+   "--error-400": "#F09EA0",
+   "--error-500": "#E5484D",
+   "--error-600": "#E04246",
+   "--error-700": "#D93A3F",
+   "--error-800": "#D13034",
+   "--error-900": "#A4242B",
+   "--error-950": "#641723",
+   "--info-50": "#FAFDFE",
+   "--info-100": "#E6F8FA",
+   "--info-200": "#C6EFF5",
+   "--info-300": "#A2DFE9",
+   "--info-400": "#63C6D7",
+   "--info-500": "#00A2C7",
+   "--info-600": "#0699BC",
+   "--info-700": "#0C87A5",
+   "--info-800": "#0F6378",
+   "--info-900": "#0C3742",
+   "--info-950": "#08232A",
+   "--bg-primary": "#7BBFF3",
+   "--bg-primary-low": "#0F5AA4",
+   "--fg-primary": "#B0DBFD",
+   "--fg-primary-low": "#0F5AA4",
+   "--fg-point": "#0090FF",
+   "--border-primary": "#7BBFF3",
+   "--bg": "#45494F",
+   "--bg-inset": "#45494F",
+   "--bg-inset-neutral": "#666A73",
+   "--bg-neutral": "#666A73",
+   "--bg-neutral-low": "#45494F",
+   "--bg-neutral-lower": "#1C2024",
+   "--bg-disabled": "#666A73",
+   "--bg-contrast": "#FFFFFF",
+   "--bg-success": "#30A46C",
+   "--bg-success-low": "#173629",
+   "--bg-warning": "#FFC53D",
+   "--bg-warning-low": "#613E1B",
+   "--bg-critical": "#E5484D",
+   "--bg-critical-low": "#A4242B",
+   "--bg-info": "#63C6D7",
+   "--bg-info-low": "#0C3742",
+   "--fg": "#FFFFFF",
+   "--fg-strong": "#FCFCFD",
+   "--fg-lower": "#C5C6D0",
+   "--fg-disabled": "#848791",
+   "--fg-contrast": "#45494F",
+   "--fg-on-primary": "#1C2024",
+   "--fg-success": "#7AC69E",
+   "--fg-warning": "#FDE986",
+   "--fg-error": "#FDC0C1",
+   "--border": "#666A73",
+   "--border-low": "#45494F",
+   "--border-strong": "#848791",
+   "--border-disabled": "#666A73",
+   "--shadow-1": "0 0 8px rgba(0,0,0,.5)",
+   "--shadow-2": "0 4px 8px rgba(0,0,0,.5)",
+   "--shadow-3": "0 6px 16px rgba(0,0,0,.4)",
+   "--shadow-4": "0 6px 24px rgba(0,0,0,.5)",
+   "--shadow-5": "0 8px 24px rgba(0,0,0,.5)",
+   "--shadow-6": "0 16px 40px rgba(0,0,0,.6)",
+   "--panel": "#45494F",
+   "--canvas": "#1C2024",
+   "--tag-bg-success": "#16401F",
+   "--tag-fg-success": "#4DCD6A",
+   "--tag-bg-warning": "#4D3514",
+   "--tag-fg-warning": "#FFC916",
+   "--tag-bg-error": "#4D1616",
+   "--tag-fg-error": "#F87171",
+   "--tag-bg-info": "#14304D",
+   "--tag-fg-info": "#7BA4FF",
+   "--tag-bg-neutral": "#3D3D40",
+   "--tag-fg-neutral": "#C0C1C6",
+   "--tag-bg-indigo": "#25224D",
+   "--tag-fg-indigo": "#818CF8",
+   "--tag-bg-ocean": "#14425A",
+   "--tag-fg-ocean": "#22D3EE",
+   "--tag-bg-teal": "#144D45",
+   "--tag-fg-teal": "#2DD4BF",
+   "--tag-bg-emerald": "#144D38",
+   "--tag-fg-emerald": "#34D399",
+   "--tag-bg-lime": "#354D10",
+   "--tag-fg-lime": "#A3E635",
+   "--tag-bg-rose": "#4D1428",
+   "--tag-fg-rose": "#FB7185",
+   "--tag-bg-magenta": "#4D1450",
+   "--tag-fg-magenta": "#E879F9",
+   "--tag-bg-violet": "#38144D",
+   "--tag-fg-violet": "#A78BFA",
+   "--tag-bg-slate": "#2A3A50",
+   "--tag-fg-slate": "#94A3B8",
+   "--tag-bg-bronze": "#4D2E14",
+   "--tag-fg-bronze": "#FDBA74",
+   "--graph-chart-1": "#5A8AFF",
+   "--graph-chart-2": "#4DDDD0",
+   "--graph-chart-3": "#7BAAF7",
+   "--graph-chart-4": "#8FCE96",
+   "--graph-chart-5": "#F2968F",
+   "--graph-chart-6": "#A78BFA",
+   "--graph-chart-7": "#FDBA74",
+   "--graph-chart-8": "#F472B6",
+   "--radius-xs": "3px",
+   "--radius-sm": "4px",
+   "--radius-md": "6px",
+   "--radius-lg": "12px",
+   "--space-1": "4px",
+   "--space-2": "8px",
+   "--space-3": "12px",
+   "--space-4": "16px",
+   "--space-5": "20px",
+   "--space-6": "24px",
+   "--space-8": "32px",
+   "--space-10": "40px",
+   "--space-12": "48px",
+   "--font-family": "\"Inter\",system-ui,-apple-system,sans-serif",
+   "--btn-radius": "6px",
+   "--btn-weight": "500",
+   "--btn-shadow": "none",
+   "--ctl-radius": "4px",
+   "--card-radius": "12px",
+   "--btn-padx": "16px",
+   "--in-radius": "6px",
+   "--tag-radius": "999px"
+  }
+ },
+ "spec": "# Radix UI — 시스템 스펙\n> 라딕스 공식 색 체계. 열두 단계마다 쓰임이 정해져 있어 9 는 꽉 찬 바탕, 11 은 글자처럼 번호만 보고 고를 수 있습니다.\n\n이 문서는 킷이 들고 있는 토큰에서 만들었습니다. 원래 사이트를 재서 나온 값이 아니므로, 실제 타이포 크기와 모션 곡선은 담지 않습니다.\n\n**분류:** SaaS  ·  **프레임워크:** React · 헤드리스 컴포넌트\n\n## 토큰 — 색\n\n모든 색은 11단계 램프로 정의합니다. 램프는 테마에 따라 바뀌지 않는 원시값입니다.\n\n### primary — 브랜드 행동과 강조\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FBFDFF` | `#ECF6FE` | `#D1EDFF` | `#B0DBFD` | `#7BBFF3` | `#0090FF` | `#038BF6` | `#0784E9` | `#0B78D5` | `#0F5AA4` | `#113264` |\n\n### gray — 글자, 테두리, 면\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FCFCFD` | `#F4F4F6` | `#E6E7EB` | `#DADBE1` | `#C5C6D0` | `#8B8D98` | `#848791` | `#7A7D86` | `#666A73` | `#45494F` | `#1C2024` |\n\n### success — 완료와 정상\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FBFEFC` | `#ECF8EF` | `#D2EFDC` | `#B2DFC3` | `#7AC69E` | `#30A46C` | `#2C9C67` | `#258C5E` | `#1E6647` | `#173629` | `#0F231B` |\n\n### warning — 주의와 대기\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FEFDFB` | `#FEFAE1` | `#FFF3B3` | `#FDE986` | `#F5D974` | `#FFC53D` | `#FBBB27` | `#E6B550` | `#C17D16` | `#613E1B` | `#2B1C13` |\n\n### error — 실패와 위험\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FFFCFC` | `#FEF0F0` | `#FFD8D9` | `#FDC0C1` | `#F09EA0` | `#E5484D` | `#E04246` | `#D93A3F` | `#D13034` | `#A4242B` | `#641723` |\n\n### info — 안내와 진행\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FAFDFE` | `#E6F8FA` | `#C6EFF5` | `#A2DFE9` | `#63C6D7` | `#00A2C7` | `#0699BC` | `#0C87A5` | `#0F6378` | `#0C3742` | `#08232A` |\n\n## 토큰 — 역할별 색\n\n램프를 역할에 매핑한 값입니다. 라이트와 다크에서 서로 다릅니다.\n\n| 토큰 | 쓰임새 | Light | Dark |\n|---|---|---|---|\n| `--bg` | 바탕이 되는 면 | `#FFFFFF` | `#45494F` |\n| `--canvas` | 페이지 바닥 | `#FCFCFD` | `#1C2024` |\n| `--fg` | 본문 글자 | `#45494F` | `#FFFFFF` |\n| `--fg-strong` | 제목과 강조 글자 | `#45494F` | `#FCFCFD` |\n| `--fg-lower` | 보조 설명 | `#848791` | `#C5C6D0` |\n| `--fg-disabled` | 비활성 글자 | `#C5C6D0` | `#848791` |\n| `--border` | 기본 경계선 | `#E6E7EB` | `#666A73` |\n| `--border-strong` | 강조 경계선 | `#DADBE1` | `#848791` |\n| `--bg-primary` | 주된 행동 버튼 바탕 | `#0090FF` | `#7BBFF3` |\n| `--bg-primary-low` | 주된 색의 엷은 면 | `#FBFDFF` | `#0F5AA4` |\n| `--fg-primary` | 주된 색 글자 | `#038BF6` | `#B0DBFD` |\n| `--bg-success` | 완료 표시 | `#30A46C` | `#30A46C` |\n| `--bg-warning` | 주의 표시 | `#FFC53D` | `#FFC53D` |\n| `--bg-critical` | 위험 표시 | `#E5484D` | `#E5484D` |\n| `--bg-info` | 안내 표시 | `#0699BC` | `#63C6D7` |\n\n## 토큰 — 타이포\n\n**글꼴:** `\"Inter\",system-ui,-apple-system,sans-serif`\n\n본문 행간은 150% 를 기준으로 합니다. 한글은 단어 단위로 끊어 쓰므로 `word-break: keep-all` 을 붙입니다.\n\n| 쓰임새 | 크기 | 굵기 |\n|---|---|---|\n| 페이지 제목 | clamp(28px, 5vw, 44px) | 700 |\n| 섹션 제목 | clamp(20px, 3vw, 30px) | 700 |\n| 본문 | 15~16px | 400 |\n| 보조 설명 | 13~14px | 400 |\n| 라벨 | 11~12px | 400 |\n| 버튼 | 14~15px | 500 |\n\n## 토큰 — 간격과 모양\n\n**기본 단위:** 4px\n\n간격: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px\n\n| 요소 | 모서리 |\n|---|---|\n| 버튼 | 6px |\n| 카드 | 12px |\n| 입력 | 6px |\n| 태그 | 999px |\n| 작은 조작부 | 4px |\n\n| 항목 | 값 |\n|---|---|\n| 버튼 좌우 안쪽 여백 | 16px |\n| 버튼 글자 굵기 | 500 |\n| 버튼 그림자 | 쓰지 않음 |\n| 페이지 폭 | min(1200px, 92vw) |\n\n## 아이콘\n\n24×24 보기틀, 선 굵기 1.6px, 끝처리 `round`, 꼬임 `round`.\n선은 `currentColor` 를 씁니다. 색을 아이콘 안에 박지 않습니다.\n\n## 컴포넌트\n\n| 컴포넌트 | 규칙 |\n|---|---|\n| 버튼 | primary, secondary, outline, ghost, danger 다섯 가지. 크기는 sm, md, lg. 상태는 hover, focus-visible, active, disabled, loading |\n| 태그 | 상태 5종. 바탕과 글자를 짝으로 씁니다 |\n| 입력 | 기본, 포커스, 에러, 성공, 비활성. 도움말과 필수 표시를 두고 색으로만 알리지 않습니다 |\n| 오버레이 | 모달은 `role=\"dialog\"`, `aria-modal`, Esc 닫기. 드로어, 토스트(`aria-live`), 툴팁, 드롭다운 |\n| 내비 | 탭은 `role=\"tablist\"`. 스텝, 페이지네이션, 브레드크럼 |\n| 표 | 헤더, 상세, 소계, 합계의 계층색을 지킵니다 |\n\n## 대비\n\n| 짝 | 비율 | 기준(AA 4.5) |\n|---|---|---|\n| 본문 대 바탕 | 9.06 : 1 | 통과 |\n| 흰글씨 대 주된 색 | 3.26 : 1 | 미달 |\n\n## 지킬 규칙과 금지 사항\n\n### 지킬 규칙\n\n- 모서리는 버튼 6px, 카드 12px, 입력 6px 으로 고정합니다\n- 색은 램프와 역할 토큰에서만 가져옵니다\n- 라이트와 다크를 항상 같이 맞춥니다\n- 여백과 글자 크기는 `clamp()` 로 화면 폭에 따라 줍니다\n- 터치로 누르는 자리는 44×44px 이상으로 둡니다\n- 초점 표시는 `focus-visible` 로 남깁니다\n\n### 금지 사항\n\n- 토큰에 없는 색을 직접 적지 않습니다\n- 보라와 바이올렛을 강조색으로 쓰지 않습니다\n- 왼쪽에 굵은 선이 붙은 인용 카드를 두지 않습니다\n- 색만으로 상태를 알리지 않습니다. 글자나 모양을 같이 둡니다\n- 모서리를 한 화면 안에서 여러 값으로 섮지 않습니다\n\n## 화면 규격\n\n- 컨테이너 `width: min(1200px, 92vw)`\n- 끊는 폭 1280, 1024, 768, 480px\n- 768px 미만은 1열로 내립니다\n- 여백 `clamp(24px, 5vw, 80px)`\n- 이미지는 WebP, 비율을 고정해 흔들림을 막습니다\n- 모션은 150~250ms. `prefers-reduced-motion` 을 따릅니다\n\n## AI 에게 넘길 빠른 참조\n\n- 본문 글자: `#45494F`\n- 보조 글자: `#848791`\n- 바탕: `#FFFFFF`\n- 페이지 바닥: `#FCFCFD`\n- 경계선: `#E6E7EB`\n- 주된 행동: `#0090FF`\n- 글꼴: `\"Inter\",system-ui,-apple-system,sans-serif`\n\n## 바로 쓰기\n\n### CSS 변수\n\n```css\n:root{\n  --primary-50: #FBFDFF;\n  --primary-100: #ECF6FE;\n  --primary-200: #D1EDFF;\n  --primary-300: #B0DBFD;\n  --primary-400: #7BBFF3;\n  --primary-500: #0090FF;\n  --primary-600: #038BF6;\n  --primary-700: #0784E9;\n  --primary-800: #0B78D5;\n  --primary-900: #0F5AA4;\n  --primary-950: #113264;\n  --gray-50: #FCFCFD;\n  --gray-100: #F4F4F6;\n  --gray-200: #E6E7EB;\n  --gray-300: #DADBE1;\n  --gray-400: #C5C6D0;\n  --gray-500: #8B8D98;\n  --gray-600: #848791;\n  --gray-700: #7A7D86;\n  --gray-800: #666A73;\n  --gray-900: #45494F;\n  --gray-950: #1C2024;\n  --success-50: #FBFEFC;\n  --success-100: #ECF8EF;\n  --success-200: #D2EFDC;\n  --success-300: #B2DFC3;\n  --success-400: #7AC69E;\n  --success-500: #30A46C;\n  --success-600: #2C9C67;\n  --success-700: #258C5E;\n  --success-800: #1E6647;\n  --success-900: #173629;\n  --success-950: #0F231B;\n  --warning-50: #FEFDFB;\n  --warning-100: #FEFAE1;\n  --warning-200: #FFF3B3;\n  --warning-300: #FDE986;\n  --warning-400: #F5D974;\n  --warning-500: #FFC53D;\n  --warning-600: #FBBB27;\n  --warning-700: #E6B550;\n  --warning-800: #C17D16;\n  --warning-900: #613E1B;\n  --warning-950: #2B1C13;\n  --error-50: #FFFCFC;\n  --error-100: #FEF0F0;\n  --error-200: #FFD8D9;\n  --error-300: #FDC0C1;\n  --error-400: #F09EA0;\n  --error-500: #E5484D;\n  --error-600: #E04246;\n  --error-700: #D93A3F;\n  --error-800: #D13034;\n  --error-900: #A4242B;\n  --error-950: #641723;\n  --info-50: #FAFDFE;\n  --info-100: #E6F8FA;\n  --info-200: #C6EFF5;\n  --info-300: #A2DFE9;\n  --info-400: #63C6D7;\n  --info-500: #00A2C7;\n  --info-600: #0699BC;\n  --info-700: #0C87A5;\n  --info-800: #0F6378;\n  --info-900: #0C3742;\n  --info-950: #08232A;\n  --bg-primary: #0090FF;\n  --bg-primary-low: #FBFDFF;\n  --fg-primary: #038BF6;\n  --fg-primary-low: #FBFDFF;\n  --fg-point: #0090FF;\n  --border-primary: #0090FF;\n  --bg: #FFFFFF;\n  --bg-inset: #FFFFFF;\n  --bg-inset-neutral: #F4F4F6;\n  --bg-neutral: #F4F4F6;\n  --bg-neutral-low: #FCFCFD;\n  --bg-neutral-lower: #FCFCFD;\n  --bg-disabled: #F4F4F6;\n  --bg-contrast: #45494F;\n  --bg-success: #30A46C;\n  --bg-success-low: #FBFEFC;\n  --bg-warning: #FFC53D;\n  --bg-warning-low: #FEFDFB;\n  --bg-critical: #E5484D;\n  --bg-critical-low: #FFFCFC;\n  --bg-info: #0699BC;\n  --bg-info-low: #FAFDFE;\n  --fg: #45494F;\n  --fg-strong: #45494F;\n  --fg-lower: #848791;\n  --fg-disabled: #C5C6D0;\n  --fg-contrast: #FFFFFF;\n  --fg-on-primary: #FFFFFF;\n  --fg-success: #258C5E;\n  --fg-warning: #C17D16;\n  --fg-error: #D93A3F;\n  --border: #E6E7EB;\n  --border-low: #F4F4F6;\n  --border-strong: #DADBE1;\n  --border-disabled: #E6E7EB;\n  --shadow-1: 0 0 8px rgba(0,0,0,.10);\n  --shadow-2: 0 4px 8px rgba(0,0,0,.10);\n  --shadow-3: 0 6px 16px rgba(0,0,0,.06);\n  --shadow-4: 0 6px 24px rgba(0,0,0,.08);\n  --shadow-5: 0 8px 24px rgba(0,0,0,.12);\n  --shadow-6: 0 16px 40px rgba(0,0,0,.16);\n  --panel: #FFFFFF;\n  --canvas: #FCFCFD;\n  --tag-bg-success: #E5FFF0;\n  --tag-fg-success: #007A33;\n  --tag-bg-warning: #FFF9E5;\n  --tag-fg-warning: #A65F00;\n  --tag-bg-error: #FFEFEF;\n  --tag-fg-error: #C20E1F;\n  --tag-bg-info: #E5F0FF;\n  --tag-fg-info: #1E40AF;\n  --tag-bg-neutral: #F1F1F1;\n  --tag-fg-neutral: #4B4C52;\n  --tag-bg-indigo: #EEF0FE;\n  --tag-fg-indigo: #4F46E5;\n  --tag-bg-ocean: #E0F4F7;\n  --tag-fg-ocean: #0E7490;\n  --tag-bg-teal: #DCFAF5;\n  --tag-fg-teal: #0D9488;\n  --tag-bg-emerald: #DDF7EA;\n  --tag-fg-emerald: #047857;\n  --tag-bg-lime: #ECFCCB;\n  --tag-fg-lime: #4D7C0F;\n  --tag-bg-rose: #FCE7F0;\n  --tag-fg-rose: #BE185D;\n  --tag-bg-magenta: #F5E0F7;\n  --tag-fg-magenta: #A21CAF;\n  --tag-bg-violet: #EDE3FE;\n  --tag-fg-violet: #6D28D9;\n  --tag-bg-slate: #E2E8F0;\n  --tag-fg-slate: #475569;\n  --tag-bg-bronze: #FBE9D0;\n  --tag-fg-bronze: #92400E;\n  --graph-chart-1: #4178FF;\n  --graph-chart-2: #00CCC2;\n  --graph-chart-3: #7BAAF7;\n  --graph-chart-4: #8FCE96;\n  --graph-chart-5: #F2968F;\n  --graph-chart-6: #A78BFA;\n  --graph-chart-7: #FDBA74;\n  --graph-chart-8: #F472B6;\n  --radius-xs: 3px;\n  --radius-sm: 4px;\n  --radius-md: 6px;\n  --radius-lg: 12px;\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --space-4: 16px;\n  --space-5: 20px;\n  --space-6: 24px;\n  --space-8: 32px;\n  --space-10: 40px;\n  --space-12: 48px;\n  --font-family: \"Inter\",system-ui,-apple-system,sans-serif;\n  --btn-radius: 6px;\n  --btn-weight: 500;\n  --btn-shadow: none;\n  --ctl-radius: 4px;\n  --card-radius: 12px;\n  --btn-padx: 16px;\n  --in-radius: 6px;\n  --tag-radius: 999px;\n}\n```\n\n### Tailwind\n\n```js\n// tailwind.config.js\nexport default {\n  theme:{ extend:{\n    colors:{\n      primary:{50:\"#FBFDFF\",100:\"#ECF6FE\",200:\"#D1EDFF\",300:\"#B0DBFD\",400:\"#7BBFF3\",500:\"#0090FF\",600:\"#038BF6\",700:\"#0784E9\",800:\"#0B78D5\",900:\"#0F5AA4\",950:\"#113264\"},\n      gray:{50:\"#FCFCFD\",100:\"#F4F4F6\",200:\"#E6E7EB\",300:\"#DADBE1\",400:\"#C5C6D0\",500:\"#8B8D98\",600:\"#848791\",700:\"#7A7D86\",800:\"#666A73\",900:\"#45494F\",950:\"#1C2024\"},\n      success:\"#30A46C\", warning:\"#FFC53D\", critical:\"#E5484D\",\n    },\n    borderRadius:{ btn:\"6px\", card:\"12px\", input:\"6px\" },\n    fontFamily:{ sans:[\"Inter\",\"system-ui\",\"-apple-system\",\"sans-serif\"] },\n  }}\n}\n```"
+}

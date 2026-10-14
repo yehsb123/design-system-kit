@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-14",
- "count": 32,
+ "count": 36,
  "license": "AGPL-3.0",
  "systems": [
   {
@@ -514,6 +514,70 @@
    "href": "systems/canvas.json",
    "css": "systems/canvas/tokens.css",
    "theme": "systems/canvas/theme.css"
+  },
+  {
+   "id": "radix",
+   "name": "Radix UI",
+   "category": "SaaS",
+   "font": "Inter · system-ui",
+   "description": "라딕스 공식 색 체계. 열두 단계마다 쓰임이 정해져 있어 9 는 꽉 찬 바탕, 11 은 글자처럼 번호만 보고 고를 수 있습니다.",
+   "cover": [
+    "#0090FF",
+    "#30A46C",
+    "#FFC53D",
+    "#E5484D"
+   ],
+   "href": "systems/radix.json",
+   "css": "systems/radix/tokens.css",
+   "theme": "systems/radix/theme.css"
+  },
+  {
+   "id": "arco",
+   "name": "Arco Design",
+   "category": "엔터프라이즈",
+   "font": "Inter · PingFang SC · 微软雅黑",
+   "description": "바이트댄스 아코 디자인 공식 토큰. 색마다 열 단계를 두고 6 을 기준으로 삼습니다. 중국어와 영문이 섞인 관리 화면을 전제로 만든 체계입니다.",
+   "cover": [
+    "#165DFF",
+    "#00B42A",
+    "#FF7D00",
+    "#F53F3F"
+   ],
+   "href": "systems/arco.json",
+   "css": "systems/arco/tokens.css",
+   "theme": "systems/arco/theme.css"
+  },
+  {
+   "id": "semi",
+   "name": "Semi Design",
+   "category": "엔터프라이즈",
+   "font": "Inter · PingFang SC · Helvetica Neue",
+   "description": "더우인 세미 디자인 공식 토큰. 0 에서 9 까지 열 단계를 두고 5 를 기준으로 삼습니다. 색을 성분으로 적어 두어 투명도를 겹쳐 쓰기 좋습니다.",
+   "cover": [
+    "#0064FA",
+    "#3BB346",
+    "#FC8800",
+    "#F93920"
+   ],
+   "href": "systems/semi.json",
+   "css": "systems/semi/tokens.css",
+   "theme": "systems/semi/theme.css"
+  },
+  {
+   "id": "uswds",
+   "name": "USWDS",
+   "category": "공공",
+   "font": "Public Sans · Source Sans Pro",
+   "description": "미국 정부 표준 디자인 시스템. 색 단계마다 흰 바탕 대비 비율을 미리 재어 두고 번호를 붙인 체계라, 접근성 기준을 숫자로 맞출 수 있습니다.",
+   "cover": [
+    "#005EA2",
+    "#00A91C",
+    "#FFBE2E",
+    "#E52207"
+   ],
+   "href": "systems/uswds.json",
+   "css": "systems/uswds/tokens.css",
+   "theme": "systems/uswds/theme.css"
   }
  ]
 }

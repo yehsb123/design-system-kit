@@ -44,19 +44,19 @@
    ],
    [
     "100",
-    "#D8E6FE"
+    "#CFE1FE"
    ],
    [
     "200",
-    "#AACBFF"
+    "#96C0FE"
    ],
    [
     "300",
-    "#71ADFD"
+    "#64A8FD"
    ],
    [
     "400",
-    "#339BFE"
+    "#2799FF"
    ],
    [
     "500",
@@ -90,23 +90,23 @@
    ],
    [
     "100",
-    "#EBEBEB"
+    "#EDEDED"
    ],
    [
     "200",
-    "#C9C9C9"
+    "#CFCFCF"
    ],
    [
     "300",
-    "#AEAEAE"
+    "#ABABAB"
    ],
    [
     "400",
-    "#9B9B9B"
+    "#989898"
    ],
    [
     "500",
-    "#757575"
+    "#747474"
    ],
    [
     "600",
@@ -136,19 +136,19 @@
    ],
    [
     "100",
-    "#CDEFC4"
+    "#C1EBB9"
    ],
    [
     "200",
-    "#91DB8B"
+    "#73D377"
    ],
    [
     "300",
-    "#44C35A"
+    "#43BC59"
    ],
    [
     "400",
-    "#3DAD56"
+    "#3CAA56"
    ],
    [
     "500",
@@ -164,7 +164,7 @@
    ],
    [
     "800",
-    "#193626"
+    "#1C3326"
    ],
    [
     "900",
@@ -182,19 +182,19 @@
    ],
    [
     "100",
-    "#FEDFD0"
+    "#FED8C3"
    ],
    [
     "200",
-    "#FFBA90"
+    "#FFAA6D"
    ],
    [
     "300",
-    "#FC902E"
+    "#F78919"
    ],
    [
     "400",
-    "#E67E02"
+    "#E17C01"
    ],
    [
     "500",
@@ -214,7 +214,7 @@
    ],
    [
     "900",
-    "#302104"
+    "#371E03"
    ],
    [
     "950",
@@ -228,19 +228,19 @@
    ],
    [
     "100",
-    "#FEDED8"
+    "#FED6CF"
    ],
    [
     "200",
-    "#FEB8AB"
+    "#FEA899"
    ],
    [
     "300",
-    "#FE8A78"
+    "#FE816F"
    ],
    [
     "400",
-    "#FE6756"
+    "#FE6151"
    ],
    [
     "500",
@@ -274,19 +274,19 @@
    ],
    [
     "100",
-    "#CFE9FE"
+    "#C2E4FE"
    ],
    [
     "200",
-    "#90D0FE"
+    "#61C7FE"
    ],
    [
     "300",
-    "#16B6FB"
+    "#0FB1F4"
    ],
    [
     "400",
-    "#0BA3E2"
+    "#0CA0DE"
    ],
    [
     "500",
@@ -324,11 +324,11 @@
    "--border-primary": "#0176D3",
    "--bg": "#FFFFFF",
    "--bg-inset": "#FFFFFF",
-   "--bg-inset-neutral": "#EBEBEB",
-   "--bg-neutral": "#EBEBEB",
+   "--bg-inset-neutral": "#EDEDED",
+   "--bg-neutral": "#EDEDED",
    "--bg-neutral-low": "#FFFFFF",
    "--bg-neutral-lower": "#FFFFFF",
-   "--bg-disabled": "#EBEBEB",
+   "--bg-disabled": "#EDEDED",
    "--bg-contrast": "#242424",
    "--bg-success": "#2E844A",
    "--bg-success-low": "#EBF7E6",
@@ -341,16 +341,16 @@
    "--fg": "#242424",
    "--fg-strong": "#242424",
    "--fg-lower": "#5C5C5C",
-   "--fg-disabled": "#9B9B9B",
+   "--fg-disabled": "#989898",
    "--fg-contrast": "#FFFFFF",
    "--fg-on-primary": "#FFFFFF",
    "--fg-success": "#194E31",
    "--fg-warning": "#3E2B02",
    "--fg-error": "#8E030F",
-   "--border": "#C9C9C9",
-   "--border-low": "#EBEBEB",
-   "--border-strong": "#AEAEAE",
-   "--border-disabled": "#C9C9C9",
+   "--border": "#CFCFCF",
+   "--border-low": "#EDEDED",
+   "--border-strong": "#ABABAB",
+   "--border-disabled": "#CFCFCF",
    "--shadow-1": "0 0 8px rgba(0,0,0,.10)",
    "--shadow-2": "0 4px 8px rgba(0,0,0,.10)",
    "--shadow-3": "0 6px 16px rgba(0,0,0,.06)",
@@ -361,12 +361,12 @@
    "--canvas": "#FFFFFF"
   },
   "dark": {
-   "--bg-primary": "#339BFE",
+   "--bg-primary": "#2799FF",
    "--bg-primary-low": "#03234D",
-   "--fg-primary": "#71ADFD",
+   "--fg-primary": "#64A8FD",
    "--fg-primary-low": "#03234D",
    "--fg-point": "#0176D3",
-   "--border-primary": "#339BFE",
+   "--border-primary": "#2799FF",
    "--bg": "#242424",
    "--bg-inset": "#242424",
    "--bg-inset-neutral": "#2E2E2E",
@@ -378,20 +378,20 @@
    "--bg-success": "#2E844A",
    "--bg-success-low": "#0C2912",
    "--bg-warning": "#A96404",
-   "--bg-warning-low": "#302104",
+   "--bg-warning-low": "#371E03",
    "--bg-critical": "#EA001E",
    "--bg-critical-low": "#4A0C04",
-   "--bg-info": "#0BA3E2",
+   "--bg-info": "#0CA0DE",
    "--bg-info-low": "#0A2636",
    "--fg": "#FFFFFF",
    "--fg-strong": "#FFFFFF",
-   "--fg-lower": "#9B9B9B",
+   "--fg-lower": "#989898",
    "--fg-disabled": "#5C5C5C",
    "--fg-contrast": "#242424",
    "--fg-on-primary": "#181818",
-   "--fg-success": "#3DAD56",
-   "--fg-warning": "#FC902E",
-   "--fg-error": "#FE8A78",
+   "--fg-success": "#3CAA56",
+   "--fg-warning": "#F78919",
+   "--fg-error": "#FE816F",
    "--border": "#2E2E2E",
    "--border-low": "#242424",
    "--border-strong": "#5C5C5C",
@@ -409,10 +409,10 @@
  "tokens": {
   "light": {
    "--primary-50": "#EEF4FF",
-   "--primary-100": "#D8E6FE",
-   "--primary-200": "#AACBFF",
-   "--primary-300": "#71ADFD",
-   "--primary-400": "#339BFE",
+   "--primary-100": "#CFE1FE",
+   "--primary-200": "#96C0FE",
+   "--primary-300": "#64A8FD",
+   "--primary-400": "#2799FF",
    "--primary-500": "#0176D3",
    "--primary-600": "#0B5CAB",
    "--primary-700": "#014486",
@@ -420,43 +420,43 @@
    "--primary-900": "#03234D",
    "--primary-950": "#001639",
    "--gray-50": "#FFFFFF",
-   "--gray-100": "#EBEBEB",
-   "--gray-200": "#C9C9C9",
-   "--gray-300": "#AEAEAE",
-   "--gray-400": "#9B9B9B",
-   "--gray-500": "#757575",
+   "--gray-100": "#EDEDED",
+   "--gray-200": "#CFCFCF",
+   "--gray-300": "#ABABAB",
+   "--gray-400": "#989898",
+   "--gray-500": "#747474",
    "--gray-600": "#5C5C5C",
    "--gray-700": "#444444",
    "--gray-800": "#2E2E2E",
    "--gray-900": "#242424",
    "--gray-950": "#181818",
    "--success-50": "#EBF7E6",
-   "--success-100": "#CDEFC4",
-   "--success-200": "#91DB8B",
-   "--success-300": "#44C35A",
-   "--success-400": "#3DAD56",
+   "--success-100": "#C1EBB9",
+   "--success-200": "#73D377",
+   "--success-300": "#43BC59",
+   "--success-400": "#3CAA56",
    "--success-500": "#2E844A",
    "--success-600": "#396547",
    "--success-700": "#194E31",
-   "--success-800": "#193626",
+   "--success-800": "#1C3326",
    "--success-900": "#0C2912",
    "--success-950": "#071B12",
    "--warning-50": "#FFF1EA",
-   "--warning-100": "#FEDFD0",
-   "--warning-200": "#FFBA90",
-   "--warning-300": "#FC902E",
-   "--warning-400": "#E67E02",
+   "--warning-100": "#FED8C3",
+   "--warning-200": "#FFAA6D",
+   "--warning-300": "#F78919",
+   "--warning-400": "#E17C01",
    "--warning-500": "#A96404",
    "--warning-600": "#825101",
    "--warning-700": "#5F3E02",
    "--warning-800": "#3E2B02",
-   "--warning-900": "#302104",
+   "--warning-900": "#371E03",
    "--warning-950": "#201600",
    "--error-50": "#FEF1EE",
-   "--error-100": "#FEDED8",
-   "--error-200": "#FEB8AB",
-   "--error-300": "#FE8A78",
-   "--error-400": "#FE6756",
+   "--error-100": "#FED6CF",
+   "--error-200": "#FEA899",
+   "--error-300": "#FE816F",
+   "--error-400": "#FE6151",
    "--error-500": "#EA001E",
    "--error-600": "#BA0517",
    "--error-700": "#8E030F",
@@ -464,10 +464,10 @@
    "--error-900": "#4A0C04",
    "--error-950": "#300C01",
    "--info-50": "#EAF5FE",
-   "--info-100": "#CFE9FE",
-   "--info-200": "#90D0FE",
-   "--info-300": "#16B6FB",
-   "--info-400": "#0BA3E2",
+   "--info-100": "#C2E4FE",
+   "--info-200": "#61C7FE",
+   "--info-300": "#0FB1F4",
+   "--info-400": "#0CA0DE",
    "--info-500": "#107CAD",
    "--info-600": "#05628A",
    "--info-700": "#084968",
@@ -482,11 +482,11 @@
    "--border-primary": "#0176D3",
    "--bg": "#FFFFFF",
    "--bg-inset": "#FFFFFF",
-   "--bg-inset-neutral": "#EBEBEB",
-   "--bg-neutral": "#EBEBEB",
+   "--bg-inset-neutral": "#EDEDED",
+   "--bg-neutral": "#EDEDED",
    "--bg-neutral-low": "#FFFFFF",
    "--bg-neutral-lower": "#FFFFFF",
-   "--bg-disabled": "#EBEBEB",
+   "--bg-disabled": "#EDEDED",
    "--bg-contrast": "#242424",
    "--bg-success": "#2E844A",
    "--bg-success-low": "#EBF7E6",
@@ -499,16 +499,16 @@
    "--fg": "#242424",
    "--fg-strong": "#242424",
    "--fg-lower": "#5C5C5C",
-   "--fg-disabled": "#9B9B9B",
+   "--fg-disabled": "#989898",
    "--fg-contrast": "#FFFFFF",
    "--fg-on-primary": "#FFFFFF",
    "--fg-success": "#194E31",
    "--fg-warning": "#3E2B02",
    "--fg-error": "#8E030F",
-   "--border": "#C9C9C9",
-   "--border-low": "#EBEBEB",
-   "--border-strong": "#AEAEAE",
-   "--border-disabled": "#C9C9C9",
+   "--border": "#CFCFCF",
+   "--border-low": "#EDEDED",
+   "--border-strong": "#ABABAB",
+   "--border-disabled": "#CFCFCF",
    "--shadow-1": "0 0 8px rgba(0,0,0,.10)",
    "--shadow-2": "0 4px 8px rgba(0,0,0,.10)",
    "--shadow-3": "0 6px 16px rgba(0,0,0,.06)",
@@ -580,10 +580,10 @@
   },
   "dark": {
    "--primary-50": "#EEF4FF",
-   "--primary-100": "#D8E6FE",
-   "--primary-200": "#AACBFF",
-   "--primary-300": "#71ADFD",
-   "--primary-400": "#339BFE",
+   "--primary-100": "#CFE1FE",
+   "--primary-200": "#96C0FE",
+   "--primary-300": "#64A8FD",
+   "--primary-400": "#2799FF",
    "--primary-500": "#0176D3",
    "--primary-600": "#0B5CAB",
    "--primary-700": "#014486",
@@ -591,43 +591,43 @@
    "--primary-900": "#03234D",
    "--primary-950": "#001639",
    "--gray-50": "#FFFFFF",
-   "--gray-100": "#EBEBEB",
-   "--gray-200": "#C9C9C9",
-   "--gray-300": "#AEAEAE",
-   "--gray-400": "#9B9B9B",
-   "--gray-500": "#757575",
+   "--gray-100": "#EDEDED",
+   "--gray-200": "#CFCFCF",
+   "--gray-300": "#ABABAB",
+   "--gray-400": "#989898",
+   "--gray-500": "#747474",
    "--gray-600": "#5C5C5C",
    "--gray-700": "#444444",
    "--gray-800": "#2E2E2E",
    "--gray-900": "#242424",
    "--gray-950": "#181818",
    "--success-50": "#EBF7E6",
-   "--success-100": "#CDEFC4",
-   "--success-200": "#91DB8B",
-   "--success-300": "#44C35A",
-   "--success-400": "#3DAD56",
+   "--success-100": "#C1EBB9",
+   "--success-200": "#73D377",
+   "--success-300": "#43BC59",
+   "--success-400": "#3CAA56",
    "--success-500": "#2E844A",
    "--success-600": "#396547",
    "--success-700": "#194E31",
-   "--success-800": "#193626",
+   "--success-800": "#1C3326",
    "--success-900": "#0C2912",
    "--success-950": "#071B12",
    "--warning-50": "#FFF1EA",
-   "--warning-100": "#FEDFD0",
-   "--warning-200": "#FFBA90",
-   "--warning-300": "#FC902E",
-   "--warning-400": "#E67E02",
+   "--warning-100": "#FED8C3",
+   "--warning-200": "#FFAA6D",
+   "--warning-300": "#F78919",
+   "--warning-400": "#E17C01",
    "--warning-500": "#A96404",
    "--warning-600": "#825101",
    "--warning-700": "#5F3E02",
    "--warning-800": "#3E2B02",
-   "--warning-900": "#302104",
+   "--warning-900": "#371E03",
    "--warning-950": "#201600",
    "--error-50": "#FEF1EE",
-   "--error-100": "#FEDED8",
-   "--error-200": "#FEB8AB",
-   "--error-300": "#FE8A78",
-   "--error-400": "#FE6756",
+   "--error-100": "#FED6CF",
+   "--error-200": "#FEA899",
+   "--error-300": "#FE816F",
+   "--error-400": "#FE6151",
    "--error-500": "#EA001E",
    "--error-600": "#BA0517",
    "--error-700": "#8E030F",
@@ -635,22 +635,22 @@
    "--error-900": "#4A0C04",
    "--error-950": "#300C01",
    "--info-50": "#EAF5FE",
-   "--info-100": "#CFE9FE",
-   "--info-200": "#90D0FE",
-   "--info-300": "#16B6FB",
-   "--info-400": "#0BA3E2",
+   "--info-100": "#C2E4FE",
+   "--info-200": "#61C7FE",
+   "--info-300": "#0FB1F4",
+   "--info-400": "#0CA0DE",
    "--info-500": "#107CAD",
    "--info-600": "#05628A",
    "--info-700": "#084968",
    "--info-800": "#023248",
    "--info-900": "#0A2636",
    "--info-950": "#001A28",
-   "--bg-primary": "#339BFE",
+   "--bg-primary": "#2799FF",
    "--bg-primary-low": "#03234D",
-   "--fg-primary": "#71ADFD",
+   "--fg-primary": "#64A8FD",
    "--fg-primary-low": "#03234D",
    "--fg-point": "#0176D3",
-   "--border-primary": "#339BFE",
+   "--border-primary": "#2799FF",
    "--bg": "#242424",
    "--bg-inset": "#242424",
    "--bg-inset-neutral": "#2E2E2E",
@@ -662,20 +662,20 @@
    "--bg-success": "#2E844A",
    "--bg-success-low": "#0C2912",
    "--bg-warning": "#A96404",
-   "--bg-warning-low": "#302104",
+   "--bg-warning-low": "#371E03",
    "--bg-critical": "#EA001E",
    "--bg-critical-low": "#4A0C04",
-   "--bg-info": "#0BA3E2",
+   "--bg-info": "#0CA0DE",
    "--bg-info-low": "#0A2636",
    "--fg": "#FFFFFF",
    "--fg-strong": "#FFFFFF",
-   "--fg-lower": "#9B9B9B",
+   "--fg-lower": "#989898",
    "--fg-disabled": "#5C5C5C",
    "--fg-contrast": "#242424",
    "--fg-on-primary": "#181818",
-   "--fg-success": "#3DAD56",
-   "--fg-warning": "#FC902E",
-   "--fg-error": "#FE8A78",
+   "--fg-success": "#3CAA56",
+   "--fg-warning": "#F78919",
+   "--fg-error": "#FE816F",
    "--border": "#2E2E2E",
    "--border-low": "#242424",
    "--border-strong": "#5C5C5C",
@@ -750,5 +750,5 @@
    "--tag-radius": "4px"
   }
  },
- "spec": "# Salesforce Lightning — 시스템 스펙\n> 세일즈포스 라이트닝 공식 토큰. 색마다 열두 단계를 두고 10 이 가장 어둡습니다. 영업 화면처럼 표와 입력이 빽빽한 자리에 맞춘 체계입니다.\n\n이 문서는 킷이 들고 있는 토큰에서 만들었습니다. 원래 사이트를 재서 나온 값이 아니므로, 실제 타이포 크기와 모션 곡선은 담지 않습니다.\n\n**분류:** 엔터프라이즈  ·  **프레임워크:** Web Components · Aura · React\n\n## 토큰 — 색\n\n모든 색은 11단계 램프로 정의합니다. 램프는 테마에 따라 바뀌지 않는 원시값입니다.\n\n### primary — 브랜드 행동과 강조\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#EEF4FF` | `#D8E6FE` | `#AACBFF` | `#71ADFD` | `#339BFE` | `#0176D3` | `#0B5CAB` | `#014486` | `#032D60` | `#03234D` | `#001639` |\n\n### gray — 글자, 테두리, 면\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FFFFFF` | `#EBEBEB` | `#C9C9C9` | `#AEAEAE` | `#9B9B9B` | `#757575` | `#5C5C5C` | `#444444` | `#2E2E2E` | `#242424` | `#181818` |\n\n### success — 완료와 정상\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#EBF7E6` | `#CDEFC4` | `#91DB8B` | `#44C35A` | `#3DAD56` | `#2E844A` | `#396547` | `#194E31` | `#193626` | `#0C2912` | `#071B12` |\n\n### warning — 주의와 대기\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FFF1EA` | `#FEDFD0` | `#FFBA90` | `#FC902E` | `#E67E02` | `#A96404` | `#825101` | `#5F3E02` | `#3E2B02` | `#302104` | `#201600` |\n\n### error — 실패와 위험\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FEF1EE` | `#FEDED8` | `#FEB8AB` | `#FE8A78` | `#FE6756` | `#EA001E` | `#BA0517` | `#8E030F` | `#640103` | `#4A0C04` | `#300C01` |\n\n### info — 안내와 진행\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#EAF5FE` | `#CFE9FE` | `#90D0FE` | `#16B6FB` | `#0BA3E2` | `#107CAD` | `#05628A` | `#084968` | `#023248` | `#0A2636` | `#001A28` |\n\n## 토큰 — 역할별 색\n\n램프를 역할에 매핑한 값입니다. 라이트와 다크에서 서로 다릅니다.\n\n| 토큰 | 쓰임새 | Light | Dark |\n|---|---|---|---|\n| `--bg` | 바탕이 되는 면 | `#FFFFFF` | `#242424` |\n| `--canvas` | 페이지 바닥 | `#FFFFFF` | `#181818` |\n| `--fg` | 본문 글자 | `#242424` | `#FFFFFF` |\n| `--fg-strong` | 제목과 강조 글자 | `#242424` | `#FFFFFF` |\n| `--fg-lower` | 보조 설명 | `#5C5C5C` | `#9B9B9B` |\n| `--fg-disabled` | 비활성 글자 | `#9B9B9B` | `#5C5C5C` |\n| `--border` | 기본 경계선 | `#C9C9C9` | `#2E2E2E` |\n| `--border-strong` | 강조 경계선 | `#AEAEAE` | `#5C5C5C` |\n| `--bg-primary` | 주된 행동 버튼 바탕 | `#0176D3` | `#339BFE` |\n| `--bg-primary-low` | 주된 색의 엷은 면 | `#EEF4FF` | `#03234D` |\n| `--fg-primary` | 주된 색 글자 | `#0B5CAB` | `#71ADFD` |\n| `--bg-success` | 완료 표시 | `#2E844A` | `#2E844A` |\n| `--bg-warning` | 주의 표시 | `#A96404` | `#A96404` |\n| `--bg-critical` | 위험 표시 | `#EA001E` | `#EA001E` |\n| `--bg-info` | 안내 표시 | `#05628A` | `#0BA3E2` |\n\n## 토큰 — 타이포\n\n**글꼴:** `\"Salesforce Sans\",\"Inter\",-apple-system,system-ui,sans-serif`\n\n본문 행간은 150% 를 기준으로 합니다. 한글은 단어 단위로 끊어 쓰므로 `word-break: keep-all` 을 붙입니다.\n\n| 쓰임새 | 크기 | 굵기 |\n|---|---|---|\n| 페이지 제목 | clamp(28px, 5vw, 44px) | 400 |\n| 섹션 제목 | clamp(20px, 3vw, 30px) | 400 |\n| 본문 | 15~16px | 400 |\n| 보조 설명 | 13~14px | 400 |\n| 라벨 | 11~12px | 400 |\n| 버튼 | 14~15px | 400 |\n\n## 토큰 — 간격과 모양\n\n**기본 단위:** 4px\n\n간격: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px\n\n| 요소 | 모서리 |\n|---|---|\n| 버튼 | 4px |\n| 카드 | 4px |\n| 입력 | 4px |\n| 태그 | 4px |\n| 작은 조작부 | 4px |\n\n| 항목 | 값 |\n|---|---|\n| 버튼 좌우 안쪽 여백 | 16px |\n| 버튼 글자 굵기 | 400 |\n| 버튼 그림자 | 쓰지 않음 |\n| 페이지 폭 | min(1200px, 92vw) |\n\n## 아이콘\n\n24×24 보기틀, 선 굵기 2px, 끝처리 `round`, 꼬임 `round`.\n선은 `currentColor` 를 씁니다. 색을 아이콘 안에 박지 않습니다.\n\n## 컴포넌트\n\n| 컴포넌트 | 규칙 |\n|---|---|\n| 버튼 | primary, secondary, outline, ghost, danger 다섯 가지. 크기는 sm, md, lg. 상태는 hover, focus-visible, active, disabled, loading |\n| 태그 | 상태 5종. 바탕과 글자를 짝으로 씁니다 |\n| 입력 | 기본, 포커스, 에러, 성공, 비활성. 도움말과 필수 표시를 두고 색으로만 알리지 않습니다 |\n| 오버레이 | 모달은 `role=\"dialog\"`, `aria-modal`, Esc 닫기. 드로어, 토스트(`aria-live`), 툴팁, 드롭다운 |\n| 내비 | 탭은 `role=\"tablist\"`. 스텝, 페이지네이션, 브레드크럼 |\n| 표 | 헤더, 상세, 소계, 합계의 계층색을 지킵니다 |\n\n## 대비\n\n| 짝 | 비율 | 기준(AA 4.5) |\n|---|---|---|\n| 본문 대 바탕 | 15.52 : 1 | 통과 |\n| 흰글씨 대 주된 색 | 4.63 : 1 | 통과 |\n\n## 지킬 규칙과 금지 사항\n\n### 지킬 규칙\n\n- 모서리는 버튼 4px, 카드 4px, 입력 4px 으로 고정합니다\n- 색은 램프와 역할 토큰에서만 가져옵니다\n- 라이트와 다크를 항상 같이 맞춥니다\n- 여백과 글자 크기는 `clamp()` 로 화면 폭에 따라 줍니다\n- 터치로 누르는 자리는 44×44px 이상으로 둡니다\n- 초점 표시는 `focus-visible` 로 남깁니다\n\n### 금지 사항\n\n- 토큰에 없는 색을 직접 적지 않습니다\n- 보라와 바이올렛을 강조색으로 쓰지 않습니다\n- 왼쪽에 굵은 선이 붙은 인용 카드를 두지 않습니다\n- 색만으로 상태를 알리지 않습니다. 글자나 모양을 같이 둡니다\n- 모서리를 한 화면 안에서 여러 값으로 섮지 않습니다\n\n## 화면 규격\n\n- 컨테이너 `width: min(1200px, 92vw)`\n- 끊는 폭 1280, 1024, 768, 480px\n- 768px 미만은 1열로 내립니다\n- 여백 `clamp(24px, 5vw, 80px)`\n- 이미지는 WebP, 비율을 고정해 흔들림을 막습니다\n- 모션은 150~250ms. `prefers-reduced-motion` 을 따릅니다\n\n## AI 에게 넘길 빠른 참조\n\n- 본문 글자: `#242424`\n- 보조 글자: `#5C5C5C`\n- 바탕: `#FFFFFF`\n- 페이지 바닥: `#FFFFFF`\n- 경계선: `#C9C9C9`\n- 주된 행동: `#0176D3`\n- 글꼴: `\"Salesforce Sans\",\"Inter\",-apple-system,system-ui,sans-serif`\n\n## 바로 쓰기\n\n### CSS 변수\n\n```css\n:root{\n  --primary-50: #EEF4FF;\n  --primary-100: #D8E6FE;\n  --primary-200: #AACBFF;\n  --primary-300: #71ADFD;\n  --primary-400: #339BFE;\n  --primary-500: #0176D3;\n  --primary-600: #0B5CAB;\n  --primary-700: #014486;\n  --primary-800: #032D60;\n  --primary-900: #03234D;\n  --primary-950: #001639;\n  --gray-50: #FFFFFF;\n  --gray-100: #EBEBEB;\n  --gray-200: #C9C9C9;\n  --gray-300: #AEAEAE;\n  --gray-400: #9B9B9B;\n  --gray-500: #757575;\n  --gray-600: #5C5C5C;\n  --gray-700: #444444;\n  --gray-800: #2E2E2E;\n  --gray-900: #242424;\n  --gray-950: #181818;\n  --success-50: #EBF7E6;\n  --success-100: #CDEFC4;\n  --success-200: #91DB8B;\n  --success-300: #44C35A;\n  --success-400: #3DAD56;\n  --success-500: #2E844A;\n  --success-600: #396547;\n  --success-700: #194E31;\n  --success-800: #193626;\n  --success-900: #0C2912;\n  --success-950: #071B12;\n  --warning-50: #FFF1EA;\n  --warning-100: #FEDFD0;\n  --warning-200: #FFBA90;\n  --warning-300: #FC902E;\n  --warning-400: #E67E02;\n  --warning-500: #A96404;\n  --warning-600: #825101;\n  --warning-700: #5F3E02;\n  --warning-800: #3E2B02;\n  --warning-900: #302104;\n  --warning-950: #201600;\n  --error-50: #FEF1EE;\n  --error-100: #FEDED8;\n  --error-200: #FEB8AB;\n  --error-300: #FE8A78;\n  --error-400: #FE6756;\n  --error-500: #EA001E;\n  --error-600: #BA0517;\n  --error-700: #8E030F;\n  --error-800: #640103;\n  --error-900: #4A0C04;\n  --error-950: #300C01;\n  --info-50: #EAF5FE;\n  --info-100: #CFE9FE;\n  --info-200: #90D0FE;\n  --info-300: #16B6FB;\n  --info-400: #0BA3E2;\n  --info-500: #107CAD;\n  --info-600: #05628A;\n  --info-700: #084968;\n  --info-800: #023248;\n  --info-900: #0A2636;\n  --info-950: #001A28;\n  --bg-primary: #0176D3;\n  --bg-primary-low: #EEF4FF;\n  --fg-primary: #0B5CAB;\n  --fg-primary-low: #EEF4FF;\n  --fg-point: #0176D3;\n  --border-primary: #0176D3;\n  --bg: #FFFFFF;\n  --bg-inset: #FFFFFF;\n  --bg-inset-neutral: #EBEBEB;\n  --bg-neutral: #EBEBEB;\n  --bg-neutral-low: #FFFFFF;\n  --bg-neutral-lower: #FFFFFF;\n  --bg-disabled: #EBEBEB;\n  --bg-contrast: #242424;\n  --bg-success: #2E844A;\n  --bg-success-low: #EBF7E6;\n  --bg-warning: #A96404;\n  --bg-warning-low: #FFF1EA;\n  --bg-critical: #EA001E;\n  --bg-critical-low: #FEF1EE;\n  --bg-info: #05628A;\n  --bg-info-low: #EAF5FE;\n  --fg: #242424;\n  --fg-strong: #242424;\n  --fg-lower: #5C5C5C;\n  --fg-disabled: #9B9B9B;\n  --fg-contrast: #FFFFFF;\n  --fg-on-primary: #FFFFFF;\n  --fg-success: #194E31;\n  --fg-warning: #3E2B02;\n  --fg-error: #8E030F;\n  --border: #C9C9C9;\n  --border-low: #EBEBEB;\n  --border-strong: #AEAEAE;\n  --border-disabled: #C9C9C9;\n  --shadow-1: 0 0 8px rgba(0,0,0,.10);\n  --shadow-2: 0 4px 8px rgba(0,0,0,.10);\n  --shadow-3: 0 6px 16px rgba(0,0,0,.06);\n  --shadow-4: 0 6px 24px rgba(0,0,0,.08);\n  --shadow-5: 0 8px 24px rgba(0,0,0,.12);\n  --shadow-6: 0 16px 40px rgba(0,0,0,.16);\n  --panel: #FFFFFF;\n  --canvas: #FFFFFF;\n  --tag-bg-success: #E5FFF0;\n  --tag-fg-success: #007A33;\n  --tag-bg-warning: #FFF9E5;\n  --tag-fg-warning: #A65F00;\n  --tag-bg-error: #FFEFEF;\n  --tag-fg-error: #C20E1F;\n  --tag-bg-info: #E5F0FF;\n  --tag-fg-info: #1E40AF;\n  --tag-bg-neutral: #F1F1F1;\n  --tag-fg-neutral: #4B4C52;\n  --tag-bg-indigo: #EEF0FE;\n  --tag-fg-indigo: #4F46E5;\n  --tag-bg-ocean: #E0F4F7;\n  --tag-fg-ocean: #0E7490;\n  --tag-bg-teal: #DCFAF5;\n  --tag-fg-teal: #0D9488;\n  --tag-bg-emerald: #DDF7EA;\n  --tag-fg-emerald: #047857;\n  --tag-bg-lime: #ECFCCB;\n  --tag-fg-lime: #4D7C0F;\n  --tag-bg-rose: #FCE7F0;\n  --tag-fg-rose: #BE185D;\n  --tag-bg-magenta: #F5E0F7;\n  --tag-fg-magenta: #A21CAF;\n  --tag-bg-violet: #EDE3FE;\n  --tag-fg-violet: #6D28D9;\n  --tag-bg-slate: #E2E8F0;\n  --tag-fg-slate: #475569;\n  --tag-bg-bronze: #FBE9D0;\n  --tag-fg-bronze: #92400E;\n  --graph-chart-1: #4178FF;\n  --graph-chart-2: #00CCC2;\n  --graph-chart-3: #7BAAF7;\n  --graph-chart-4: #8FCE96;\n  --graph-chart-5: #F2968F;\n  --graph-chart-6: #A78BFA;\n  --graph-chart-7: #FDBA74;\n  --graph-chart-8: #F472B6;\n  --radius-xs: 2px;\n  --radius-sm: 4px;\n  --radius-md: 4px;\n  --radius-lg: 8px;\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --space-4: 16px;\n  --space-5: 20px;\n  --space-6: 24px;\n  --space-8: 32px;\n  --space-10: 40px;\n  --space-12: 48px;\n  --font-family: \"Salesforce Sans\",\"Inter\",-apple-system,system-ui,sans-serif;\n  --btn-radius: 4px;\n  --btn-weight: 400;\n  --btn-shadow: none;\n  --ctl-radius: 4px;\n  --card-radius: 4px;\n  --btn-padx: 16px;\n  --in-radius: 4px;\n  --tag-radius: 4px;\n}\n```\n\n### Tailwind\n\n```js\n// tailwind.config.js\nexport default {\n  theme:{ extend:{\n    colors:{\n      primary:{50:\"#EEF4FF\",100:\"#D8E6FE\",200:\"#AACBFF\",300:\"#71ADFD\",400:\"#339BFE\",500:\"#0176D3\",600:\"#0B5CAB\",700:\"#014486\",800:\"#032D60\",900:\"#03234D\",950:\"#001639\"},\n      gray:{50:\"#FFFFFF\",100:\"#EBEBEB\",200:\"#C9C9C9\",300:\"#AEAEAE\",400:\"#9B9B9B\",500:\"#757575\",600:\"#5C5C5C\",700:\"#444444\",800:\"#2E2E2E\",900:\"#242424\",950:\"#181818\"},\n      success:\"#2E844A\", warning:\"#A96404\", critical:\"#EA001E\",\n    },\n    borderRadius:{ btn:\"4px\", card:\"4px\", input:\"4px\" },\n    fontFamily:{ sans:[\"Salesforce Sans\",\"Inter\",\"-apple-system\",\"system-ui\",\"sans-serif\"] },\n  }}\n}\n```"
+ "spec": "# Salesforce Lightning — 시스템 스펙\n> 세일즈포스 라이트닝 공식 토큰. 색마다 열두 단계를 두고 10 이 가장 어둡습니다. 영업 화면처럼 표와 입력이 빽빽한 자리에 맞춘 체계입니다.\n\n이 문서는 킷이 들고 있는 토큰에서 만들었습니다. 원래 사이트를 재서 나온 값이 아니므로, 실제 타이포 크기와 모션 곡선은 담지 않습니다.\n\n**분류:** 엔터프라이즈  ·  **프레임워크:** Web Components · Aura · React\n\n## 토큰 — 색\n\n모든 색은 11단계 램프로 정의합니다. 램프는 테마에 따라 바뀌지 않는 원시값입니다.\n\n### primary — 브랜드 행동과 강조\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#EEF4FF` | `#CFE1FE` | `#96C0FE` | `#64A8FD` | `#2799FF` | `#0176D3` | `#0B5CAB` | `#014486` | `#032D60` | `#03234D` | `#001639` |\n\n### gray — 글자, 테두리, 면\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FFFFFF` | `#EDEDED` | `#CFCFCF` | `#ABABAB` | `#989898` | `#747474` | `#5C5C5C` | `#444444` | `#2E2E2E` | `#242424` | `#181818` |\n\n### success — 완료와 정상\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#EBF7E6` | `#C1EBB9` | `#73D377` | `#43BC59` | `#3CAA56` | `#2E844A` | `#396547` | `#194E31` | `#1C3326` | `#0C2912` | `#071B12` |\n\n### warning — 주의와 대기\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FFF1EA` | `#FED8C3` | `#FFAA6D` | `#F78919` | `#E17C01` | `#A96404` | `#825101` | `#5F3E02` | `#3E2B02` | `#371E03` | `#201600` |\n\n### error — 실패와 위험\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#FEF1EE` | `#FED6CF` | `#FEA899` | `#FE816F` | `#FE6151` | `#EA001E` | `#BA0517` | `#8E030F` | `#640103` | `#4A0C04` | `#300C01` |\n\n### info — 안내와 진행\n\n| 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 값 | `#EAF5FE` | `#C2E4FE` | `#61C7FE` | `#0FB1F4` | `#0CA0DE` | `#107CAD` | `#05628A` | `#084968` | `#023248` | `#0A2636` | `#001A28` |\n\n## 토큰 — 역할별 색\n\n램프를 역할에 매핑한 값입니다. 라이트와 다크에서 서로 다릅니다.\n\n| 토큰 | 쓰임새 | Light | Dark |\n|---|---|---|---|\n| `--bg` | 바탕이 되는 면 | `#FFFFFF` | `#242424` |\n| `--canvas` | 페이지 바닥 | `#FFFFFF` | `#181818` |\n| `--fg` | 본문 글자 | `#242424` | `#FFFFFF` |\n| `--fg-strong` | 제목과 강조 글자 | `#242424` | `#FFFFFF` |\n| `--fg-lower` | 보조 설명 | `#5C5C5C` | `#989898` |\n| `--fg-disabled` | 비활성 글자 | `#989898` | `#5C5C5C` |\n| `--border` | 기본 경계선 | `#CFCFCF` | `#2E2E2E` |\n| `--border-strong` | 강조 경계선 | `#ABABAB` | `#5C5C5C` |\n| `--bg-primary` | 주된 행동 버튼 바탕 | `#0176D3` | `#2799FF` |\n| `--bg-primary-low` | 주된 색의 엷은 면 | `#EEF4FF` | `#03234D` |\n| `--fg-primary` | 주된 색 글자 | `#0B5CAB` | `#64A8FD` |\n| `--bg-success` | 완료 표시 | `#2E844A` | `#2E844A` |\n| `--bg-warning` | 주의 표시 | `#A96404` | `#A96404` |\n| `--bg-critical` | 위험 표시 | `#EA001E` | `#EA001E` |\n| `--bg-info` | 안내 표시 | `#05628A` | `#0CA0DE` |\n\n## 토큰 — 타이포\n\n**글꼴:** `\"Salesforce Sans\",\"Inter\",-apple-system,system-ui,sans-serif`\n\n본문 행간은 150% 를 기준으로 합니다. 한글은 단어 단위로 끊어 쓰므로 `word-break: keep-all` 을 붙입니다.\n\n| 쓰임새 | 크기 | 굵기 |\n|---|---|---|\n| 페이지 제목 | clamp(28px, 5vw, 44px) | 400 |\n| 섹션 제목 | clamp(20px, 3vw, 30px) | 400 |\n| 본문 | 15~16px | 400 |\n| 보조 설명 | 13~14px | 400 |\n| 라벨 | 11~12px | 400 |\n| 버튼 | 14~15px | 400 |\n\n## 토큰 — 간격과 모양\n\n**기본 단위:** 4px\n\n간격: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px\n\n| 요소 | 모서리 |\n|---|---|\n| 버튼 | 4px |\n| 카드 | 4px |\n| 입력 | 4px |\n| 태그 | 4px |\n| 작은 조작부 | 4px |\n\n| 항목 | 값 |\n|---|---|\n| 버튼 좌우 안쪽 여백 | 16px |\n| 버튼 글자 굵기 | 400 |\n| 버튼 그림자 | 쓰지 않음 |\n| 페이지 폭 | min(1200px, 92vw) |\n\n## 아이콘\n\n24×24 보기틀, 선 굵기 2px, 끝처리 `round`, 꼬임 `round`.\n선은 `currentColor` 를 씁니다. 색을 아이콘 안에 박지 않습니다.\n\n## 컴포넌트\n\n| 컴포넌트 | 규칙 |\n|---|---|\n| 버튼 | primary, secondary, outline, ghost, danger 다섯 가지. 크기는 sm, md, lg. 상태는 hover, focus-visible, active, disabled, loading |\n| 태그 | 상태 5종. 바탕과 글자를 짝으로 씁니다 |\n| 입력 | 기본, 포커스, 에러, 성공, 비활성. 도움말과 필수 표시를 두고 색으로만 알리지 않습니다 |\n| 오버레이 | 모달은 `role=\"dialog\"`, `aria-modal`, Esc 닫기. 드로어, 토스트(`aria-live`), 툴팁, 드롭다운 |\n| 내비 | 탭은 `role=\"tablist\"`. 스텝, 페이지네이션, 브레드크럼 |\n| 표 | 헤더, 상세, 소계, 합계의 계층색을 지킵니다 |\n\n## 대비\n\n| 짝 | 비율 | 기준(AA 4.5) |\n|---|---|---|\n| 본문 대 바탕 | 15.52 : 1 | 통과 |\n| 흰글씨 대 주된 색 | 4.63 : 1 | 통과 |\n\n## 지킬 규칙과 금지 사항\n\n### 지킬 규칙\n\n- 모서리는 버튼 4px, 카드 4px, 입력 4px 으로 고정합니다\n- 색은 램프와 역할 토큰에서만 가져옵니다\n- 라이트와 다크를 항상 같이 맞춥니다\n- 여백과 글자 크기는 `clamp()` 로 화면 폭에 따라 줍니다\n- 터치로 누르는 자리는 44×44px 이상으로 둡니다\n- 초점 표시는 `focus-visible` 로 남깁니다\n\n### 금지 사항\n\n- 토큰에 없는 색을 직접 적지 않습니다\n- 보라와 바이올렛을 강조색으로 쓰지 않습니다\n- 왼쪽에 굵은 선이 붙은 인용 카드를 두지 않습니다\n- 색만으로 상태를 알리지 않습니다. 글자나 모양을 같이 둡니다\n- 모서리를 한 화면 안에서 여러 값으로 섮지 않습니다\n\n## 화면 규격\n\n- 컨테이너 `width: min(1200px, 92vw)`\n- 끊는 폭 1280, 1024, 768, 480px\n- 768px 미만은 1열로 내립니다\n- 여백 `clamp(24px, 5vw, 80px)`\n- 이미지는 WebP, 비율을 고정해 흔들림을 막습니다\n- 모션은 150~250ms. `prefers-reduced-motion` 을 따릅니다\n\n## AI 에게 넘길 빠른 참조\n\n- 본문 글자: `#242424`\n- 보조 글자: `#5C5C5C`\n- 바탕: `#FFFFFF`\n- 페이지 바닥: `#FFFFFF`\n- 경계선: `#CFCFCF`\n- 주된 행동: `#0176D3`\n- 글꼴: `\"Salesforce Sans\",\"Inter\",-apple-system,system-ui,sans-serif`\n\n## 바로 쓰기\n\n### CSS 변수\n\n```css\n:root{\n  --primary-50: #EEF4FF;\n  --primary-100: #CFE1FE;\n  --primary-200: #96C0FE;\n  --primary-300: #64A8FD;\n  --primary-400: #2799FF;\n  --primary-500: #0176D3;\n  --primary-600: #0B5CAB;\n  --primary-700: #014486;\n  --primary-800: #032D60;\n  --primary-900: #03234D;\n  --primary-950: #001639;\n  --gray-50: #FFFFFF;\n  --gray-100: #EDEDED;\n  --gray-200: #CFCFCF;\n  --gray-300: #ABABAB;\n  --gray-400: #989898;\n  --gray-500: #747474;\n  --gray-600: #5C5C5C;\n  --gray-700: #444444;\n  --gray-800: #2E2E2E;\n  --gray-900: #242424;\n  --gray-950: #181818;\n  --success-50: #EBF7E6;\n  --success-100: #C1EBB9;\n  --success-200: #73D377;\n  --success-300: #43BC59;\n  --success-400: #3CAA56;\n  --success-500: #2E844A;\n  --success-600: #396547;\n  --success-700: #194E31;\n  --success-800: #1C3326;\n  --success-900: #0C2912;\n  --success-950: #071B12;\n  --warning-50: #FFF1EA;\n  --warning-100: #FED8C3;\n  --warning-200: #FFAA6D;\n  --warning-300: #F78919;\n  --warning-400: #E17C01;\n  --warning-500: #A96404;\n  --warning-600: #825101;\n  --warning-700: #5F3E02;\n  --warning-800: #3E2B02;\n  --warning-900: #371E03;\n  --warning-950: #201600;\n  --error-50: #FEF1EE;\n  --error-100: #FED6CF;\n  --error-200: #FEA899;\n  --error-300: #FE816F;\n  --error-400: #FE6151;\n  --error-500: #EA001E;\n  --error-600: #BA0517;\n  --error-700: #8E030F;\n  --error-800: #640103;\n  --error-900: #4A0C04;\n  --error-950: #300C01;\n  --info-50: #EAF5FE;\n  --info-100: #C2E4FE;\n  --info-200: #61C7FE;\n  --info-300: #0FB1F4;\n  --info-400: #0CA0DE;\n  --info-500: #107CAD;\n  --info-600: #05628A;\n  --info-700: #084968;\n  --info-800: #023248;\n  --info-900: #0A2636;\n  --info-950: #001A28;\n  --bg-primary: #0176D3;\n  --bg-primary-low: #EEF4FF;\n  --fg-primary: #0B5CAB;\n  --fg-primary-low: #EEF4FF;\n  --fg-point: #0176D3;\n  --border-primary: #0176D3;\n  --bg: #FFFFFF;\n  --bg-inset: #FFFFFF;\n  --bg-inset-neutral: #EDEDED;\n  --bg-neutral: #EDEDED;\n  --bg-neutral-low: #FFFFFF;\n  --bg-neutral-lower: #FFFFFF;\n  --bg-disabled: #EDEDED;\n  --bg-contrast: #242424;\n  --bg-success: #2E844A;\n  --bg-success-low: #EBF7E6;\n  --bg-warning: #A96404;\n  --bg-warning-low: #FFF1EA;\n  --bg-critical: #EA001E;\n  --bg-critical-low: #FEF1EE;\n  --bg-info: #05628A;\n  --bg-info-low: #EAF5FE;\n  --fg: #242424;\n  --fg-strong: #242424;\n  --fg-lower: #5C5C5C;\n  --fg-disabled: #989898;\n  --fg-contrast: #FFFFFF;\n  --fg-on-primary: #FFFFFF;\n  --fg-success: #194E31;\n  --fg-warning: #3E2B02;\n  --fg-error: #8E030F;\n  --border: #CFCFCF;\n  --border-low: #EDEDED;\n  --border-strong: #ABABAB;\n  --border-disabled: #CFCFCF;\n  --shadow-1: 0 0 8px rgba(0,0,0,.10);\n  --shadow-2: 0 4px 8px rgba(0,0,0,.10);\n  --shadow-3: 0 6px 16px rgba(0,0,0,.06);\n  --shadow-4: 0 6px 24px rgba(0,0,0,.08);\n  --shadow-5: 0 8px 24px rgba(0,0,0,.12);\n  --shadow-6: 0 16px 40px rgba(0,0,0,.16);\n  --panel: #FFFFFF;\n  --canvas: #FFFFFF;\n  --tag-bg-success: #E5FFF0;\n  --tag-fg-success: #007A33;\n  --tag-bg-warning: #FFF9E5;\n  --tag-fg-warning: #A65F00;\n  --tag-bg-error: #FFEFEF;\n  --tag-fg-error: #C20E1F;\n  --tag-bg-info: #E5F0FF;\n  --tag-fg-info: #1E40AF;\n  --tag-bg-neutral: #F1F1F1;\n  --tag-fg-neutral: #4B4C52;\n  --tag-bg-indigo: #EEF0FE;\n  --tag-fg-indigo: #4F46E5;\n  --tag-bg-ocean: #E0F4F7;\n  --tag-fg-ocean: #0E7490;\n  --tag-bg-teal: #DCFAF5;\n  --tag-fg-teal: #0D9488;\n  --tag-bg-emerald: #DDF7EA;\n  --tag-fg-emerald: #047857;\n  --tag-bg-lime: #ECFCCB;\n  --tag-fg-lime: #4D7C0F;\n  --tag-bg-rose: #FCE7F0;\n  --tag-fg-rose: #BE185D;\n  --tag-bg-magenta: #F5E0F7;\n  --tag-fg-magenta: #A21CAF;\n  --tag-bg-violet: #EDE3FE;\n  --tag-fg-violet: #6D28D9;\n  --tag-bg-slate: #E2E8F0;\n  --tag-fg-slate: #475569;\n  --tag-bg-bronze: #FBE9D0;\n  --tag-fg-bronze: #92400E;\n  --graph-chart-1: #4178FF;\n  --graph-chart-2: #00CCC2;\n  --graph-chart-3: #7BAAF7;\n  --graph-chart-4: #8FCE96;\n  --graph-chart-5: #F2968F;\n  --graph-chart-6: #A78BFA;\n  --graph-chart-7: #FDBA74;\n  --graph-chart-8: #F472B6;\n  --radius-xs: 2px;\n  --radius-sm: 4px;\n  --radius-md: 4px;\n  --radius-lg: 8px;\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --space-4: 16px;\n  --space-5: 20px;\n  --space-6: 24px;\n  --space-8: 32px;\n  --space-10: 40px;\n  --space-12: 48px;\n  --font-family: \"Salesforce Sans\",\"Inter\",-apple-system,system-ui,sans-serif;\n  --btn-radius: 4px;\n  --btn-weight: 400;\n  --btn-shadow: none;\n  --ctl-radius: 4px;\n  --card-radius: 4px;\n  --btn-padx: 16px;\n  --in-radius: 4px;\n  --tag-radius: 4px;\n}\n```\n\n### Tailwind\n\n```js\n// tailwind.config.js\nexport default {\n  theme:{ extend:{\n    colors:{\n      primary:{50:\"#EEF4FF\",100:\"#CFE1FE\",200:\"#96C0FE\",300:\"#64A8FD\",400:\"#2799FF\",500:\"#0176D3\",600:\"#0B5CAB\",700:\"#014486\",800:\"#032D60\",900:\"#03234D\",950:\"#001639\"},\n      gray:{50:\"#FFFFFF\",100:\"#EDEDED\",200:\"#CFCFCF\",300:\"#ABABAB\",400:\"#989898\",500:\"#747474\",600:\"#5C5C5C\",700:\"#444444\",800:\"#2E2E2E\",900:\"#242424\",950:\"#181818\"},\n      success:\"#2E844A\", warning:\"#A96404\", critical:\"#EA001E\",\n    },\n    borderRadius:{ btn:\"4px\", card:\"4px\", input:\"4px\" },\n    fontFamily:{ sans:[\"Salesforce Sans\",\"Inter\",\"-apple-system\",\"system-ui\",\"sans-serif\"] },\n  }}\n}\n```"
 }

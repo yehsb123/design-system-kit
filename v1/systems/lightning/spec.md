@@ -13,37 +13,37 @@
 
 | 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#EEF4FF` | `#D8E6FE` | `#AACBFF` | `#71ADFD` | `#339BFE` | `#0176D3` | `#0B5CAB` | `#014486` | `#032D60` | `#03234D` | `#001639` |
+| 값 | `#EEF4FF` | `#CFE1FE` | `#96C0FE` | `#64A8FD` | `#2799FF` | `#0176D3` | `#0B5CAB` | `#014486` | `#032D60` | `#03234D` | `#001639` |
 
 ### gray — 글자, 테두리, 면
 
 | 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#FFFFFF` | `#EBEBEB` | `#C9C9C9` | `#AEAEAE` | `#9B9B9B` | `#757575` | `#5C5C5C` | `#444444` | `#2E2E2E` | `#242424` | `#181818` |
+| 값 | `#FFFFFF` | `#EDEDED` | `#CFCFCF` | `#ABABAB` | `#989898` | `#747474` | `#5C5C5C` | `#444444` | `#2E2E2E` | `#242424` | `#181818` |
 
 ### success — 완료와 정상
 
 | 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#EBF7E6` | `#CDEFC4` | `#91DB8B` | `#44C35A` | `#3DAD56` | `#2E844A` | `#396547` | `#194E31` | `#193626` | `#0C2912` | `#071B12` |
+| 값 | `#EBF7E6` | `#C1EBB9` | `#73D377` | `#43BC59` | `#3CAA56` | `#2E844A` | `#396547` | `#194E31` | `#1C3326` | `#0C2912` | `#071B12` |
 
 ### warning — 주의와 대기
 
 | 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#FFF1EA` | `#FEDFD0` | `#FFBA90` | `#FC902E` | `#E67E02` | `#A96404` | `#825101` | `#5F3E02` | `#3E2B02` | `#302104` | `#201600` |
+| 값 | `#FFF1EA` | `#FED8C3` | `#FFAA6D` | `#F78919` | `#E17C01` | `#A96404` | `#825101` | `#5F3E02` | `#3E2B02` | `#371E03` | `#201600` |
 
 ### error — 실패와 위험
 
 | 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#FEF1EE` | `#FEDED8` | `#FEB8AB` | `#FE8A78` | `#FE6756` | `#EA001E` | `#BA0517` | `#8E030F` | `#640103` | `#4A0C04` | `#300C01` |
+| 값 | `#FEF1EE` | `#FED6CF` | `#FEA899` | `#FE816F` | `#FE6151` | `#EA001E` | `#BA0517` | `#8E030F` | `#640103` | `#4A0C04` | `#300C01` |
 
 ### info — 안내와 진행
 
 | 단계 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 값 | `#EAF5FE` | `#CFE9FE` | `#90D0FE` | `#16B6FB` | `#0BA3E2` | `#107CAD` | `#05628A` | `#084968` | `#023248` | `#0A2636` | `#001A28` |
+| 값 | `#EAF5FE` | `#C2E4FE` | `#61C7FE` | `#0FB1F4` | `#0CA0DE` | `#107CAD` | `#05628A` | `#084968` | `#023248` | `#0A2636` | `#001A28` |
 
 ## 토큰 — 역할별 색
 
@@ -55,17 +55,17 @@
 | `--canvas` | 페이지 바닥 | `#FFFFFF` | `#181818` |
 | `--fg` | 본문 글자 | `#242424` | `#FFFFFF` |
 | `--fg-strong` | 제목과 강조 글자 | `#242424` | `#FFFFFF` |
-| `--fg-lower` | 보조 설명 | `#5C5C5C` | `#9B9B9B` |
-| `--fg-disabled` | 비활성 글자 | `#9B9B9B` | `#5C5C5C` |
-| `--border` | 기본 경계선 | `#C9C9C9` | `#2E2E2E` |
-| `--border-strong` | 강조 경계선 | `#AEAEAE` | `#5C5C5C` |
-| `--bg-primary` | 주된 행동 버튼 바탕 | `#0176D3` | `#339BFE` |
+| `--fg-lower` | 보조 설명 | `#5C5C5C` | `#989898` |
+| `--fg-disabled` | 비활성 글자 | `#989898` | `#5C5C5C` |
+| `--border` | 기본 경계선 | `#CFCFCF` | `#2E2E2E` |
+| `--border-strong` | 강조 경계선 | `#ABABAB` | `#5C5C5C` |
+| `--bg-primary` | 주된 행동 버튼 바탕 | `#0176D3` | `#2799FF` |
 | `--bg-primary-low` | 주된 색의 엷은 면 | `#EEF4FF` | `#03234D` |
-| `--fg-primary` | 주된 색 글자 | `#0B5CAB` | `#71ADFD` |
+| `--fg-primary` | 주된 색 글자 | `#0B5CAB` | `#64A8FD` |
 | `--bg-success` | 완료 표시 | `#2E844A` | `#2E844A` |
 | `--bg-warning` | 주의 표시 | `#A96404` | `#A96404` |
 | `--bg-critical` | 위험 표시 | `#EA001E` | `#EA001E` |
-| `--bg-info` | 안내 표시 | `#05628A` | `#0BA3E2` |
+| `--bg-info` | 안내 표시 | `#05628A` | `#0CA0DE` |
 
 ## 토큰 — 타이포
 
@@ -160,7 +160,7 @@
 - 보조 글자: `#5C5C5C`
 - 바탕: `#FFFFFF`
 - 페이지 바닥: `#FFFFFF`
-- 경계선: `#C9C9C9`
+- 경계선: `#CFCFCF`
 - 주된 행동: `#0176D3`
 - 글꼴: `"Salesforce Sans","Inter",-apple-system,system-ui,sans-serif`
 
@@ -171,10 +171,10 @@
 ```css
 :root{
   --primary-50: #EEF4FF;
-  --primary-100: #D8E6FE;
-  --primary-200: #AACBFF;
-  --primary-300: #71ADFD;
-  --primary-400: #339BFE;
+  --primary-100: #CFE1FE;
+  --primary-200: #96C0FE;
+  --primary-300: #64A8FD;
+  --primary-400: #2799FF;
   --primary-500: #0176D3;
   --primary-600: #0B5CAB;
   --primary-700: #014486;
@@ -182,43 +182,43 @@
   --primary-900: #03234D;
   --primary-950: #001639;
   --gray-50: #FFFFFF;
-  --gray-100: #EBEBEB;
-  --gray-200: #C9C9C9;
-  --gray-300: #AEAEAE;
-  --gray-400: #9B9B9B;
-  --gray-500: #757575;
+  --gray-100: #EDEDED;
+  --gray-200: #CFCFCF;
+  --gray-300: #ABABAB;
+  --gray-400: #989898;
+  --gray-500: #747474;
   --gray-600: #5C5C5C;
   --gray-700: #444444;
   --gray-800: #2E2E2E;
   --gray-900: #242424;
   --gray-950: #181818;
   --success-50: #EBF7E6;
-  --success-100: #CDEFC4;
-  --success-200: #91DB8B;
-  --success-300: #44C35A;
-  --success-400: #3DAD56;
+  --success-100: #C1EBB9;
+  --success-200: #73D377;
+  --success-300: #43BC59;
+  --success-400: #3CAA56;
   --success-500: #2E844A;
   --success-600: #396547;
   --success-700: #194E31;
-  --success-800: #193626;
+  --success-800: #1C3326;
   --success-900: #0C2912;
   --success-950: #071B12;
   --warning-50: #FFF1EA;
-  --warning-100: #FEDFD0;
-  --warning-200: #FFBA90;
-  --warning-300: #FC902E;
-  --warning-400: #E67E02;
+  --warning-100: #FED8C3;
+  --warning-200: #FFAA6D;
+  --warning-300: #F78919;
+  --warning-400: #E17C01;
   --warning-500: #A96404;
   --warning-600: #825101;
   --warning-700: #5F3E02;
   --warning-800: #3E2B02;
-  --warning-900: #302104;
+  --warning-900: #371E03;
   --warning-950: #201600;
   --error-50: #FEF1EE;
-  --error-100: #FEDED8;
-  --error-200: #FEB8AB;
-  --error-300: #FE8A78;
-  --error-400: #FE6756;
+  --error-100: #FED6CF;
+  --error-200: #FEA899;
+  --error-300: #FE816F;
+  --error-400: #FE6151;
   --error-500: #EA001E;
   --error-600: #BA0517;
   --error-700: #8E030F;
@@ -226,10 +226,10 @@
   --error-900: #4A0C04;
   --error-950: #300C01;
   --info-50: #EAF5FE;
-  --info-100: #CFE9FE;
-  --info-200: #90D0FE;
-  --info-300: #16B6FB;
-  --info-400: #0BA3E2;
+  --info-100: #C2E4FE;
+  --info-200: #61C7FE;
+  --info-300: #0FB1F4;
+  --info-400: #0CA0DE;
   --info-500: #107CAD;
   --info-600: #05628A;
   --info-700: #084968;
@@ -244,11 +244,11 @@
   --border-primary: #0176D3;
   --bg: #FFFFFF;
   --bg-inset: #FFFFFF;
-  --bg-inset-neutral: #EBEBEB;
-  --bg-neutral: #EBEBEB;
+  --bg-inset-neutral: #EDEDED;
+  --bg-neutral: #EDEDED;
   --bg-neutral-low: #FFFFFF;
   --bg-neutral-lower: #FFFFFF;
-  --bg-disabled: #EBEBEB;
+  --bg-disabled: #EDEDED;
   --bg-contrast: #242424;
   --bg-success: #2E844A;
   --bg-success-low: #EBF7E6;
@@ -261,16 +261,16 @@
   --fg: #242424;
   --fg-strong: #242424;
   --fg-lower: #5C5C5C;
-  --fg-disabled: #9B9B9B;
+  --fg-disabled: #989898;
   --fg-contrast: #FFFFFF;
   --fg-on-primary: #FFFFFF;
   --fg-success: #194E31;
   --fg-warning: #3E2B02;
   --fg-error: #8E030F;
-  --border: #C9C9C9;
-  --border-low: #EBEBEB;
-  --border-strong: #AEAEAE;
-  --border-disabled: #C9C9C9;
+  --border: #CFCFCF;
+  --border-low: #EDEDED;
+  --border-strong: #ABABAB;
+  --border-disabled: #CFCFCF;
   --shadow-1: 0 0 8px rgba(0,0,0,.10);
   --shadow-2: 0 4px 8px rgba(0,0,0,.10);
   --shadow-3: 0 6px 16px rgba(0,0,0,.06);
@@ -349,8 +349,8 @@
 export default {
   theme:{ extend:{
     colors:{
-      primary:{50:"#EEF4FF",100:"#D8E6FE",200:"#AACBFF",300:"#71ADFD",400:"#339BFE",500:"#0176D3",600:"#0B5CAB",700:"#014486",800:"#032D60",900:"#03234D",950:"#001639"},
-      gray:{50:"#FFFFFF",100:"#EBEBEB",200:"#C9C9C9",300:"#AEAEAE",400:"#9B9B9B",500:"#757575",600:"#5C5C5C",700:"#444444",800:"#2E2E2E",900:"#242424",950:"#181818"},
+      primary:{50:"#EEF4FF",100:"#CFE1FE",200:"#96C0FE",300:"#64A8FD",400:"#2799FF",500:"#0176D3",600:"#0B5CAB",700:"#014486",800:"#032D60",900:"#03234D",950:"#001639"},
+      gray:{50:"#FFFFFF",100:"#EDEDED",200:"#CFCFCF",300:"#ABABAB",400:"#989898",500:"#747474",600:"#5C5C5C",700:"#444444",800:"#2E2E2E",900:"#242424",950:"#181818"},
       success:"#2E844A", warning:"#A96404", critical:"#EA001E",
     },
     borderRadius:{ btn:"4px", card:"4px", input:"4px" },
