@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-14",
- "count": 36,
+ "count": 38,
  "license": "AGPL-3.0",
  "systems": [
   {
@@ -578,6 +578,38 @@
    "href": "systems/uswds.json",
    "css": "systems/uswds/tokens.css",
    "theme": "systems/uswds/theme.css"
+  },
+  {
+   "id": "evergreen",
+   "name": "Segment Evergreen",
+   "category": "SaaS",
+   "font": "SF Pro Text · Inter",
+   "description": "세그먼트 에버그린 공식 토큰. 푸른 기가 도는 회색을 열두 단계로 길게 두어, 고객 데이터 표가 길게 이어지는 화면에서 줄 구분을 색이 아니라 밝기로 냅니다.",
+   "cover": [
+    "#3366FF",
+    "#52BD95",
+    "#FFB020",
+    "#D14343"
+   ],
+   "href": "systems/evergreen.json",
+   "css": "systems/evergreen/tokens.css",
+   "theme": "systems/evergreen/theme.css"
+  },
+  {
+   "id": "helios",
+   "name": "HashiCorp Helios",
+   "category": "데브옵스",
+   "font": "Open Sans · Inter",
+   "description": "해시코프 헬리오스 공식 토큰. 50 이 가장 밝고 500 이 가장 어두운 여섯 단계 체계로, 터미널 출력과 상태 배지가 섞인 인프라 도구 화면에 맞춰 경고색을 분명히 갈라 둡니다.",
+   "cover": [
+    "#1060FF",
+    "#008A22",
+    "#BB5A00",
+    "#E52228"
+   ],
+   "href": "systems/helios.json",
+   "css": "systems/helios/tokens.css",
+   "theme": "systems/helios/theme.css"
   }
  ]
 }

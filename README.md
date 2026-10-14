@@ -17,7 +17,7 @@
 
 | | 수량 | 내용 |
 |---|---|---|
-| 디자인 시스템 | 36종 | Toss, Ant Design, Material 3, IBM Carbon, Apple HIG, Shopify Polaris, Vercel, GitLab, Airbnb, Slack, monopo saigon, Bevel, Wise, Pinterest Gestalt, Zendesk Garden, Mantine, Adobe Spectrum, Microsoft Fluent 2, Red Hat PatternFly, GitHub Primer, Bootstrap, Tailwind CSS, Salesforce Lightning, MongoDB LeafyGreen, Palantir Blueprint, Workday Canvas, Radix UI, Arco Design, Semi Design, USWDS 등 |
+| 디자인 시스템 | 38종 | Toss, Ant Design, Material 3, IBM Carbon, Apple HIG, Shopify Polaris, Vercel, GitLab, Airbnb, Slack, monopo saigon, Bevel, Wise, Pinterest Gestalt, Zendesk Garden, Mantine, Adobe Spectrum, Microsoft Fluent 2, Red Hat PatternFly, GitHub Primer, Bootstrap, Tailwind CSS, Salesforce Lightning, MongoDB LeafyGreen, Palantir Blueprint, Workday Canvas, Radix UI, Arco Design, Semi Design, USWDS, Segment Evergreen, HashiCorp Helios 등 |
 | 레이아웃 패턴 | 22종 | Holy Grail, 대시보드, 지그재그, 벤토, 메뉴판 4종 등 |
 | 콘텐츠 구조 | 9종 | 뷰티 상세, SaaS 랜딩, 메뉴판, 병원, 포트폴리오, 앱 소개 등 |
 | 아이콘 | 48개 | SVG 스프라이트, 개별 파일, React 컴포넌트, CSS로 내보내기 |

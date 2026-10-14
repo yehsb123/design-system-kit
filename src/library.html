@@ -2469,6 +2469,34 @@ mkSystem({
     error:[["50","#FFF3F2"],["100","#FDE0DB"],["200","#FDB8AE"],["300","#FF8D7B"],["400","#FB5A47"],["500","#E52207"],["600","#C81308"],["700","#AD0908"],["800","#930A04"],["900","#780D09"],["950","#5C1111"]],
     info:[["50","#E5FAFF"],["100","#C0F5FF"],["200","#97EDFC"],["300","#63DFF5"],["400","#31CEEC"],["500","#00BDE3"],["600","#0098BB"],["700","#007793"],["800","#085969"],["900","#0A3F49"],["950","#052329"]]
   }
+}),
+mkSystem({
+  id:"evergreen",name:"Segment Evergreen",cat:"SaaS",font:"SF Pro Text · Inter",framework:"React · TypeScript",point:"#3366FF",
+  desc:"세그먼트 에버그린 공식 토큰. 푸른 기가 도는 회색을 열두 단계로 길게 두어, 고객 데이터 표가 길게 이어지는 화면에서 줄 구분을 색이 아니라 밝기로 냅니다.",
+  cover:["#3366FF", "#52BD95", "#FFB020", "#D14343"],hasChart:true,
+  radius:{xs:"3px",sm:"4px",md:"4px",lg:"8px"},
+  ramps:{
+    primary:[["50","#F3F6FF"],["100","#E7EDFF"],["200","#C6D4FF"],["300","#95AFFF"],["400","#648BFF"],["500","#3366FF"],["600","#2B56D6"],["700","#2345AD"],["800","#1B3585"],["900","#12255C"],["950","#0A1433"]],
+    gray:[["50","#FAFBFF"],["100","#F6F8FB"],["200","#F3F4F8"],["300","#E7E9F1"],["400","#CFD1DF"],["500","#8F95B2"],["600","#787E9B"],["700","#626884"],["800","#4E546E"],["900","#313857"],["950","#101840"]],
+    success:[["50","#F5FBF8"],["100","#DCF2EA"],["200","#BAE5D5"],["300","#97D7BF"],["400","#75CAAA"],["500","#52BD95"],["600","#459F7D"],["700","#388065"],["800","#2B624D"],["900","#1E4436"],["950","#10261E"]],
+    warning:[["50","#FFFAF2"],["100","#FCF1E8"],["200","#F9E8DF"],["300","#F9D9B5"],["400","#FCC46A"],["500","#FFB020"],["600","#D6941B"],["700","#AD7816"],["800","#835B10"],["900","#573C0B"],["950","#2A1D05"]],
+    error:[["50","#FDF4F4"],["100","#FBE4E4"],["200","#F7CBCB"],["300","#F0A0A0"],["400","#E27272"],["500","#D14343"],["600","#B83B3B"],["700","#9F3333"],["800","#852B2B"],["900","#621F1F"],["950","#3A1313"]],
+    info:[["50","#F3F6FF"],["100","#EBF0FF"],["200","#D6E0FF"],["300","#ADC2FF"],["400","#85A3FF"],["500","#5C85FF"],["600","#3366FF"],["700","#2952CC"],["800","#1F3D99"],["900","#142966"],["950","#0A1433"]]
+  }
+}),
+mkSystem({
+  id:"helios",name:"HashiCorp Helios",cat:"데브옵스",font:"Open Sans · Inter",framework:"Ember · React · 웹 컴포넌트",point:"#1060FF",
+  desc:"해시코프 헬리오스 공식 토큰. 50 이 가장 밝고 500 이 가장 어두운 여섯 단계 체계로, 터미널 출력과 상태 배지가 섞인 인프라 도구 화면에 맞춰 경고색을 분명히 갈라 둡니다.",
+  cover:["#1060FF", "#008A22", "#BB5A00", "#E52228"],hasChart:true,
+  radius:{xs:"3px",sm:"5px",md:"5px",lg:"8px"},
+  ramps:{
+    primary:[["50","#F2F8FF"],["100","#E3F0FF"],["200","#D4E7FE"],["300","#A6C9FE"],["400","#5B94FF"],["500","#1060FF"],["600","#0D58ED"],["700","#054CDB"],["800","#0B3FA3"],["900","#1A3057"],["950","#111F39"]],
+    gray:[["50","#FFFFFF"],["100","#FAFAFA"],["200","#F1F2F3"],["300","#DEDFE3"],["400","#C2C5CB"],["500","#8C909C"],["600","#757985"],["700","#5D616C"],["800","#43464F"],["900","#28292F"],["950","#0C0C0E"]],
+    success:[["50","#F2FBF6"],["100","#E3F6EB"],["200","#D4F1E0"],["300","#A3DAB5"],["400","#52B26C"],["500","#008A22"],["600","#007C1F"],["700","#006D1B"],["800","#02581C"],["900","#053C1D"],["950","#032512"]],
+    warning:[["50","#FFF9E8"],["100","#FDF3D8"],["200","#FCEDC7"],["300","#EECD99"],["400","#D5944C"],["500","#BB5A00"],["600","#AA5100"],["700","#984800"],["800","#864000"],["900","#6E3500"],["950","#542800"]],
+    error:[["50","#FFF5F5"],["100","#FDE8E8"],["200","#FCDBDB"],["300","#F7B0B2"],["400","#EE696D"],["500","#E52228"],["600","#CF0E13"],["700","#B70005"],["800","#9D0004"],["900","#790806"],["950","#51130A"]],
+    info:[["50","#F2F8FF"],["100","#DBEBFE"],["200","#A6C9FE"],["300","#367AFF"],["400","#0E5CF6"],["500","#0C56E9"],["600","#054CDB"],["700","#0642BA"],["800","#163876"],["900","#182C50"],["950","#111F39"]]
+  }
 })
 ];
 
@@ -2589,7 +2617,9 @@ const FONT={
   radix:'"Inter",system-ui,-apple-system,sans-serif',
   arco:'"Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif',
   semi:'"Inter","PingFang SC","Helvetica Neue",system-ui,sans-serif',
-  uswds:'"Public Sans","Source Sans Pro",-apple-system,system-ui,sans-serif'
+  uswds:'"Public Sans","Source Sans Pro",-apple-system,system-ui,sans-serif',
+  evergreen:'"SF Pro Text",-apple-system,"Inter",system-ui,sans-serif',
+  helios:'"Open Sans","Inter",-apple-system,system-ui,sans-serif'
 };
 const UI={
   toss:    {btnR:"10px",btnW:"600",btnSh:"none",ctlR:"8px",cardR:"16px",padx:"18px",inR:"10px"},
@@ -2627,7 +2657,9 @@ const UI={
   radix:     {btnR:"6px", btnW:"500",btnSh:"none",ctlR:"4px",cardR:"12px",padx:"16px",inR:"6px"},
   arco:      {btnR:"2px", btnW:"400",btnSh:"none",ctlR:"2px",cardR:"4px",padx:"16px",inR:"2px"},
   semi:      {btnR:"6px", btnW:"600",btnSh:"none",ctlR:"3px",cardR:"6px",padx:"16px",inR:"6px"},
-  uswds:     {btnR:"4px", btnW:"700",btnSh:"none",ctlR:"4px",cardR:"4px",padx:"20px",inR:"4px"}
+  uswds:     {btnR:"4px", btnW:"700",btnSh:"none",ctlR:"4px",cardR:"4px",padx:"20px",inR:"4px"},
+  evergreen: {btnR:"4px", btnW:"500",btnSh:"0 1px 2px rgba(67,90,111,.14)",ctlR:"4px",cardR:"8px",padx:"16px",inR:"4px"},
+  helios:    {btnR:"5px", btnW:"500",btnSh:"none",ctlR:"5px",cardR:"6px",padx:"16px",inR:"5px"}
 };
 // 시스템별 아이콘 성격(굵기와 끝처리). 에셋이 시스템마다 달라 보이게 한다
 const ICONSTYLE={
@@ -2650,12 +2682,13 @@ const ICONSTYLE={
   leafygreen:{sw:1.6,cap:"round",join:"round"}, blueprint:{sw:2,cap:"butt",join:"miter"},
   canvas:{sw:2,cap:"round",join:"round"},
   radix:{sw:1.6,cap:"round",join:"round"}, arco:{sw:1.6,cap:"round",join:"round"},
-  semi:{sw:1.8,cap:"round",join:"round"}, uswds:{sw:2,cap:"round",join:"round"}
+  semi:{sw:1.8,cap:"round",join:"round"}, uswds:{sw:2,cap:"round",join:"round"},
+  evergreen:{sw:1.6,cap:"round",join:"round"}, helios:{sw:1.6,cap:"round",join:"round"}
 };
 // 시스템별 뱃지/칩 모서리 (각진 계열 vs 알약)
 const TAGR={carbon:"0px",vercel:"4px",editorial:"2px",gitlab:"4px",antd:"4px",graphite:"6px",monopo:"75px",
   garden:"4px",mantine:"4px",fluent:"4px",patternfly:"3px",primer:"999px",bootstrap:"6px",
-  blueprint:"2px",lightning:"4px",canvas:"4px",tailwind:"6px",arco:"2px",semi:"6px"};
+  blueprint:"2px",lightning:"4px",canvas:"4px",tailwind:"6px",arco:"2px",semi:"6px",evergreen:"4px",helios:"5px"};
 
 // full flattened tokens for a system+theme (ramps are theme-independent)
 function allTokens(sys){
