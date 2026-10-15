@@ -114,7 +114,7 @@ with sync_playwright() as p:
 lay = jread('layouts.json')
 pgs = jread('pages.json')
 ico = jread('icons.json')
-ok('레이아웃 23종', lay['count'] == 23, lay['count'])
+ok('레이아웃 38종', lay['count'] == 38, lay['count'])
 ok('콘텐츠 구조 9종', pgs['count'] == 9, pgs['count'])
 ok('아이콘 48개', ico['count'] == 48, ico['count'])
 

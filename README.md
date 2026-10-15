@@ -18,7 +18,7 @@
 | | 수량 | 내용 |
 |---|---|---|
 | 디자인 시스템 | 38종 | Toss, Ant Design, Material 3, IBM Carbon, Apple HIG, Shopify Polaris, Vercel, GitLab, Airbnb, Slack, monopo saigon, Bevel, Wise, Pinterest Gestalt, Zendesk Garden, Mantine, Adobe Spectrum, Microsoft Fluent 2, Red Hat PatternFly, GitHub Primer, Bootstrap, Tailwind CSS, Salesforce Lightning, MongoDB LeafyGreen, Palantir Blueprint, Workday Canvas, Radix UI, Arco Design, Semi Design, USWDS, Segment Evergreen, HashiCorp Helios 등 |
-| 레이아웃 패턴 | 23종 | Holy Grail, 대시보드, 지그재그, 벤토, 메뉴판 4종 등 |
+| 레이아웃 패턴 | 38종 | Holy Grail, 대시보드, 지그재그, 벤토, 메뉴판 4종 등 |
 | 콘텐츠 구조 | 9종 | 뷰티 상세, SaaS 랜딩, 메뉴판, 병원, 포트폴리오, 앱 소개 등 |
 | 아이콘 | 48개 | SVG 스프라이트, 개별 파일, React 컴포넌트, CSS로 내보내기 |
 
@@ -186,7 +186,7 @@ v1/systems/{id}/tokens.dark.css    CSS 변수 (다크)
 v1/systems/{id}/theme.css          CSS 변수 (라이트 + 다크 한 파일)
 v1/systems/{id}/tailwind.js        Tailwind 설정
 v1/systems/{id}/spec.md            스펙 문서
-v1/layouts.json                    레이아웃 23종
+v1/layouts.json                    레이아웃 38종
 v1/pages.json                      콘텐츠 구조 9종
 v1/icons.json                      아이콘 48개
 ```
