@@ -7357,6 +7357,8 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
 .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ui-fg-strong);color:var(--ui-canvas);
   padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:99;}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast .tundo{pointer-events:auto;margin-left:12px;background:var(--ui-canvas);color:var(--ui-fg-strong);
+  border:0;border-radius:999px;font-size:12px;font-weight:700;padding:4px 11px;cursor:pointer;}
 </style>
 </style>
 <style>
@@ -8045,6 +8047,18 @@ window.GENSYS=[{"id": "toss", "n": "Toss (TDS)", "p": "#3182F6", "pl": "#E8F3FF"
 <script>
 const $=s=>document.querySelector(s);
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1500);};
+// 손으로 맞춰 둔 구성을 말없이 덮으면 안 된다. 무엇이 바뀌었는지 적고
+// 되돌릴 단추를 같이 띄운다. 읽고 누를 틈이 있어야 하므로 더 오래 둔다.
+function toastUndo(m,fn){
+  const t=$('#toast');
+  t.textContent=m;
+  const b=document.createElement('button');
+  b.type='button'; b.className='tundo'; b.textContent='되돌리기';
+  b.onclick=function(){ t.classList.remove('on'); clearTimeout(t._t); fn(); };
+  t.appendChild(b);
+  t.classList.add('on'); clearTimeout(t._t);
+  t._t=setTimeout(function(){t.classList.remove('on');},6000);
+}
 function copyText(t){
   // 표준 방법이 막히면 숨긴 칸을 거쳐 복사한다
   return new Promise(function(done,fail){
@@ -8455,13 +8469,56 @@ const myRules=()=>{try{return JSON.parse(localStorage.getItem(RK)||'[]');}catch(
 const saveRules=a=>{try{localStorage.setItem(RK,JSON.stringify(a));}catch(e){}};
 let cur=PAGES[0], picked=new Set(), html='';
 const BK='pg_brief';
+/* 예시는 글만 담지 않는다. p 는 콘텐츠 구조, s 는 그 자료로 채울 수 있는
+   섹션이다. 자료에 없는 섹션(뷰티 예시의 리뷰, 병원 예시의 시설 사진)은
+   빼 둔다. k 는 바꿨다고 알릴 때 쓰는 짧은 이름이다. */
 const EX={
- beauty:{n:'루미에르 세라마이드 에센스',t:'무너진 장벽을 4주 만에',m:'· 용량 50ml / 가격 38,000원\n· 핵심성분: 세라마이드NP 5%, 판테놀 3%, 마데카소사이드\n· 임상: 4주 후 수분 42% 증가, 붉은기 28% 감소 (32명 대상)\n· 타깃: 건성·민감성, 20~30대\n· 사용법: 세안 후 토너 다음, 2~3방울\n· 브랜드 톤: 담백하고 임상적, 과장 금지'},
- clinic:{n:'밝은미소 치과의원',t:'통증은 줄이고, 결과는 오래가게',m:'· 진료: 임플란트, 교정, 심미보철, 소아치과\n· 원장: 홍길동 / 서울대 치의학 박사, 대한임플란트학회 정회원\n· 장비: 3D CT, 디지털 스캐너, 별도 수술실\n· 진료시간: 평일 10-19시, 토 10-14시, 일요일 휴진\n· 위치: 서울 강남구 테헤란로 000, 지하철 2호선 강남역 3번 출구 도보 5분, 주차 2시간 무료\n· 강조점: 야간진료(수요일 21시까지), 1:1 전담 위생사'},
- menu:{n:'포르노 나폴리',t:'장작 화덕에서 90초',m:'· 시그니처: 마르게리타 18,000 / 부라타 24,000 / 디아볼라 21,000\n· 파스타: 알리오올리오 15,000 / 라구 19,000\n· 음료: 하우스와인 글라스 9,000 / 탄산수 4,000\n· 런치세트 A 22,000 (피자+샐러드+음료)\n· 알레르기: 밀, 우유, 견과 사용\n· 영업: 11:30-22:00, 브레이크 15:00-17:00, 월요일 휴무'}
+ beauty:{k:'뷰티',p:'beauty',n:'루미에르 세라마이드 에센스',t:'무너진 장벽을 4주 만에',m:'· 용량 50ml / 가격 38,000원\n· 핵심성분: 세라마이드NP 5%, 판테놀 3%, 마데카소사이드\n· 임상: 4주 후 수분 42% 증가, 붉은기 28% 감소 (32명 대상)\n· 타깃: 건성·민감성, 20~30대\n· 사용법: 세안 후 토너 다음, 2~3방울\n· 브랜드 톤: 담백하고 임상적, 과장 금지',
+   s:['히어로 / 제품 컷','구매 박스','한 줄 정의 + 베네핏 배지','임상·사용감 수치','핵심 성분','사용법 3스텝','텍스처 상세컷','전성분 · 배송 · 반품']},
+ clinic:{k:'병원',p:'clinic',n:'밝은미소 치과의원',t:'통증은 줄이고, 결과는 오래가게',m:'· 진료: 임플란트, 교정, 심미보철, 소아치과\n· 원장: 홍길동 / 서울대 치의학 박사, 대한임플란트학회 정회원\n· 장비: 3D CT, 디지털 스캐너, 별도 수술실\n· 진료시간: 평일 10-19시, 토 10-14시, 일요일 휴진\n· 위치: 서울 강남구 테헤란로 000, 지하철 2호선 강남역 3번 출구 도보 5분, 주차 2시간 무료\n· 강조점: 야간진료(수요일 21시까지), 1:1 전담 위생사',
+   s:['히어로','퀵 인포 바','진료과목','의료진 소개','장비 · 시스템','진료 안내 · 비급여 고지','오시는 길 + 예약']},
+ menu:{k:'메뉴판',p:'menu',n:'피제리아 나폴리',t:'장작 화덕에서 90초',m:'· 시그니처: 마르게리타 18,000 / 부라타 24,000 / 디아볼라 21,000\n· 파스타: 알리오올리오 15,000 / 라구 19,000\n· 음료: 하우스와인 글라스 9,000 / 탄산수 4,000\n· 런치세트 A 22,000 (피자+샐러드+음료)\n· 알레르기: 밀, 우유, 견과 사용\n· 영업: 11:30-22:00, 브레이크 15:00-17:00, 월요일 휴무',
+   s:['헤더 / 매장명','시그니처 메뉴','카테고리 내비','메뉴 항목 리스트','세트 · 코스','알레르기 · 원산지','푸터 / 영업정보']}
 };
 function brief(){ try{ return JSON.parse(localStorage.getItem(BK)||'{}'); }catch(e){ return {}; } }
 function saveBrief(){ try{ localStorage.setItem(BK, JSON.stringify({n:$('#bName').value,t:$('#bTag').value,m:$('#bMat').value})); }catch(e){} }
+
+/* ===== 예시 =====
+   전에는 이름·한 줄 소개·자료 세 칸만 바꿨다. 그래서 병원 예시를 눌러도
+   뷰티 섹션이 남아 치과 페이지에 장바구니와 정기배송이 섰다.
+   콘텐츠 구조와 섹션, 그에 맞는 배치까지 같이 바꾼다. */
+function secBoxes(){ return Array.prototype.slice.call($('#secPick').querySelectorAll('input[data-k]')); }
+function exState(){
+  return {n:$('#bName').value, t:$('#bTag').value, m:$('#bMat').value,
+          page:$('#selPage').value, lay:$('#selLayout').value,
+          picked:Array.from(picked), touched:layTouched};
+}
+function exRestore(s){
+  $('#bName').value=s.n; $('#bTag').value=s.t; $('#bMat').value=s.m;
+  $('#selPage').value=s.page; loadPage(+s.page);
+  picked=new Set(s.picked);
+  secBoxes().forEach(function(c){ c.checked=picked.has(+c.dataset.k); });
+  $('#selLayout').value=s.lay; layTouched=s.touched;
+  const n=$('#layFrom'); if(n) n.hidden=true;
+  renderLayPrev(); saveBrief(); auto();
+}
+function applyEx(x){
+  $('#bName').value=x.n; $('#bTag').value=x.t; $('#bMat').value=x.m;
+  const i=PAGES.findIndex(function(p){return p.id===x.p;});
+  if(i<0) return;
+  $('#selPage').value=String(i);
+  loadPage(i);
+  if(x.s && x.s.length){
+    picked=new Set();
+    secBoxes().forEach(function(c){
+      const on=x.s.indexOf(cur.s[+c.dataset.k][0])>=0;
+      c.checked=on; if(on) picked.add(+c.dataset.k);
+    });
+  }
+  layTouched=false;          // 예시가 정한 구조에 맞는 배치를 다시 찾게 한다
+  matchLay();
+  renderLayPrev();
+}
 
 /* ===== UI 초기화 ===== */
 $('#selPage').innerHTML=PAGES.map((p,i)=>'<option value="'+i+'">'+p.n+'</option>').join('');
@@ -9267,9 +9324,12 @@ $('#secPick').addEventListener('change',auto);
 $('#exBtns').onclick=function(e){
   const b=e.target.closest('[data-ex]'); if(!b) return;
   const k=b.dataset.ex;
-  if(k==='clear'){ $('#bName').value=''; $('#bTag').value=''; $('#bMat').value=''; }
-  else { const x=EX[k]; $('#bName').value=x.n; $('#bTag').value=x.t; $('#bMat').value=x.m; }
+  if(k==='clear'){ $('#bName').value=''; $('#bTag').value=''; $('#bMat').value=''; saveBrief(); auto(); return; }
+  const x=EX[k]; if(!x) return;
+  const before=exState();
+  applyEx(x);
   saveBrief(); auto();
+  toastUndo(x.k+' 구조로 바꿨습니다', function(){ exRestore(before); });
 };
 $('#myList').addEventListener('click',()=>setTimeout(auto,0));
 $('#ruleAdd').addEventListener('click',()=>setTimeout(auto,0));
