@@ -110,7 +110,7 @@ body{margin:0;-webkit-font-smoothing:antialiased;transition:background .2s,color
 .sview{display:none;}.sview.active{display:block;}
 .secstack{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
 .secrow{display:flex;gap:14px;background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:12px;padding:14px 16px;}
-.secrow .no{width:26px;height:26px;border-radius:8px;background:var(--ui-accent);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800;flex:none;}
+.secrow .no{width:26px;height:26px;border-radius:8px;background:var(--ui-accent);color:var(--ui-canvas);display:grid;place-items:center;font-size:12px;font-weight:800;flex:none;}
 .secrow .st{font-size:14px;font-weight:700;color:var(--ui-fg-strong);}
 .secrow .sd{font-size:12.5px;color:var(--ui-fg-lower);margin-top:3px;line-height:1.6;}
 .imgspec{margin-top:9px;background:var(--ui-panel-2);border:1px dashed var(--ui-border);border-radius:9px;padding:9px 11px;font-size:11.5px;color:var(--ui-fg-lower);font-family:"Roboto Mono",monospace;line-height:1.65;}
@@ -130,7 +130,7 @@ body{margin:0;-webkit-font-smoothing:antialiased;transition:background .2s,color
 .copt{padding:8px 11px;border-radius:8px;font-size:13px;color:var(--ui-fg-strong);cursor:pointer;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .copt:hover,.copt.hl{background:var(--ui-panel-2);}
-.copt.sel{background:var(--ui-accent);color:#fff;font-weight:700;}
+.copt.sel{background:var(--ui-accent);color:var(--ui-canvas);font-weight:700;}
 #hoverPeek{position:fixed;z-index:9999;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;
   width:280px;background:var(--ui-panel);border:1px solid var(--ui-border);border-radius:14px;box-shadow:var(--ui-shadow-lg);padding:12px;}
 #hoverPeek.on{opacity:1;transform:translateY(0);}
@@ -186,7 +186,8 @@ body{margin:0;-webkit-font-smoothing:antialiased;transition:background .2s,color
 .dtabs{position:sticky;top:57px;z-index:40;display:flex;flex-wrap:wrap;align-items:center;background:color-mix(in srgb,var(--ui-canvas) 92%,transparent);backdrop-filter:blur(8px);padding:12px 0;margin:14px 0 0;border-bottom:1px solid var(--ui-border);}
 .dtabs button{font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:6px;}
 .dtabs button .cnt{font-size:10.5px;opacity:.6;font-weight:700;}
-.dtabs .exp{margin-left:auto;background:var(--ui-accent)!important;color:#fff!important;border-color:transparent!important;}
+/* --ui-accent 는 다크에서 흰색이다. 글자를 #fff 로 박으면 다크에서 단추가 빈칸이 된다. */
+.dtabs .exp{margin-left:auto;background:var(--ui-accent)!important;color:var(--ui-canvas)!important;border-color:transparent!important;}
 .dsec.hide{display:none;}
 .grouphint{margin:16px 0 -8px;}
 .dnav{position:sticky;top:57px;z-index:40;display:flex;flex-wrap:wrap;gap:4px 6px;background:color-mix(in srgb,var(--ui-canvas) 90%,transparent);backdrop-filter:blur(8px);padding:11px 0;margin:14px 0 0;border-bottom:1px solid var(--ui-border);font-size:12.5px;}
