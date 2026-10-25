@@ -88,8 +88,12 @@
   .sk-badge { display:inline-flex; align-items:center; gap:6px; padding:3px 8px; border:1px solid var(--sk-border); border-radius:999px; font-size:12px; line-height:18px; white-space:nowrap; }
   .sk-badge--success { color:var(--sk-success); }
   .sk-badge--danger { color:var(--sk-danger); }
-  .sk-notice { display:flex; flex-direction:column; gap:8px; border:1px solid var(--sk-border); border-inline-start:3px solid var(--sk-accent); border-radius:var(--sk-radius-control); padding:16px; background:var(--sk-panel); overflow-wrap:anywhere; }
-  .sk-notice--error { border-inline-start-color:var(--sk-danger); }
+  /* 강조색 왼쪽 굵은 보더는 생성형 템플릿의 표식으로 굳었다. 테두리를 네 면에
+     고르게 두고 상태는 제목 글자색으로 나타낸다. */
+  .sk-notice { display:flex; flex-direction:column; gap:8px; border:1px solid var(--sk-border); border-radius:var(--sk-radius-control); padding:16px; background:var(--sk-panel-muted); overflow-wrap:anywhere; }
+  .sk-notice > strong { color:var(--sk-accent); }
+  .sk-notice--error { border-color:var(--sk-danger); }
+  .sk-notice--error > strong { color:var(--sk-danger); }
   .sk-empty { min-block-size:12rem; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:12px; padding:24px; }
   .sk-skeleton { min-block-size:1rem; border-radius:6px; background:var(--sk-panel-muted); }
   .sk-dialog { inline-size:min(40rem,calc(100vw - 32px)); max-block-size:calc(100dvh - 48px); padding:0; border:1px solid var(--sk-border); border-radius:var(--sk-radius-card); background:var(--sk-panel); color:var(--sk-content); overflow:hidden; }
