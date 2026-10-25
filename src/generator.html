@@ -672,7 +672,21 @@ function loadPage(i){
   $('#secPick').innerHTML=cur.s.map((x,k)=>
     '<label class="chk"><input type="checkbox" data-k="'+k+'" checked> '+(k+1)+'. '+x[0]+'</label>').join('');
 }
-$('#selPage').onchange=e=>{loadPage(+e.target.value);auto();};
+// 콘텐츠마다 어울리는 배치가 있다. 모음집이 쓰는 짝과 같은 짝을 쓴다.
+const PAGELAY={beauty:'split', saas:'alt', menu:'stack', clinic:'stack',
+               portfolio:'stack', app:'stack', ecommerce:'split',
+               restaurant:'stack', realestate:'split'};
+let layTouched=false;
+function matchLay(){
+  if(layTouched) return;            // 직접 고른 뒤에는 되돌리지 않는다
+  const p=PAGES[+$('#selPage').value]; if(!p) return;
+  const want=PAGELAY[p.id]; if(!want || $('#selLayout').value===want) return;
+  $('#selLayout').value=want;
+  const n=$('#layFrom');
+  if(n){ n.textContent=p.n+' 에 맞춰 '+$('#selLayout').selectedOptions[0].textContent
+         +' 로 맞췄습니다. 바꾸셔도 됩니다.'; n.hidden=false; }
+}
+$('#selPage').onchange=e=>{loadPage(+e.target.value);matchLay();auto();};
 $('#secPick').onchange=e=>{const b=e.target;if(!b.dataset.k)return;
   const k=+b.dataset.k; b.checked?picked.add(k):picked.delete(k);};
 function renderMy(){
@@ -959,6 +973,10 @@ function prompt(s,lay,secs,css){
 const auto=()=>{try{build(true);}catch(e){}};
 ['#selPage','#selLayout','#selSys','#darkMode','#rRes','#rImg','#rA11y','#rBan','#rMotion'].forEach(function(id){
   const el=$(id); if(el) el.addEventListener('change',auto);
+});
+$('#selLayout').addEventListener('change',function(){
+  layTouched=true;                  // 직접 고른 뒤에는 콘텐츠를 바꿔도 가만히 둔다
+  const n=$('#layFrom'); if(n) n.hidden=true;
 });
 $('#selLayout').addEventListener('change',renderLayPrev);
 $('#secPick').addEventListener('change',auto);

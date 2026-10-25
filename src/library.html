@@ -506,6 +506,7 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--ui-border);fo
       <div class="crow">
         <div class="cfield"><label>1. 콘텐츠</label><div class="cwrap" id="wPage"><select id="cPage"></select></div></div>
         <div class="cfield"><label>2. 레이아웃</label><div class="cwrap" id="wLayout"><select id="cLayout"></select></div></div>
+        <div class="cfield"><label>2-1. 맞춘 결과</label><div class="hint" id="cLayHint" hidden></div></div>
         <div class="cfield"><label>3. 디자인 시스템</label><div class="cwrap" id="wSystem"><select id="cSystem"></select></div></div>
       </div>
       <div class="gorow">
@@ -3334,8 +3335,40 @@ function renderComposer(){
       +(p?'&page='+encodeURIComponent(p.name):'')
       +(L?'&layout='+encodeURIComponent(L[3])+'&layname='+encodeURIComponent(L[0]):'');
   };
+  // 콘텐츠마다 어울리는 뼈대가 이미 정해져 있다. 부동산 매물을 고르고
+  // 레이아웃을 메뉴판으로 둔 채 프롬프트를 뽑는 일을 막는다.
+  const PAGELAY={
+    'menu':'Menu 사진 그리드',
+    'beauty-detail':'Sticky Sidebar',
+    'saas-landing':'Modular Grid',
+    'portfolio':'Full-bleed Scroll',
+    'ecommerce':'Sticky Sidebar',
+    'app-landing':'Landing Hero',
+    'clinic':'Anchor Long Page',
+    'restaurant':'Landing Hero',
+    'realestate':'Map + List'
+  };
+  let layTouched=false;
+  const matchLay=function(){
+    if(layTouched) return;          // 직접 고른 뒤에는 되돌리지 않는다
+    const p=cPageObj(); if(!p) return;
+    const want=PAGELAY[p.id]; if(!want) return;
+    const i=LAYOUTS.findIndex(function(x){return x[0].indexOf(want)===0;});
+    if(i>=0 && lsel.value!==String(i)){
+      lsel.value=String(i);
+      const n=$('#cLayHint');
+      if(n){ n.textContent=p.name+' 에 맞춰 '+LAYOUTS[i][0]+' 로 맞췄습니다. 바꾸셔도 됩니다.'; n.hidden=false; }
+    }
+  };
   const upd=function(){ $('#cOut').textContent=buildOut(); syncGen(); };
-  psel.onchange=upd; lsel.onchange=upd; ssel.onchange=upd;
+  psel.onchange=function(){ matchLay(); upd(); };
+  lsel.onchange=function(){
+    layTouched=true;
+    const n=$('#cLayHint'); if(n) n.hidden=true;
+    upd();
+  };
+  ssel.onchange=upd;
+  matchLay();
   $('#cTabs').onclick=function(e){ const b=e.target.closest('button'); if(!b) return;
     cFmt=b.dataset.f; $('#cTabs').querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);}); upd(); };
   // 복사한 내용과 다음 할 일을 버튼 아래에 남긴다
