@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SaaS Design Kit - Components Gallery</title>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<link rel="stylesheet" href="../components-extra.css">
+<style>body{margin:0}.g-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:var(--sk-gutter)}</style>
+</head>
+<body>
+<div class="sk-app" data-saas-kit data-theme="light" data-density="comfortable" id="app">
+  <a class="sk-skip" href="#main">본문으로 건너뛰기</a>
+  <aside class="sk-sidebar" aria-label="주 메뉴">
+    <span class="sk-brand">Acme Cloud</span>
+    <nav class="sk-nav" aria-label="컴포넌트 목록">
+      <a href="#sec-forms" aria-current="page">폼 컨트롤</a><a href="#sec-nav">탐색·오버레이</a><a href="#sec-table">표·페이지네이션</a><a href="#sec-misc">상태·피드백</a>
+    </nav>
+  </aside>
+  <header class="sk-header">
+    <div class="sk-header__title"><nav class="sk-breadcrumbs" aria-label="현재 위치"><ol><li><a href="#">워크스페이스</a></li><li aria-current="page">컴포넌트</li></ol></nav><h1 class="sk-title">컴포넌트 갤러리</h1></div>
+    <button class="sk-button sk-button--small" type="button" id="open-palette" data-sk-tooltip="명령 팔레트 (Ctrl+K)">명령 <span class="sk-kbd">Ctrl K</span></button>
+    <div class="sk-segment" role="group" aria-label="화면 테마"><button class="sk-button sk-button--small" type="button" data-theme-set="light" aria-pressed="true">라이트</button><button class="sk-button sk-button--small" type="button" data-theme-set="dark" aria-pressed="false">다크</button></div>
+    <div class="sk-segment" role="group" aria-label="밀도"><button class="sk-button sk-button--small" type="button" data-density-set="compact" aria-pressed="false">촘촘</button><button class="sk-button sk-button--small" type="button" data-density-set="comfortable" aria-pressed="true">기본</button></div>
+    <button class="sk-button sk-button--small" type="button" data-sk-drawer-open="nav-drawer">메뉴</button>
+  </header>
+
+  <main class="sk-main" id="main" tabindex="-1">
+    <div class="sk-stack">
+
+      <section class="sk-panel" id="sec-forms" aria-labelledby="forms-h">
+        <div class="sk-panel__header"><h2 class="sk-section-title" id="forms-h">폼 컨트롤</h2></div>
+        <div class="sk-panel__body">
+          <form class="sk-form" id="demo-form" novalidate>
+            <div class="g-row">
+              <div class="sk-field"><label class="sk-field__label" for="f-name">이름 <span aria-hidden="true">*</span></label><input class="sk-input" id="f-name" name="name" autocomplete="off"><div class="sk-field__hint">2~40자</div></div>
+              <div class="sk-field"><label class="sk-field__label" for="f-kind">종류</label>
+                <select class="sk-select" id="f-kind" name="kind" data-sk-select><option value="">선택하세요</option><option value="system">시스템 프롬프트</option><option value="user">사용자 프롬프트</option><option value="legacy" disabled>레거시 (사용 불가)</option><option value="report">보고서 템플릿</option></select></div>
+              <div class="sk-field"><label class="sk-field__label" for="f-country">국가 (검색)</label><input class="sk-input" id="f-country" name="country" data-sk-combobox data-options='["대한민국","일본","중국","미국","캐나다","독일","프랑스","영국","싱가포르","베트남"]' placeholder="입력해서 찾기"></div>
+            </div>
+            <div class="g-row">
+              <div class="sk-field"><label class="sk-field__label" for="f-date">날짜</label><input class="sk-input" id="f-date" name="date" data-sk-date data-min="2026-01-01" data-max="2026-12-31"><div class="sk-field__hint">YYYY-MM-DD, 2026년 안</div></div>
+              <div class="sk-field"><label class="sk-field__label" for="f-range">기간</label><input class="sk-input" id="f-range" name="range" data-sk-date data-range data-min="2026-01-01" data-max="2026-12-31"></div>
+              <fieldset class="sk-fieldset"><legend>알림</legend><label class="sk-check"><input type="checkbox" name="email" checked><span>이메일</span></label> <label class="sk-check"><input type="checkbox" name="slack"><span>Slack</span></label><br><label class="sk-radio"><input type="radio" name="freq" value="d" checked><span>매일</span></label> <label class="sk-radio"><input type="radio" name="freq" value="w"><span>매주</span></label><br><label class="sk-switch"><input type="checkbox" role="switch" name="auto"><span>자동 저장</span></label></fieldset>
+            </div>
+            <div class="sk-field"><span class="sk-field__label" id="ed-l">프롬프트 본문</span>
+              <div data-sk-editor data-label="프롬프트 본문" data-variables="기간,기사 목록" data-required-vars="기간,기사 목록" data-max="500" id="editor"><textarea>## 역할
+너는 분석가다.
+
+{기간} 동안 모은 {기사 목록}에서 **핵심 이슈**를 고른다.</textarea></div></div>
+            <div class="sk-field"><span class="sk-field__label">첨부 파일</span><div data-sk-upload data-accept=".pdf,.png,image/jpeg" data-max-size="2MB" data-max-files="3" data-multiple id="uploader"></div></div>
+            <div class="sk-inline"><button class="sk-button sk-button--primary" type="submit">저장</button><button class="sk-button" type="reset">초기화</button></div>
+          </form>
+        </div>
+      </section>
+
+      <section class="sk-panel" id="sec-nav" aria-labelledby="nav-h">
+        <div class="sk-panel__header"><h2 class="sk-section-title" id="nav-h">탐색·오버레이</h2></div>
+        <div class="sk-panel__body sk-stack">
+          <div data-sk-tabs id="tabs"><div role="tablist" aria-label="예시 탭"><button role="tab" aria-selected="true">개요</button><button role="tab">활동</button><button role="tab">설정</button></div><div role="tabpanel">개요 패널</div><div role="tabpanel">활동 패널</div><div role="tabpanel">설정 패널</div></div>
+          <div class="sk-inline">
+            <div data-sk-menu id="menu"><button class="sk-button" type="button" data-sk-menu-button>작업 메뉴</button><div role="menu" aria-label="작업"><button role="menuitem" data-value="edit">이름 변경</button><button role="menuitem" data-value="copy">복제</button><button role="menuitem" aria-disabled="true">내보내기 (권한 없음)</button><hr><button role="menuitem" class="sk-danger-item" data-value="delete">삭제</button></div></div>
+            <button class="sk-button" type="button" data-sk-popover="pop1" id="pop-btn">필터 열기</button>
+            <div id="pop1" aria-label="필터"><div class="sk-stack" style="gap:12px"><label class="sk-check"><input type="checkbox"><span>활성만</span></label><button class="sk-button sk-button--small sk-button--primary" type="button">적용</button></div></div>
+            <button class="sk-button" type="button" data-sk-tooltip="이 정보는 툴팁에만 의존하지 않습니다" id="tip-btn">툴팁 (hover/focus)</button>
+            <button class="sk-button" type="button" id="open-dlg">확인 대화상자</button>
+            <button class="sk-button sk-button--danger" type="button" id="open-danger">삭제 확인(입력 필요)</button>
+            <button class="sk-button" type="button" id="t-ok">성공 토스트</button><button class="sk-button" type="button" id="t-err">오류 토스트</button>
+          </div>
+          <div class="sk-accordion" id="acc"><details open><summary>첫째 항목</summary><div>내용 하나</div></details><details><summary>둘째 항목</summary><div>내용 둘</div></details></div>
+          <ol class="sk-stepper" aria-label="진행 단계"><li data-done>정보</li><li aria-current="step">검토</li><li>완료</li></ol>
+          <progress class="sk-progress" max="100" value="62" aria-label="진행률"></progress>
+        </div>
+      </section>
+
+      <section class="sk-panel" id="sec-table" aria-labelledby="tbl-h">
+        <div class="sk-panel__header"><h2 class="sk-section-title" id="tbl-h">표 · 일괄 선택 · 페이지네이션</h2><label class="sk-sr-only" for="tq">표 검색</label><input class="sk-input" id="tq" type="search" placeholder="이름 검색" style="max-inline-size:16rem"></div>
+        <div class="sk-bulkbar" id="bulk" hidden><button class="sk-button sk-button--small sk-button--danger" type="button" id="bulk-del">선택 삭제</button><button class="sk-link-button" type="button" data-bulk-all hidden>모두 선택</button><button class="sk-link-button" type="button" data-bulk-clear>선택 해제</button></div>
+        <div class="sk-table-wrap" id="tbl" data-sk-table data-select data-page-size="5" data-pager="#pg" data-filter="#tq" data-bulkbar="#bulk" aria-label="사용자 표">
+          <table class="sk-table"><caption class="sk-sr-only">사용자 목록</caption>
+            <thead><tr><th data-sort="text" scope="col">이름</th><th data-sort="number" class="sk-number" scope="col">처리량</th><th data-sort="date" scope="col">가입일</th><th scope="col">상태</th></tr></thead>
+            <tbody>
+              <tr data-id="a"><td>김하늘</td><td class="sk-number">1,240</td><td>2026-03-04</td><td>정상</td></tr>
+              <tr data-id="b"><td>이도윤</td><td class="sk-number">87</td><td>2026-01-19</td><td>정상</td></tr>
+              <tr data-id="c"><td>박서연</td><td class="sk-number">9,310</td><td>2026-05-30</td><td>지연</td></tr>
+              <tr data-id="d"><td>최민준</td><td class="sk-number">455</td><td>2025-12-11</td><td>정상</td></tr>
+              <tr data-id="e"><td>정지우</td><td class="sk-number">12</td><td>2026-07-02</td><td>실패</td></tr>
+              <tr data-id="f"><td>강예린</td><td class="sk-number">3,008</td><td>2026-02-14</td><td>정상</td></tr>
+              <tr data-id="g"><td>조현우</td><td class="sk-number">640</td><td>2026-09-01</td><td>정상</td></tr>
+              <tr data-id="h"><td>윤서아</td><td class="sk-number">78</td><td>2026-04-22</td><td>정상</td></tr>
+              <tr data-id="i"><td>임채원</td><td class="sk-number">21,500</td><td>2026-06-08</td><td>지연</td></tr>
+              <tr data-id="j"><td>한지호</td><td class="sk-number">5</td><td>2026-08-17</td><td>정상</td></tr>
+              <tr data-id="k"><td>오수빈</td><td class="sk-number">1,002</td><td>2026-10-03</td><td>정상</td></tr>
+              <tr data-id="l"><td>서준영</td><td class="sk-number">233</td><td>2026-11-25</td><td>정상</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sk-panel__footer"><div id="pg"></div></div>
+      </section>
+
+      <section class="sk-panel" id="sec-misc" aria-labelledby="misc-h">
+        <div class="sk-panel__header"><h2 class="sk-section-title" id="misc-h">상태 전환 · 피드백</h2>
+          <div class="sk-segment" role="group" aria-label="상태 미리보기"><button class="sk-button sk-button--small" data-st="ready" aria-pressed="true" type="button">정상</button><button class="sk-button sk-button--small" data-st="loading" aria-pressed="false" type="button">로딩</button><button class="sk-button sk-button--small" data-st="empty" aria-pressed="false" type="button">빈</button><button class="sk-button sk-button--small" data-st="error" aria-pressed="false" type="button">오류</button><button class="sk-button sk-button--small" data-st="forbidden" aria-pressed="false" type="button">권한</button></div></div>
+        <div class="sk-panel__body">
+          <div data-sk-state="ready" id="state-box">
+            <div data-state="ready">콘텐츠가 정상적으로 표시됩니다.</div>
+            <div data-state="loading" data-announce="불러오는 중"><div class="sk-skeleton" style="height:20px;margin-block-end:8px"></div><div class="sk-skeleton" style="height:20px;inline-size:60%"></div></div>
+            <div data-state="empty" data-announce="항목이 없습니다"><div class="sk-empty"><strong>아직 항목이 없습니다</strong><button class="sk-button sk-button--primary" type="button">첫 항목 추가</button></div></div>
+            <div data-state="error" data-announce="오류가 발생했습니다"><div class="sk-notice sk-notice--error" role="alert"><strong>불러오지 못했습니다</strong><span class="sk-field__hint">요청 ID: req_91ab</span><button class="sk-button" type="button">다시 시도</button></div></div>
+            <div data-state="forbidden" data-announce="권한이 없습니다"><div class="sk-empty"><strong>권한이 없습니다</strong><button class="sk-button" type="button">권한 요청</button></div></div>
+          </div>
+          <div class="sk-banner sk-banner--warning" style="margin-block-start:16px"><strong>점검 예정</strong><span>10월 30일 02:00~03:00 (KST)</span></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="nav-drawer" aria-label="메뉴 드로어"><div class="sk-drawer__header"><h2 class="sk-section-title">메뉴</h2><form method="dialog"><button class="sk-button sk-button--small" aria-label="닫기">닫기</button></form></div><div class="sk-drawer__body"><nav class="sk-nav"><a href="#sec-forms">폼 컨트롤</a><a href="#sec-nav">탐색·오버레이</a><a href="#sec-table">표</a></nav></div></dialog>
+  <dialog class="sk-dialog" id="basic-dlg" aria-labelledby="bd-t"><form method="dialog" style="display:contents"><div class="sk-dialog__header"><h2 class="sk-section-title" id="bd-t">일반 대화상자</h2></div><div class="sk-dialog__body sk-form"><div class="sk-field"><label class="sk-field__label" for="bd-sel">종류</label><select class="sk-select" id="bd-sel" data-sk-select><option>하나</option><option>둘</option><option>셋</option></select></div></div><div class="sk-dialog__footer"><button class="sk-button" value="cancel">취소</button><button class="sk-button sk-button--primary" value="ok">확인</button></div></form></dialog>
+</div>
+<script src="../js/saas-kit.js"></script>
+<script src="../js/saas-kit-data.js"></script>
+<script>
+(function(){
+  var SK=window.SaasKit,app=document.getElementById('app');
+  document.addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;
+    if(t.dataset.themeSet){SK.theme.set(t.dataset.themeSet,app);document.querySelectorAll('[data-theme-set]').forEach(function(b){b.setAttribute('aria-pressed',String(b===t));});}
+    else if(t.dataset.densitySet){SK.density.set(t.dataset.densitySet,app);document.querySelectorAll('[data-density-set]').forEach(function(b){b.setAttribute('aria-pressed',String(b===t));});}
+    else if(t.dataset.st){SK.setState(document.getElementById('state-box'),t.dataset.st);document.querySelectorAll('[data-st]').forEach(function(b){b.setAttribute('aria-pressed',String(b===t));});}
+  });
+  document.getElementById('open-dlg').addEventListener('click',function(){document.getElementById('basic-dlg').showModal();});
+  document.getElementById('open-danger').addEventListener('click',function(){SK.confirm({title:'사용자 삭제',message:'이 사용자를 삭제합니다. 되돌릴 수 없습니다:',target:'김하늘',danger:true,typeToConfirm:'김하늘',confirmLabel:'삭제'}).then(function(ok){SK.toast(ok?'삭제했습니다':'취소했습니다',{type:ok?'success':'info'});});});
+  document.getElementById('open-palette').addEventListener('click',function(){pal.open();});
+  document.getElementById('t-ok').addEventListener('click',function(){SK.toast('저장했습니다',{type:'success'});});
+  document.getElementById('t-err').addEventListener('click',function(){SK.toast('저장하지 못했습니다. 요청 ID: req_77',{type:'error'});});
+  document.getElementById('menu').addEventListener('sk:menu-select',function(e){SK.toast('선택: '+e.detail.value);});
+  var pal=SK.commandPalette({items:[{id:'forms',label:'폼 컨트롤로 이동',hint:'G F',run:function(){location.hash='#sec-forms';}},{id:'table',label:'표로 이동',hint:'G T',run:function(){location.hash='#sec-table';}},{id:'dark',label:'다크 테마로 전환',keywords:'theme',run:function(){SK.theme.set('dark',app);}},{id:'light',label:'라이트 테마로 전환',keywords:'theme',run:function(){SK.theme.set('light',app);}}]});
+  document.getElementById('bulk-del').addEventListener('click',function(){var t=document.getElementById('tbl')._skTable,n=t.selected().length;SK.confirm({title:'선택 삭제',message:n+'개 항목을 삭제합니다.',danger:true,confirmLabel:'삭제'}).then(function(ok){if(ok){t.removeSelected();SK.toast(n+'개 삭제했습니다',{type:'success',action:{label:'실행 취소',onClick:function(){SK.toast('시안: 복구는 서버가 필요합니다');}}});}});});
+  SK.upload(document.getElementById('uploader'),{upload:function(file,o){return new Promise(function(res,rej){var p=0,t=setInterval(function(){p+=25;o.onProgress(p);if(file.name.indexOf('fail')>=0&&p>=50){clearInterval(t);rej(new Error('서버 오류 500'));}else if(p>=100){clearInterval(t);res();}},80);o.signal.addEventListener('abort',function(){clearInterval(t);rej(new Error('aborted'));});});}});
+  var form=document.getElementById('demo-form');
+  SK.lockSubmit(form,function(){var v=SK.validate(form,{name:{label:'이름',required:true,min:2,max:40},kind:{label:'종류',required:true}});if(!v.valid)return;if(!document.getElementById('editor')._skEditor.validate().valid){SK.toast('필수 변수가 빠졌습니다',{type:'error'});return;}SK.toast('저장했습니다',{type:'success'});document.getElementById('editor')._skEditor.markSaved();});
+  SK.dirtyGuard(form);
+})();
+</script>
+</body>
+</html>

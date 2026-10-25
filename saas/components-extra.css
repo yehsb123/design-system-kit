@@ -1,0 +1,179 @@
+/* Extra primitives: form controls, overlays, data widgets. Load AFTER components.css.
+   Pairs with js/saas-kit.js and js/saas-kit-data.js. Same scoping rules: everything lives in a layer and under [data-saas-kit]. */
+@layer sk-components {
+  /* ---------- checkbox / radio / switch ---------- */
+  .sk-check, .sk-radio { display:inline-flex; align-items:flex-start; gap:10px; min-block-size:var(--sk-control-sm); cursor:pointer; line-height:20px; padding-block:6px; }
+  .sk-check > input, .sk-radio > input { inline-size:18px; block-size:18px; margin:1px 0 0; flex:none; cursor:pointer; }
+  .sk-check > input:disabled, .sk-radio > input:disabled { cursor:not-allowed; }
+  .sk-check > input:disabled + span, .sk-radio > input:disabled + span { color:var(--sk-muted); }
+  .sk-switch { display:inline-flex; align-items:center; gap:10px; min-block-size:var(--sk-control-sm); cursor:pointer; }
+  .sk-switch > input { appearance:none; flex:none; inline-size:36px; block-size:20px; margin:0; border:1px solid var(--sk-border-strong); border-radius:999px; background:var(--sk-panel-muted); position:relative; cursor:pointer; transition:background-color var(--sk-duration) var(--sk-ease); }
+  .sk-switch > input::after { content:""; position:absolute; inset-block-start:2px; inset-inline-start:2px; inline-size:14px; block-size:14px; border-radius:50%; background:var(--sk-content); transition:transform var(--sk-duration) var(--sk-ease); }
+  .sk-switch > input:checked { background:var(--sk-accent); border-color:var(--sk-accent); }
+  .sk-switch > input:checked::after { background:var(--sk-on-accent); transform:translateX(16px); }
+  .sk-switch > input:disabled { opacity:.55; cursor:not-allowed; }
+  [dir="rtl"] .sk-switch > input:checked::after { transform:translateX(-16px); }
+  .sk-fieldset { border:1px solid var(--sk-border); border-radius:var(--sk-radius-control); padding:12px 16px; margin:0; min-inline-size:0; }
+  .sk-fieldset > legend { padding-inline:6px; font-weight:600; }
+
+  /* ---------- progress / chips / avatar / kbd / divider ---------- */
+  .sk-progress { inline-size:100%; block-size:8px; border:0; border-radius:999px; overflow:hidden; background:var(--sk-panel-muted); appearance:none; }
+  .sk-progress::-webkit-progress-bar { background:var(--sk-panel-muted); }
+  .sk-progress::-webkit-progress-value { background:var(--sk-accent); border-radius:999px; }
+  .sk-progress::-moz-progress-bar { background:var(--sk-accent); border-radius:999px; }
+  .sk-chip { display:inline-flex; align-items:center; gap:6px; min-block-size:var(--sk-control-sm); padding:0 10px; border:1px solid var(--sk-border-strong); border-radius:999px; background:var(--sk-panel); font-size:13px; line-height:20px; }
+  .sk-chip > button { appearance:none; border:0; background:transparent; padding:0 2px; line-height:1; border-radius:4px; color:var(--sk-muted); }
+  .sk-chip[aria-pressed="true"], button.sk-chip[aria-pressed="true"] { background:var(--sk-accent); color:var(--sk-on-accent); border-color:var(--sk-accent); }
+  .sk-avatar { inline-size:32px; block-size:32px; border-radius:50%; display:inline-grid; place-items:center; background:var(--sk-panel-muted); color:var(--sk-content); font-weight:600; font-size:12px; flex:none; overflow:hidden; }
+  .sk-avatar > img { inline-size:100%; block-size:100%; object-fit:cover; }
+  .sk-kbd { display:inline-block; padding:1px 6px; border:1px solid var(--sk-border-strong); border-block-end-width:2px; border-radius:6px; font:12px/18px var(--sk-font-sans); background:var(--sk-panel); }
+  .sk-divider { border:0; border-block-start:1px solid var(--sk-border); margin:0; }
+  .sk-link-button { appearance:none; border:0; background:transparent; padding:0; color:var(--sk-accent); text-decoration:underline; text-underline-offset:3px; cursor:pointer; font:inherit; }
+  .sk-dl { display:grid; grid-template-columns:minmax(7rem,max-content) minmax(0,1fr); gap:8px 16px; margin:0; }
+  .sk-dl > dt { color:var(--sk-muted); } .sk-dl > dd { margin:0; overflow-wrap:anywhere; }
+
+  /* ---------- breadcrumb / stepper / accordion ---------- */
+  .sk-breadcrumbs ol { display:flex; flex-wrap:wrap; gap:4px 8px; list-style:none; margin:0; padding:0; font-size:12px; line-height:18px; color:var(--sk-muted); }
+  .sk-breadcrumbs li + li::before { content:"/"; margin-inline-end:8px; }
+  .sk-breadcrumbs a { color:inherit; display:inline-block; padding-block:7px; margin-block:-7px; }
+  .sk-breadcrumbs [aria-current="page"] { color:var(--sk-content); }
+  .sk-stepper { display:flex; flex-wrap:wrap; gap:12px 24px; list-style:none; margin:0; padding:0; counter-reset:step; }
+  .sk-stepper > li { display:flex; align-items:center; gap:8px; counter-increment:step; color:var(--sk-muted); }
+  .sk-stepper > li::before { content:counter(step); inline-size:24px; block-size:24px; border-radius:50%; display:grid; place-items:center; border:1px solid var(--sk-border-strong); font-size:12px; font-weight:600; flex:none; }
+  .sk-stepper > li[aria-current="step"] { color:var(--sk-content); font-weight:600; }
+  .sk-stepper > li[aria-current="step"]::before { background:var(--sk-accent); border-color:var(--sk-accent); color:var(--sk-on-accent); }
+  .sk-stepper > li[data-done]::before { content:"✓"; background:var(--sk-panel-muted); }
+  .sk-accordion > details { border-block-end:1px solid var(--sk-border); }
+  .sk-accordion > details > summary { list-style:none; cursor:pointer; padding:12px 0; font-weight:600; display:flex; justify-content:space-between; gap:12px; min-block-size:var(--sk-control); align-items:center; }
+  .sk-accordion > details > summary::-webkit-details-marker { display:none; }
+  .sk-accordion > details > summary::after { content:"+"; color:var(--sk-muted); }
+  .sk-accordion > details[open] > summary::after { content:"−"; }
+  .sk-accordion > details > div { padding:0 0 16px; }
+
+  /* ---------- tabs ---------- */
+  /* Baseline is an inset shadow, not a border plus negative margin: the margin trick overflowed the scroller by 1px and showed a stray vertical scrollbar. */
+  .sk-tabs [role="tablist"] { display:flex; gap:4px; box-shadow:inset 0 -1px var(--sk-border); overflow-x:auto; overflow-y:hidden; scrollbar-width:thin; }
+  .sk-tabs [role="tab"] { appearance:none; background:transparent; border:0; border-block-end:2px solid transparent; padding:0 14px; min-block-size:var(--sk-control); color:var(--sk-muted); font-weight:600; white-space:nowrap; }
+  .sk-tabs [role="tab"]:hover { color:var(--sk-content); }
+  .sk-tabs [role="tab"][aria-selected="true"] { color:var(--sk-accent); border-block-end-color:var(--sk-accent); }
+  .sk-tabs [role="tabpanel"] { padding-block-start:16px; }
+  .sk-tabs [role="tabpanel"][hidden] { display:none; }
+
+  /* ---------- custom select / combobox / listbox / menu ---------- */
+  .sk-select-wrap { position:relative; display:block; min-inline-size:0; }
+  .sk-select-btn { display:flex; align-items:center; justify-content:space-between; gap:8px; inline-size:100%; text-align:start; }
+  .sk-select-btn > .sk-select-label { flex:1; min-inline-size:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .sk-select-btn::after { content:""; flex:none; inline-size:8px; block-size:8px; border-inline-end:2px solid var(--sk-muted); border-block-end:2px solid var(--sk-muted); transform:rotate(45deg) translateY(-2px); }
+  .sk-select-btn[aria-expanded="true"]::after { transform:rotate(-135deg) translateY(-2px); }
+  .sk-select-btn[aria-invalid="true"] { border-color:var(--sk-danger); }
+  .sk-select-btn:disabled { opacity:.55; cursor:not-allowed; }
+  .sk-listbox, .sk-menu, .sk-popover { position:fixed; z-index:var(--sk-z-popover); margin:0; list-style:none; padding:6px; min-inline-size:8rem; max-inline-size:min(24rem,calc(100vw - 16px)); overflow:auto; background:var(--sk-panel); color:var(--sk-content); border:1px solid var(--sk-border-strong); border-radius:var(--sk-radius-control); box-shadow:0 8px 24px rgb(0 0 0 / .16); overscroll-behavior:contain; }
+  .sk-listbox[hidden], .sk-menu[hidden], .sk-popover[hidden], .sk-tooltip[hidden] { display:none; }
+  .sk-option, .sk-menu [role="menuitem"] { display:block; inline-size:100%; padding:8px 12px; border:0; border-radius:6px; background:transparent; color:inherit; text-align:start; font:inherit; line-height:20px; min-block-size:var(--sk-control-sm); cursor:pointer; overflow-wrap:anywhere; }
+  .sk-option[aria-selected="true"] { color:var(--sk-accent); font-weight:600; }
+  .sk-option[data-active], .sk-option:hover, .sk-menu [role="menuitem"]:hover, .sk-menu [role="menuitem"]:focus-visible { background:var(--sk-panel-muted); }
+  .sk-option[data-active] { outline:2px solid var(--sk-focus); outline-offset:-2px; }
+  .sk-option[aria-disabled="true"], .sk-menu [role="menuitem"][aria-disabled="true"] { opacity:.5; cursor:not-allowed; }
+  .sk-option-empty { padding:12px; color:var(--sk-muted); }
+  .sk-menu [role="menuitem"].sk-danger-item { color:var(--sk-danger); }
+  .sk-menu hr { border:0; border-block-start:1px solid var(--sk-border); margin:6px 0; }
+  .sk-menu-wrap { position:relative; display:inline-block; }
+  .sk-combobox-wrap { position:relative; display:block; }
+
+  /* ---------- tooltip / popover ---------- */
+  .sk-tooltip { position:fixed; z-index:var(--sk-z-popover); max-inline-size:20rem; padding:6px 10px; border-radius:6px; background:var(--sk-content); color:var(--sk-canvas); font-size:12px; line-height:18px; pointer-events:none; overflow-wrap:anywhere; }
+  .sk-popover { padding:16px; min-inline-size:14rem; }
+
+  /* ---------- drawer ---------- */
+  .sk-drawer { margin:0; padding:0; inset-block:0; inset-inline-start:0; inset-inline-end:auto; block-size:100dvh; max-block-size:100dvh; inline-size:min(20rem,calc(100vw - 48px)); border:0; border-inline-end:1px solid var(--sk-border); background:var(--sk-panel); color:var(--sk-content); overflow:auto; }
+  .sk-drawer--end { inset-inline-start:auto; inset-inline-end:0; border-inline-end:0; border-inline-start:1px solid var(--sk-border); }
+  .sk-drawer::backdrop { background:rgb(10 18 32 / .55); }
+  .sk-drawer__header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 20px; border-block-end:1px solid var(--sk-border); }
+  .sk-drawer__body { padding:16px 20px; }
+
+  /* ---------- date picker ---------- */
+  .sk-date-wrap { position:relative; display:flex; gap:8px; align-items:stretch; }
+  .sk-date-wrap > .sk-input { flex:1 1 auto; min-inline-size:0; }
+  .sk-date-wrap > .sk-button { flex:none; white-space:nowrap; }
+  .sk-calendar { position:fixed; z-index:var(--sk-z-popover); padding:12px; inline-size:19.5rem; max-inline-size:calc(100vw - 16px); background:var(--sk-panel); color:var(--sk-content); border:1px solid var(--sk-border-strong); border-radius:var(--sk-radius-card); box-shadow:0 8px 24px rgb(0 0 0 / .16); }
+  .sk-calendar[hidden] { display:none; }
+  .sk-calendar__head { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-block-end:8px; }
+  .sk-calendar__title { font-weight:650; }
+  .sk-calendar table { inline-size:100%; border-collapse:collapse; table-layout:fixed; text-align:center; }
+  .sk-calendar th { font-size:12px; color:var(--sk-muted); font-weight:500; padding:4px 0; }
+  .sk-calendar td { padding:1px; }
+  .sk-day { inline-size:100%; aspect-ratio:1; min-block-size:32px; border:0; border-radius:8px; background:transparent; color:inherit; font:inherit; cursor:pointer; position:relative; }
+  .sk-day:hover:not(:disabled) { background:var(--sk-panel-muted); }
+  .sk-day[data-out] { color:var(--sk-muted); }
+  .sk-day[data-today]::after { content:""; position:absolute; inset-inline:30%; inset-block-end:4px; block-size:2px; background:var(--sk-accent); border-radius:2px; }
+  .sk-day[aria-selected="true"] { background:var(--sk-accent); color:var(--sk-on-accent); font-weight:650; }
+  .sk-day[data-inrange] { background:var(--sk-panel-muted); border-radius:0; }
+  .sk-day:disabled { opacity:.35; cursor:not-allowed; text-decoration:line-through; }
+
+  /* ---------- uploader ---------- */
+  .sk-upload__zone { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; min-block-size:7rem; padding:16px; border:1.5px dashed var(--sk-border-strong); border-radius:var(--sk-radius-control); background:var(--sk-panel); text-align:center; }
+  .sk-upload__zone[data-over] { border-color:var(--sk-accent); background:var(--sk-panel-muted); }
+  .sk-upload__zone[data-disabled] { opacity:.55; }
+  .sk-upload__list { list-style:none; margin:12px 0 0; padding:0; display:grid; gap:8px; }
+  .sk-upload__item { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 12px; align-items:center; padding:10px 12px; border:1px solid var(--sk-border); border-radius:var(--sk-radius-control); }
+  .sk-upload__name { overflow-wrap:anywhere; font-weight:600; }
+  .sk-upload__meta { font-size:12px; line-height:18px; color:var(--sk-muted); }
+  .sk-upload__item .sk-progress { grid-column:1 / -1; }
+  .sk-upload__item[data-status="error"] { border-color:var(--sk-danger); }
+  .sk-upload__item[data-status="done"] .sk-upload__meta { color:var(--sk-success); }
+  .sk-upload__item[data-status="error"] .sk-upload__meta { color:var(--sk-danger); }
+
+  /* ---------- editor ---------- */
+  .sk-editor { border:1px solid var(--sk-border-strong); border-radius:var(--sk-radius-control); background:var(--sk-panel); overflow:hidden; }
+  .sk-editor:focus-within { outline:2px solid var(--sk-focus); outline-offset:2px; }
+  .sk-editor__bar { display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:8px; border-block-end:1px solid var(--sk-border); background:var(--sk-panel-muted); }
+  .sk-editor__bar .sk-button { min-block-size:var(--sk-control-sm); }
+  .sk-editor__bar .sk-spacer { flex:1; }
+  .sk-editor__area { display:block; inline-size:100%; min-block-size:12rem; padding:12px; border:0; background:transparent; resize:vertical; line-height:22px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Malgun Gothic",monospace; font-size:13px; }
+  .sk-editor__area:focus-visible { outline:none; }
+  .sk-editor__preview { padding:12px 16px; min-block-size:12rem; overflow:auto; }
+  .sk-editor__preview table { border-collapse:collapse; } .sk-editor__preview th, .sk-editor__preview td { border:1px solid var(--sk-border); padding:6px 10px; }
+  .sk-editor__preview code { font-family:ui-monospace,Menlo,Consolas,monospace; background:var(--sk-panel-muted); padding:1px 5px; border-radius:4px; }
+  .sk-editor__foot { display:flex; flex-wrap:wrap; gap:8px 16px; justify-content:space-between; padding:6px 12px; border-block-start:1px solid var(--sk-border); font-size:12px; line-height:18px; color:var(--sk-muted); }
+  .sk-var { color:var(--sk-accent); }
+
+  /* ---------- pagination / bulk bar / sortable table ---------- */
+  .sk-pager { display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; font-size:12px; line-height:18px; color:var(--sk-muted); }
+  .sk-pager__spacer { flex:1; }
+  .sk-pager__pos { min-inline-size:3.5rem; text-align:center; font-variant-numeric:tabular-nums; color:var(--sk-content); }
+  .sk-pager .sk-button { min-inline-size:var(--sk-control-sm); padding:0 8px; }
+  .sk-pager .sk-select-wrap { inline-size:8rem; }
+  .sk-bulkbar { display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; padding:8px 16px; background:var(--sk-panel-muted); border-block-end:1px solid var(--sk-border); }
+  .sk-bulkbar[hidden] { display:none; }
+  /* 32px hit area; negative block margin keeps the header row height unchanged */
+  .sk-table th > .sk-sort { appearance:none; border:0; background:transparent; padding:0; min-block-size:32px; margin-block:-6px; font:inherit; color:inherit; display:inline-flex; align-items:center; gap:6px; cursor:pointer; }
+  .sk-table th > .sk-sort::after { content:"↕"; color:var(--sk-muted); font-size:11px; }
+  .sk-table th[aria-sort="ascending"] > .sk-sort::after { content:"↑"; color:var(--sk-accent); }
+  .sk-table th[aria-sort="descending"] > .sk-sort::after { content:"↓"; color:var(--sk-accent); }
+  .sk-table td.sk-cell-check, .sk-table th.sk-cell-check { inline-size:44px; padding-inline-end:0; }
+  .sk-table td.sk-cell-check input, .sk-table th.sk-cell-check input { inline-size:18px; block-size:18px; }
+
+  /* ---------- command palette / banner ---------- */
+  .sk-palette { inline-size:min(34rem,calc(100vw - 32px)); max-block-size:min(30rem,calc(100dvh - 48px)); padding:0; border:1px solid var(--sk-border); border-radius:var(--sk-radius-card); background:var(--sk-panel); color:var(--sk-content); overflow:hidden; margin-block-start:12vh; }
+  .sk-palette[open] { display:flex; flex-direction:column; }
+  .sk-palette::backdrop { background:rgb(10 18 32 / .55); }
+  .sk-palette__input { border:0; border-block-end:1px solid var(--sk-border); border-radius:0; min-block-size:48px; padding:0 16px; inline-size:100%; background:transparent; }
+  .sk-palette__input:focus-visible { outline:none; box-shadow:inset 0 -2px var(--sk-focus); }
+  .sk-palette__list { list-style:none; margin:0; padding:6px; overflow:auto; }
+  .sk-banner { display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; padding:10px 16px; border-block-end:1px solid var(--sk-border); background:var(--sk-panel-muted); }
+  .sk-banner--warning { box-shadow:inset 3px 0 var(--sk-warning); }
+  .sk-banner--danger { box-shadow:inset 3px 0 var(--sk-danger); }
+  .sk-toast { pointer-events:auto; display:flex; align-items:flex-start; gap:12px; margin-block-start:8px; }
+  .sk-toast[data-type="error"] { border-inline-start:3px solid var(--sk-danger); }
+  .sk-toast[data-type="success"] { border-inline-start:3px solid var(--sk-success); }
+  .sk-toast[data-type="warning"] { border-inline-start:3px solid var(--sk-warning); }
+  .sk-toast__msg { flex:1; min-inline-size:0; overflow-wrap:anywhere; }
+  .sk-toast__count { color:var(--sk-muted); font-size:12px; }
+  .sk-state-holder [data-state][hidden] { display:none; }
+  .sk-confirm__target { font-family:ui-monospace,Menlo,Consolas,monospace; background:var(--sk-panel-muted); padding:1px 6px; border-radius:4px; overflow-wrap:anywhere; }
+
+  @media (forced-colors: active) {
+    .sk-option[data-active], .sk-day[aria-selected="true"], .sk-tabs [role="tab"][aria-selected="true"] { outline:2px solid Highlight; }
+    .sk-switch > input:checked { background:Highlight; }
+  }
+}

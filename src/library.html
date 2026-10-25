@@ -1882,6 +1882,7 @@ No distinct primary action color was observed; use the extracted neutral button 
 }
 ```
 </script>
+<!-- SAAS_KIT -->
 <script>
 /* ========================================================================
    SYSTEMS. 램프(테마 공통) 와 시맨틱(라이트/다크) 을 나눠 보관한다
@@ -3382,6 +3383,78 @@ function renderComposer(){
 }
 // theme.css 가 먼저 깔려야 components.css 의 var() 가 값을 찾는다.
 // 순서를 사람이 기억하지 않아도 되게 안내 문구에 같이 적는다.
+/* ===== SaaS 앱 한 벌 =====
+   saas/ 의 컴포넌트와 동작 코드는 고정이고, 시스템마다 바뀌는 것은 토큰
+   한 장뿐이다. 그 한 장을 여기서 만든다. 받는 쪽은 압축을 풀 필요 없이
+   파일을 한 폴더에 두고 app.html 만 열면 된다. */
+function saasFile(n){ return (window.SAASFILES||{})[n]||''; }
+// 알약 모서리를 그대로 입력칸에 쓰면 글자가 가장자리에 붙는다. 상한을 둔다.
+function skR(v,max){
+  const n=parseInt(v,10);
+  if(!isFinite(n)) return max+'px';
+  return Math.min(n,max)+'px';
+}
+function skTokens(sys){
+  const P=Object.fromEntries(sys.ramps.primary), G=Object.fromEntries(sys.ramps.gray),
+        S=Object.fromEntries(sys.ramps.success), W=Object.fromEntries(sys.ramps.warning),
+        E=Object.fromEntries(sys.ramps.error), I=Object.fromEntries(sys.ramps.info||sys.ramps.primary);
+  const ui=UI[sys.id]||{}, font=FONT[sys.id]||'system-ui,-apple-system,sans-serif';
+  // 바탕 위에서 읽히는 글자색을 고른다. 밝은 브랜드색에 흰 글씨를 얹으면 묻는다.
+  const on=function(bg){ return ratio(bg,'#FFFFFF')>=4.5 ? '#FFFFFF' : G['950']; };
+  const L={'--sk-canvas':G['50'],'--sk-panel':'#FFFFFF','--sk-panel-muted':G['100'],
+    '--sk-content':G['950'],'--sk-muted':G['600'],'--sk-border':G['200'],'--sk-border-strong':G['400'],
+    '--sk-accent':P['500'],'--sk-on-accent':on(P['500']),
+    '--sk-danger':E['600'],'--sk-success':S['600'],'--sk-warning':W['600'],'--sk-focus':P['500'],
+    '--sk-chart-1':P['500'],'--sk-chart-2':S['500'],'--sk-chart-3':I['500']};
+  const D2={'--sk-canvas':G['950'],'--sk-panel':G['900'],'--sk-panel-muted':G['800'],
+    '--sk-content':G['50'],'--sk-muted':G['400'],'--sk-border':G['700'],'--sk-border-strong':G['500'],
+    '--sk-accent':P['400'],'--sk-on-accent':on(P['400']),
+    '--sk-danger':E['400'],'--sk-success':S['400'],'--sk-warning':W['400'],'--sk-focus':P['400'],
+    '--sk-chart-1':P['400'],'--sk-chart-2':S['400'],'--sk-chart-3':I['400']};
+  const line=function(o){ return Object.keys(o).map(function(k){return '  '+k+': '+o[k]+';';}).join('\n'); };
+  return '/* '+sys.name+' 토큰. 디자인 시스템 킷이 만들었습니다. */\n'
+    +'@layer sk-tokens {\n'
+    +':where([data-saas-kit]) {\n'+line(L)+'\n'
+    +'  --sk-page: 24px;\n  --sk-gutter: 24px;\n  --sk-sidebar: 248px;\n  --sk-header: 64px;\n'
+    +'  --sk-control: 36px;\n  --sk-control-sm: 32px;\n  --sk-control-lg: 44px;\n  --sk-row: 44px;\n'
+    +'  --sk-radius-card: '+skR(ui.cardR||sys.radius.lg,24)+';\n'
+    +'  --sk-radius-control: '+skR(ui.btnR||sys.radius.md,14)+';\n'
+    +'  --sk-readable: min(44em, 72ch);\n'
+    +'  --sk-space-0: 0px;  --sk-space-1: 4px;  --sk-space-2: 8px;  --sk-space-3: 12px;\n'
+    +'  --sk-space-4: 16px; --sk-space-5: 20px; --sk-space-6: 24px; --sk-space-8: 32px;\n'
+    +'  --sk-space-10: 40px; --sk-space-12: 48px; --sk-space-16: 64px;\n'
+    +'  --sk-text-caption: 12px; --sk-line-caption: 18px;\n'
+    +'  --sk-text-body: 14px;    --sk-line-body: 22px;\n'
+    +'  --sk-text-reading: 15px; --sk-line-reading: 24px;\n'
+    +'  --sk-text-section: 18px; --sk-line-section: 26px;\n'
+    +'  --sk-text-title: 22px;   --sk-line-title: 30px;\n'
+    +'  --sk-text-metric: 28px;  --sk-line-metric: 34px;\n'
+    +'  --sk-font-sans: '+font+';\n'
+    +'  --sk-z-header: 10; --sk-z-sticky: 20; --sk-z-popover: 50; --sk-z-dialog: 90; --sk-z-toast: 100;\n'
+    +'  --sk-duration: 140ms; --sk-ease: ease-out;\n'
+    +'  color-scheme: light;\n}\n'
+    +':where([data-saas-kit][data-theme="dark"]) {\n'+line(D2)+'\n  color-scheme: dark;\n}\n'
+    +':where([data-saas-kit][data-density="compact"]) { --sk-control: 32px; --sk-row: 40px; }\n'
+    +':where([data-saas-kit][data-density="touch"]) { --sk-control: 44px; --sk-row: 48px; }\n}\n';
+}
+function downloadSaas(sys){
+  const files=[['tokens.css', skTokens(sys)],
+               ['components.css', saasFile('components')],
+               ['components-extra.css', saasFile('extra')],
+               ['saas-kit.js', saasFile('kit')],
+               ['saas-kit-data.js', saasFile('data')],
+               ['app.html', saasFile('shell')]];
+  files.forEach(function(f,i){
+    setTimeout(function(){
+      const b=new Blob([f[1]],{type:'text/plain;charset=utf-8'});
+      const a=document.createElement('a');
+      a.href=URL.createObjectURL(b); a.download=f[0]; a.click();
+      URL.revokeObjectURL(a.href);
+    }, i*250);
+  });
+  return '파일 여섯 개를 받았습니다. 한 폴더에 두고 app.html 을 여세요.';
+}
+
 function downloadKit(sys){
   const files=[['theme.css', cssTokensBoth(sys)],
                ['components.css', componentCss(sys)],
@@ -3788,6 +3861,7 @@ function renderDetail(sys){
     <div class="gorow">
       <button class="goact main" id="dGive"><span class="gt">AI 에게 넘기기</span><span class="gd">프롬프트를 복사해 붙여넣으세요</span></button>
       <button class="goact" id="dFiles"><span class="gt">코드에 넣기</span><span class="gd">파일 3개를 받아 프로젝트에 넣으세요</span></button>
+      <button class="goact" id="dSaas"><span class="gt">SaaS 앱으로 열기</span><span class="gd">사이드바·표·모달까지 갖춘 화면 한 벌</span></button>
     </div>
     <details class="more" id="dMore">
       <summary>다른 형식 (6가지)</summary>
@@ -4356,6 +4430,8 @@ function wireDetail(sys){
   };
   const df=$('#dFiles');
   if(df) df.onclick=function(){ sayNext(downloadKit(sys)); };
+  const ds=$('#dSaas');
+  if(ds) ds.onclick=function(){ sayNext(downloadSaas(sys)); };
   renderExport(sys);
   wireSpec(sys);
   // tabs

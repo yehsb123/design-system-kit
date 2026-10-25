@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SaaS Design Kit - App Shell</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<link rel="stylesheet" href="components-extra.css">
+<style>
+  body { margin: 0; }
+  /* Page-local layout only. Kit primitives stay untouched. */
+  .demo-rail-item { display:block; width:100%; text-align:start; padding:12px 16px; border:0; border-bottom:1px solid var(--sk-border); background:transparent; min-height:var(--sk-row); }
+  .demo-rail-item[aria-selected="true"] { background:var(--sk-panel-muted); box-shadow:inset 3px 0 var(--sk-accent); }
+  .demo-statebar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+</style>
+</head>
+<body>
+<div class="sk-app" data-saas-kit data-theme="light" data-density="comfortable" id="app">
+  <a class="sk-skip" href="#main">본문으로 건너뛰기</a>
+  <aside class="sk-sidebar" aria-label="주 메뉴">
+    <span class="sk-brand">Acme Cloud</span>
+    <nav class="sk-nav" aria-label="워크스페이스">
+      <a href="#overview" aria-current="page">개요</a>
+      <a href="#records">레코드</a>
+      <a href="#reports">보고서</a>
+      <a href="#settings">설정</a>
+    </nav>
+  </aside>
+  <header class="sk-header">
+    <div class="sk-header__title">
+      <div class="sk-breadcrumb">워크스페이스 / 운영</div>
+      <h1 class="sk-title">운영 개요</h1>
+    </div>
+    <div class="sk-segment" role="group" aria-label="화면 테마">
+      <button class="sk-button sk-button--small" type="button" data-theme-set="light" aria-pressed="true">라이트</button>
+      <button class="sk-button sk-button--small" type="button" data-theme-set="dark" aria-pressed="false">다크</button>
+    </div>
+    <div class="sk-segment" role="group" aria-label="밀도">
+      <button class="sk-button sk-button--small" type="button" data-density-set="compact" aria-pressed="false">촘촘</button>
+      <button class="sk-button sk-button--small" type="button" data-density-set="comfortable" aria-pressed="true">기본</button>
+    </div>
+    <button class="sk-button sk-button--primary" type="button" id="open-dialog">항목 추가</button>
+  </header>
+
+  <main class="sk-main" id="main" tabindex="-1">
+    <div class="sk-stack">
+      <section aria-labelledby="kpi-h" class="sk-stack" style="gap:12px">
+        <h2 class="sk-section-title" id="kpi-h">핵심 지표</h2>
+        <div class="sk-kpis">
+          <article class="sk-panel sk-stat"><div class="sk-stat__label">활성 사용자</div><div class="sk-stat__value">12,480</div><div class="sk-stat__meta"><span class="sk-badge sk-badge--success">▲ 4.1%</span><span>전주 대비</span><span>출처: 제품 로그</span></div></article>
+          <article class="sk-panel sk-stat"><div class="sk-stat__label">처리 지연</div><div class="sk-stat__value">1.8초</div><div class="sk-stat__meta"><span class="sk-badge sk-badge--danger">▼ 0.3초</span><span>전일 대비</span><span>출처: APM</span></div></article>
+          <article class="sk-panel sk-stat"><div class="sk-stat__label">미처리 요청</div><div class="sk-stat__value">37</div><div class="sk-stat__meta"><span class="sk-badge">변동 없음</span><span>기준일 2026-10-25</span></div></article>
+          <article class="sk-panel sk-stat"><div class="sk-stat__label">이번 달 청구 예상액</div><div class="sk-stat__value">₩12,345,000</div><div class="sk-stat__meta"><span>Asia/Seoul 기준</span><span>출처: 청구 시스템</span></div></article>
+        </div>
+      </section>
+
+      <section class="sk-panel" aria-labelledby="chart-h">
+        <div class="sk-panel__header">
+          <div><h2 class="sk-section-title" id="chart-h">요청량 추이</h2><div class="sk-field__hint">최근 12주 · 단위 건</div></div>
+          <div class="sk-segment" role="group" aria-label="차트 배율"><button class="sk-button sk-button--small" type="button" data-scale="abs" aria-pressed="true">실제값</button><button class="sk-button sk-button--small" type="button" data-scale="rel" aria-pressed="false">기준 100</button></div>
+        </div>
+        <div class="sk-panel__body">
+          <div class="sk-legend" id="legend" role="list" aria-label="시리즈 요약"></div>
+          <div class="sk-chart" id="chart" role="img" aria-label="최근 12주 요청량 추이 차트. 세부 값은 아래 표에서 확인할 수 있습니다."></div>
+        </div>
+        <div class="sk-panel__footer">출처: 제품 로그 · 마지막 갱신 2026-10-25 09:00 KST · 기간 12주</div>
+      </section>
+
+      <section class="sk-stack" style="gap:12px" aria-labelledby="ld-h">
+        <div class="sk-cluster"><h2 class="sk-section-title" id="ld-h">목록과 상세</h2>
+          <div class="demo-statebar" role="group" aria-label="화면 상태 미리보기">
+            <span class="sk-field__hint">상태 미리보기</span>
+            <button class="sk-button sk-button--small" type="button" data-state="ready" aria-pressed="true">정상</button>
+            <button class="sk-button sk-button--small" type="button" data-state="loading" aria-pressed="false">로딩</button>
+            <button class="sk-button sk-button--small" type="button" data-state="empty" aria-pressed="false">빈 상태</button>
+            <button class="sk-button sk-button--small" type="button" data-state="error" aria-pressed="false">오류</button>
+            <button class="sk-button sk-button--small" type="button" data-state="forbidden" aria-pressed="false">권한 없음</button>
+          </div>
+        </div>
+        <div class="sk-list-detail sk-list-detail--fill" id="list-detail">
+          <section class="sk-panel sk-panel--fill" aria-label="레코드 목록">
+            <div class="sk-panel__header"><h3 class="sk-section-title">레코드</h3><span class="sk-badge" id="count">0건</span></div>
+            <div class="sk-panel__body" style="padding:0" id="rail"></div>
+          </section>
+          <section class="sk-panel sk-panel--fill" aria-label="선택한 레코드" aria-live="polite">
+            <div class="sk-panel__header"><h3 class="sk-section-title" id="detail-title">상세</h3></div>
+            <div class="sk-panel__body" id="detail"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="sk-panel" aria-labelledby="tb-h">
+        <div class="sk-panel__header"><h2 class="sk-section-title" id="tb-h">최근 요청</h2>
+          <label class="sk-sr-only" for="q">요청 검색</label><input class="sk-input" id="q" type="search" placeholder="이름·ID 검색" style="max-inline-size:18rem"></div>
+        <div class="sk-table-wrap" tabindex="0" aria-label="최근 요청 표">
+          <table class="sk-table">
+            <caption class="sk-sr-only">최근 요청 목록. 열 머리글을 눌러 정렬할 수 있습니다.</caption>
+            <thead><tr><th scope="col" style="min-inline-size:7rem">ID</th><th scope="col" style="min-inline-size:14rem">이름</th><th scope="col" class="sk-number">처리량</th><th scope="col">상태</th><th scope="col">기준일</th></tr></thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <div class="sk-panel__footer sk-cluster"><span id="tb-count">8건</span><span>25행 단위 페이지 · 현재 1 / 1</span></div>
+      </section>
+
+      <section class="sk-panel" aria-labelledby="form-h">
+        <div class="sk-panel__header"><h2 class="sk-section-title" id="form-h">프롬프트 · 긴 본문 입력</h2></div>
+        <div class="sk-panel__body">
+          <form class="sk-form" id="form" novalidate>
+            <div class="sk-field"><label class="sk-field__label" for="f-name">이름 <span aria-hidden="true">*</span></label>
+              <input class="sk-input" id="f-name" name="name" required aria-describedby="f-name-h f-name-e"><div class="sk-field__hint" id="f-name-h">2~40자. 목록에 이 이름으로 표시됩니다.</div><div class="sk-field__error" id="f-name-e" role="alert"></div></div>
+            <div class="sk-field"><label class="sk-field__label" for="f-body">본문 <span aria-hidden="true">*</span></label>
+              <textarea class="sk-textarea" id="f-body" name="body" required rows="6" aria-describedby="f-body-h f-body-e" placeholder="예) {기간} 동안 모은 {기사 목록}에서 …"></textarea><div class="sk-field__hint" id="f-body-h">{기간}처럼 중괄호로 감싼 이름은 실행 때 채워집니다. 입력 높이는 최소 9rem이며 세로로 늘릴 수 있습니다.</div><div class="sk-field__error" id="f-body-e" role="alert"></div></div>
+            <div class="sk-inline"><button class="sk-button sk-button--primary" type="submit">저장</button><button class="sk-button" type="reset">초기화</button></div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="sk-dialog" id="dlg" aria-labelledby="dlg-t">
+    <form method="dialog" class="sk-dialog__form" style="display:contents">
+      <div class="sk-dialog__header"><h2 class="sk-section-title" id="dlg-t">항목 추가</h2><button class="sk-button sk-button--small" value="cancel" aria-label="닫기">닫기</button></div>
+      <div class="sk-dialog__body sk-form">
+        <div class="sk-field"><label class="sk-field__label" for="d-name">이름</label><input class="sk-input" id="d-name" autocomplete="off"></div>
+        <div class="sk-field"><label class="sk-field__label" for="d-kind">종류</label><select class="sk-select" id="d-kind"><option>시스템</option><option>사용자</option></select></div>
+        <div class="sk-field"><label class="sk-field__label" for="d-body">본문</label><textarea class="sk-textarea" id="d-body" rows="6"></textarea></div>
+      </div>
+      <div class="sk-dialog__footer"><button class="sk-button" value="cancel">취소</button><button class="sk-button sk-button--primary" value="ok">저장</button></div>
+    </form>
+  </dialog>
+  <div class="sk-toast-region" aria-live="polite" aria-atomic="true" id="toasts"></div>
+</div>
+
+<script>
+(function(){
+  var app=document.getElementById('app');
+  var data=[
+    {id:'REQ-1001',name:'국내 수출 신고 동기화',v:3628,st:'정상',d:'2026-09-04'},
+    {id:'REQ-1002',name:'아주아주 긴 이름의 고객사 정산 보고서 생성 요청 (연결 단어 없는 매우 긴 문자열 ABCDEFGHIJKLMNOPQRSTUVWXYZ)',v:6427,st:'지연',d:'2026-09-04'},
+    {id:'REQ-1003',name:'월간 사용량 집계',v:2471,st:'정상',d:'2026-09-03'},
+    {id:'REQ-1004',name:'권한 감사 로그 내보내기',v:1772,st:'정상',d:'2026-09-03'},
+    {id:'REQ-1005',name:'결제 수단 변경 웹훅',v:934,st:'실패',d:'2026-09-02'},
+    {id:'REQ-1006',name:'이미지 업로드 검증',v:3590,st:'정상',d:'2026-09-02'},
+    {id:'REQ-1007',name:'고객 가져오기',v:128,st:'정상',d:'2026-09-01'},
+    {id:'REQ-1008',name:'초대 메일 재전송',v:57,st:'정상',d:'2026-09-01'}
+  ];
+  var series=[{n:'요청',c:'var(--sk-chart-1)',d:[2410,2498,2472,2618,2580,2742,2698,2846,2990,3214,3486,3628]},{n:'성공',c:'var(--sk-chart-2)',d:[2300,2380,2350,2480,2460,2600,2570,2700,2860,3050,3300,3420]}];
+  var scale='abs', state='ready', sel=0;
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function toast(m){var t=document.createElement('div');t.className='sk-toast';t.textContent=m;document.getElementById('toasts').appendChild(t);setTimeout(function(){t.remove();},2600);}
+  function fmt(n){return n.toLocaleString('ko-KR');}
+  function renderLegend(){var h='';series.forEach(function(s){var a=s.d,l=a[a.length-1],p=a[a.length-2],pc=((l-p)/p*100).toFixed(1);h+='<button class="sk-legend__item" type="button" role="listitem"><span class="sk-field__hint">'+esc(s.n)+'</span><strong style="font-size:16px;line-height:24px">'+fmt(l)+'</strong><span class="sk-field__hint">▲ '+pc+'% · 직전 기준 대비</span></button>';});document.getElementById('legend').innerHTML=h;}
+  function renderChart(){var box=document.getElementById('chart');var w=box.clientWidth||600,h=box.clientHeight||260,padL=48,padR=16,padT=12,padB=28;var pts=series.map(function(s){return scale==='rel'?s.d.map(function(v){return v/s.d[0]*100;}):s.d;});var all=[].concat.apply([],pts);var min=scale==='rel'?80:0,max=Math.ceil(Math.max.apply(null,all)/(scale==='rel'?20:1000))*(scale==='rel'?20:1000);var X=function(i){return padL+i*(w-padL-padR)/11;},Y=function(v){return padT+(1-(v-min)/(max-min))*(h-padT-padB);};var g='';for(var i=0;i<=4;i++){var v=min+(max-min)*i/4,y=Y(v);g+='<line x1="'+padL+'" x2="'+(w-padR)+'" y1="'+y+'" y2="'+y+'" stroke="var(--sk-border)" stroke-width="1"/><text x="'+(padL-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="12" fill="var(--sk-muted)">'+fmt(Math.round(v))+'</text>';}for(var j=0;j<12;j+=3){g+='<text x="'+X(j)+'" y="'+(h-8)+'" text-anchor="middle" font-size="12" fill="var(--sk-muted)">W'+(j+1)+'</text>';}pts.forEach(function(p,k){g+='<polyline fill="none" stroke="'+series[k].c+'" stroke-width="2" points="'+p.map(function(v,i){return X(i)+','+Y(v);}).join(' ')+'"/><text x="'+(X(11)-4)+'" y="'+(Y(p[11])+(k===0?-8:18))+'" text-anchor="end" font-size="12" fill="'+series[k].c+'">'+esc(series[k].n)+'</text>';});box.innerHTML='<svg viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'" aria-hidden="true">'+g+'</svg>';}
+  function renderRail(){var rail=document.getElementById('rail');document.getElementById('count').textContent=state==='ready'?data.length+'건':'0건';var detail=document.getElementById('detail'),title=document.getElementById('detail-title');
+    if(state==='loading'){rail.innerHTML='<div style="padding:20px;display:grid;gap:12px" aria-busy="true">'+'<div class="sk-skeleton" style="height:20px"></div>'.repeat(5)+'</div>';title.textContent='불러오는 중';detail.innerHTML='<div class="sk-skeleton" style="height:120px"></div>';return;}
+    if(state==='empty'){rail.innerHTML='<div class="sk-empty"><strong>아직 레코드가 없습니다</strong><span class="sk-field__hint">첫 항목을 추가하면 이곳에 표시됩니다.</span><button class="sk-button sk-button--primary" type="button" data-open>항목 추가</button></div>';title.textContent='상세';detail.innerHTML='<p class="sk-field__hint">왼쪽에서 항목을 선택하세요.</p>';return;}
+    if(state==='error'){rail.innerHTML='<div class="sk-empty"><div class="sk-notice sk-notice--error" role="alert"><strong>목록을 불러오지 못했습니다</strong><span class="sk-field__hint">요청 ID: req_8f31 · 네트워크 상태를 확인한 뒤 다시 시도하세요.</span><button class="sk-button" type="button" data-retry>다시 시도</button></div></div>';title.textContent='상세';detail.innerHTML='';return;}
+    if(state==='forbidden'){rail.innerHTML='<div class="sk-empty"><strong>이 목록을 볼 권한이 없습니다</strong><span class="sk-field__hint">워크스페이스 관리자에게 읽기 권한을 요청하세요.</span><button class="sk-button" type="button">권한 요청</button></div>';title.textContent='상세';detail.innerHTML='';return;}
+    rail.innerHTML=data.map(function(r,i){return '<button type="button" class="demo-rail-item" data-i="'+i+'" aria-selected="'+(i===sel)+'"><strong class="sk-break">'+esc(r.name)+'</strong><div class="sk-field__hint">'+esc(r.id)+' · '+esc(r.st)+'</div></button>';}).join('');
+    var r=data[sel];title.textContent=r.id;detail.innerHTML='<div class="sk-reading"><p><strong class="sk-break">'+esc(r.name)+'</strong></p><p>처리량 '+fmt(r.v)+'건 · 상태 '+esc(r.st)+' · 기준일 '+esc(r.d)+'. 본문 문단은 읽기 폭 상한(min(44em, 72ch))을 유지하고, 카드가 넓어져도 줄이 무한정 길어지지 않습니다.</p></div>';}
+  function renderTable(){var q=document.getElementById('q').value.trim().toLowerCase();var rows=data.filter(function(r){return !q||(r.id+r.name).toLowerCase().indexOf(q)>=0;});document.getElementById('tbody').innerHTML=rows.length?rows.map(function(r){var cls=r.st==='실패'?'sk-badge sk-badge--danger':r.st==='지연'?'sk-badge':'sk-badge sk-badge--success';return '<tr><td>'+esc(r.id)+'</td><td class="sk-break">'+esc(r.name)+'</td><td class="sk-number">'+fmt(r.v)+'</td><td><span class="'+cls+'">'+esc(r.st)+'</span></td><td>'+esc(r.d)+'</td></tr>';}).join(''):'<tr><td colspan="5"><div class="sk-empty">검색 결과가 없습니다.</div></td></tr>';document.getElementById('tb-count').textContent=rows.length+'건';}
+  function pressed(sel,attr,val){document.querySelectorAll(sel).forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute(attr)===val));});}
+  document.addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;
+    if(t.dataset.themeSet){app.dataset.theme=t.dataset.themeSet;pressed('[data-theme-set]','data-theme-set',t.dataset.themeSet);}
+    else if(t.dataset.densitySet){app.dataset.density=t.dataset.densitySet;pressed('[data-density-set]','data-density-set',t.dataset.densitySet);}
+    else if(t.dataset.scale){scale=t.dataset.scale;pressed('[data-scale]','data-scale',scale);renderChart();}
+    else if(t.dataset.state){state=t.dataset.state;pressed('[data-state]','data-state',state);renderRail();}
+    else if(t.dataset.i){sel=+t.dataset.i;renderRail();}
+    else if(t.hasAttribute('data-open')||t.id==='open-dialog'){document.getElementById('dlg').showModal();}
+    else if(t.hasAttribute('data-retry')){state='loading';renderRail();setTimeout(function(){state='ready';pressed('[data-state]','data-state','ready');renderRail();},600);}
+  });
+  document.getElementById('q').addEventListener('input',renderTable);
+  document.getElementById('dlg').addEventListener('close',function(e){if(e.target.returnValue==='ok')toast('시안: 저장되었습니다');});
+  document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('f-name'),b=document.getElementById('f-body'),ok=true;[[n,'f-name-e',n.value.length<2||n.value.length>40,'이름은 2~40자로 입력하세요.'],[b,'f-body-e',b.value.length<10,'본문은 10자 이상 입력하세요.']].forEach(function(x){var bad=x[2];x[0].setAttribute('aria-invalid',String(bad));document.getElementById(x[1]).textContent=bad?x[3]:'';if(bad&&ok){x[0].focus();ok=false;}});if(ok)toast('시안: 저장되었습니다');});
+  if(window.ResizeObserver)new ResizeObserver(renderChart).observe(document.getElementById('chart'));
+  renderLegend();renderRail();renderTable();renderChart();
+})();
+</script>
+<script src="saas-kit.js"></script>
+<script src="saas-kit-data.js"></script>
+</body>
+</html>

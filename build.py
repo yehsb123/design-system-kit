@@ -73,6 +73,29 @@ def embed(html):
 
 KIT_LINK = u'<link rel="stylesheet" href="kit.css">'
 
+
+def saas_kit():
+    """saas/ 의 컴포넌트와 동작 코드를 한 덩이로 싣는다.
+
+    시스템마다 달라지는 토큰 한 장은 화면이 만든다. 나머지는 고정이라
+    여기서 심어 둬야 인터넷 없이도 내려받기가 된다.
+    """
+    d = os.path.join(D, 'saas')
+    out = {}
+    for name, fn in [('components', 'components.css'),
+                     ('extra', 'components-extra.css'),
+                     ('kit', os.path.join('js', 'saas-kit.js')),
+                     ('data', os.path.join('js', 'saas-kit-data.js')),
+                     ('shell', 'app.html')]:
+        p = os.path.join(d, fn)
+        assert os.path.exists(p), 'saas 파일이 없습니다: ' + fn
+        out[name] = io.open(p, encoding='utf-8').read()
+    # 글 블록으로 심으면 앱 셸 안의 </script> 가 블록을 먼저 닫는다. 셸을
+    # 통째로 싸는 바깥 이스케이프까지 두 겹이 되어 복원이 어긋난다.
+    # JSON 문자열로 실으면 한 겹으로 끝난다.
+    js = json.dumps(out, ensure_ascii=False).replace('</', '<\\/')
+    return u'<script>window.SAASFILES=' + js + ';</' + 'script>'
+
 def _grab(s, name):
     """const NAME=[ ... ] 블록의 본문을 통째로 가져온다."""
     i = s.index('const %s=[' % name)
@@ -131,6 +154,7 @@ def main():
 
     show = showcase()
     gen = gensys.tag()
+    saas = saas_kit()
 
     for name, fn in TOOLS:
         p = os.path.join(SRC, fn)
@@ -149,6 +173,10 @@ def main():
         # 줄바꿈까지 맞춰 진짜 여는 태그만 집는다.
         assert s.count('\n<body>\n') == 1, fn + ': body 태그를 찾지 못했습니다'
         s = s.replace('\n<body>\n', '\n<body>\n' + SHIM, 1)
+        # saas 앱 셸도 제 몸에 body 를 들고 있다. 셸을 끼운 뒤에 심어야
+        # 여는 태그를 헷갈리지 않는다.
+        if '<!-- SAAS_KIT -->' in s:
+            s = s.replace('<!-- SAAS_KIT -->', saas, 1)
         blocks.append(u'<script type="text/html" id="f-%s">%s</script>' % (name, embed(s)))
         print(fn, len(s))
 
