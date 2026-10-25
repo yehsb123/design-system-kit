@@ -72,6 +72,8 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
 .layprev .b{background:var(--ui-border);border-radius:4px;}
 .layprev .a{background:color-mix(in srgb,var(--ui-accent) 42%,var(--ui-border));border-radius:4px;}
 .layprev .r{display:flex;gap:6px;flex:1;}
+.layprev .wb{background:var(--ui-border);border-radius:3px;}
+.layprev .wa{background:color-mix(in srgb,var(--ui-accent) 42%,var(--ui-border));border-radius:3px;}
 .laycap{font-size:11px;color:var(--ui-fg-dim);margin-top:6px;line-height:1.6;}
 .laycap b{color:var(--ui-fg-strong);}
 .hint{margin-top:6px;line-height:1.6;}
@@ -141,10 +143,44 @@ select.sel:focus{outline:2px solid var(--ui-accent);outline-offset:-1px;}
     <div class="step">
       <label><i>3</i>레이아웃 배치</label>
       <select class="sel" id="selLayout">
-        <option value="alt">Modular Grid (지그재그 좌우교차)</option>
-        <option value="stack">Stacked (위에서 아래로 쌓기)</option>
-        <option value="center">Centered (가운데 한 줄)</option>
+        <option value="holygrail">Holy Grail (양쪽 사이드바 3단)</option>
+        <option value="dashboard">Dashboard (관리자 화면)</option>
+        <option value="landinghero">Landing Hero (첫 화면 크게)</option>
         <option value="split">Split (화면 반반)</option>
+        <option value="modular">Modular Grid (지그재그 좌우교차)</option>
+        <option value="bento">Bento (도시락 칸 나누기)</option>
+        <option value="listdetail">List–Detail (목록 + 내용 · 메일함형)</option>
+        <option value="magazine">Magazine (잡지형)</option>
+        <option value="centered">Centered (가운데 한 줄)</option>
+        <option value="stacked">Stacked (위에서 아래로 쌓기)</option>
+        <option value="masonry">Masonry (벽돌 쌓기 · 갤러리)</option>
+        <option value="stickyside">Sticky Sidebar (한쪽 고정 · 구매박스형)</option>
+        <option value="anchor">Anchor Long Page (앵커 탭 롱페이지)</option>
+        <option value="fullbleed">Full-bleed Scroll (풀화면 몰입형)</option>
+        <option value="cardfeed">Card Feed (피드형 · SNS)</option>
+        <option value="tabbed">Tabbed (탭 전환형)</option>
+        <option value="wizard">Wizard Steps (단계별 진행)</option>
+        <option value="pricing">Pricing Compare (요금제 비교표)</option>
+        <option value="gridgallery">Grid Gallery (균일 격자 갤러리)</option>
+        <option value="cluster">Cluster (태그 뭉치)</option>
+        <option value="switcher">Switcher (폭 따라 가로세로 전환)</option>
+        <option value="cover">Cover (세로 가운데 + 상하 고정)</option>
+        <option value="reel">Reel (가로 스크롤 줄)</option>
+        <option value="imposter">Imposter (겹쳐 띄우기)</option>
+        <option value="frame">Frame (비율 고정 틀)</option>
+        <option value="supportpane">Supporting Pane (본문 + 보조 패널)</option>
+        <option value="kanban">Kanban Board (칸반 · 상태별 세로 열)</option>
+        <option value="timeline">Timeline (시간순 세로줄)</option>
+        <option value="maplist">Map + List (지도와 목록 나란히)</option>
+        <option value="chat">Chat (대화 · 좌우 교차 말풍선)</option>
+        <option value="calendar">Calendar Grid (달력 격자)</option>
+        <option value="settings">Settings (설정 · 왼쪽 메뉴 + 오른쪽 폼)</option>
+        <option value="search">Search Results (검색 결과 · 필터 + 목록)</option>
+        <option value="megamenu">Mega Menu (대형 메뉴 펼침)</option>
+        <option value="menu2">Menu 2단 (클래식 다이닝 메뉴판)</option>
+        <option value="menudots">Menu 점선 리더 (가격 우측 정렬형)</option>
+        <option value="menuphoto">Menu 사진 그리드 (카페·배달 메뉴)</option>
+        <option value="menugolden">Menu 시그니처 강조 (골든 트라이앵글)</option>
       </select>
       <div class="grouphint" id="layFrom" hidden></div>
       <div class="layprev" id="layPrev"></div>
@@ -647,14 +683,14 @@ function handoff(){
   if(lay && $('#selLayout').querySelector('[value="'+lay+'"]')){
     $('#selLayout').value=lay;
   }
-  // 생성기가 만드는 배치는 네 가지뿐이다. 모음집에서 고른 이름과 다르면 그 사실을 적는다.
+  // 두 화면의 배치가 1:1 이다. 그래도 어긋나면 고른 것이 사라진 채이므로 적는다.
   const note=$('#layFrom');
   if(note && layname){
     const here=$('#selLayout').selectedOptions[0];
     note.textContent = (here && here.textContent===layname)
       ? '모음집에서 정한 배치입니다.'
-      : '모음집에서 ' + layname + ' 을(를) 정하셨습니다. 여기서는 '
-        + (here?here.textContent:'') + ' 로 만듭니다.';
+      : '모음집에서 정한 ' + layname + ' 을(를) 여기서 찾지 못했습니다. '
+        + (here?here.textContent:'') + ' 로 열었습니다.';
     note.hidden=false;
   }
 })();
@@ -699,9 +735,7 @@ function loadPage(i){
     '<label class="chk"><input type="checkbox" data-k="'+k+'" checked> '+(k+1)+'. '+x[0]+'</label>').join('');
 }
 // 콘텐츠마다 어울리는 배치가 있다. 모음집이 쓰는 짝과 같은 짝을 쓴다.
-const PAGELAY={beauty:'split', saas:'alt', menu:'stack', clinic:'stack',
-               portfolio:'stack', app:'stack', ecommerce:'split',
-               restaurant:'stack', realestate:'split'};
+const PAGELAY={beauty:'stickyside', saas:'modular', menu:'menuphoto', clinic:'anchor', portfolio:'fullbleed', app:'landinghero', ecommerce:'stickyside', restaurant:'landinghero', realestate:'maplist'};
 let layTouched=false;
 function matchLay(){
   if(layTouched) return;            // 직접 고른 뒤에는 되돌리지 않는다
@@ -736,64 +770,472 @@ function rulesText(){
 }
 
 /* ===== 페이지 생성 ===== */
-const LAYPREV={
- alt:{w:'<div class="r"><div class="a" style="width:46%"></div><div class="b" style="flex:1"></div></div>'
-      +'<div class="r"><div class="b" style="flex:1"></div><div class="a" style="width:46%"></div></div>'
-      +'<div class="r"><div class="a" style="width:46%"></div><div class="b" style="flex:1"></div></div>',
-   n:'지그재그 (모듈러 그리드)',
-   c:'행마다 사진과 글이 좌우로 번갈아 놓입니다. 시선이 지그재그로 움직여 스크롤이 지루하지 않습니다.',
-   use:'상세페이지, 기능 소개, 제품 스토리. <b>이미지가 섹션마다 있을 때</b>',
-   avoid:'이미지가 거의 없을 때. 빈 칸이 생겨 허전해 보입니다',
-   ex:'애플 제품 페이지, 올리브영 상세, Linear 기능 소개',
-   tip:'이미지는 <b>전부 같은 비율</b>로 맞추세요. 비율이 섞이면 지그재그 리듬이 깨집니다',
-   sec:'6~10개 섹션', mob:'모바일에서 이미지, 글 순서로 1열'},
- stack:{w:'<div class="a" style="height:34%"></div><div class="b" style="flex:1"></div><div class="b" style="flex:1"></div>',
-   n:'단일 열 (스택)',
-   c:'폭을 꽉 채운 블록이 위에서 아래로 쌓입니다. 읽는 순서가 하나뿐이라 가장 명확합니다.',
-   use:'모바일 우선 페이지, 공지·안내, 순서가 중요한 콘텐츠',
-   avoid:'정보량이 많을 때. 페이지가 지나치게 길어집니다',
-   ex:'토스 앱 내 안내 화면, 뉴스레터 랜딩',
-   tip:'섹션 배경색을 <b>번갈아</b> 주면 구분이 살아납니다',
-   sec:'4~8개 섹션', mob:'구조 변화 없음 (그대로)'},
- center:{w:'<div class="r" style="justify-content:center"><div class="a" style="width:58%"></div></div>'
-      +'<div class="r" style="justify-content:center"><div class="b" style="width:72%"></div></div>'
-      +'<div class="r" style="justify-content:center"><div class="b" style="width:64%"></div></div>',
-   n:'가운데 정렬 (내로우)',
-   c:'760px 정도의 좁은 폭으로 중앙에 모읍니다. 한 줄이 짧아 글 읽기가 편합니다.',
-   use:'브랜드 소개, 신청 폼, 블로그 글, 초대장',
-   avoid:'표·대시보드처럼 가로 공간이 필요한 콘텐츠',
-   ex:'Stripe 문서, 노션 공유 페이지, 뉴스레터',
-   tip:'한 줄 <b>45~75자</b>가 가장 읽기 좋습니다. 폭을 더 넓히지 마세요',
-   sec:'3~7개 섹션', mob:'여백만 줄고 구조 동일'},
- split:{w:'<div class="r"><div class="a" style="flex:1"></div><div class="b" style="flex:1"></div></div>',
-   n:'반반 (스플릿)',
-   c:'화면을 정확히 둘로 나눠 사진과 글이 마주봅니다. 첫인상이 강하고 정돈돼 보입니다.',
-   use:'브랜드 소개 첫 화면, 로그인·회원가입, 채용 공고',
-   avoid:'섹션이 많을 때. 같은 구조가 반복되면 단조로워집니다',
-   ex:'에어비앤비 호스트 소개, 각종 SaaS 로그인 화면',
-   tip:'왼쪽 사진은 <b>인물이나 공간</b>처럼 여백이 있는 컷이 좋습니다',
-   sec:'1~4개 섹션', mob:'세로로 쌓임 (사진 위 / 글 아래)'}
+/* ===== 배치 =====
+   서른여덟 종을 통째로 짜면 손댈 수 없는 덩치가 된다. 페이지 전체 틀(셸)과
+   본문 안에서 섹션이 놓이는 방식(흐름)으로 나눠 각각 한 번만 짠다.
+   배치 한 종 = 셸 하나 + 흐름 하나. */
+
+/* 흐름. w 가 있으면 섹션 전체를 그 클래스의 상자로 한 번 감싼다.
+   rev 가 있으면 짝수 번째 섹션에 rev 를 붙여 좌우를 뒤집는다. */
+const FLOW={
+stack:{n:'단일 열',c:'폭을 꽉 채운 블록이 위에서 아래로 쌓입니다. 읽는 순서가 하나뿐이라 가장 명확합니다.',
+ css:['.f-stack .inner{display:block;}']},
+alt:{n:'지그재그',c:'행마다 사진과 글이 좌우로 번갈아 놓입니다. 시선이 지그재그로 움직여 스크롤이 지루하지 않습니다.',rev:1,
+ css:['.f-alt .inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);align-items:center;}',
+      '.f-alt.rev .inner{direction:rtl;}',
+      '.f-alt.rev .inner>*{direction:ltr;}']},
+center:{n:'가운데 정렬',c:'좁은 폭으로 가운데에 모읍니다. 한 줄이 짧아 글 읽기가 편합니다.',
+ css:['.f-center .inner{display:flex;flex-direction:column;align-items:center;gap:14px;width:min(760px,92vw);text-align:center;}',
+      '.f-center .inner>*{width:100%;}',
+      '.f-center .cta{justify-content:center;}']},
+split:{n:'반반',c:'화면을 꽉 채워 정확히 둘로 나눕니다. 첫인상이 강하고 정돈돼 보입니다.',
+ css:['.f-split{padding:0;}',
+      '.f-split .inner{display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;min-height:62vh;align-items:center;}',
+      '.f-split .inner>*{padding:clamp(18px,4vw,56px);min-width:0;}']},
+hero:{n:'첫 화면 크게',c:'첫 섹션이 화면을 크게 쓰고 그 아래는 세 칸으로 이어집니다.',
+ css:['.f-hero .inner{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,28px);align-items:start;}',
+      '.sh-main>.f-hero:first-child{padding:clamp(48px,9vw,130px) 0;}',
+      '.sh-main>.f-hero:first-child .inner{grid-template-columns:minmax(0,1fr);min-height:56vh;align-content:center;text-align:center;}',
+      '.sh-main>.f-hero:first-child .cta{justify-content:center;}']},
+grid3:{n:'세 칸 격자',c:'같은 크기 카드가 세 칸씩 고르게 놓입니다.',w:'fl-grid3',narrow:1,
+ css:['.fl-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px);width:var(--w);margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-grid3>.sec{padding:clamp(16px,2vw,24px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);}',
+      '.fl-grid3 .inner{width:100%;display:block;}']},
+bento:{n:'도시락 칸',c:'크고 작은 칸이 섞인 격자에 섹션이 들어갑니다.',w:'fl-bento',narrow:1,
+ css:['.fl-bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);width:var(--w);margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-bento>.sec{grid-column:span 2;padding:clamp(16px,2vw,24px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;}',
+      '.fl-bento>.sec:nth-child(6n+1){grid-column:span 4;}',
+      '.fl-bento>.sec:nth-child(6n+4),.fl-bento>.sec:nth-child(6n+5){grid-column:span 3;}',
+      '.fl-bento .inner{width:100%;display:block;}']},
+masonry:{n:'벽돌 쌓기',c:'높이가 제각각인 블록이 세 열에 차곡차곡 쌓입니다.',w:'fl-masonry',narrow:1,
+ css:['.fl-masonry{column-count:3;column-gap:clamp(14px,2vw,24px);width:var(--w);margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-masonry>.sec{break-inside:avoid;padding:clamp(16px,2vw,22px);margin:0 0 clamp(14px,2vw,24px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);}',
+      '.fl-masonry .inner{width:100%;display:block;}']},
+magazine:{n:'잡지형',c:'넓은 본문 칸 옆에 좁은 보조 칸이 붙습니다.',
+ css:['.f-magazine .inner{display:grid;grid-template-columns:1.9fr minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start;}']},
+feed:{n:'피드',c:'좁은 카드가 가운데 한 줄로 이어집니다.',w:'fl-feed',narrow:1,
+ css:['.fl-feed{display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2vw,22px);padding:var(--pad) 0;}',
+      '.fl-feed>.sec{width:min(620px,92vw);padding:clamp(16px,2vw,22px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);}',
+      '.fl-feed .inner{width:100%;display:block;}']},
+reel:{n:'가로 줄',c:'옆으로 넘기는 한 줄에 섹션이 늘어섭니다.',w:'fl-reel',narrow:1,
+ css:['.fl-reel{display:flex;flex-direction:row;gap:clamp(14px,2vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;width:var(--w);max-width:100%;margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-reel>.sec{flex:0 0 min(78%,520px);scroll-snap-align:start;padding:clamp(16px,2vw,22px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);}',
+      '.fl-reel .inner{width:100%;display:block;}']},
+cluster:{n:'태그 뭉치',c:'크기가 제각각인 덩이가 가운데로 모여 줄바꿈합니다.',w:'fl-cluster',narrow:1,
+ css:['.fl-cluster{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(12px,2vw,20px);width:var(--w);margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-cluster>.sec{flex:1 1 280px;max-width:100%;padding:clamp(16px,2vw,22px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);}',
+      '.fl-cluster .inner{width:100%;display:block;}']},
+switcher:{n:'폭 따라 전환',c:'폭이 넉넉하면 가로로 서고 좁아지면 저절로 세로가 됩니다.',
+ css:['.f-switcher .inner{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,40px);align-items:center;}',
+      '.f-switcher .inner>*{flex:1 1 20rem;min-width:0;}']},
+frame:{n:'비율 고정 틀',c:'섹션마다 비율이 고정된 틀 안에 내용이 담깁니다.',
+ css:['.f-frame .inner{aspect-ratio:16/9;display:grid;place-items:center;overflow:auto;padding:clamp(16px,3vw,40px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);}']},
+fullbleed:{n:'풀화면 몰입',c:'섹션 하나가 화면 높이를 꽉 채우고 한 장씩 넘어갑니다.',w:'fl-full',
+ css:['.fl-full{scroll-snap-type:y proximity;}',
+      '.fl-full>.sec{min-height:100vh;display:grid;align-content:center;scroll-snap-align:start;}',
+      '.fl-full .inner{display:block;}']},
+imposter:{n:'겹쳐 띄우기',c:'넓은 바탕 위에 내용 상자가 가운데로 겹쳐 뜹니다.',
+ css:['.f-imposter{position:relative;min-height:70vh;display:grid;place-items:center;}',
+      '.f-imposter .inner{position:relative;display:block;width:min(680px,88vw);padding:clamp(20px,4vw,44px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);box-shadow:0 18px 50px rgba(0,0,0,.14);}']},
+timeline:{n:'시간순 세로줄',c:'왼쪽 세로줄에 점을 찍으며 위에서 아래로 이어집니다.',w:'fl-time',
+ css:['.fl-time{width:var(--w);margin:0 auto;padding:var(--pad) 0 var(--pad) clamp(20px,3vw,36px);border-left:2px solid var(--border);}',
+      '.fl-time>.sec{position:relative;padding:clamp(14px,2vw,22px) 0;}',
+      '.fl-time>.sec::before{content:"";position:absolute;left:calc(-1 * clamp(20px,3vw,36px) - 7px);top:clamp(20px,2.4vw,30px);width:12px;height:12px;border-radius:999px;background:var(--primary);}',
+      '.fl-time .inner{width:100%;display:block;}']},
+kanban:{n:'칸반 세로 열',c:'상태별 세로 열이 옆으로 늘어서고 열 안에서 위아래로 쌓입니다.',w:'fl-kanban',narrow:1,
+ css:['.fl-kanban{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,1fr);gap:clamp(12px,1.6vw,20px);overflow-x:auto;align-items:start;width:var(--w);max-width:100%;margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-kanban>.sec{padding:clamp(14px,1.8vw,20px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);}',
+      '.fl-kanban .inner{width:100%;display:block;}']},
+chat:{n:'말풍선',c:'좌우로 번갈아 붙는 말풍선처럼 놓입니다.',w:'fl-chat',narrow:1,rev:1,
+ css:['.fl-chat{display:flex;flex-direction:column;gap:clamp(12px,1.8vw,20px);width:var(--w);margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-chat>.sec{align-self:flex-start;max-width:76%;padding:clamp(14px,2vw,20px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);}',
+      '.fl-chat>.sec.rev{align-self:flex-end;background:var(--primary-low);color:var(--primary-ink);}',
+      '.fl-chat .inner{width:100%;display:block;}']},
+calendar:{n:'달력 격자',c:'일곱 칸 격자에 칸칸이 들어갑니다.',w:'fl-cal',narrow:1,
+ css:['.fl-cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;width:var(--w);margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-cal>.sec{min-height:120px;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;}',
+      '.fl-cal .inner{width:100%;display:block;font-size:13px;}']},
+wizard:{n:'단계별 진행',c:'번호가 붙은 단계가 하나씩 이어집니다.',
+ css:['.sh-main{counter-reset:wstep;}',
+      '.f-wizard .inner{display:grid;grid-template-columns:48px minmax(0,1fr);gap:clamp(12px,2vw,24px);align-items:start;}',
+      '.f-wizard .inner>*{grid-column:2;}',
+      '.f-wizard .inner::before{counter-increment:wstep;content:counter(wstep);grid-column:1;grid-row:1;width:36px;height:36px;border-radius:999px;background:var(--primary-low);border:2px solid var(--primary);display:grid;place-items:center;font-weight:700;color:var(--primary-ink);}']},
+pricing:{n:'요금제 비교',c:'플랜 카드가 나란히 서고 가운데가 도드라집니다.',w:'fl-price',narrow:1,
+ css:['.fl-price{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(14px,2vw,22px);align-items:end;width:var(--w);margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-price>.sec{padding:clamp(18px,2.4vw,28px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);}',
+      '.fl-price>.sec:nth-child(2){border-color:var(--primary);}',
+      '.fl-price .inner{width:100%;display:block;}']},
+form:{n:'설정 폼',c:'왼쪽에 항목 이름, 오른쪽에 입력 칸이 줄 맞춰 놓입니다.',
+ css:['.f-form .inner{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(14px,2vw,28px);align-items:start;}',
+      '.f-form .inner>*{grid-column:2;}',
+      '.f-form .inner::before{content:attr(data-t);grid-column:1;grid-row:1;font-weight:600;color:var(--fg);}',
+      '.f-form .eyebrow{display:none;}']},
+menu2:{n:'2단 메뉴판',c:'두 열로 나눠 메뉴를 빽빽하게 보여 줍니다.',w:'fl-menu2',narrow:1,
+ css:['.fl-menu2{column-count:2;column-gap:clamp(24px,4vw,56px);width:min(900px,92vw);margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-menu2>.sec{break-inside:avoid;padding:0 0 clamp(16px,2vw,24px);}',
+      '.fl-menu2 .inner{width:100%;display:block;}']},
+dots:{n:'점선 리더',c:'이름은 왼쪽, 가격은 오른쪽 끝에 줄 맞춰 붙습니다.',
+ css:['.f-dots .inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 18px;align-items:baseline;width:min(820px,92vw);}',
+      '.f-dots .inner>*{grid-column:1 / -1;}',
+      '.f-dots .mlist li{padding:10px 0;}']},
+photogrid:{n:'사진 격자',c:'사진 카드가 같은 크기로 촘촘히 깔립니다.',w:'fl-photo',narrow:1,
+ css:['.fl-photo{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:clamp(12px,1.8vw,20px);width:var(--w);margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-photo>.sec{padding:0;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;}',
+      '.fl-photo .inner{width:100%;display:block;padding:clamp(12px,1.6vw,18px);}']},
+golden:{n:'시그니처 강조',c:'첫 칸을 크게 둬서 시선이 먼저 닿게 합니다.',w:'fl-golden',narrow:1,
+ css:['.fl-golden{display:grid;grid-template-columns:1.618fr minmax(0,1fr);gap:clamp(14px,2vw,24px);align-items:start;width:var(--w);margin:0 auto;padding:var(--pad) 0;}',
+      '.fl-golden>.sec{padding:clamp(16px,2vw,24px);background:var(--bg);border:1px solid var(--border);border-radius:var(--r-card);}',
+      '.fl-golden>.sec:first-child{grid-row:span 2;}',
+      '.fl-golden .inner{width:100%;display:block;}']},
+maplist:{n:'지도 + 목록',c:'왼쪽 목록 옆에 지도가 따라붙습니다.',
+ css:['.f-maplist .inner{display:grid;grid-template-columns:minmax(0,1fr) 1.4fr;gap:clamp(16px,2.6vw,32px);align-items:start;}',
+      '.f-maplist .inner>*{grid-column:1;}',
+      '.f-maplist .inner::after{content:"지도 영역";grid-column:2;grid-row:1;position:sticky;top:16px;aspect-ratio:4/3;display:grid;place-items:center;background:var(--primary-low);color:var(--primary-ink);border:1px dashed var(--border);border-radius:var(--r-card);font-size:13px;}']}
+};
+
+/* 좁은 화면 규칙. 흐름·셸 CSS 보다 뒤에 붙어야 이긴다.
+   앞에 두면 흐름이 다시 덮어써서 390px 에서 가로로 넘친다. */
+const NARROW=[
+'    @media(max-width:768px){',
+'      .hero,.feat,.buybox{grid-template-columns:minmax(0,1fr);}',
+'      .inner{grid-template-columns:minmax(0,1fr)!important;width:auto;}',
+'      .f-alt.rev .inner,.f-alt.rev .feat,.f-alt.rev .hero{direction:ltr;}',
+'      .f-wizard .inner>*,.f-form .inner>*,.f-form .inner::before,.f-maplist .inner::after{grid-column:1;}',
+'      .f-split .inner{min-height:0;} .f-split .inner>*{padding:clamp(18px,6vw,32px) 0;}',
+'      .f-frame .inner{aspect-ratio:auto;}',
+'      .f-maplist .inner::after{grid-row:auto;position:static;}',
+'      .fl-grid3,.fl-bento,.fl-cal,.fl-photo,.fl-price,.fl-golden{grid-template-columns:minmax(0,1fr);}',
+'      .fl-bento>.sec,.fl-bento>.sec:nth-child(6n+1),.fl-bento>.sec:nth-child(6n+4),',
+'      .fl-bento>.sec:nth-child(6n+5){grid-column:auto;}',
+'      .fl-golden>.sec:first-child{grid-row:auto;}',
+'      .fl-masonry,.fl-menu2{column-count:1;}',
+'      .fl-chat>.sec{max-width:92%;}',
+'      .fl-feed>.sec,.f-imposter .inner,.f-center .inner,.f-dots .inner,.fl-menu2{width:92vw;}',
+'      .fl-reel>.sec{flex-basis:84%;}',
+'    }',
+'    @media(max-width:420px){ .fl-cal{grid-template-columns:repeat(2,minmax(0,1fr));} }'
+];
+
+/* 셸. wrap 이 본문을 받아 페이지 전체 틀을 두른다. */
+const SHNAV=['소개','기능','가격','문의'];
+function shA(t,h){ return '<a href="'+(h||'#')+'">'+esc(t)+'</a>'; }
+function shHead(o){
+  return '  <header class="sh-head"><div class="sh-in"><a class="sh-brand" href="#top">'+esc(o.brand)+'</a>'
+    +'<nav class="sh-topnav">'+SHNAV.map(function(x){return shA(x);}).join('')+'</nav>'
+    +'<a class="btn sm" href="#s1">'+esc(o.cta)+'</a></div></header>';
+}
+function shFoot(o){
+  return '  <footer class="sh-foot"><div class="sh-in"><span>© '+esc(o.brand)+'</span>'
+    +'<nav>'+['이용약관','개인정보처리방침','문의'].map(function(x){return shA(x);}).join('')+'</nav></div></footer>';
+}
+function shMenu(o){
+  return '<div class="sh-brand">'+esc(o.brand)+'</div><nav class="sh-menu">'
+    + o.secs.map(function(x,i){return shA(x.t,'#s'+(i+1));}).join('') + '</nav>';
+}
+function shMain(m){ return '\n  <main class="sh-main" id="top">'+m+'\n  </main>\n'; }
+
+/* 셸 공통 머리말·바닥글. 색은 고른 시스템 토큰에서만 온다. */
+const SHELLBASE=[
+'    .sh-head{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--border);}',
+'    .sh-in{width:var(--w);margin:0 auto;display:flex;align-items:center;gap:16px;min-height:58px;flex-wrap:wrap;}',
+'    .sh-brand{font-weight:700;color:var(--fg);text-decoration:none;}',
+'    .sh-topnav{display:flex;gap:16px;margin-left:auto;flex-wrap:wrap;}',
+'    .sh-topnav a,.sh-foot a,.sh-menu a,.sh-anchor a,.sh-megapanel a{color:var(--fg-low);text-decoration:none;font-size:14px;}',
+'    .sh-topnav a:hover,.sh-foot a:hover{color:var(--fg);}',
+'    .btn.sm{padding:8px 16px;font-size:14px;}',
+'    .sh-foot{border-top:1px solid var(--border);background:var(--bg);padding:22px 0;margin-top:var(--pad);}',
+'    .sh-foot .sh-in{min-height:0;justify-content:space-between;font-size:13px;color:var(--fg-low);}',
+'    .sh-foot nav{display:flex;gap:14px;flex-wrap:wrap;}',
+'    .sh-menu{display:flex;flex-direction:column;gap:2px;margin-top:14px;}',
+'    .sh-menu a{padding:8px 10px;border-radius:8px;}',
+'    .sh-menu a:hover{background:var(--primary-low);color:var(--primary-ink);}',
+'    .sh-aside{background:var(--bg);border-right:1px solid var(--border);padding:18px 14px;}',
+'    @media(max-width:700px){ .sh-in{width:92vw;padding:10px 0;} .sh-topnav{margin-left:0;} }'
+];
+
+const SHELL={
+plain:{n:'머리말 + 본문 + 바닥글',c:'가장 기본적인 웹페이지 틀입니다.',
+ wrap:function(m,o){ return shHead(o)+shMain(m)+shFoot(o); }, css:function(){ return []; }},
+
+sidebar:{n:'왼쪽 메뉴 + 위쪽 바',c:'어드민·대시보드의 표준 틀입니다.',
+ wrap:function(m,o){
+   return '<div class="sh-sidebar">\n  <aside class="sh-aside">'+shMenu(o)+'</aside>\n  <div class="sh-col">'
+     +'\n    <header class="sh-bar"><strong>'+esc(o.title)+'</strong><a class="btn sm" href="#s1">'+esc(o.cta)+'</a></header>'
+     +shMain(m)+'  </div>\n</div>';
+ },
+ css:function(){ return [
+'    .sh-sidebar{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh;}',
+'    .sh-bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;',
+'      padding:11px clamp(14px,3vw,28px);background:var(--bg);border-bottom:1px solid var(--border);}',
+'    .sh-sidebar .sh-main{padding:0 clamp(14px,3vw,28px);}',
+'    .sh-sidebar .inner,.sh-sidebar .flow{width:100%;}',
+'    @media(max-width:900px){ .sh-sidebar{grid-template-columns:minmax(0,1fr);}',
+'      .sh-aside{border-right:0;border-bottom:1px solid var(--border);}',
+'      .sh-menu{flex-direction:row;overflow-x:auto;gap:6px;} .sh-menu a{white-space:nowrap;} }'
+]; }},
+
+holy:{n:'왼쪽 메뉴 + 본문 + 오른쪽 메뉴',c:'가운데 본문을 양옆이 받치는 3단 틀입니다.',
+ wrap:function(m,o){
+   return shHead(o)+'\n<div class="sh-holy">\n  <aside class="sh-aside">'+shMenu(o)+'</aside>'
+     +shMain(m)
+     +'  <aside class="sh-aside2"><div class="sh-ttl">이 글의 차례</div><nav class="sh-menu">'
+     + o.secs.map(function(x,i){return shA(x.t,'#s'+(i+1));}).join('')+'</nav></aside>\n</div>\n'+shFoot(o);
+ },
+ css:function(){ return [
+'    .sh-holy{display:grid;grid-template-columns:200px minmax(0,1fr) 190px;gap:clamp(14px,2vw,28px);',
+'      width:var(--w);margin:0 auto;align-items:start;}',
+'    .sh-holy .sh-aside{border-right:0;border-radius:var(--r-card);}',
+'    .sh-aside2{position:sticky;top:74px;padding:18px 0;}',
+'    .sh-ttl{font-size:12px;letter-spacing:.08em;color:var(--fg-low);}',
+'    .sh-holy .inner,.sh-holy .flow{width:100%;}',
+'    @media(max-width:900px){ .sh-holy{grid-template-columns:minmax(0,1fr);} .sh-aside2{position:static;}',
+'      .sh-holy .sh-menu{flex-direction:row;overflow-x:auto;gap:6px;} .sh-holy .sh-menu a{white-space:nowrap;} }'
+]; }},
+
+twopane:{n:'왼쪽 목록 + 오른쪽 내용',c:'메일함처럼 목록에서 고르면 오른쪽에 내용이 뜹니다.',
+ wrap:function(m,o){
+   return shHead(o)+'\n<div class="sh-two">\n  <aside class="sh-list">'
+     + o.secs.map(function(x,i){
+         return '<a href="#s'+(i+1)+'"'+(i===0?' class="on"':'')+'>'+esc(x.t)
+              +'<span class="d">'+esc(x.d)+'</span></a>'; }).join('')
+     + '</aside>'+shMain(m)+'</div>';
+ },
+ css:function(){ return [
+'    .sh-two{display:grid;grid-template-columns:320px minmax(0,1fr);min-height:calc(100vh - 58px);}',
+'    .sh-list{background:var(--bg);border-right:1px solid var(--border);overflow:auto;}',
+'    .sh-list a{display:block;padding:13px 16px;border-bottom:1px solid var(--border);',
+'      color:var(--fg);text-decoration:none;font-size:14px;}',
+'    .sh-list a.on{background:var(--primary-low);color:var(--primary-ink);}',
+'    .sh-list .d{display:block;font-size:12px;color:var(--fg-low);margin-top:3px;}',
+'    .sh-list a.on .d{color:var(--primary-ink);}',
+'    .sh-two .sh-main{padding:0 clamp(14px,3vw,28px);}',
+'    .sh-two .inner,.sh-two .flow{width:100%;}',
+'    @media(max-width:900px){ .sh-two{grid-template-columns:minmax(0,1fr);}',
+'      .sh-list{border-right:0;border-bottom:1px solid var(--border);max-height:36vh;} }'
+]; }},
+
+stickyAside:{n:'본문 + 따라오는 오른쪽 칸',c:'스크롤해도 오른쪽 칸이 따라옵니다. 구매 박스에 씁니다.',
+ wrap:function(m,o){
+   return shHead(o)+'\n<div class="sh-sticky">'+shMain(m)
+     +'  <aside class="sh-stick"><div class="sh-ttl">'+esc(o.title)+'</div>'
+     +'<p class="sh-sticknote">여기에 가격·옵션처럼 늘 보여야 하는 내용을 둡니다.</p>'
+     +'<a class="btn wide" href="#s1">'+esc(o.cta)+'</a></aside>\n</div>\n'+shFoot(o);
+ },
+ css:function(){ return [
+'    .sh-sticky{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(18px,3vw,44px);',
+'      width:var(--w);margin:0 auto;align-items:start;}',
+'    .sh-stick{position:sticky;top:74px;margin-top:var(--pad);padding:18px;background:var(--bg);',
+'      border:1px solid var(--border);border-radius:var(--r-card);}',
+'    .sh-sticknote{font-size:13px;margin:8px 0 14px;}',
+'    .sh-sticky .inner,.sh-sticky .flow{width:100%;}',
+'    @media(max-width:900px){ .sh-sticky{grid-template-columns:minmax(0,1fr);} .sh-stick{position:static;} }'
+]; }},
+
+anchor:{n:'앵커 탭 + 긴 본문',c:'위에 붙는 탭으로 긴 페이지 안을 건너뜁니다.',
+ wrap:function(m,o){
+   return shHead(o)+'\n  <nav class="sh-anchor"><div class="sh-in">'
+     + o.secs.map(function(x,i){return shA(x.t,'#s'+(i+1));}).join('')+'</div></nav>'
+     + shMain(m)+shFoot(o);
+ },
+ css:function(){ return [
+'    .sh-head{position:static;}',
+'    .sh-anchor{position:sticky;top:0;z-index:19;background:var(--bg);border-bottom:1px solid var(--border);}',
+'    .sh-anchor .sh-in{gap:4px;overflow-x:auto;flex-wrap:nowrap;min-height:46px;}',
+'    .sh-anchor a{padding:13px 14px;white-space:nowrap;border-bottom:2px solid transparent;}',
+'    .sh-anchor a:first-child{color:var(--fg);border-bottom-color:var(--primary);}'
+]; }},
+
+tabs:{n:'탭 전환',c:'탭을 누르면 같은 자리에서 내용만 바뀝니다. 자바스크립트 없이 동작합니다.',
+ wrap:function(m,o){
+   let t='';
+   o.secs.forEach(function(x,i){
+     t+='<input class="sh-tabin" type="radio" name="shtab" id="shtab'+(i+1)+'"'+(i?'':' checked')
+       +' aria-label="'+esc(x.t)+'">';
+   });
+   return shHead(o)+'\n  '+t+'\n  <div class="sh-tabbar"><div class="sh-in">'
+     + o.secs.map(function(x,i){return '<label for="shtab'+(i+1)+'">'+esc(x.t)+'</label>';}).join('')
+     + '</div></div>'+shMain(m)+shFoot(o);
+ },
+ css:function(o){
+   const L=[
+'    .sh-tabin{position:absolute;width:1px;height:1px;opacity:0;}',
+'    .sh-tabbar{position:sticky;top:58px;z-index:19;background:var(--bg);border-bottom:1px solid var(--border);}',
+'    .sh-tabbar .sh-in{gap:2px;overflow-x:auto;flex-wrap:nowrap;min-height:46px;}',
+'    .sh-tabbar label{padding:13px 16px;white-space:nowrap;font-size:14px;color:var(--fg-low);',
+'      cursor:pointer;border-bottom:2px solid transparent;}',
+'    .sh-main>.sec{display:none;}'];
+   o.secs.forEach(function(_,i){
+     const k=i+1;
+     L.push('    #shtab'+k+':checked~.sh-main>.sec:nth-child('+k+'){display:block;}');
+     L.push('    #shtab'+k+':checked~.sh-tabbar label:nth-child('+k+'){color:var(--fg);border-bottom-color:var(--primary);}');
+     L.push('    #shtab'+k+':focus-visible~.sh-tabbar label:nth-child('+k+'){outline:2px solid var(--primary);outline-offset:-2px;}');
+   });
+   return L;
+ }},
+
+cover:{n:'위아래 고정 + 가운데 한 덩이',c:'머리말과 바닥글을 붙박고 가운데에 내용을 모읍니다.',
+ wrap:function(m,o){
+   return '  <header class="sh-cov"><div class="sh-in"><a class="sh-brand" href="#top">'+esc(o.brand)+'</a>'
+     +'<nav class="sh-topnav">'+SHNAV.map(function(x){return shA(x);}).join('')+'</nav></div></header>'
+     +'\n  <main class="sh-main sh-cover" id="top">'+m+'\n  </main>\n'
+     +'  <footer class="sh-covbot"><div class="sh-in"><span>© '+esc(o.brand)+'</span>'
+     +'<a class="btn sm" href="#s1">'+esc(o.cta)+'</a></div></footer>';
+ },
+ css:function(){ return [
+'    .sh-cov{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--border);}',
+'    .sh-covbot{position:sticky;bottom:0;z-index:20;background:var(--bg);border-top:1px solid var(--border);}',
+'    .sh-covbot .sh-in{justify-content:space-between;font-size:13px;color:var(--fg-low);min-height:54px;}',
+'    .sh-cover{min-height:calc(100vh - 120px);display:grid;align-content:center;}'
+]; }},
+
+filter:{n:'검색칸 + 조건 + 결과',c:'위에 검색칸, 왼쪽에 조건, 오른쪽에 결과를 둡니다.',
+ wrap:function(m,o){
+   const facet=function(t,xs){
+     return '<h3>'+esc(t)+'</h3>'+xs.map(function(x){
+       return '<label><input type="checkbox"> '+esc(x)+'</label>';}).join('');
+   };
+   return shHead(o)+'\n  <div class="sh-search"><div class="sh-in">'
+     +'<input class="sh-q" type="search" placeholder="무엇을 찾으시나요" aria-label="검색어">'
+     +'<button class="btn sm" type="button">검색</button></div></div>'
+     +'\n<div class="sh-filter">\n  <aside class="sh-facets"><div class="sh-ttl">조건</div>'
+     + facet('분류', o.secs.slice(0,4).map(function(x){return x.t;}))
+     + facet('정렬', ['최신순','인기순','가격순'])
+     + '</aside>'+shMain(m)+'</div>\n'+shFoot(o);
+ },
+ css:function(){ return [
+'    .sh-search{background:var(--bg);border-bottom:1px solid var(--border);padding:12px 0;}',
+'    .sh-q{flex:1;min-width:0;padding:10px 14px;border:1px solid var(--border);',
+'      border-radius:var(--r-btn);background:var(--canvas);color:var(--fg);font:inherit;font-size:15px;}',
+'    .sh-filter{display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(16px,3vw,36px);',
+'      width:var(--w);margin:0 auto;align-items:start;}',
+'    .sh-facets{padding:18px 0;font-size:14px;}',
+'    .sh-facets h3{font-size:13px;color:var(--fg-low);margin:16px 0 6px;}',
+'    .sh-facets label{display:flex;gap:8px;align-items:center;padding:5px 0;color:var(--fg-low);}',
+'    .sh-filter .inner,.sh-filter .flow{width:100%;}',
+'    @media(max-width:900px){ .sh-filter{grid-template-columns:minmax(0,1fr);} }'
+]; }},
+
+mega:{n:'대형 메뉴 펼침',c:'머리말 메뉴에 닿으면 넓은 판이 내려옵니다.',
+ wrap:function(m,o){
+   const col=function(t,xs){
+     return '<div><div class="sh-ttl">'+esc(t)+'</div>'
+       + xs.map(function(x){return shA(x);}).join('')+'</div>';
+   };
+   return '  <header class="sh-head sh-mega"><div class="sh-in"><a class="sh-brand" href="#top">'+esc(o.brand)+'</a>'
+     +'<nav class="sh-topnav">'+SHNAV.map(function(x){return shA(x);}).join('')+'</nav>'
+     +'<a class="btn sm" href="#s1">'+esc(o.cta)+'</a></div>'
+     +'<div class="sh-megapanel"><div class="sh-in">'
+     + col('둘러보기', o.secs.slice(0,3).map(function(x){return x.t;}))
+     + col('더 보기', o.secs.slice(3,6).map(function(x){return x.t;}))
+     + col('고객지원', ['자주 묻는 질문','문의하기','이용 안내'])
+     + col('회사', ['소개','채용','뉴스'])
+     + '</div></div></header>'+shMain(m)+shFoot(o);
+ },
+ css:function(){ return [
+'    .sh-megapanel{display:none;background:var(--bg);border-top:1px solid var(--border);}',
+'    .sh-mega:hover .sh-megapanel,.sh-mega:focus-within .sh-megapanel{display:block;}',
+'    .sh-megapanel .sh-in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));',
+'      gap:18px;padding:20px 0;align-items:start;min-height:0;}',
+'    .sh-megapanel a{display:block;padding:5px 0;}',
+'    @media(max-width:700px){ .sh-megapanel .sh-in{grid-template-columns:repeat(2,minmax(0,1fr));} }'
+]; }}
+};
+
+/* 배치 목록은 _도구/_lay38.py 가 모음집에서 뽑아 적는다. 손으로 고치지 않는다. */
+const LAYMETA={
+"holygrail":{n:"Holy Grail (양쪽 사이드바 3단)",d:"가운데 본문 + 양옆 사이드바. 헤더·푸터까지 갖춘 가장 기본적인 웹사이트 뼈대. 예: 옛 포털, 문서 사이트.",w:"<div class=\"wa\" style=\"height:14px\"></div><div style=\"display:flex;gap:5px;flex:1\"><div class=\"wb\" style=\"width:22%\"></div><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"width:18%\"></div></div><div class=\"wb\" style=\"height:10px\"></div>",shell:"holy",flow:"stack"},
+"dashboard":{n:"Dashboard (관리자 화면)",d:"왼쪽 메뉴 + 위쪽 바 + 지표 카드들. 어드민·통계 화면의 표준. 예: 노션, 어드민 툴.",w:"<div style=\"display:flex;gap:5px;flex:1\"><div class=\"wb\" style=\"width:20%\"></div><div style=\"flex:1;display:flex;flex-direction:column;gap:5px\"><div class=\"wa\" style=\"height:13px\"></div><div style=\"flex:1;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:5px\"><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wb\"></div></div></div></div>",shell:"sidebar",flow:"grid3"},
+"landinghero":{n:"Landing Hero (첫 화면 크게)",d:"맨 위에 큰 한 방(대표 이미지+문구), 아래 특징 3개, 마지막에 신청 버튼. 홍보용 한 페이지.",w:"<div class=\"wa\" style=\"height:38px\"></div><div style=\"display:flex;gap:5px;flex:1\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div><div class=\"wa\" style=\"height:12px;width:44%;margin:0 auto\"></div>",shell:"plain",flow:"hero"},
+"split":{n:"Split (화면 반반)",d:"왼쪽 사진 / 오른쪽 글처럼 화면을 정확히 반으로 나눔. 로그인·회원가입·브랜드 소개에 자주.",w:"<div style=\"display:flex;gap:6px;flex:1\"><div class=\"wa\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div>",shell:"plain",flow:"split"},
+"modular":{n:"Modular Grid (지그재그 좌우교차)",d:"1행은 사진왼쪽·글오른쪽, 2행은 반대로 번갈아 배치. 스크롤이 지루하지 않음. 상세페이지 단골.",w:"<div style=\"display:flex;gap:5px;flex:1\"><div class=\"wa\" style=\"width:46%\"></div><div class=\"wb\" style=\"flex:1\"></div></div><div style=\"display:flex;gap:5px;flex:1\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wa\" style=\"width:46%\"></div></div>",shell:"plain",flow:"alt"},
+"bento":{n:"Bento (도시락 칸 나누기)",d:"도시락처럼 크고 작은 네모 칸을 조합. 기능 여러 개를 한눈에. 예: 애플 제품 소개.",w:"<div style=\"display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:5px;flex:1\"><div class=\"wa\" style=\"grid-row:span 2\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wa\"></div></div>",shell:"plain",flow:"bento"},
+"listdetail":{n:"List–Detail (목록 + 내용 · 메일함형)",d:"왼쪽에 목록, 오른쪽에 클릭한 내용. 메일함·메신저·설정 화면 구조.",w:"<div style=\"display:flex;gap:5px;flex:1\"><div style=\"width:34%;display:flex;flex-direction:column;gap:4px\"><div class=\"wb\" style=\"height:12px\"></div><div class=\"wa\" style=\"height:12px\"></div><div class=\"wb\" style=\"height:12px\"></div><div class=\"wb\" style=\"height:12px\"></div></div><div class=\"wb\" style=\"flex:1\"></div></div>",shell:"twopane",flow:"stack"},
+"magazine":{n:"Magazine (잡지형)",d:"큰 대표 기사 하나 + 작은 기사 여러 개. 뉴스·매거진 첫 화면.",w:"<div style=\"display:flex;gap:5px;flex:1\"><div class=\"wa\" style=\"flex:2\"></div><div style=\"flex:1;display:flex;flex-direction:column;gap:5px\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div></div><div style=\"display:flex;gap:5px;height:22px\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div>",shell:"plain",flow:"magazine"},
+"centered":{n:"Centered (가운데 한 줄)",d:"좁은 폭으로 가운데 정렬. 읽기 편함. 블로그 글·신청 폼·문서에 적합.",w:"<div style=\"flex:1;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center\"><div class=\"wa\" style=\"height:14px;width:60%\"></div><div class=\"wb\" style=\"height:40px;width:72%\"></div><div class=\"wb\" style=\"height:10px;width:52%\"></div></div>",shell:"plain",flow:"center"},
+"stacked":{n:"Stacked (위에서 아래로 쌓기)",d:"단을 나누지 않고 한 줄로 쌓는다. 모바일 기본값이자 읽는 순서가 그대로 보이는 배치.",w:"<div class=\"wa\" style=\"height:12px\"></div><div class=\"wb\" style=\"height:26px\"></div><div class=\"wb\" style=\"height:14px\"></div><div class=\"wb\" style=\"height:14px;width:70%\"></div><div class=\"wb\" style=\"height:10px\"></div>",shell:"plain",flow:"stack"},
+"masonry":{n:"Masonry (벽돌 쌓기 · 갤러리)",d:"높이가 제각각인 사진을 벽돌처럼 빈틈없이 쌓음. 갤러리·핀터레스트 스타일.",w:"<div style=\"display:flex;gap:5px;flex:1;align-items:flex-start\"><div style=\"flex:1;display:flex;flex-direction:column;gap:5px\"><div class=\"wb\" style=\"height:44px\"></div><div class=\"wb\" style=\"height:26px\"></div></div><div style=\"flex:1;display:flex;flex-direction:column;gap:5px\"><div class=\"wb\" style=\"height:26px\"></div><div class=\"wb\" style=\"height:46px\"></div></div><div style=\"flex:1;display:flex;flex-direction:column;gap:5px\"><div class=\"wb\" style=\"height:36px\"></div><div class=\"wb\" style=\"height:30px\"></div></div></div>",shell:"plain",flow:"masonry"},
+"stickyside":{n:"Sticky Sidebar (한쪽 고정 · 구매박스형)",d:"스크롤해도 한쪽(보통 우측 구매정보)이 따라옴. 상품 상세·문서 목차에 필수.",w:"<div style=\"display:flex;gap:5px;flex:1\"><div style=\"flex:1;display:flex;flex-direction:column;gap:5px\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div><div class=\"wa\" style=\"width:32%\"></div></div>",shell:"stickyAside",flow:"stack"},
+"anchor":{n:"Anchor Long Page (앵커 탭 롱페이지)",d:"위에 탭이 붙어있고 누르면 해당 위치로 점프. 아주 긴 상세페이지 정리용.",w:"<div class=\"wa\" style=\"height:12px\"></div><div style=\"display:flex;gap:4px;height:9px\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wa\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"height:20px\"></div>",shell:"anchor",flow:"stack"},
+"fullbleed":{n:"Full-bleed Scroll (풀화면 몰입형)",d:"한 화면에 하나씩 꽉 채워 스크롤. 브랜드·포트폴리오 몰입 연출.",w:"<div class=\"wa\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div>",shell:"plain",flow:"fullbleed"},
+"cardfeed":{n:"Card Feed (피드형 · SNS)",d:"같은 카드가 세로로 계속 이어짐. 커뮤니티·SNS·블로그 목록.",w:"<div class=\"wb\" style=\"height:26px\"></div><div class=\"wa\" style=\"height:26px\"></div><div class=\"wb\" style=\"height:26px\"></div><div class=\"wb\" style=\"height:20px\"></div>",shell:"plain",flow:"feed"},
+"tabbed":{n:"Tabbed (탭 전환형)",d:"탭을 누르면 같은 자리에서 내용만 바뀜. 정보량 많을 때 압축.",w:"<div style=\"display:flex;gap:4px;height:11px\"><div class=\"wa\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div><div class=\"wb\" style=\"flex:1\"></div>",shell:"tabs",flow:"stack"},
+"wizard":{n:"Wizard Steps (단계별 진행)",d:"1, 2, 3 단계로 나눠 진행. 회원가입·주문·설문에 적합.",w:"<div style=\"display:flex;gap:5px;align-items:center;height:12px\"><div class=\"wa\" style=\"width:14px;border-radius:50%\"></div><div class=\"wb\" style=\"flex:1;height:2px\"></div><div class=\"wb\" style=\"width:14px;border-radius:50%\"></div><div class=\"wb\" style=\"flex:1;height:2px\"></div><div class=\"wb\" style=\"width:14px;border-radius:50%\"></div></div><div class=\"wb\" style=\"flex:1\"></div><div style=\"display:flex;gap:5px;height:12px\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wa\" style=\"flex:1\"></div></div>",shell:"cover",flow:"wizard"},
+"pricing":{n:"Pricing Compare (요금제 비교표)",d:"플랜 3~4개를 나란히 비교. 가운데 추천 플랜을 강조.",w:"<div style=\"display:flex;gap:5px;flex:1;align-items:stretch\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wa\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div><div class=\"wb\" style=\"height:14px\"></div>",shell:"plain",flow:"pricing"},
+"gridgallery":{n:"Grid Gallery (균일 격자 갤러리)",d:"같은 크기 사진을 격자로 정렬. 제품·작업물 나열에 깔끔.",w:"<div style=\"display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:5px;flex:1\"><div class=\"wb\"></div><div class=\"wa\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wa\"></div></div>",shell:"plain",flow:"grid3"},
+"cluster":{n:"Cluster (태그 뭉치)",d:"개수가 정해지지 않은 작은 조각이 줄을 넘기며 뭉친다. 태그, 필터 칩, 버튼 묶음. Every Layout 의 원시 배치.",w:"<div class=\"wb\" style=\"height:10px;width:40%\"></div><div style=\"display:flex;flex-wrap:wrap;gap:4px;flex:1;align-content:flex-start\"><div class=\"wa\" style=\"height:12px;width:48px;border-radius:999px\"></div><div class=\"wb\" style=\"height:12px;width:32px;border-radius:999px\"></div><div class=\"wb\" style=\"height:12px;width:60px;border-radius:999px\"></div><div class=\"wa\" style=\"height:12px;width:40px;border-radius:999px\"></div><div class=\"wb\" style=\"height:12px;width:52px;border-radius:999px\"></div><div class=\"wb\" style=\"height:12px;width:36px;border-radius:999px\"></div><div class=\"wb\" style=\"height:12px;width:44px;border-radius:999px\"></div></div>",shell:"plain",flow:"cluster"},
+"switcher":{n:"Switcher (폭 따라 가로세로 전환)",d:"넓으면 가로로 늘어서고 좁아지면 한 번에 세로로 바뀐다. 중간 단계 없이 넘어가는 반응형 짜임. Every Layout 의 원시 배치.",w:"<div style=\"display:flex;gap:5px;height:38%\"><div class=\"wa\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div><div class=\"wb\" style=\"height:6px;width:30%\"></div><div style=\"display:flex;flex-direction:column;gap:5px;flex:1\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div>",shell:"plain",flow:"switcher"},
+"cover":{n:"Cover (세로 가운데 + 상하 고정)",d:"위아래를 고정하고 가운데 하나를 화면 중앙에 세운다. 첫 화면, 로그인, 빈 화면 안내. Every Layout 의 원시 배치.",w:"<div class=\"wb\" style=\"height:10px\"></div><div style=\"flex:1;display:grid;place-items:center\"><div class=\"wa\" style=\"width:60%;height:50%\"></div></div><div class=\"wb\" style=\"height:10px\"></div>",shell:"cover",flow:"center"},
+"reel":{n:"Reel (가로 스크롤 줄)",d:"한 줄에 담고 옆으로 밀어 본다. 오른쪽이 잘려 보여야 더 있다는 신호가 된다. 넷플릭스식 캐러셀. Every Layout 의 원시 배치.",w:"<div class=\"wb\" style=\"height:8px;width:36%\"></div><div style=\"display:flex;gap:5px;height:44px;overflow:hidden\"><div class=\"wa\" style=\"width:30%;flex:none\"></div><div class=\"wb\" style=\"width:30%;flex:none\"></div><div class=\"wb\" style=\"width:30%;flex:none\"></div><div class=\"wb\" style=\"width:30%;flex:none\"></div></div><div class=\"wb\" style=\"height:8px;width:36%\"></div><div style=\"display:flex;gap:5px;height:44px;overflow:hidden\"><div class=\"wb\" style=\"width:30%;flex:none\"></div><div class=\"wa\" style=\"width:30%;flex:none\"></div><div class=\"wb\" style=\"width:30%;flex:none\"></div><div class=\"wb\" style=\"width:30%;flex:none\"></div></div>",shell:"plain",flow:"reel"},
+"imposter":{n:"Imposter (겹쳐 띄우기)",d:"바탕 위에 하나를 덮어 띄운다. 모달, 말풍선, 알림. 바탕을 가리는 정도로 급한 정도를 나타낸다. Every Layout 의 원시 배치.",w:"<div style=\"position:relative;flex:1\"><div class=\"wb\" style=\"position:absolute;inset:0\"></div><div class=\"wa\" style=\"position:absolute;left:18%;top:22%;width:64%;height:56%;border-radius:6px\"></div></div>",shell:"plain",flow:"imposter"},
+"frame":{n:"Frame (비율 고정 틀)",d:"안에 무엇이 들어오든 16:9 같은 비율을 지킨다. 영상, 썸네일, 지도. 목록이 들쭉날쭉해지지 않는다. Every Layout 의 원시 배치.",w:"<div class=\"wa\" style=\"height:52px\"></div><div class=\"wb\" style=\"height:8px;width:70%\"></div><div class=\"wb\" style=\"height:8px;width:50%\"></div><div style=\"display:flex;gap:5px;flex:1\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div>",shell:"plain",flow:"frame"},
+"supportpane":{n:"Supporting Pane (본문 + 보조 패널)",d:"넓은 본문 옆에 좁은 패널을 붙여 보조 정보를 띄운다. 좁은 화면에서는 패널이 아래로 내려간다. 머티리얼 3 의 표준 배치.",w:"<div class=\"wb\" style=\"height:10px\"></div><div style=\"display:flex;gap:5px;flex:1\"><div class=\"wa\" style=\"flex:2\"></div><div style=\"flex:1;display:flex;flex-direction:column;gap:5px\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div></div>",shell:"stickyAside",flow:"alt"},
+"kanban":{n:"Kanban Board (칸반 · 상태별 세로 열)",d:"상태마다 열을 두고 카드를 옮긴다. 열 제목이 곧 진행 단계다. 이슈 추적, 채용, 영업 파이프라인.",w:"<div class=\"wb\" style=\"height:10px\"></div><div style=\"display:flex;gap:5px;flex:1\"><div style=\"flex:1;display:flex;flex-direction:column;gap:4px\"><div class=\"wb\" style=\"height:8px\"></div><div class=\"wa\" style=\"height:20px\"></div><div class=\"wb\" style=\"height:20px\"></div></div><div style=\"flex:1;display:flex;flex-direction:column;gap:4px\"><div class=\"wb\" style=\"height:8px\"></div><div class=\"wb\" style=\"height:20px\"></div></div><div style=\"flex:1;display:flex;flex-direction:column;gap:4px\"><div class=\"wb\" style=\"height:8px\"></div><div class=\"wb\" style=\"height:20px\"></div><div class=\"wb\" style=\"height:14px\"></div></div></div>",shell:"sidebar",flow:"kanban"},
+"timeline":{n:"Timeline (시간순 세로줄)",d:"왼쪽에 줄과 점을 두고 오른쪽에 내용을 단다. 순서와 간격이 한눈에 보인다. 이력, 변경 기록, 배송 추적.",w:"<div style=\"display:flex;gap:8px;flex:1\"><div style=\"width:10px;display:flex;flex-direction:column;align-items:center\"><div class=\"wa\" style=\"width:8px;height:8px;border-radius:50%\"></div><div class=\"wb\" style=\"width:2px;flex:1\"></div><div class=\"wa\" style=\"width:8px;height:8px;border-radius:50%\"></div><div class=\"wb\" style=\"width:2px;flex:1\"></div><div class=\"wb\" style=\"width:8px;height:8px;border-radius:50%\"></div></div><div style=\"flex:1;display:flex;flex-direction:column;gap:10px\"><div class=\"wb\" style=\"height:26px\"></div><div class=\"wb\" style=\"height:26px\"></div><div class=\"wb\" style=\"height:20px\"></div></div></div>",shell:"plain",flow:"timeline"},
+"maplist":{n:"Map + List (지도와 목록 나란히)",d:"목록에서 고르면 지도에서 짚이고, 지도에서 짚으면 목록이 따라 움직인다. 숙소, 부동산, 매장 찾기.",w:"<div style=\"display:flex;gap:5px;flex:1\"><div style=\"width:40%;display:flex;flex-direction:column;gap:4px\"><div class=\"wb\" style=\"height:10px\"></div><div class=\"wa\" style=\"height:22px\"></div><div class=\"wb\" style=\"height:22px\"></div><div class=\"wb\" style=\"height:22px\"></div></div><div class=\"wb\" style=\"flex:1;position:relative\"><div class=\"wa\" style=\"position:absolute;left:30%;top:28%;width:10px;height:10px;border-radius:50%\"></div><div class=\"wa\" style=\"position:absolute;left:58%;top:52%;width:10px;height:10px;border-radius:50%\"></div></div></div>",shell:"twopane",flow:"maplist"},
+"chat":{n:"Chat (대화 · 좌우 교차 말풍선)",d:"보낸 쪽은 오른쪽, 받은 쪽은 왼쪽에 둔다. 아래가 최신이고 입력칸이 바닥에 붙는다. 상담, 메신저, AI 대화.",w:"<div class=\"wb\" style=\"height:10px\"></div><div style=\"flex:1;display:flex;flex-direction:column;gap:5px;justify-content:flex-end\"><div class=\"wb\" style=\"height:14px;width:56%;border-radius:8px\"></div><div class=\"wa\" style=\"height:14px;width:48%;border-radius:8px;align-self:flex-end\"></div><div class=\"wb\" style=\"height:20px;width:64%;border-radius:8px\"></div><div class=\"wa\" style=\"height:14px;width:40%;border-radius:8px;align-self:flex-end\"></div></div><div class=\"wb\" style=\"height:14px;border-radius:999px\"></div>",shell:"twopane",flow:"chat"},
+"calendar":{n:"Calendar Grid (달력 격자)",d:"일곱 칸을 한 줄로 묶어 주 단위를 만든다. 빈칸도 자리를 차지해야 요일이 어긋나지 않는다. 예약, 일정, 근태.",w:"<div style=\"display:flex;gap:5px;height:10px\"><div class=\"wb\" style=\"flex:1\"></div><div class=\"wa\" style=\"width:28px\"></div></div><div style=\"display:grid;grid-template-columns:repeat(7,1fr);gap:3px;flex:1\"><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wa\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wa\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wb\"></div><div class=\"wb\"></div></div>",shell:"sidebar",flow:"calendar"},
+"settings":{n:"Settings (설정 · 왼쪽 메뉴 + 오른쪽 폼)",d:"왼쪽에서 묶음을 고르고 오른쪽에서 값을 바꾼다. 저장 버튼은 오른쪽 아래에 둔다. 계정, 환경설정, 관리 화면.",w:"<div style=\"display:flex;gap:5px;flex:1\"><div style=\"width:30%;display:flex;flex-direction:column;gap:4px\"><div class=\"wa\" style=\"height:10px\"></div><div class=\"wb\" style=\"height:10px\"></div><div class=\"wb\" style=\"height:10px\"></div><div class=\"wb\" style=\"height:10px\"></div></div><div style=\"flex:1;display:flex;flex-direction:column;gap:6px\"><div class=\"wb\" style=\"height:8px;width:40%\"></div><div class=\"wb\" style=\"height:14px\"></div><div class=\"wb\" style=\"height:8px;width:40%\"></div><div class=\"wb\" style=\"height:14px\"></div><div class=\"wa\" style=\"height:12px;width:30%\"></div></div></div>",shell:"sidebar",flow:"form"},
+"search":{n:"Search Results (검색 결과 · 필터 + 목록)",d:"위에 검색칸, 왼쪽에 좁히는 조건, 오른쪽에 결과를 둔다. 조건을 바꾸면 결과만 다시 그린다. 쇼핑, 채용, 문서 검색.",w:"<div class=\"wa\" style=\"height:12px;border-radius:999px\"></div><div style=\"display:flex;gap:5px;flex:1\"><div style=\"width:26%;display:flex;flex-direction:column;gap:4px\"><div class=\"wb\" style=\"height:8px\"></div><div class=\"wb\" style=\"height:8px\"></div><div class=\"wb\" style=\"height:8px\"></div></div><div style=\"flex:1;display:flex;flex-direction:column;gap:5px\"><div class=\"wb\" style=\"height:18px\"></div><div class=\"wb\" style=\"height:18px\"></div><div class=\"wb\" style=\"height:18px\"></div></div></div>",shell:"filter",flow:"feed"},
+"megamenu":{n:"Mega Menu (대형 메뉴 펼침)",d:"메뉴 하나를 누르면 넓은 판이 내려와 하위 항목을 묶어 보여 준다. 품목이 많은 쇼핑몰과 기업 사이트.",w:"<div style=\"display:flex;gap:6px;height:10px\"><div class=\"wb\" style=\"width:18%\"></div><div class=\"wa\" style=\"width:14%\"></div><div class=\"wb\" style=\"width:14%\"></div></div><div class=\"wb\" style=\"height:1px\"></div><div style=\"display:flex;gap:5px;height:48px\"><div style=\"flex:1;display:flex;flex-direction:column;gap:3px\"><div class=\"wa\" style=\"height:7px;width:60%\"></div><div class=\"wb\" style=\"height:6px\"></div><div class=\"wb\" style=\"height:6px\"></div></div><div style=\"flex:1;display:flex;flex-direction:column;gap:3px\"><div class=\"wa\" style=\"height:7px;width:60%\"></div><div class=\"wb\" style=\"height:6px\"></div><div class=\"wb\" style=\"height:6px\"></div></div><div style=\"flex:1;display:flex;flex-direction:column;gap:3px\"><div class=\"wa\" style=\"height:7px;width:60%\"></div><div class=\"wb\" style=\"height:6px\"></div></div></div><div class=\"wb\" style=\"flex:1\"></div>",shell:"mega",flow:"stack"},
+"menu2":{n:"Menu 2단 (클래식 다이닝 메뉴판)",d:"가운데 세로선 기준 좌우 2단. 왼쪽 전채·메인, 오른쪽 사이드·음료. 종이 메뉴판의 기본형.",w:"<div class=\"wa\" style=\"height:14px;width:52%;margin:0 auto\"></div><div style=\"display:flex;gap:12px;flex:1;position:relative\"><div style=\"flex:1;display:flex;flex-direction:column;gap:6px\"><div class=\"wa\" style=\"height:8px;width:46%\"></div><div class=\"wb\" style=\"height:7px\"></div><div class=\"wb\" style=\"height:7px\"></div><div class=\"wb\" style=\"height:7px\"></div><div class=\"wa\" style=\"height:8px;width:40%;margin-top:5px\"></div><div class=\"wb\" style=\"height:7px\"></div></div><div style=\"width:1px;background:var(--ui-border)\"></div><div style=\"flex:1;display:flex;flex-direction:column;gap:6px\"><div class=\"wa\" style=\"height:8px;width:42%\"></div><div class=\"wb\" style=\"height:7px\"></div><div class=\"wb\" style=\"height:7px\"></div><div class=\"wa\" style=\"height:8px;width:36%;margin-top:5px\"></div><div class=\"wb\" style=\"height:7px\"></div><div class=\"wb\" style=\"height:7px\"></div></div></div>",shell:"plain",flow:"menu2"},
+"menudots":{n:"Menu 점선 리더 (가격 우측 정렬형)",d:"메뉴명 ---- 가격 형태로 점선이 이어짐. 항목이 많고 사진이 없는 메뉴판에 적합.",w:"<div class=\"wa\" style=\"height:11px;width:40%\"></div>`+[1,2,3,4,5].map(function(){return '<div style=\"display:flex;align-items:center;gap:6px;height:10px\"><div class=\"wb\" style=\"width:34%;height:7px\"></div><div style=\"flex:1;border-bottom:1px dotted var(--ui-border)\"></div><div class=\"wa\" style=\"width:13%;height:7px\"></div></div>';}).join('')+`<div class=\"wa\" style=\"height:9px;width:32%;margin-top:4px\"></div><div style=\"display:flex;align-items:center;gap:6px;height:10px\"><div class=\"wb\" style=\"width:30%;height:7px\"></div><div style=\"flex:1;border-bottom:1px dotted var(--ui-border)\"></div><div class=\"wa\" style=\"width:13%;height:7px\"></div></div>",shell:"plain",flow:"dots"},
+"menuphoto":{n:"Menu 사진 그리드 (카페·배달 메뉴)",d:"사진+이름+가격 카드를 격자로. 실물 확인이 중요한 카페·디저트·배달앱 메뉴.",w:"<div style=\"display:flex;gap:4px;height:10px\"><div class=\"wa\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div><div class=\"wb\" style=\"flex:1\"></div></div><div style=\"display:grid;grid-template-columns:repeat(3,1fr);gap:6px;flex:1\">`+[1,2,3,4,5,6].map(function(i){return '<div style=\"display:flex;flex-direction:column;gap:3px\"><div class=\"'+(i===1?'wa':'wb')+'\" style=\"flex:1\"></div><div class=\"wb\" style=\"height:5px;width:80%\"></div><div class=\"wa\" style=\"height:5px;width:44%\"></div></div>';}).join('')+`</div>",shell:"plain",flow:"photogrid"},
+"menugolden":{n:"Menu 시그니처 강조 (골든 트라이앵글)",d:"가장 팔고 싶은 메뉴를 우상단·중앙에 박스로 크게. 나머지는 리스트로 받쳐줌.",w:"<div style=\"display:flex;gap:6px;flex:1\"><div style=\"flex:1;display:flex;flex-direction:column;gap:5px\"><div class=\"wb\" style=\"height:7px;width:60%\"></div><div class=\"wb\" style=\"height:7px\"></div><div class=\"wb\" style=\"height:7px\"></div><div class=\"wb\" style=\"height:7px;width:80%\"></div><div class=\"wb\" style=\"height:7px\"></div></div><div style=\"width:40%;display:flex;flex-direction:column;gap:5px\"><div class=\"wa\" style=\"flex:1;border-radius:6px\"></div><div class=\"wb\" style=\"height:7px\"></div><div class=\"wb\" style=\"height:7px;width:70%\"></div></div></div>",shell:"plain",flow:"golden"}
 };
 function infoRows(rows){
   return rows.filter(function(r){return r[1];}).map(function(r){
     return '<div class="ir"><span class="ik">'+r[0]+'</span><span class="iv">'+r[1]+'</span></div>';
   }).join('');
 }
+function layDef(){
+  const v=$('#selLayout').value;
+  return LAYMETA[v] || LAYMETA[Object.keys(LAYMETA)[0]];
+}
 function renderLayPrev(){
-  const v=$('#selLayout').value, d=LAYPREV[v]||LAYPREV.alt;
-  $('#layPrev').innerHTML=d.w;
-  $('#layInfo').innerHTML='<div style="font-size:14px;color:var(--ui-fg-strong);margin-bottom:5px">'+d.n+'</div>'
-    +'<div style="font-size:11.5px;color:var(--ui-fg-lower);line-height:1.7;margin-bottom:6px">'+d.c+'</div>'
-    +infoRows([['추천',d.use],['주의',d.avoid],['사례',d.ex],['팁',d.tip]])
-    +'<div class="metarow"><span>'+d.sec+'</span><span>'+d.mob+'</span></div>';
+  const d=layDef(), fl=FLOW[d.flow]||FLOW.stack, sh=SHELL[d.shell]||SHELL.plain;
+  $('#layPrev').innerHTML=d.w||'';
+  $('#layInfo').innerHTML='<div style="font-size:14px;color:var(--ui-fg-strong);margin-bottom:5px">'+esc(d.n)+'</div>'
+    +'<div style="font-size:11.5px;color:var(--ui-fg-lower);line-height:1.7;margin-bottom:6px">'+esc(d.d)+'</div>'
+    +infoRows([['페이지 틀',esc(sh.n)+' · '+esc(sh.c)],['섹션 배치',esc(fl.n)+' · '+esc(fl.c)]])
+    +'<div class="metarow"><span>셸 '+esc(d.shell)+'</span><span>흐름 '+esc(d.flow)+'</span></div>';
+}
+/* 두 색의 대비비. 새 색을 만들지 않고 램프 안에서 고르는 데만 쓴다. */
+function lum(hex){
+  const n=[1,3,5].map(function(i){
+    let v=parseInt(hex.slice(i,i+2),16)/255;
+    return v<=.03928? v/12.92 : Math.pow((v+.055)/1.055,2.4);
+  });
+  return .2126*n[0]+.7152*n[1]+.0722*n[2];
+}
+function ratio(a,b){
+  const x=lum(a), y=lum(b);
+  return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);
+}
+/* 후보를 앞에서부터 보며 4.5 에 닿는 첫 값을 쓴다. 없으면 가장 센 값을 쓴다. */
+function pick(cands,bg){
+  let best=cands[0];
+  for(let i=0;i<cands.length;i++){
+    if(ratio(cands[i],bg)>=4.5) return cands[i];
+    if(ratio(cands[i],bg)>ratio(best,bg)) best=cands[i];
+  }
+  return best;
 }
 function build(silent){
   const s=SYS[+$('#selSys').value], lay=$('#selLayout').value, dark=$('#darkMode').checked;
+  const LD=layDef(), fl=FLOW[LD.flow]||FLOW.stack, sh=SHELL[LD.shell]||SHELL.plain;
   const secs=cur.s.map((x,k)=>({t:x[0],d:x[1],kind:x[2]||'block',k})).filter(x=>picked.has(x.k));
   const showSpec=$('#rImg').checked, motion=$('#rMotion').checked, a11y=$('#rA11y').checked;
   const bg = dark? s.g[5] : '#FFFFFF', canvas = dark? '#0E0E11' : s.g[0];
-  const fg = dark? '#FFFFFF' : s.g[5], fgLow = dark? s.g[2] : s.g[3], border = dark? s.g[4] : s.g[2];
-  const prim = dark? s.p : s.p, primLow = dark? s.g[4] : s.pl;
+  const fg = dark? '#FFFFFF' : s.g[5], border = dark? s.g[4] : s.g[2];
+  const prim = s.p, primLow = dark? s.g[4] : s.pl;
+  // 보조 글자는 섹션이 번갈아 깔리므로 둘 중 밝은 바탕에 맞춘다
+  const fgLow = dark? pick([s.g[2],s.g[1],s.g[0],'#FFFFFF'], s.g[5])
+                    : pick([s.g[3],s.g[4],s.g[5]], s.g[0]);
+  // 연한 강조 바탕 위에 올릴 글자색
+  const primInk = dark? pick([s.pl,s.g[0],'#FFFFFF'], primLow)
+                      : pick([s.pd,s.g[5]], primLow);
+  // 흰 글자가 읽히는 농도의 버튼 바탕
+  const btnBg = pick([s.p, s.pd, s.g[5]], '#FFFFFF');
 
   const bN=$('#bName').value.trim(), bT=$('#bTag').value.trim();
   const mat=parseMat($('#bMat').value);
@@ -801,15 +1243,19 @@ function build(silent){
   secs.forEach((sec,i)=>{
     const ctx={sec:sec, i:i, brand:bN, tag:bT, m:mat, lay:lay, showSpec:showSpec, page:cur.id};
     const comp=COMP[sec.kind]||COMP.block;
-    const cls = lay==='alt' ? (i%2? 'sec alt':'sec') : lay==='center'? 'sec narrow'
-              : lay==='split'? 'sec split':'sec stack';
-    body += '\n  <!-- '+(i+1)+'. '+sec.t+' -->\n  <section class="'+cls+'"'+(motion?' data-rv':'')
-         + '>\n    <div class="inner">'+comp(ctx)+'</div>\n  </section>';
+    const cls='sec f-'+LD.flow+(fl.rev&&(i%2)?' rev':'');
+    body += '\n      <!-- '+(i+1)+'. '+sec.t+' -->\n      <section class="'+cls+'" id="s'+(i+1)+'"'+(motion?' data-rv':'')
+         + '>\n        <div class="inner" data-t="'+esc(sec.t)+'">'+comp(ctx)+'</div>\n      </section>';
   });
+  // 흐름에 상자가 필요하면 섹션 전체를 한 번 감싼다
+  if(fl.w) body='\n    <div class="flow '+fl.w+(fl.narrow?' narrow':'')+'">'+body+'\n    </div>';
+  const shOpt={brand:bN||cur.n, title:cur.n, cta:noun({page:cur.id},'cta'), secs:secs};
+  const page=sh.wrap(body, shOpt);
 
   const css = [
 '    :root{',
 '      --primary: '+prim+';  --primary-low: '+primLow+';  --primary-dark: '+s.pd+';',
+'      --primary-ink: '+primInk+';  --btn-bg: '+btnBg+';',
 '      --bg: '+bg+';  --canvas: '+canvas+';  --fg: '+fg+';  --fg-low: '+fgLow+';  --border: '+border+';',
 '      --r-btn: '+(s.r===999?'999px':s.r+'px')+';  --r-card: '+s.rc+'px;',
 '      --font: '+s.f+';',
@@ -821,14 +1267,10 @@ function build(silent){
 '      -webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;line-break:strict;}',
 '    h1,h2,h3{text-wrap:balance;} p,.lead,.cd{text-wrap:pretty;}',
 '    .sec{padding:var(--pad) 0;}',
-'    .sec:nth-child(even){background:var(--bg);}',
-'    .inner{width:var(--w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);align-items:center;}',
-'    .sec.alt .inner{direction:rtl;} .sec.alt .inner>*{direction:ltr;}',
-'    .sec.stack .inner,.sec.narrow .inner{grid-template-columns:1fr;}',
-'    .sec.narrow .inner{width:min(760px,92vw);text-align:center;}',
-'    .sec.narrow .cta{justify-content:center;}',
+'    .sh-main>.sec:nth-child(even){background:var(--bg);}',
+'    .inner{width:var(--w);margin:0 auto;}',
 '    .ph{width:100%;background:var(--primary-low);border:1px dashed var(--border);border-radius:var(--r-card);',
-'      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--primary-dark);}',
+'      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--primary-ink);}',
 '    .phl{font-size:clamp(13px,1.6vw,15px);font-weight:700;}',
 '    .phs{font-size:12px;opacity:.75;font-family:ui-monospace,Menlo,monospace;}',
 '    .num{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--primary);}',
@@ -836,10 +1278,9 @@ function build(silent){
 '    p{font-size:clamp(14px,1.6vw,17px);color:var(--fg-low);margin:0;}',
 '    .cta{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}',
 '    .btn,.btn2{display:inline-block;padding:12px 22px;border-radius:var(--r-btn);font-weight:700;font-size:15px;text-decoration:none;}',
-'    .btn{background:var(--primary);color:#fff;}',
-'    .btn2{background:var(--primary-low);color:var(--primary-dark);}',
-a11y?'    a:focus-visible,button:focus-visible{outline:2px solid var(--primary);outline-offset:2px;}':'',
-'    .inner{display:block;}',
+'    .btn{background:var(--btn-bg);color:#fff;}',
+'    .btn2{background:var(--primary-low);color:var(--primary-ink);}',
+a11y?'    a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--primary);outline-offset:2px;}':'',
 '    .mid{width:100%;}',
 '    .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-low);}',
 '    h1{font-size:clamp(28px,5vw,56px);line-height:1.15;letter-spacing:-.03em;margin:10px 0 12px;}',
@@ -851,10 +1292,16 @@ a11y?'    a:focus-visible,button:focus-visible{outline:2px solid var(--primary);
 '    .fill{display:inline-block;min-width:4em;padding:1px 8px;border:1px dashed var(--border);',
 '      border-radius:4px;color:var(--fg-low);font-size:.86em;background:var(--canvas);}',
 '    .hero{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,56px);align-items:center;}',
+'    /* 칸이 좁은 흐름 안에서는 부품도 한 열로 내린다. 화면 폭이 아니라 칸 폭이 좁다 */',
+'    .flow.narrow .hero,.flow.narrow .feat,.flow.narrow .buybox{grid-template-columns:minmax(0,1fr);}',
+'    .flow.narrow h1{font-size:clamp(20px,2.6vw,30px);}',
+'    .flow.narrow h2{font-size:clamp(17px,2.2vw,24px);}',
+'    .fl-cal h1,.fl-cal h2{font-size:14px;}',
+'    .fill{max-width:100%;}',
 '    .statement{text-align:center;padding:clamp(20px,6vw,80px) 0;}',
 '    .statement h1{font-size:clamp(32px,7vw,84px);}',
 '    .feat{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,56px);align-items:center;}',
-'    .sec.alt .feat,.sec.alt .hero{direction:rtl;} .sec.alt .feat>*,.sec.alt .hero>*{direction:ltr;}',
+'    .f-alt.rev .feat,.f-alt.rev .hero{direction:rtl;} .f-alt.rev .feat>*,.f-alt.rev .hero>*{direction:ltr;}',
 '    .buybox{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(16px,3vw,40px);',
 '      border:1px solid var(--border);border-radius:var(--r-card);padding:clamp(18px,3vw,28px);background:var(--bg);}',
 '    .bb-name{font-size:18px;font-weight:600;margin-bottom:10px;}',
@@ -864,7 +1311,7 @@ a11y?'    a:focus-visible,button:focus-visible{outline:2px solid var(--primary);
 '    .bb-price small{font-size:.5em;font-weight:400;margin-left:2px;}',
 '    .bb-ship{font-size:13px;color:var(--fg-low);margin:6px 0 14px;}',
 '    .chip{display:inline-block;padding:6px 14px;border:1px solid var(--border);border-radius:999px;font-size:13px;}',
-'    .chip.on{background:var(--primary);color:#fff;border-color:transparent;}',
+'    .chip.on{background:var(--btn-bg);color:#fff;border-color:transparent;}',
 '    .chip.lg{padding:9px 18px;font-size:14px;}',
 '    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}',
 '    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(12px,2vw,24px);}',
@@ -881,7 +1328,7 @@ a11y?'    a:focus-visible,button:focus-visible{outline:2px solid var(--primary);
 '    .steps{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:14px;}',
 '    .steps.row{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));}',
 '    .steps li{display:flex;gap:12px;align-items:flex-start;}',
-'    .sn{flex:none;width:28px;height:28px;border-radius:999px;background:var(--primary);color:#fff;',
+'    .sn{flex:none;width:28px;height:28px;border-radius:999px;background:var(--btn-bg);color:#fff;',
 '      display:grid;place-items:center;font-size:13px;font-weight:600;}',
 '    .shotwrap{max-width:560px;margin:0 auto;} .shotwrap.wide{max-width:100%;}',
 '    .acc{margin-top:14px;border-top:1px solid var(--border);}',
@@ -911,14 +1358,10 @@ a11y?'    a:focus-visible,button:focus-visible{outline:2px solid var(--primary);
 '    .qr{max-width:160px;margin:16px auto 0;}',
 '    .ph.sm{max-width:96px;}',
 '    .btn.wide,.btn2.wide{display:block;text-align:center;}',
-'    @media(max-width:768px){',
-'      .hero,.feat,.buybox{grid-template-columns:1fr;}',
-'      .sec.alt .feat,.sec.alt .hero{direction:ltr;}',
-'      .inner{grid-template-columns:1fr!important;}',
-'    }',
-'    @media(max-width:768px){ .inner{grid-template-columns:1fr!important;} .sec.alt .inner{direction:ltr;} }',
 motion?'    [data-rv]{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;}\n    [data-rv].in{opacity:1;transform:none;}\n    @media(prefers-reduced-motion:reduce){[data-rv]{opacity:1;transform:none;transition:none;}}':''
-].filter(Boolean).join('\n');
+].concat(SHELLBASE,
+         fl.css.map(function(x){return '    '+x;}),
+         sh.css(shOpt), NARROW).filter(Boolean).join('\n');
 
   const js = motion ? '\n<script>\nconst io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.12});\ndocument.querySelectorAll("[data-rv]").forEach(el=>io.observe(el));\n<\/script>' : '';
 
@@ -926,7 +1369,7 @@ motion?'    [data-rv]{opacity:0;transform:translateY(8px);transition:opacity .5s
     + '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
     + '<title>'+esc(bN || cur.n)+'</title>\n'
     + '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">\n'
-    + '<style>\n'+css+'\n</style>\n</head>\n<body>'+body+'\n'+js+'\n</body>\n</html>';
+    + '<style>\n'+css+'\n</style>\n</head>\n<body>\n'+page+'\n'+js+'\n</body>\n</html>';
 
   $('#frame').srcdoc=html;
   $('#codeBody').textContent=html;
@@ -934,10 +1377,7 @@ motion?'    [data-rv]{opacity:0;transform:translateY(8px);transition:opacity .5s
   if(!silent) toast('생성 완료, 섹션 '+secs.length+'개');
 }
 function prompt(s,lay,secs,css){
-  const layName={alt:'모듈러 그리드(좌우 지그재그). 홀수 행은 이미지 왼쪽, 짝수 행은 오른쪽',
-                 stack:'단일 열. 위에서 아래로 순서대로',
-                 center:'가운데 정렬. min(760px,92vw) 좁은 폭, 텍스트 중앙',
-                 split:'Split. 이미지와 텍스트 반반 고정'}[lay];
+  const M=LAYMETA[lay]||layDef(), MF=FLOW[M.flow]||FLOW.stack, MS=SHELL[M.shell]||SHELL.plain;
   const L=[];
   const b=brief();
   L.push('# '+((b.n&&b.n.trim())||cur.n)+' 제작 요청');
@@ -959,8 +1399,10 @@ function prompt(s,lay,secs,css){
     L.push('자료에 없는 수치·효능·인증은 지어내지 말 것. 부족하면 자리표시자로 남기고 무엇이 필요한지 표시할 것.');
     L.push('');
   }
-  L.push('## 1) 레이아웃');
-  L.push('- '+layName);
+  L.push('## 1) 배치 '+M.n);
+  L.push('- '+M.d);
+  L.push('- 페이지 틀: '+MS.n+'. '+MS.c);
+  L.push('- 섹션 배치: '+MF.n+'. '+MF.c);
   L.push('- 참고 사이트: '+cur.refs);
   L.push('');
   L.push('## 2) 섹션 (이 순서 그대로, 각 섹션 앞에 주석)');
@@ -969,7 +1411,7 @@ function prompt(s,lay,secs,css){
     L.push('');
     L.push((i+1)+'. **'+x.t+'**');
     L.push('   - 내용: '+x.d);
-    L.push('   - 마크업: <section class="'+(lay==='alt'?(i%2?'sec alt':'sec'):lay==='center'?'sec narrow':lay==='split'?'sec split':'sec stack')+'"> > .inner');
+    L.push('   - 마크업: <section class="sec f-'+M.flow+(MF.rev&&(i%2)?' rev':'')+'"> > .inner');
     if(sp){
       L.push('   - 이미지 슬롯: '+sp.label+' · 권장 '+sp.size+' · aspect-ratio: '+sp.ar);
       L.push(', <div class="ph" style="aspect-ratio:'+sp.ar+'"> 안에 라벨과 규격 텍스트를 표시 (실제 이미지 없이 플레이스홀더)');
@@ -990,7 +1432,8 @@ function prompt(s,lay,secs,css){
   L.push('## 5) 출력 형식');
   L.push('- 의존성 없는 단일 HTML 파일 (Pretendard CDN 링크만 허용)');
   L.push('- 위 CSS를 <style>에 그대로 넣고, 섹션 마크업만 추가');
-  L.push('- 클래스명: .sec / .sec.alt / .sec.narrow / .sec.stack / .inner / .ph / .phl / .phs / .tx / .num / .cta / .btn / .btn2');
+  L.push('- 클래스명: .sec.f-'+M.flow+(MF.w?' / .flow.'+MF.w:'')+' / .inner / .ph / .phl / .phs / .tx / .num / .cta / .btn / .btn2');
+  L.push('- 위 CSS 에 들어 있는 셸(.sh-*) 마크업을 그대로 두르고 본문만 섹션으로 채울 것');
   L.push('- 이미지는 전부 플레이스홀더(.ph)로, 실제 파일 참조 금지');
   return L.join('\n');
 }
