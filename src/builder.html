@@ -436,6 +436,13 @@ function grayRamp(tone){
   const s = tone==='neutral'?3 : 8;
   return STEPS.map((k,i)=>[k, hsl2hex(h, i<5?s:s*.85, LT[i])]);
 }
+// 램프 칸에 적는 단계 숫자의 글자색을 그 칸의 실제 명도로 정한다.
+// 단계 번호로 가르면 램프마다 명도 분포가 달라 못 가른다. 주황 500 은 밝고
+// 회색 500 은 중간이라 같은 번호인데 읽히는 글자색이 다르다.
+// 흐린 검정도 바탕과 섞여 기준에 못 닿으므로 불투명한 색만 쓴다.
+function onSwatch(hex){
+  return cRatio(hex,'#FFFFFF') >= cRatio(hex,'#000000') ? '#FFFFFF' : '#000000';
+}
 // 바탕색 위에 올릴 글자색을 정한다. 흰 글씨 대비가 3 에 못 미치면 짙은 쪽을 쓴다.
 function onBg(bg, P){
   const w=cRatio(bg,'#FFFFFF');
@@ -468,10 +475,14 @@ function tokens(){
   const P=Object.fromEntries(ramp(S.primary)), G=Object.fromEntries(grayRamp(S.tone));
   const SU=Object.fromEntries(ramp('#16A34A')), WA=Object.fromEntries(ramp('#D97706')), ER=Object.fromEntries(ramp('#DC2626'));
   const dark=S.mode==='dark';
+  const dis=dark?G['800']:G['100'];
   return {P,G,SU,WA,ER,dark,
     canvas: dark?G['950']:G['50'], bg: dark?G['900']:'#FFFFFF',
-    fg: dark?'#FFFFFF':G['950'], fgStrong: dark?G['50']:G['900'], fgLower: dark?G['400']:G['600'], fgDim: dark?G['600']:G['400'],
-    border: dark?G['800']:G['200'], borderStrong: dark?G['600']:G['300'], neutral: dark?G['800']:G['100'], disabled: dark?G['800']:G['100'],
+    fg: dark?'#FFFFFF':G['950'], fgStrong: dark?G['50']:G['900'], fgLower: dark?G['400']:G['600'],
+    // 비활성 글자는 가장 흐리되 읽히는 단계로 정한다. 단계를 숫자로 박아 두면
+    // 회색 톤을 바꿀 때 2 대 1 까지 내려가 비활성인지조차 보이지 않는다.
+    fgDim: readOn(dis, G, dark?UP:DOWN),
+    border: dark?G['800']:G['200'], borderStrong: dark?G['600']:G['300'], neutral: dark?G['800']:G['100'], disabled: dis,
     primary: dark?P['400']:P['500'], primaryLow: dark?P['900']:P['50'],
     primaryFg: dark?readOn(P['900'],P,UP):readOn(P['50'],P,DOWN),
     onPrimary: onBg(dark?P['400']:P['500'], P),
@@ -506,7 +517,7 @@ function renderRamps(){
   const rows=[['Primary',ramp(S.primary)],['Gray',grayRamp(S.tone)],['Success',ramp('#16A34A')],['Warning',ramp('#D97706')],['Error',ramp('#DC2626')]];
   $('#ramps').innerHTML=rows.map(([n,arr])=>
     '<div class="ramp"><div class="rl">'+n+'</div><div class="rs">'+
-    arr.map(([k,hx])=>'<div data-c="'+hx+'" style="background:'+hx+';color:'+(parseInt(k)>=500?'#fff':'rgba(0,0,0,.45)')+'">'+k+'</div>').join('')+
+    arr.map(([k,hx])=>'<div data-c="'+hx+'" style="background:'+hx+';color:'+onSwatch(hx)+'">'+k+'</div>').join('')+
     '</div></div>').join('');
 }
 function applyPreview(){
